@@ -1,0 +1,31 @@
+[user]
+    name = Zahid Kizmaz
+    email = tech@zahid.rocks
+    username = zahidkizmaz
+[core]
+    excludesfile = ~/.config/git/.gitignore_global
+    editor = nvim
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = true
+[alias]
+    # show different commits between branches
+    branchdiff = log --graph --left-right --cherry-pick --oneline
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[color "diff"]
+    meta = 11
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[interactive]
+    diffFilter = delta --color-only
