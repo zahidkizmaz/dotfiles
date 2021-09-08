@@ -3,7 +3,6 @@
     email = tech@zahid.rocks
     username = zahidkizmaz
 [core]
-    excludesfile = ~/.config/git/.gitignore_global
     editor = nvim
     pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 [color]
