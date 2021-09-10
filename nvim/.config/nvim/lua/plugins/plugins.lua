@@ -1,10 +1,3 @@
-require('comp-plugin')
-require('lspinstall-plugin')
-require('treesitter-plugin')
-require('telescope-plugin')
-require('lightline-plugin')
-require('lspinstall-plugin')
-
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()

@@ -31,16 +31,6 @@ buffer_local.expandtab = true
 
 
 cmd([[
-
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" } })
-  augroup END
-endif
-
-colorscheme onedark
-
 cnoreabbrev E e
 cnoreabbrev W w
 cnoreabbrev WQ wq
@@ -61,6 +51,5 @@ au TextYankPost * silent! lua vim.highlight.on_yank({timeout=250})
 " auto-adjust splits when window is resized
 " https://vi.stackexchange.com/questions/201/make-panes-resize-when-host-window-is-resized
 autocmd VimResized * wincmd =
-
 ]]
 )
