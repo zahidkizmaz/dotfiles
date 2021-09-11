@@ -27,6 +27,7 @@
 import os
 import subprocess
 from typing import List  # noqa: F401
+from typing import Any, Dict
 
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -133,42 +134,62 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-widget_defaults = dict(
-    font="JetBrains Mono",
+# widget_defaults = dict(
+#     font="JetBrains Mono",
+#     fontsize=14,
+#     padding=3,
+# )
+# extension_defaults = widget_defaults.copy()
+
+BAR_SIZE: int = 24
+BAR_MARGIN: List[int] = [4, 10, 0, 10]
+WIDGET_DEFAULTS: Dict[str, Any] = dict(
     fontsize=14,
-    padding=3,
+    font="JetBrains Mono",
 )
-extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.Spacer(length=10),
+                widget.CurrentLayoutIcon(scale=0.7),
+                widget.CurrentLayout(**WIDGET_DEFAULTS),
                 widget.GroupBox(
-                    margin_y=2,
-                    margin_x=0,
-                    padding_y=6,
-                    padding_x=5,
+                    borderwidth=2,
+                    inactive="969696",
+                    this_current_screen_border="eee8d5",
+                    this_screen_border="eee8d5",
+                    **WIDGET_DEFAULTS
+                ),
+                widget.Sep(size_percent=100, padding=12),
+                widget.TaskList(
                     borderwidth=0,
-                    disable_drag=True,
-                    rounded=False,
-                    highlight_method="text",
+                    padding_x=4,
+                    padding=0,
+                    margin=0,
+                    spacing=4,
+                    **WIDGET_DEFAULTS
                 ),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Sep(size_percent=100, padding=12),
+                widget.BatteryIcon(),
+                widget.Battery(
+                    charge_char="+",
+                    discharge_char="",
+                    unknown_char="",
+                    format="{char}{percent:2.0%}",
+                    **WIDGET_DEFAULTS
                 ),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %H:%M", timezone="Europe/Berlin"),
-                widget.QuickExit(),
+                widget.Spacer(length=10),
+                widget.Volume(emoji=True),
+                widget.Volume(**WIDGET_DEFAULTS),
+                widget.Spacer(length=10),
+                widget.Clock(**WIDGET_DEFAULTS, format="%H:%M"),
+                widget.Spacer(length=10),
             ],
-            24,
-        ),
+            size=BAR_SIZE,
+            margin=BAR_MARGIN,
+        )
     ),
 ]
 
