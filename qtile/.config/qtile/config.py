@@ -118,14 +118,20 @@ for i in groups:
         ]
     )
 
+LAYOUT_DEFAULTS = {
+    "border_focus": "4c9ad4",
+    "border_normal": "a57fc4",
+    "margin": 8,
+    "border_width": 3,
+}
 layouts = [
-    layout.Columns(border_focus_stack="#d75f5f", margin=8),
-    layout.Max(),
+    layout.MonadTall(**LAYOUT_DEFAULTS),
+    layout.Max(**LAYOUT_DEFAULTS),
     # Try more layouts by unleashing below layouts.
+    # layout.Columns(border_focus_stack="#d75f5f", margin=8),
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -133,13 +139,6 @@ layouts = [
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
-
-# widget_defaults = dict(
-#     font="JetBrains Mono",
-#     fontsize=14,
-#     padding=3,
-# )
-# extension_defaults = widget_defaults.copy()
 
 BAR_SIZE: int = 24
 BAR_MARGIN: List[int] = [4, 10, 0, 10]
@@ -183,6 +182,8 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Volume(emoji=True),
                 widget.Volume(**WIDGET_DEFAULTS),
+                widget.Spacer(length=10),
+                widget.Backlight(backlight_name="intel_backlight", **WIDGET_DEFAULTS),
                 widget.Spacer(length=10),
                 widget.Clock(**WIDGET_DEFAULTS, format="%H:%M"),
                 widget.Spacer(length=10),
