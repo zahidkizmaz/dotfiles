@@ -33,7 +33,7 @@ from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-mod = "mod1"
+mod = "mod4"
 terminal = "alacritty"
 
 keys = [
