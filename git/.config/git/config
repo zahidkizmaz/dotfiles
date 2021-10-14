@@ -28,3 +28,6 @@
     whitespace = red reverse
 [interactive]
     diffFilter = delta --color-only
+
+[blame]
+    date = short
