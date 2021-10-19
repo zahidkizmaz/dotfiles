@@ -36,7 +36,7 @@ alias gfrb="git fetch origin && git rebase origin/master"
 alias gsh='git stash '
 alias gmno='git commit --amend --no-edit'
 alias gmo='git merge origin/master'
-alias gpm='git pull origin master'
+alias gpm='git pull origin $(git branch --show-current)'
 alias gfgp='git fetch origin && git pull origin '
 alias 'git wipe'='git reset --hard HEAD '
 
