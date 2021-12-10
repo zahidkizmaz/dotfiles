@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
 		config = function()
-			require("nvim-tree").setup({})
+            require("nvim-tree").setup({})
 		end,
 	})
 	use({
@@ -47,5 +47,5 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use("editorconfig/editorconfig-vim")
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 end)

@@ -15,23 +15,9 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>wl",
-		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>e",
-		"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
-		opts
-	)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fo", "<cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[
@@ -55,7 +41,7 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {
-		on_attach = cfg.lsp_on_attach_without_formatting,
+		on_attach = cfg.lsp_on_attach,
 		capabilities = capabilities,
 	}
 
@@ -78,6 +64,7 @@ lsp_installer.on_server_ready(function(server)
 			},
 		}
 	elseif server.name == "pylsp" then
+		opts.on_attach = cfg.lsp_on_attach_without_formatting
 		opts.settings = {
 			pylsp = {
 				plugins = {
@@ -101,9 +88,6 @@ lsp_installer.on_server_ready(function(server)
 				},
 			},
 		}
-	elseif server.name == "null_ls" then
-		-- Only null_ls should format files on save.
-		opts.on_attach = cfg.lsp_on_attach
 	end
 
 	server:setup(opts)
