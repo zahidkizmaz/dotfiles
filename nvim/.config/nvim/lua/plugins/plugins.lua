@@ -4,7 +4,6 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("tpope/vim-commentary")
 	use("tpope/vim-fugitive")
-	use("itchyny/lightline.vim")
 	use("joshdick/onedark.vim")
 
 	use({
@@ -39,4 +38,13 @@ return require("packer").startup(function(use)
 			require("nvim-tree").setup({})
 		end,
 	})
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use("editorconfig/editorconfig-vim")
 end)

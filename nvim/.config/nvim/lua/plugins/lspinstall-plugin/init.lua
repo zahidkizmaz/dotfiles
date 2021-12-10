@@ -69,6 +69,30 @@ lsp_installer.on_server_ready(function(server)
 				},
 			},
 		}
+	elseif server.name == "pylsp" then
+		opts.settings = {
+			pylsp = {
+				plugins = {
+					pydocstyle = {
+						enabled = false,
+					},
+					pycodestyle = {
+						enabled = false,
+					},
+					pyflakes = {
+						enabled = false,
+					},
+					jedi_signature_help = {
+						enabled = false,
+					},
+					pylsp_mypy = {
+						enabled = true,
+						live_mode = false,
+						dmypy = true,
+					},
+				},
+			},
+		}
 	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
