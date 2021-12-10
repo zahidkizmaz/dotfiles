@@ -1,7 +1,11 @@
 -- LSP settings
 local lsp_installer = require("nvim-lsp-installer")
 
-local on_attach = function(_, bufnr)
+local cfg = {}
+
+function cfg.lsp_on_attach(client, bufnr)
+	-- generic on_attach, should be passed to all language servers.
+
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
@@ -29,12 +33,20 @@ local on_attach = function(_, bufnr)
 		opts
 	)
 
-	vim.cmd([[
+	if client.resolved_capabilities.document_formatting then
+		vim.cmd([[
                 augroup AutoFormatOnSave
                 autocmd! * <buffer>
                 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
                 augroup END
         ]])
+	end
+end
+
+function cfg.lsp_on_attach_without_formatting(client, bufnr)
+	cfg.lsp_on_attach(client, bufnr)
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -43,15 +55,11 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {
-		on_attach = on_attach,
+		on_attach = cfg.lsp_on_attach_without_formatting,
 		capabilities = capabilities,
 	}
 
-	-- (optional) Customize the options passed to the server
-	-- if server.name == "tsserver" then
-	--     opts.root_dir = function() ... end
-	-- end
-
+	-- Setup server specific settings.
 	if server.name == "sumneko_lua" then
 		opts.settings = {
 			Lua = {
@@ -93,9 +101,10 @@ lsp_installer.on_server_ready(function(server)
 				},
 			},
 		}
+	elseif server.name == "null_ls" then
+		-- Only null_ls should format files on save.
+		opts.on_attach = cfg.lsp_on_attach
 	end
 
-	-- This setup() function is exactly the same as lspconfig's setup function.
-	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)
 end)
