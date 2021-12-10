@@ -19,7 +19,7 @@ require("lualine").setup({
 				end,
 			},
 		},
-		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_b = {},
 		lualine_c = {
 			{
 				"filename",
@@ -27,8 +27,8 @@ require("lualine").setup({
 			},
 			{ gps.get_location, cond = gps.is_available },
 		},
-		lualine_x = { "encoding", "filetype" },
-		lualine_y = {},
+		lualine_x = { "branch", "diff", "diagnostics" },
+		lualine_y = { "encoding", "filetype" },
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
