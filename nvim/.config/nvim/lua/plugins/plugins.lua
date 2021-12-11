@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("tpope/vim-commentary")
 	use("tpope/vim-fugitive")
+	use("tpope/vim-rhubarb") --fugitive and github integration
 	use("joshdick/onedark.vim")
 
 	use({
@@ -34,9 +35,6 @@ return require("packer").startup(function(use)
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
-		config = function()
-			require("nvim-tree").setup({})
-		end,
 	})
 	use({
 		"SmiteshP/nvim-gps",
