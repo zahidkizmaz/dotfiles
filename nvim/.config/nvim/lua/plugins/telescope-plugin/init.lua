@@ -1,15 +1,15 @@
 require("telescope").setup({
 	defaults = {
-        extensions = {
-						fzf = {
-							fuzzy = true, -- false will only do exact matching
-							override_generic_sorter = true, -- override the generic sorter
-							override_file_sorter = true, -- override the file sorter
-							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-						},
-					},
+		extensions = {
+			fzf = {
+				fuzzy = true, -- false will only do exact matching
+				override_generic_sorter = true, -- override the generic sorter
+				override_file_sorter = true, -- override the file sorter
+				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			},
+		},
 	},
-    require("telescope").load_extension("fzf")
+	require("telescope").load_extension("fzf"),
 })
 
 vim.api.nvim_set_keymap(
@@ -28,6 +28,12 @@ vim.api.nvim_set_keymap(
 	"n",
 	"<Leader>rg",
 	'<cmd>:lua require("telescope.builtin").live_grep()<CR>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader>gs",
+	'<cmd>:lua require("telescope.builtin").grep_string()<CR>',
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(

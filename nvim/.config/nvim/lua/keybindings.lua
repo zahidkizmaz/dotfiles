@@ -5,3 +5,7 @@ keymap("n", "<c-j>", "<c-w>j", { noremap = true })
 keymap("n", "<c-k>", "<c-w>k", { noremap = true })
 keymap("n", "<c-h>", "<c-w>h", { noremap = true })
 keymap("n", "<c-l>", "<c-w>l", { noremap = true })
+
+-- Visual shifting (does not exit Visual mode)
+keymap("v", "<", "<gv", { noremap = true, silent = false })
+keymap("v", ">", ">gv", { noremap = true, silent = false })

@@ -18,6 +18,7 @@ set.smartcase = true
 set.ignorecase = true
 set.breakindent = true
 set.termguicolors = true
+set.splitright = true
 
 set_opt.number = true
 set_opt.undofile = true
