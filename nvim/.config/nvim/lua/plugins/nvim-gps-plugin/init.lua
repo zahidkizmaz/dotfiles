@@ -55,7 +55,7 @@ require("nvim-gps").setup({
 		},
 	},
 
-	separator = " > ",
+	separator = " ❯ ",
 
 	-- limit for amount of context shown
 	-- 0 means no limit

@@ -24,11 +24,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("null-ls").config({})
-			require("lspconfig")["null-ls"].setup({})
-		end,
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use({
 		"kyazdani42/nvim-tree.lua",

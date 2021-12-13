@@ -50,6 +50,12 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
 	"n",
+	"<Leader>ca",
+	'<cmd>:lua require("telescope.builtin").lsp_code_actions()<CR>',
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
 	"<Leader>fh",
 	'<cmd>:lua require("telescope.builtin").help_tags()<CR>',
 	{ noremap = true, silent = true }
