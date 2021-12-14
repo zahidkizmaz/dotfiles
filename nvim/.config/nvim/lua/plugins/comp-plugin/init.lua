@@ -6,8 +6,9 @@ end
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
-local luasnip = require("luasnip")
 local cmp = require("cmp")
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 cmp.setup({
 	snippet = {
@@ -27,6 +28,7 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
+			{ "i", "c" },
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -51,7 +53,22 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
+		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		{ name = "path" },
 		{ name = "luasnip" },
+		{ name = "buffer", keyword_length = 3 },
+	},
+	formatting = {
+		format = lspkind.cmp_format({
+			with_text = true,
+			menu = {
+				buffer = "[buf]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[api]",
+				path = "[path]",
+				luasnip = "[snip]",
+			},
+		}),
 	},
 })
