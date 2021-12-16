@@ -16,25 +16,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xa80000'
-    green:   '0x00a800'
-    yellow:  '0xa85400'
-    blue:    '0x0000a8'
+    black: '0x000000'
+    red: '0xa80000'
+    green: '0x00a800'
+    yellow: '0xa85400'
+    blue: '0x0000a8'
     magenta: '0xa800a8'
-    cyan:    '0x00a8a8'
-    white:   '0xa8a8a8'
+    cyan: '0x00a8a8'
+    white: '0xa8a8a8'
 
   # Bright colors
   bright:
-    black:   '0x545054'
-    red:     '0xf85450'
-    green:   '0x50fc50'
-    yellow:  '0xf8fc50'
-    blue:    '0x5054f8'
+    black: '0x545054'
+    red: '0xf85450'
+    green: '0x50fc50'
+    yellow: '0xf8fc50'
+    blue: '0x5054f8'
     magenta: '0xf854f8'
-    cyan:    '0x50fcf8'
-    white:   '0xf8fcf8'
+    cyan: '0x50fcf8'
+    white: '0xf8fcf8'
 
 cursor:
-  blinking: On
+  blinking: true
