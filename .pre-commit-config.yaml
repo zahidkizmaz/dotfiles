@@ -12,21 +12,16 @@ repos:
   - repo: https://github.com/timothycrosley/isort
     rev: 5.8.0
     hooks:
-    - id: isort
-      args: ['--profile','black']
+      - id: isort
+        args: ["--profile", "black"]
   - repo: https://github.com/psf/black
     rev: 21.12b0
     hooks:
-    - id: black
+      - id: black
   - repo: https://gitlab.com/pycqa/flake8
     rev: 4.0.1
     hooks:
-    - id: flake8
-  - repo: https://github.com/Calinou/pre-commit-luacheck
-    rev: v1.0.0
-    hooks:
-      - id: luacheck
-        entry: luacheck --globals vim --
+      - id: flake8
   - repo: local
     hooks:
       - id: python-bandit-vulnerability-check
@@ -36,3 +31,9 @@ repos:
         language: system
         types:
           - python
+      - id: stylua-check
+        entry: stylua
+        name: stylua
+        language: system
+        types:
+          - lua

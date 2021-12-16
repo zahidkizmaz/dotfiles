@@ -14,6 +14,7 @@ return require("packer").startup(function(use)
 	})
 	use("voldikss/vim-floaterm")
 	use("lukas-reineke/indent-blankline.nvim")
+	use("norcalli/nvim-colorizer.lua")
 	---------------------
 
 	-----------------
