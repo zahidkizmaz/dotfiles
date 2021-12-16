@@ -1,8 +1,6 @@
---[[
-------------------------------
-# General Vim Settings
-------------------------------
---]]
+--------------------------
+-- General Vim Settings --
+--------------------------
 local set = vim.o
 local cmd = vim.cmd
 local global = vim.g
@@ -10,6 +8,7 @@ local buffer_local = vim.bo
 local set_opt = vim.opt
 
 global.mapleader = ","
+global.did_load_filetypes = 1 -- filetype.nvim setting
 global.onedark_terminal_italics = 2
 
 set.mouse = "a"

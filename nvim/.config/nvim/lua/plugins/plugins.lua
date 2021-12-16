@@ -15,7 +15,18 @@ return require("packer").startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("norcalli/nvim-colorizer.lua")
+	use({
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+	})
 	---------------------
+
+	-------------------------
+	-- Performance Plugins --
+	-------------------------
+	use("lewis6991/impatient.nvim")
+	use("nathom/filetype.nvim")
+	-------------------------
 
 	-----------------
 	-- Git Plugins --
