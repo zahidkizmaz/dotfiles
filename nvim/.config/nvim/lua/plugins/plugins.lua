@@ -13,6 +13,7 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use("voldikss/vim-floaterm")
+	use("lukas-reineke/indent-blankline.nvim")
 	---------------------
 
 	-----------------
