@@ -46,6 +46,7 @@ lsp_installer.on_server_ready(function(server)
 
 	-- Setup server specific settings.
 	if server.name == "sumneko_lua" then
+		opts.on_attach = cfg.lsp_on_attach_without_formatting
 		opts.settings = {
 			Lua = {
 				diagnostics = {
