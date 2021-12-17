@@ -39,10 +39,6 @@ return require("packer").startup(function(use)
 			require("plugins.colorizer-plugin")
 		end,
 	})
-	use({
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-	})
 	---------------------
 
 	-------------------------
@@ -135,7 +131,7 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"kyazdani42/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		-- cmd = { "NvimTreeToggle", "NvimTreeFocus" }, -- TODO uncomment after setting keybindings seperataly
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
