@@ -11,30 +11,31 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xa8a8a8'
-
+    background: '0x192330'
+    foreground: '0xcdcecf'
   # Normal colors
   normal:
-    black: '0x000000'
-    red: '0xa80000'
-    green: '0x00a800'
-    yellow: '0xa85400'
-    blue: '0x0000a8'
-    magenta: '0xa800a8'
-    cyan: '0x00a8a8'
-    white: '0xa8a8a8'
-
+    black: '0x393b44'
+    red: '0xc94f6d'
+    green: '0x81b29a'
+    yellow: '0xdbc074'
+    blue: '0x719cd6'
+    magenta: '0x9d79d6'
+    cyan: '0x63cdcf'
+    white: '0xdfdfe0'
   # Bright colors
   bright:
-    black: '0x545054'
-    red: '0xf85450'
-    green: '0x50fc50'
-    yellow: '0xf8fc50'
-    blue: '0x5054f8'
-    magenta: '0xf854f8'
-    cyan: '0x50fcf8'
-    white: '0xf8fcf8'
+    black: '0x475072'
+    red: '0xd6616b'
+    green: '0x58cd8b'
+    yellow: '0xffe37e'
+    blue: '0x84cee4'
+    magenta: '0xb8a1e3'
+    cyan: '0x59f0ff'
+    white: '0xf2f2f2'
+  indexed_colors:
+    - {index: 16, color: '0xf4a261'}
+    - {index: 17, color: '0xd67ad2'}
 
 cursor:
   blinking: true

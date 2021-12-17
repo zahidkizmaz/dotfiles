@@ -6,7 +6,7 @@ return require("packer").startup(function(use)
 	---------------------
 	use("wbthomason/packer.nvim") -- Plugin manager
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
-	use("joshdick/onedark.vim") -- Colorscheme
+	use("EdenEast/nightfox.nvim")
 	use("tpope/vim-surround")
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -31,7 +31,6 @@ return require("packer").startup(function(use)
 	-----------------
 	-- Git Plugins --
 	-----------------
-	use("tpope/vim-commentary")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb") --fugitive and github integration
 	use({
@@ -86,6 +85,12 @@ return require("packer").startup(function(use)
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
 	})
 	-----------------------------
 end)

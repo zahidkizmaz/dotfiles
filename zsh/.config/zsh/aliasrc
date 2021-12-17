@@ -6,6 +6,7 @@
 alias grep='grep --colour=auto'
 alias grep='mkdir -v'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+alias nv='nvim'
 
 
 #------------------------------
