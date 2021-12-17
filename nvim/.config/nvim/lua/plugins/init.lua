@@ -4,14 +4,14 @@ return require("packer").startup(function(use)
 	---------------------
 	-- General Plugins --
 	---------------------
-	use({ "wbthomason/packer.nvim", event = "VimEnter" }) -- Plugin manager
+	use({ "wbthomason/packer.nvim" }) -- Plugin manager
 	use({
 		"EdenEast/nightfox.nvim",
 		config = function()
 			require("plugins.nightfox-plugin")
 		end,
 	})
-	use("tpope/vim-surround")
+	use({ "tpope/vim-surround", event = "BufRead" })
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -27,12 +27,14 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufRead",
 		config = function()
 			require("plugins.indent-blankline-plugin")
 		end,
 	})
 	use({
 		"norcalli/nvim-colorizer.lua",
+		cmd = "ColorizerToggle",
 		config = function()
 			require("plugins.colorizer-plugin")
 		end,
@@ -76,16 +78,18 @@ return require("packer").startup(function(use)
 	---------------------
 	use({
 		"hrsh7th/nvim-cmp",
+		event = "BufRead",
 		config = function()
 			require("plugins.comp-plugin")
 		end,
 	})
-	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("saadparwaiz1/cmp_luasnip")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-nvim-lua")
-	use("onsails/lspkind-nvim") -- Prettier completion menu
+	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }) -- LSP source for nvim-cmp
+	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
+	use({ "onsails/lspkind-nvim", event = "BufRead" }) -- Prettier completion menu
+	use({ "L3MON4D3/LuaSnip", after = "nvim-cmp" }) -- Snippets plugin
+	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
 	---------------------
 
 	-------------------------
@@ -94,6 +98,7 @@ return require("packer").startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use({
 		"williamboman/nvim-lsp-installer",
+		after = "nvim-cmp",
 		config = function()
 			require("plugins.lspinstall-plugin")
 		end,
@@ -115,7 +120,6 @@ return require("packer").startup(function(use)
 	-----------------------------
 	-- Dev Environment Plugins --
 	-----------------------------
-	use("L3MON4D3/LuaSnip") -- Snippets plugin
 	use("editorconfig/editorconfig-vim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -125,7 +129,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
+		"p00f/nvim-ts-rainbow",
+		event = "BufRead",
+		after = "nvim-treesitter",
+	})
+	use({
 		"kyazdani42/nvim-tree.lua",
+		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
@@ -150,6 +160,7 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"numToStr/Comment.nvim",
+		event = "BufRead",
 		config = function()
 			require("Comment").setup()
 		end,
