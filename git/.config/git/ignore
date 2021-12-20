@@ -57,3 +57,4 @@ desktop.ini
 .python-version
 pyrightconfig.json
 .envrc
+.ropeproject

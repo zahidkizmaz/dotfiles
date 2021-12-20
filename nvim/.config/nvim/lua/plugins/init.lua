@@ -1,6 +1,5 @@
-vim.cmd([[packadd packer.nvim]])
-
-return require("packer").startup(function(use)
+local packer, packer_bootstrap = require("plugins.init_packer")
+return packer.startup(function(use)
 	---------------------
 	-- General Plugins --
 	---------------------
@@ -11,7 +10,6 @@ return require("packer").startup(function(use)
 			require("plugins.nightfox-plugin")
 		end,
 	})
-	use({ "tpope/vim-surround", event = "BufRead" })
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -39,6 +37,7 @@ return require("packer").startup(function(use)
 			require("plugins.colorizer-plugin")
 		end,
 	})
+	use({ "tpope/vim-surround", event = "BufRead" })
 	---------------------
 
 	-------------------------
@@ -72,6 +71,9 @@ return require("packer").startup(function(use)
 	---------------------
 	-- Auto Completion --
 	---------------------
+	use({ "L3MON4D3/LuaSnip" }) -- Snippets plugin
+	use({ "rafamadriz/friendly-snippets" }) -- More snippets
+	use({ "onsails/lspkind-nvim" }) -- Prettier completion menu
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "BufRead",
@@ -83,9 +85,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
-	use({ "onsails/lspkind-nvim", event = "BufRead" }) -- Prettier completion menu
-	use({ "L3MON4D3/LuaSnip", after = "nvim-cmp" }) -- Snippets plugin
-	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
 	---------------------
 
 	-------------------------
@@ -162,4 +162,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	-----------------------------
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)

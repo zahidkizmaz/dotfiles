@@ -183,3 +183,4 @@ luac.out
 
 ############## NeoVim ##############
 plugin
+.ropeproject

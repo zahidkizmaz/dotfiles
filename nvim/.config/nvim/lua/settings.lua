@@ -11,7 +11,6 @@ vim.g.python3_host_prog = vim.fn.expand("$HOME/.pyenv/versions/nvim-venv-3.10.0/
 
 global.mapleader = ","
 global.did_load_filetypes = 1 -- filetype.nvim setting
-global.onedark_terminal_italics = 2
 
 set.mouse = "a"
 set.hlsearch = false
