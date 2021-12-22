@@ -16,7 +16,10 @@ wk.register({
 wk.register({
 	["<leader>rg"] = { "<cmd>Telescope live_grep<cr>", "Ripgrep Search" },
 	["<leader>gs"] = { "<cmd>Telescope grep_string<cr>", "Ripgrep Current Word" },
-	["<leader>ca"] = { "<cmd>Telescope lsp_code_actions<cr>", "LSP Code Actions" },
+	["<leader>ca"] = {
+		"<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({ previewer = false }))<cr>",
+		"LSP Code Actions",
+	},
 })
 
 --------------

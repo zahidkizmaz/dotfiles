@@ -1,5 +1,9 @@
 require("telescope").setup({
 	defaults = {
+		layout_config = {
+			width = 0.9,
+			preview_width = 0.6,
+		},
 		extensions = {
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
