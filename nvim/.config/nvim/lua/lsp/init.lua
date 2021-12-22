@@ -35,9 +35,6 @@ require("nvim-lsp-installer").on_server_ready(function(server)
 					pyflakes = {
 						enabled = false,
 					},
-					jedi_signature_help = {
-						enabled = false,
-					},
 					pylsp_mypy = {
 						enabled = true,
 						live_mode = false,
