@@ -32,9 +32,14 @@ return packer.startup(function(use)
 	})
 	use({
 		"norcalli/nvim-colorizer.lua",
-		cmd = "ColorizerToggle",
 		config = function()
-			require("plugins.colorizer-plugin")
+			require("colorizer").setup()
+		end,
+	})
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("plugins.which-key-plugin")
 		end,
 	})
 	use({ "tpope/vim-surround", event = "BufRead" })
@@ -106,6 +111,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
+		cmd = "Telescope",
 		config = function()
 			require("plugins.telescope-plugin")
 		end,
@@ -131,7 +137,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"kyazdani42/nvim-tree.lua",
-		-- cmd = { "NvimTreeToggle", "NvimTreeFocus" }, -- TODO uncomment after setting keybindings seperataly
+		cmd = { "NvimTreeToggle" },
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
