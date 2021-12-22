@@ -72,4 +72,11 @@ cmp.setup({
 			},
 		}),
 	},
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
+	experimental = {
+		ghost_text = true,
+		native_menu = false,
+	},
 })

@@ -10,6 +10,15 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.isort,
+		null_ls.builtins.formatting.djhtml.with({
+			filetypes = { "django", "jinja.html", "htmldjango", "html" },
+			args = function(params)
+				return {
+					"--tabwidth",
+					vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+				}
+			end,
+		}),
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.taplo,

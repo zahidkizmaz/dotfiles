@@ -100,8 +100,11 @@ return packer.startup(function(use)
 	use({
 		"williamboman/nvim-lsp-installer",
 		after = "nvim-cmp",
+	})
+	use({
+		"ray-x/lsp_signature.nvim",
 		config = function()
-			require("plugins.lspinstall-plugin")
+			require("lsp_signature").setup()
 		end,
 	})
 
