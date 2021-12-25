@@ -4,6 +4,7 @@ SAVEHIST=10000
 HISTFILE=$HOME/.cache/zsh/history
 
 # Basic auto/tab complete:
+fpath+=~/.zfunc
 autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -26,12 +27,20 @@ bindkey '^e' edit-command-line
 
 # Pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+if type "pyenv" &> /dev/null; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
 # Starship
-eval "$(starship init zsh)"
+if type "starship" &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+
 # Direnv
-eval "$(direnv hook zsh)"
+if type "direnv" &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
 # CUSTOM ALIASESES AND FUNCTIONS
 [ -f  "$ZDOTDIR/aliasrc" ] && source $ZDOTDIR/aliasrc
