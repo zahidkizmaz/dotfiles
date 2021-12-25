@@ -10,7 +10,7 @@ require("nvim-tree").setup({
 	diagnostics = {
 		enable = true,
 	},
-	auto_close = true,
+	auto_close = false,
 	hijack_cursor = false,
 	update_cwd = true,
 	update_focused_file = {

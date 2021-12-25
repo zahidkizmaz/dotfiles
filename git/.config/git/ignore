@@ -39,6 +39,8 @@
 ehthumbs.db
 Thumbs.db
 desktop.ini
+.zcompdump
+.zsh_history
 
 # Temporary files #
 ###################
