@@ -8,7 +8,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.hadolint,
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.yamllint,
-		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.djhtml.with({
 			filetypes = { "django", "jinja.html", "htmldjango", "html" },

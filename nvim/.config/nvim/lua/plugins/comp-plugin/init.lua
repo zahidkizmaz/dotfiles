@@ -58,7 +58,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "luasnip" },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 2 },
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -77,6 +77,6 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true,
-		native_menu = false,
+		native_menu = true,
 	},
 })
