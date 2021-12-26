@@ -16,7 +16,7 @@ global.did_load_filetypes = 1 -- filetype.nvim setting
 vim.g.floaterm_width = 0.7
 vim.g.floaterm_height = 0.9
 vim.g.floaterm_autoclose = 1
-vim.g.floaterm_keymap_toggle = "<C-T>"
+vim.g.floaterm_keymap_toggle = "<C-t>"
 
 set.mouse = "a"
 set.hlsearch = false
