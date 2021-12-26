@@ -60,6 +60,7 @@ return packer.startup(function(use)
 	-----------------
 	-- Git Plugins --
 	-----------------
+	use("rhysd/committia.vim") -- nice commit setup
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb") --fugitive and github integration
 	use({
