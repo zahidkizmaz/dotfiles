@@ -19,9 +19,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"voldikss/vim-floaterm",
-		config = function()
-			require("plugins.floaterm-plugin")
-		end,
+		cmd = { "FloatermToggle" },
 	})
 	use({
 		"lukas-reineke/indent-blankline.nvim",
@@ -61,8 +59,8 @@ return packer.startup(function(use)
 	-- Git Plugins --
 	-----------------
 	use("rhysd/committia.vim") -- nice commit setup
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb") --fugitive and github integration
+	use({ "tpope/vim-fugitive", cmd = { "Git", "Gbrowse", "GBrowse" } })
+	use({ "tpope/vim-rhubarb", after = { "vim-fugitive" } }) --fugitive and github integration
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {

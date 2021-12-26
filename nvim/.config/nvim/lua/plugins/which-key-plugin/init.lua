@@ -26,3 +26,8 @@ wk.register({
 -- NvimTree --
 --------------
 wk.register({ ["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" } })
+
+--------------
+-- FloaTerm --
+--------------
+wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" } })

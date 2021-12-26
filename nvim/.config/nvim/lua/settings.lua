@@ -12,6 +12,12 @@ vim.g.python3_host_prog = vim.fn.expand("$HOME/.pyenv/versions/nvim-venv-3.10.0/
 global.mapleader = ","
 global.did_load_filetypes = 1 -- filetype.nvim setting
 
+-- floaterm settings
+vim.g.floaterm_width = 0.7
+vim.g.floaterm_height = 0.9
+vim.g.floaterm_autoclose = 1
+vim.g.floaterm_keymap_toggle = "<C-T>"
+
 set.mouse = "a"
 set.hlsearch = false
 set.smartcase = true
