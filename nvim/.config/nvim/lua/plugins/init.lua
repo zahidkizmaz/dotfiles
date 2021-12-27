@@ -90,6 +90,7 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp" })
 	---------------------
 
 	-------------------------

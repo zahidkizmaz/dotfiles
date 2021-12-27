@@ -9,8 +9,15 @@ vim.o.completeopt = "menuone,noselect"
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
-require("luasnip/loaders/from_vscode").lazy_load()
+local tabnine = require("cmp_tabnine.config")
 
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 10,
+	sort = true,
+	run_on_every_keystroke = true,
+})
+require("luasnip/loaders/from_vscode").lazy_load()
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -56,9 +63,10 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
-		{ name = "path" },
 		{ name = "luasnip" },
+		{ name = "cmp_tabnine" },
 		{ name = "buffer", keyword_length = 2 },
+		{ name = "path" },
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -69,6 +77,7 @@ cmp.setup({
 				nvim_lua = "[api]",
 				path = "[path]",
 				luasnip = "[snip]",
+				cmp_tabnine = "[Tab9]",
 			},
 		}),
 	},
