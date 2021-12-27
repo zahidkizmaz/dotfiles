@@ -182,4 +182,4 @@ luac.out
 *.hex
 
 plugin
-plugins
+**/zsh/plugins/

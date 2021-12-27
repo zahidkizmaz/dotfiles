@@ -152,7 +152,6 @@ return packer.startup(function(use)
 			require("plugins.nvim-gps-plugin")
 		end,
 	})
-
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
@@ -165,6 +164,13 @@ return packer.startup(function(use)
 		event = "BufRead",
 		config = function()
 			require("Comment").setup()
+		end,
+	})
+	use({
+		"Pocco81/TrueZen.nvim",
+		event = "BufRead",
+		config = function()
+			require("plugins.true-zen-plugin")
 		end,
 	})
 	-----------------------------
