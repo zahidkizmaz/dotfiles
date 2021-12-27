@@ -11,6 +11,10 @@ wk.register({
 		s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current File Fuzzy Search" },
 		r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
 		h = { "<cmd>Telescope help_tags<cr>", "Telescope Help Tags" },
+		d = {
+			"<cmd>lua require'telescope.builtin'.diagnostics(require('telescope.themes').get_cursor({ previewer = false }))<cr>",
+			"LSP Document Diagnostics",
+		},
 	},
 })
 wk.register({

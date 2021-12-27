@@ -168,7 +168,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"Pocco81/TrueZen.nvim",
-		event = "BufRead",
+		cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
 		config = function()
 			require("plugins.true-zen-plugin")
 		end,

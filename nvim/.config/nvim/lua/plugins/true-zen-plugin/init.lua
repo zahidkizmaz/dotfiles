@@ -1,4 +1,7 @@
-local true_zen = require("true-zen")
+local present, true_zen = pcall(require, "true-zen")
+if not present then
+	return
+end
 
 true_zen.setup({
 	ui = {
@@ -50,7 +53,7 @@ true_zen.setup({
 		vim_gitgutter = false,
 		galaxyline = false,
 		tmux = false,
-		gitsigns = true,
+		gitsigns = false,
 		nvim_bufferline = false,
 		limelight = false,
 		twilight = false,
@@ -63,8 +66,8 @@ true_zen.setup({
 		feline = false,
 	},
 	misc = {
-		on_off_commands = false,
-		ui_elements_commands = false,
-		cursor_by_mode = false,
+		on_off_commands = true,
+		ui_elements_commands = true,
+		cursor_by_mode = true,
 	},
 })
