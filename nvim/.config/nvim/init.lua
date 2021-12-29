@@ -4,7 +4,7 @@ function Prequire(module_str)
 		return module
 	else
 		print("Couldn't load ", module_str)
-		print(error)
+		print(debug.traceback())
 		return
 	end
 end

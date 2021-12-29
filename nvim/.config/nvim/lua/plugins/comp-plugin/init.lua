@@ -1,3 +1,32 @@
+-- symbols for autocomplete
+local lsp_symbols = {
+	Class = "   Class",
+	Color = "   Color",
+	Constant = "   Constant",
+	Constructor = "   Constructor",
+	Enum = " ❐  Enum",
+	EnumMember = "   EnumMember",
+	Event = "   Event",
+	Field = " ﴲ  Field",
+	File = "   File",
+	Folder = "   Folder",
+	Function = "   Function",
+	Interface = " ﰮ  Interface",
+	Keyword = "   Keyword",
+	Method = "   Method",
+	Module = "   Module",
+	Operator = "   Operator",
+	Property = "   Property",
+	Reference = "   Reference",
+	Snippet = " ﬌  Snippet",
+	Struct = " ﳤ  Struct",
+	Text = "   Text",
+	TypeParameter = "   TypeParameter",
+	Unit = "   Unit",
+	Value = "   Value",
+	Variable = "[] Variable",
+}
+
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -8,19 +37,10 @@ vim.o.completeopt = "menuone,noselect"
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-	max_num_results = 10,
-	sort = true,
-	run_on_every_keystroke = true,
-})
-require("luasnip/loaders/from_vscode").lazy_load()
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	mapping = {
@@ -68,17 +88,18 @@ cmp.setup({
 		{ name = "path" },
 	},
 	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true,
-			menu = {
-				buffer = "[buf]",
+		format = function(entry, item)
+			item.kind = lsp_symbols[item.kind]
+			item.menu = ({
+				buffer = "[Buf]",
 				nvim_lsp = "[LSP]",
-				nvim_lua = "[api]",
-				path = "[path]",
-				luasnip = "[snip]",
+				nvim_lua = "[Api]",
+				path = "[Path]",
+				luasnip = "[Snip]",
 				cmp_tabnine = "[Tab9]",
-			},
-		}),
+			})[entry.source.name]
+			return item
+		end,
 	},
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

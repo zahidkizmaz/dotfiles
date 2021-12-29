@@ -12,7 +12,18 @@ return packer.startup(function(use)
 	})
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		after = "nvim-web-devicons",
+		requires = {
+			{ "kyazdani42/nvim-web-devicons", opt = true, after = "nvim-gps" },
+			{
+				"SmiteshP/nvim-gps",
+				event = "BufRead",
+				requires = "nvim-treesitter/nvim-treesitter",
+				config = function()
+					require("plugins.nvim-gps-plugin")
+				end,
+			},
+		},
 		config = function()
 			require("plugins.lualine-plugin")
 		end,
@@ -30,6 +41,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"norcalli/nvim-colorizer.lua",
+		event = "BufRead",
 		config = function()
 			require("colorizer").setup()
 		end,
@@ -63,6 +75,7 @@ return packer.startup(function(use)
 	use({ "tpope/vim-rhubarb", after = { "vim-fugitive" } }) --fugitive and github integration
 	use({
 		"lewis6991/gitsigns.nvim",
+		event = "BufRead",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -75,29 +88,43 @@ return packer.startup(function(use)
 	---------------------
 	-- Auto Completion --
 	---------------------
-	use({ "L3MON4D3/LuaSnip" }) -- Snippets plugin
-	use({ "rafamadriz/friendly-snippets" }) -- More snippets
-	use({ "onsails/lspkind-nvim" }) -- Prettier completion menu
+	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp, Can not lazy load!
 	use({
 		"hrsh7th/nvim-cmp",
-		event = "BufRead",
+		event = "InsertEnter",
+		requires = {
+			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+			{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+			{
+				"tzachar/cmp-tabnine",
+				run = "./install.sh",
+				after = "nvim-cmp",
+				config = function()
+					require("plugins.comp-plugin.tabnine")
+				end,
+			},
+		},
 		config = function()
 			require("plugins.comp-plugin")
 		end,
 	})
-	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }) -- LSP source for nvim-cmp
-	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
-	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp" })
+	use({
+		"L3MON4D3/LuaSnip",
+		after = "nvim-cmp",
+		config = function()
+			require("luasnip.loaders.from_vscode").load({})
+		end,
+	})
+	use({ "rafamadriz/friendly-snippets" })
 	---------------------
 
 	-------------------------
 	-- LSP Related Plugins --
 	-------------------------
-	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	use({ "neovim/nvim-lspconfig" })
+	use({ "williamboman/nvim-lsp-installer" })
 	use({
 		"ray-x/lsp_signature.nvim",
 		config = function()
@@ -125,6 +152,7 @@ return packer.startup(function(use)
 	use("editorconfig/editorconfig-vim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufRead",
 		run = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter-plugin")
@@ -132,7 +160,6 @@ return packer.startup(function(use)
 	})
 	use({
 		"p00f/nvim-ts-rainbow",
-		event = "BufRead",
 		after = "nvim-treesitter",
 	})
 	use({
@@ -146,13 +173,6 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
-		"SmiteshP/nvim-gps",
-		requires = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("plugins.nvim-gps-plugin")
-		end,
-	})
-	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -161,7 +181,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"numToStr/Comment.nvim",
-		event = "BufRead",
+		keys = { "gcc", "gc" },
 		config = function()
 			require("Comment").setup()
 		end,

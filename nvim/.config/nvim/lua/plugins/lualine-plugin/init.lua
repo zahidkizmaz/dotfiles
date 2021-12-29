@@ -1,4 +1,7 @@
-local gps = require("nvim-gps")
+local status_ok, gps = pcall(require, "nvim-gps")
+if not status_ok then
+	return
+end
 
 require("lualine").setup({
 	options = {
@@ -21,10 +24,7 @@ require("lualine").setup({
 		},
 		lualine_b = {},
 		lualine_c = {
-			{
-				"filename",
-				path = 1,
-			},
+			{ "filename" },
 			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = { "branch", "diff", "diagnostics" },
@@ -34,7 +34,7 @@ require("lualine").setup({
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { { "filename", path = 2 } },
+		lualine_c = { "filename" },
 		lualine_x = {},
 		lualine_y = { "encoding", "filetype" },
 		lualine_z = {},
