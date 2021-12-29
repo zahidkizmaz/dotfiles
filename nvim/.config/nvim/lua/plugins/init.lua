@@ -88,7 +88,6 @@ return packer.startup(function(use)
 	---------------------
 	-- Auto Completion --
 	---------------------
-	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp, Can not lazy load!
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -123,15 +122,21 @@ return packer.startup(function(use)
 	-------------------------
 	-- LSP Related Plugins --
 	-------------------------
-	use({ "neovim/nvim-lspconfig" })
-	use({ "williamboman/nvim-lsp-installer" })
+	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp
 	use({
 		"ray-x/lsp_signature.nvim",
 		config = function()
 			require("lsp_signature").setup()
 		end,
 	})
-
+	use({ "neovim/nvim-lspconfig", event = "BufReadPre" })
+	use({
+		"williamboman/nvim-lsp-installer",
+		after = "nvim-lspconfig",
+		config = function()
+			require("lsp")
+		end,
+	})
 	-------------------------------
 	-- Telescope Related Plugins --
 	-------------------------------
@@ -143,7 +148,7 @@ return packer.startup(function(use)
 			require("plugins.telescope-plugin")
 		end,
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope" })
 	-------------------------------
 
 	-----------------------------
