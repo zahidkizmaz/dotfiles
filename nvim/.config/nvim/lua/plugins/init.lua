@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"folke/which-key.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugins.which-key-plugin")
 		end,

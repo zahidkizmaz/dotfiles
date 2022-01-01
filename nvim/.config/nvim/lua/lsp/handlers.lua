@@ -92,7 +92,7 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_format_document(client)
 	lsp_highlight_document(client)
-	require("lsp_signature").on_attach()
+	require("lsp_signature").on_attach({}, bufnr)
 
 	if client.name == "pylsp" then
 		client.resolved_capabilities.document_formatting = false
