@@ -20,6 +20,7 @@ export MANPAGER='nvim +Man!'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
+export ZSH_PYENV_LAZY_VIRTUALENV=true
 
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
