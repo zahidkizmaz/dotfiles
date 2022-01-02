@@ -9,7 +9,6 @@ alias ls='ls --color=auto -h -F '
 alias nv='nvimvenv'
 alias nvim='nvimvenv'
 
-
 #------------------------------
 # Screen Aliases
 #------------------------------
@@ -18,7 +17,6 @@ alias sr="screen -r "
 alias sR="screen -D -RR " # Get screen no matter what
 alias ss="screen -S "
 alias sx="screen -XS "
-
 
 #------------------------------
 # Git Aliases
@@ -41,7 +39,6 @@ alias gmo='git merge origin/master'
 alias gpm='git pull origin $(git branch --show-current)'
 alias gfgp='git fetch origin && git pull origin '
 alias 'git wipe'='git reset --hard HEAD '
-
 
 #------------------------------
 # FZF Aliases

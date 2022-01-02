@@ -20,6 +20,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.trim_newlines,
+		null_ls.builtins.formatting.shfmt.with({
+			filetypes = { "sh", "bash", "zsh" },
+			extra_args = { "-i=2", "-ci", "-bn" },
+		}),
 	},
 	debounce = vim.opt.updatetime:get(),
 	update_on_insert = false,

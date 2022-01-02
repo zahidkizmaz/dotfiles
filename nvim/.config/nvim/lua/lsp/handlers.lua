@@ -83,7 +83,7 @@ local function lsp_keymaps(bufnr)
 		bufnr,
 		"n",
 		"gl",
-		'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
+		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
 		opts
 	)
 end

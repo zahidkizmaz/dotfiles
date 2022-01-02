@@ -17,3 +17,4 @@ hub
 tree
 jq
 pyenv
+shfmt
