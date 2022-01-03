@@ -41,6 +41,7 @@ Thumbs.db
 desktop.ini
 .zcompdump
 .zsh_history
+.zcompcache
 
 # Temporary files #
 ###################
