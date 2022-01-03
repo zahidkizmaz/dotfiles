@@ -34,7 +34,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 keys = [
     # Switch between windows
