@@ -1,6 +1,6 @@
 require("nvim-tree").setup({
-	disable_netrw = false,
-	hijack_netrw = false,
+	disable_netrw = true,
+	hijack_netrw = true,
 	open_on_setup = false,
 	open_on_tab = false,
 	update_to_buf_dir = {
@@ -12,10 +12,10 @@ require("nvim-tree").setup({
 	},
 	auto_close = false,
 	hijack_cursor = false,
-	update_cwd = true,
+	update_cwd = false,
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_cwd = false,
 		ignore_list = { "fzf", "help", "git" },
 	},
 	ignore_ft_on_setup = { "git", "man", "help" },

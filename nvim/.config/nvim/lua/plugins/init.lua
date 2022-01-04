@@ -199,6 +199,14 @@ return packer.startup(function(use)
 			require("plugins.true-zen-plugin")
 		end,
 	})
+	use({
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		after = "nvim-cmp",
+		config = function()
+			require("plugins.autopairs-plugin")
+		end,
+	})
 	-----------------------------
 	if packer_bootstrap then
 		require("packer").sync()
