@@ -5,9 +5,10 @@ return packer.startup(function(use)
 	---------------------
 	use({ "wbthomason/packer.nvim" }) -- Plugin manager
 	use({
-		"EdenEast/nightfox.nvim",
+		"catppuccin/nvim",
+		as = "catppuccin",
 		config = function()
-			require("plugins.nightfox-plugin")
+			require("plugins.catpuccin-plugin")
 		end,
 	})
 	use({
