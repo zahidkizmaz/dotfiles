@@ -40,3 +40,9 @@ wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" } })
 -- TrueZen --
 --------------
 wk.register({ ["<leader>zm"] = { "<cmd>TZAtaraxis<cr>", "Toggle Zen Mode" } })
+
+----------------
+-- Bufferline --
+----------------
+wk.register({ ["L"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" } })
+wk.register({ ["H"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" } })

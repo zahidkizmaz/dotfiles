@@ -54,6 +54,14 @@ return packer.startup(function(use)
 		end,
 	})
 	use({ "tpope/vim-surround", event = "BufRead" })
+	use({
+		"akinsho/bufferline.nvim",
+		event = "BufRead",
+		config = function()
+			require("plugins.bufferline-plugin")
+		end,
+	})
+
 	---------------------
 
 	-------------------------

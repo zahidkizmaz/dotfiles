@@ -24,7 +24,6 @@ require("lualine").setup({
 		},
 		lualine_b = {},
 		lualine_c = {
-			{ "filename" },
 			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = { "branch", "diff", "diagnostics" },
