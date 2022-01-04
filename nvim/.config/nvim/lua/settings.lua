@@ -31,6 +31,7 @@ set_opt.number = true
 set_opt.undofile = true
 set_opt.lazyredraw = true
 set_opt.relativenumber = true
+set_opt.clipboard = "unnamedplus"
 
 buffer_local.shiftwidth = 4
 buffer_local.softtabstop = 4
