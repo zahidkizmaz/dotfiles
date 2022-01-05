@@ -1,5 +1,8 @@
 local M = {}
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -31,11 +34,9 @@ M.setup = function()
 	}
 
 	vim.diagnostic.config(config)
-
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
 	})
-
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 		border = "rounded",
 	})
@@ -56,20 +57,6 @@ local function lsp_highlight_document(client)
 	end
 end
 
-local function lsp_format_document(client)
-	if client.resolved_capabilities.document_formatting then
-		vim.api.nvim_exec(
-			[[
-                augroup AutoFormatOnSave
-                    autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-                augroup END
-            ]],
-			false
-		)
-	end
-end
-
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 
@@ -84,16 +71,12 @@ end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
-	lsp_format_document(client)
 	lsp_highlight_document(client)
-	require("lsp_signature").on_attach({}, bufnr)
-
+	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 	if client.name == "pylsp" then
 		client.resolved_capabilities.document_formatting = false
 	end
+	require("lsp_signature").on_attach({}, bufnr)
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 return M
