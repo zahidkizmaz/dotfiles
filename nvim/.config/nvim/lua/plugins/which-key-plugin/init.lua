@@ -12,6 +12,7 @@ wk.register({
 		S = { "<cmd>Telescope lsp_document_symbols<cr>", "Current File Symbol Search" },
 		r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
 		h = { "<cmd>Telescope help_tags<cr>", "Telescope Help Tags" },
+		b = { "<cmd>Telescope buffers<cr>", "Telescope Buffers" },
 		d = {
 			"<cmd>lua require'telescope.builtin'.diagnostics(require('telescope.themes').get_cursor({ previewer = false }))<cr>",
 			"LSP Document Diagnostics",
@@ -43,7 +44,14 @@ wk.register({ ["<C-t>"] = { "<cmd>FloatermToggle<cr>", "Toggle Terminal" } })
 wk.register({ ["<leader>zm"] = { "<cmd>TZAtaraxis<cr>", "Toggle Zen Mode" } })
 
 ----------------
--- Bufferline --
+-- Tabs --
 ----------------
-wk.register({ ["L"] = { "<cmd>BufferLineCycleNext<cr>", "Next Buffer" } })
-wk.register({ ["H"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous Buffer" } })
+wk.register({
+	["<leader>t"] = {
+		name = "Tab Movement",
+		t = { "<cmd>tabnew<cr>", "Create New Tab" },
+		c = { "<cmd>tabclose<cr>", "Close Tab" },
+		n = { "<cmd>tabnext<cr>", "Next Tab" },
+		p = { "<cmd>tabprevious<cr>", "Previous Tab" },
+	},
+})

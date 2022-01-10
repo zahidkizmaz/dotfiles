@@ -22,7 +22,7 @@ require("lualine").setup({
 				end,
 			},
 		},
-		lualine_b = {},
+		lualine_b = { "filename" },
 		lualine_c = {
 			{ gps.get_location, cond = gps.is_available },
 		},
@@ -32,8 +32,8 @@ require("lualine").setup({
 	},
 	inactive_sections = {
 		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_b = { "filename" },
+		lualine_c = {},
 		lualine_x = {},
 		lualine_y = { "encoding", "filetype" },
 		lualine_z = {},
