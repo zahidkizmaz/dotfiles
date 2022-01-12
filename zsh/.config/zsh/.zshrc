@@ -23,7 +23,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export ZSH_PYENV_LAZY_VIRTUALENV=true
 
 # Edit line in $EDITOR with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Better Up and Down arrow searches
@@ -34,21 +35,21 @@ zle -N down-line-or-beginning-search
 # zmodload zsh/terminfo
 # bindkey "$terminfo[kcuu1]" up-line-or-beginning-search  # Up
 # bindkey "$terminfo[kcud1]" down-line-or-beginning-search  # Down
-bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[A" up-line-or-beginning-search   # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Starship
-if type "starship" &> /dev/null; then
-    eval "$(starship init zsh)"
+if type "starship" &>/dev/null; then
+  eval "$(starship init zsh)"
 fi
 
 # Direnv
-if type "direnv" &> /dev/null; then
-    eval "$(direnv hook zsh)"
+if type "direnv" &>/dev/null; then
+  eval "$(direnv hook zsh)"
 fi
 
 # CUSTOM ALIASESES AND FUNCTIONS
-[ -f  "$ZDOTDIR/aliasrc" ] && source $ZDOTDIR/aliasrc
+[ -f "$ZDOTDIR/aliasrc" ] && source $ZDOTDIR/aliasrc
 [ -f "$ZDOTDIR/functionrc" ] && source $ZDOTDIR/functionrc
 [ -f "$HOME/.bash_profile" ] && source $HOME/.bash_profile
 
