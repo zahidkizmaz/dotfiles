@@ -1,8 +1,3 @@
-local status_ok, gps = pcall(require, "nvim-gps")
-if not status_ok then
-	return
-end
-
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -23,9 +18,7 @@ require("lualine").setup({
 			},
 		},
 		lualine_b = { "filename" },
-		lualine_c = {
-			{ gps.get_location, cond = gps.is_available },
-		},
+		lualine_c = {},
 		lualine_x = { "branch", "diff", "diagnostics" },
 		lualine_y = { "encoding", "filetype" },
 		lualine_z = { "location" },

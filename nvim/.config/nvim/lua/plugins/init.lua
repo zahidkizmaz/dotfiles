@@ -14,17 +14,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		after = "nvim-web-devicons",
-		requires = {
-			{ "kyazdani42/nvim-web-devicons", opt = true, after = "nvim-gps" },
-			{
-				"SmiteshP/nvim-gps",
-				event = "BufRead",
-				requires = "nvim-treesitter/nvim-treesitter",
-				config = function()
-					require("plugins.nvim-gps-plugin")
-				end,
-			},
-		},
+		requires = { { "kyazdani42/nvim-web-devicons", opt = true } },
 		config = function()
 			require("plugins.lualine-plugin")
 		end,
@@ -165,6 +155,7 @@ return packer.startup(function(use)
 			require("plugins.treesitter-plugin")
 		end,
 	})
+	use({ "romgrk/nvim-treesitter-context" })
 	use({
 		"p00f/nvim-ts-rainbow",
 		after = "nvim-treesitter",
