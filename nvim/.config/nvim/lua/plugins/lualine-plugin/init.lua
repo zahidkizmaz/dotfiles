@@ -17,7 +17,7 @@ require("lualine").setup({
 				end,
 			},
 		},
-		lualine_b = { "filename" },
+		lualine_b = { { "filename", path = 1 } },
 		lualine_c = {},
 		lualine_x = { "branch", "diff", "diagnostics" },
 		lualine_y = { "encoding", "filetype" },
@@ -25,7 +25,7 @@ require("lualine").setup({
 	},
 	inactive_sections = {
 		lualine_a = {},
-		lualine_b = { "filename" },
+		lualine_b = { { "filename", path = 1 } },
 		lualine_c = {},
 		lualine_x = {},
 		lualine_y = { "encoding", "filetype" },

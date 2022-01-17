@@ -72,7 +72,7 @@ end
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
-	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2500)")
 	if client.name == "pylsp" then
 		client.resolved_capabilities.document_formatting = false
 	end
