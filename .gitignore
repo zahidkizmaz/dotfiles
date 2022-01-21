@@ -183,3 +183,5 @@ luac.out
 
 plugin
 **/zsh/plugins/
+history
+log
