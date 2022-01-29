@@ -33,7 +33,7 @@ from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-mod = "mod4"
+mod = "mod1"
 terminal = "kitty"
 
 keys = [
@@ -99,14 +99,14 @@ for i in groups:
         [
             # mod1 + letter of group = switch to group
             Key(
-                [mod],
+                ["control"],
                 i.name,
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
-                [mod, "shift"],
+                ["control", "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
