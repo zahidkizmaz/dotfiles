@@ -20,10 +20,6 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
-		"voldikss/vim-floaterm",
-		cmd = { "FloatermToggle" },
-	})
-	use({
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
 		config = function()

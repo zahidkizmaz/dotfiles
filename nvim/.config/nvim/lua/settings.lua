@@ -13,12 +13,6 @@ global.loaded_python_provider = 0 -- Disable python2
 global.mapleader = ","
 global.did_load_filetypes = 1 -- filetype.nvim setting
 
--- floaterm settings
-vim.g.floaterm_width = 0.7
-vim.g.floaterm_height = 0.9
-vim.g.floaterm_autoclose = 1
-vim.g.floaterm_keymap_toggle = "<C-t>"
-
 set.mouse = "a"
 set.hlsearch = false
 set.smartcase = true
