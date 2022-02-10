@@ -59,8 +59,13 @@ return packer.startup(function(use)
 	-- Git Plugins --
 	-----------------
 	use("rhysd/committia.vim") -- nice commit setup
-	use({ "tpope/vim-fugitive", cmd = { "Git", "Gbrowse", "GBrowse" } })
-	use({ "tpope/vim-rhubarb", after = { "vim-fugitive" } }) --fugitive and github integration
+	use({
+		"ruifm/gitlinker.nvim", -- Open current working line in remove git host
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("plugins.gitlinker-plugin")
+		end,
+	})
 	use({
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
