@@ -83,6 +83,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
 		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
 		{ name = "buffer", keyword_length = 2 },
@@ -105,8 +106,8 @@ cmp.setup({
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
+	native = true,
 	experimental = {
 		ghost_text = true,
-		native_menu = true,
 	},
 })

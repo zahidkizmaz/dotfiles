@@ -76,7 +76,6 @@ M.on_attach = function(client, bufnr)
 	if client.name == "pylsp" then
 		client.resolved_capabilities.document_formatting = false
 	end
-	require("lsp_signature").on_attach({}, bufnr)
 end
 
 return M

@@ -88,6 +88,7 @@ return packer.startup(function(use)
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
 			{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
 			{
 				"tzachar/cmp-tabnine",
@@ -116,12 +117,6 @@ return packer.startup(function(use)
 	-- LSP Related Plugins --
 	-------------------------
 	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp
-	use({
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("lsp_signature").setup()
-		end,
-	})
 	use({ "neovim/nvim-lspconfig", event = "BufReadPre" })
 	use({
 		"williamboman/nvim-lsp-installer",
