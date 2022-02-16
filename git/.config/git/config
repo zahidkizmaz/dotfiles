@@ -1,24 +1,35 @@
 [user]
     name = Zahid Kizmaz
-    email = tech@zahid.rocks
     username = zahidkizmaz
+    email = tech@zahid.rocks
+
 [core]
     editor = nvim
-    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+    pager = delta
+
+[merge]
+    conflictStyle = diff3
+    tool = nvimdiff
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
 [color]
     branch = auto
     diff = auto
     interactive = auto
     status = auto
     ui = true
-[alias]
-    # show different commits between branches
-    branchdiff = log --graph --left-right --cherry-pick --oneline
+
 [color "diff-highlight"]
     oldNormal = red bold
     oldHighlight = red bold 52
     newNormal = green bold
     newHighlight = green bold 22
+
 [color "diff"]
     meta = 11
     frag = magenta bold
@@ -26,8 +37,13 @@
     old = red bold
     new = green bold
     whitespace = red reverse
+
 [interactive]
     diffFilter = delta --color-only
 
 [blame]
     date = short
+
+[alias]
+    # show different commits between branches
+    branchdiff = log --graph --left-right --cherry-pick --oneline

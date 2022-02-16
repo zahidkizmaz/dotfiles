@@ -14,7 +14,7 @@ wk.register({
 		h = { "<cmd>Telescope help_tags<cr>", "Telescope Help Tags" },
 		b = { "<cmd>Telescope buffers<cr>", "Telescope Buffers" },
 		d = {
-			"<cmd>lua require'telescope.builtin'.diagnostics(require('telescope.themes').get_cursor({ previewer = false }))<cr>",
+			"<cmd>lua require'telescope.builtin'.diagnostics({ severity = 1})<cr>",
 			"LSP Document Diagnostics",
 		},
 	},
@@ -23,7 +23,7 @@ wk.register({
 	["<leader>rg"] = { "<cmd>Telescope live_grep<cr>", "Ripgrep Search" },
 	["<leader>gs"] = { "<cmd>Telescope grep_string<cr>", "Ripgrep Current Word" },
 	["<leader>ca"] = {
-		"<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_cursor({ previewer = false }))<cr>",
+		"<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>",
 		"LSP Code Actions",
 	},
 })
