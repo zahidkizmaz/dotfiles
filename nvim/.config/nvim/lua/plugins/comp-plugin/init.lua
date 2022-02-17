@@ -106,7 +106,9 @@ cmp.setup({
 	documentation = {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
-	native = true,
+	view = {
+		entries = "native",
+	},
 	experimental = {
 		ghost_text = true,
 	},

@@ -73,7 +73,8 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2500)")
-	if client.name == "pylsp" then
+
+	if client.name == "pylsp" or client.name == "sumneko_lua" then
 		client.resolved_capabilities.document_formatting = false
 	end
 end

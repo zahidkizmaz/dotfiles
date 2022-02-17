@@ -7,7 +7,6 @@ alias grep='grep --colour=auto'
 alias mkdir='mkdir -v'
 alias ls='ls --color=auto -h -F '
 alias nv='nvimvenv'
-alias nvim='nvimvenv'
 
 #------------------------------
 # Screen Aliases
