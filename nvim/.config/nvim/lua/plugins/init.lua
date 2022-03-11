@@ -195,6 +195,13 @@ return packer.startup(function(use)
 			require("plugins.autopairs-plugin")
 		end,
 	})
+	use({
+		"danymat/neogen",
+		cmd = { "Neogen" },
+		config = function()
+			require("neogen").setup({})
+		end,
+	})
 	-----------------------------
 	if packer_bootstrap then
 		require("packer").sync()

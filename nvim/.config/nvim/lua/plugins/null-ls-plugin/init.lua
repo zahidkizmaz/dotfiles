@@ -15,6 +15,7 @@ null_ls.setup({
 				return {
 					"--tabwidth",
 					vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+					"-iq",
 				}
 			end,
 		}),
