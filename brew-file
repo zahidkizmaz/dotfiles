@@ -18,3 +18,5 @@ tree
 jq
 pyenv
 shfmt
+tmux
+xclip

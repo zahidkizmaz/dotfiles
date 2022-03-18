@@ -11,6 +11,7 @@ wk.register({
 		s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current File Fuzzy Search" },
 		S = { "<cmd>Telescope lsp_document_symbols<cr>", "Current File Symbol Search" },
 		r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
+		t = { "<cmd>Telescope tags<cr>", "Telescope Tags" },
 		h = { "<cmd>Telescope help_tags<cr>", "Telescope Help Tags" },
 		b = { "<cmd>Telescope buffers<cr>", "Telescope Buffers" },
 		d = {
