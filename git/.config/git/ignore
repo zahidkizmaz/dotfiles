@@ -62,7 +62,19 @@ pyrightconfig.json
 .envrc
 .ropeproject
 
-# Ctags tag-files
+# Ctags tag-files #
+###################
 tags
 .tags
 .tags*
+
+# Env files #
+#############
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.direnv/

@@ -202,6 +202,7 @@ return packer.startup(function(use)
 			require("neogen").setup({})
 		end,
 	})
+	use({ "ludovicchabant/vim-gutentags", event = "InsertEnter" })
 	-----------------------------
 	if packer_bootstrap then
 		require("packer").sync()
