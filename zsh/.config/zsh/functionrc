@@ -42,16 +42,3 @@ vv() {
       fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
-
-#--------------------------------------------
-# Autosource virtualenv; Workarround for nvim
-#--------------------------------------------
-nvimvenv() {
-  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
-    source "$VIRTUAL_ENV/bin/activate"
-    command nvim $@
-    deactivate
-  else
-    command nvim $@
-  fi
-}
