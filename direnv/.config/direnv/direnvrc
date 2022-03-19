@@ -70,7 +70,7 @@ use_pyenv_from_runtime_txt() {
   use_pyenv "$version"
 }
 
-use_pyenv_from_dot_python_verions() {
+use_pyenv_from_dot_python_verison() {
   if [[ ! -f .python-version ]]; then
     log_error 'No .python-version found'
     exit 2

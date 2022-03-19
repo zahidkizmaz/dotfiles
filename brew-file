@@ -20,3 +20,4 @@ pyenv
 shfmt
 tmux
 xclip
+direnv
