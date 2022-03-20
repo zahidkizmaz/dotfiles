@@ -45,6 +45,11 @@ cnoreabbrev Qa qa
 cnoreabbrev q1 q!
 cnoreabbrev Q1 q!
 
+let g:gutentags_file_list_command = {
+      \   'markers': {
+      \     '.git': 'git ls-files --cached --others --exclude-standard',
+      \   },
+      \ }
 
 au TextYankPost * silent! lua vim.highlight.on_yank({timeout=250})
 
