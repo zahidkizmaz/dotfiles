@@ -30,4 +30,11 @@ null_ls.setup({
 	debounce = vim.opt.updatetime:get(),
 	update_on_insert = false,
 	diagnostics_format = "[#{c}] #{m} (#{s})",
+	should_attach = function()
+		if vim.bo.filetype == "go" then
+			return false
+		else
+			return true
+		end
+	end,
 })
