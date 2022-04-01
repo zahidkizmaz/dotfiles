@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+#--------------
+# FZF Functions
+#--------------
 
 #------------------------------
 # Checkout git branch (including remote branches), sorted by most recent commit
@@ -41,4 +45,54 @@ vv() {
     eval "$FZF_DEFAULT_COMMAND" |
       fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
+}
+
+# Man without options will use fzf to select a page
+function fzf-man(){
+	MAN="/usr/bin/man"
+	if [ -n "$1" ]; then
+		$MAN "$@"
+		return $?
+	else
+		$MAN -k . | fzf --reverse --preview="echo {1,2} | sed 's/ (/./' | sed -E 's/\)\s*$//' | xargs $MAN" | awk '{print $1 "." $2}' | tr -d '()' | xargs -r $MAN
+		return $?
+	fi
+}
+
+function fzf-eval(){
+  echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
+}
+
+function fzf-aliases-functions() {
+    CMD=$(
+        (
+            (alias)
+            (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_" )
+        ) | fzf | cut -d '=' -f1
+    );
+
+    eval $CMD
+}
+
+function fzf-cd-to-file() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+   ls
+}
+
+function fzf-env-vars() {
+  local out
+  out=$(env | fzf)
+  echo $(echo $out | cut -d= -f2)
+}
+
+function fzf-kill-processes() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
 }

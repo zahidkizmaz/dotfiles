@@ -38,10 +38,3 @@ alias gmo='git merge origin/master'
 alias gpm='git pull origin $(git branch --show-current)'
 alias gfgp='git fetch origin && git pull origin '
 alias 'git wipe'='git reset --hard HEAD '
-
-#------------------------------
-# FZF Aliases
-#------------------------------
-export FD_OPTIONS="--hidden --follow"
-export FZF_DEFAULT_OPTS="--no-hscroll --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
-export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
