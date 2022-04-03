@@ -9,6 +9,12 @@ function Prequire(module_str)
 	end
 end
 
+function Print_table(table)
+	for k, v in pairs(table) do
+		print(k, v)
+	end
+end
+
 Prequire("impatient")
 Prequire("settings")
 Prequire("keybindings")
