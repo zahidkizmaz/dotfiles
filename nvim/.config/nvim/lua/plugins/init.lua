@@ -40,7 +40,11 @@ return packer.startup(function(use)
 			require("plugins.which-key-plugin")
 		end,
 	})
-	use({ "tpope/vim-surround", event = "BufRead" })
+	use({
+		"tpope/vim-surround",
+		event = "BufRead",
+		requires = { { "tpope/vim-repeat", opt = true, event = "BufRead" } },
+	})
 	---------------------
 
 	-------------------------
