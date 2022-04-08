@@ -11,6 +11,9 @@
     conflictStyle = diff3
     tool = nvimdiff
 
+[mergetool]
+    keepBackup = false
+
 [diff]
     tool = nvimdiff
 
