@@ -15,10 +15,13 @@
     keepBackup = false
 
 [diff]
-    tool = nvimdiff
+    tool = difftastic
 
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
 
 [color]
     branch = auto
@@ -26,20 +29,6 @@
     interactive = auto
     status = auto
     ui = true
-
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
 
 [interactive]
     diffFilter = delta --color-only

@@ -12,6 +12,20 @@ use_poetry_env() {
   PATH_add "$VIRTUAL_ENV/bin"
 }
 
+use_venv_from_tool_versions() {
+  local python_version=$(awk '/python/{print $2}' .tool-versions)
+  local venv_name="${PWD##*/}-venv-${python_version}"
+  local venv_location="$(direnv_layout_dir)/${venv_name}"
+  local venv_bin_folder="${venv_location}/bin/"
+
+  if [[ ! -d $venv_bin_folder ]]; then
+    local python_location="$(asdf where python)/bin/python"
+    $python_location -m venv $venv_location
+  fi
+  export VIRTUAL_ENV=$venv_location
+  export PATH=$venv_bin_folder:$PATH
+}
+
 use_pyenv() {
   unset PYENV_VERSION
   # Because each python version is prepended to the PATH, add them in reverse order
@@ -76,6 +90,6 @@ use_pyenv_from_dot_python_version() {
     exit 2
   fi
 
-  local version=$(cat .python-version )
+  local version=$(cat .python-version)
   use_pyenv "$version"
 }
