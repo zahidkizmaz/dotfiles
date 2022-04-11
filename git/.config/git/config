@@ -5,7 +5,9 @@
 
 [core]
     editor = nvim
-    pager = delta
+
+[pager]
+    difftool = true
 
 [merge]
     conflictStyle = diff3
@@ -18,10 +20,10 @@
     tool = difftastic
 
 [difftool]
-        prompt = false
+    prompt = false
 
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft "$LOCAL" "$REMOTE"
 
 [color]
     branch = auto
