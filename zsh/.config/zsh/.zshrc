@@ -64,6 +64,11 @@ if type "direnv" &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+# asdf -vm
+if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then
+  source /opt/asdf-vm/asdf.sh
+fi
+
 # CUSTOM ALIASESES AND FUNCTIONS
 [ -f "$ZDOTDIR/aliasrc" ] && source $ZDOTDIR/aliasrc
 [ -f "$ZDOTDIR/env_vars" ] && source $ZDOTDIR/env_vars
