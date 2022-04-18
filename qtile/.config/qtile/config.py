@@ -185,6 +185,8 @@ screens = [
                 widget.Spacer(length=10),
                 widget.Backlight(backlight_name="intel_backlight", **WIDGET_DEFAULTS),
                 widget.Spacer(length=10),
+                widget.Systray(**WIDGET_DEFAULTS),
+                widget.Spacer(length=10),
                 widget.Clock(**WIDGET_DEFAULTS, format="%d.%m.%y - %H:%M"),
                 widget.Spacer(length=10),
             ],
