@@ -71,19 +71,22 @@ if type "pipx" &>/dev/null; then
   eval "$(register-python-argcomplete pipx)"
 fi
 
-# asdf -vm
+# asdf-vm
 if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then
   source /opt/asdf-vm/asdf.sh
 fi
+if [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
+  source /usr/local/opt/asdf/libexec/asdf.sh
+fi
 
 # CUSTOM ALIASESES AND FUNCTIONS
-[ -f "$ZDOTDIR/aliasrc" ] && source $ZDOTDIR/aliasrc
-[ -f "$ZDOTDIR/env_vars" ] && source $ZDOTDIR/env_vars
-[ -f "$ZDOTDIR/functionrc" ] && source $ZDOTDIR/functionrc
-[ -f "$HOME/.bash_profile" ] && source $HOME/.bash_profile
-[ -f "$HOME/.fzf.zsh" ] && source $HOME/.fzf.zsh
+[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
+[ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
+[ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
+[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # PLUGINS
-[ -d "$ZDOTDIR/plugins/zsh-pyenv-lazy" ] && source $ZDOTDIR/plugins/zsh-pyenv-lazy/pyenv-lazy.plugin.zsh
-[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d "$ZDOTDIR/plugins/zsh-pyenv-lazy" ] && source "$ZDOTDIR/plugins/zsh-pyenv-lazy/pyenv-lazy.plugin.zsh"
+[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
