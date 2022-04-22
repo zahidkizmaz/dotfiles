@@ -135,7 +135,6 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
-		-- cmd = "Telescope",
 		config = function()
 			require("plugins.telescope-plugin")
 		end,
