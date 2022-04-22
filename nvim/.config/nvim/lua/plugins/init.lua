@@ -135,12 +135,12 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },
-		cmd = "Telescope",
+		-- cmd = "Telescope",
 		config = function()
 			require("plugins.telescope-plugin")
 		end,
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	-------------------------------
 
 	-----------------------------

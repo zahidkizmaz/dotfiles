@@ -18,3 +18,9 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 # BAT Vars
 #---------
 export BAT_THEME="Monokai Extended"
+
+
+#----------
+# Pipx Vars
+#----------
+export PIPX_HOME="$HOME/.local/pipx/venvs/"

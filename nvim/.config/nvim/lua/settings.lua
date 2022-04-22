@@ -7,9 +7,7 @@ local global = vim.g
 local buffer_local = vim.bo
 local set_opt = vim.opt
 
-global.python3_host_prog = vim.fn.expand("$HOME/.pyenv/versions/nvim-venv-3.10.0/bin/python")
-global.loaded_python_provider = 0 -- Disable python2
-
+global.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "python-lsp-server/bin/python"
 global.mapleader = ","
 global.did_load_filetypes = 1 -- filetype.nvim setting
 

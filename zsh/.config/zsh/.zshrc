@@ -19,6 +19,8 @@ unsetopt hist_beep            # don't beep when attempting to access a missing h
 unsetopt share_history        # don't share history between all sessions
 
 # Basic auto/tab complete:
+autoload -U bashcompinit
+bashcompinit
 fpath+=~/.zfunc
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -62,6 +64,11 @@ fi
 # Direnv
 if type "direnv" &>/dev/null; then
   eval "$(direnv hook zsh)"
+fi
+
+# Pipx
+if type "pipx" &>/dev/null; then
+  eval "$(register-python-argcomplete pipx)"
 fi
 
 # asdf -vm
