@@ -49,10 +49,12 @@ let g:gutentags_file_list_command = {
       \   },
       \ }
 
-au TextYankPost * silent! lua vim.highlight.on_yank({timeout=250})
-
-
-" auto-adjust splits when window is resized
-" https://vi.stackexchange.com/questions/201/make-panes-resize-when-host-window-is-resized
-autocmd VimResized * wincmd =
 ]])
+
+vim.api.nvim_create_autocmd("VimResized", { pattern = "*", command = "wincmd =" })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
+	callback = function()
+		require("vim.highlight").on_yank({ timeout = 250 })
+	end,
+})
