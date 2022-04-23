@@ -10,6 +10,23 @@ require("telescope").setup({
 				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			},
 		},
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--trim",
+			"-u",
+		},
+	},
+	pickers = {
+		find_files = {
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" },
+		},
 	},
 	pcall(require("telescope").load_extension, "fzf"),
 })
