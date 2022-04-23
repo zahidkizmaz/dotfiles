@@ -25,6 +25,7 @@
 # SOFTWARE.
 
 import os
+import re
 import subprocess
 from typing import List  # noqa: F401
 from typing import Any, Dict
@@ -225,8 +226,11 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(title=re.compile(r".*copyq*", re.IGNORECASE)),
     ]
 )
+
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

@@ -26,7 +26,7 @@ repos:
         args: ["--profile", "black"]
         language: system
         types: [python]
-      - id: python-bandit-vulnerability-check
+      - id: bandit
         name: bandit
         entry: bandit --ini .bandit
         args: [-lll, --recursive, .]
