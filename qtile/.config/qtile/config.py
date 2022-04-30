@@ -77,8 +77,6 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -86,10 +84,14 @@ keys = [
     Key(
         ["mod4"],
         "space",
-        lazy.spawn(
-            'rofi -combi-modi "drun,run,keys" -theme solarized -font "hack 16" -show combi -icon-theme "Papirus" -show-icons'
-        ),
+        lazy.spawn("rofi -show combi"),
         desc="Run rofi",
+    ),
+    Key(
+        [mod],
+        "Tab",
+        lazy.spawn("rofi -show window"),
+        desc="Run rofi window switcher",
     ),
 ]
 
