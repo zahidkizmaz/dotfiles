@@ -6,10 +6,11 @@ configuration {
   combi-display-format: "{text}";
   window-format: "{c}";
   font: "JetBrains Mono 16";
-  modi: [window,run,drun,combi];
-  combi-modes: [drun,run];
+  modi: [window,drun];
   drun-icon-theme: "Papirus";
   show-icons: true;
+  sort: true;
+  max-history-size: 100;
 }
 
 @theme "/dev/null"
