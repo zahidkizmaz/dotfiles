@@ -42,13 +42,6 @@ cnoreabbrev QA qa
 cnoreabbrev Qa qa
 cnoreabbrev q1 q!
 cnoreabbrev Q1 q!
-
-let g:gutentags_file_list_command = {
-      \   'markers': {
-      \     '.git': 'git ls-files --cached --others --exclude-standard',
-      \   },
-      \ }
-
 ]])
 
 vim.api.nvim_create_autocmd("VimResized", { pattern = "*", command = "wincmd =" })
