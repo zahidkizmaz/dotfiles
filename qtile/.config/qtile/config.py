@@ -7,6 +7,7 @@ from typing import Any, Dict
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from src.choices import Colors
 
 mod = "mod1"
 terminal = "kitty"
@@ -94,8 +95,8 @@ for i in groups:
     )
 
 LAYOUT_DEFAULTS = {
-    "border_focus": "4c9ad4",
-    "border_normal": "a57fc4",
+    "border_focus": Colors.CATPUCCIN_WHITE.value,
+    "border_normal": Colors.CATPUCCIN_BLACK.value,
     "margin": 8,
     "border_width": 3,
 }
@@ -107,52 +108,131 @@ layouts = [
 BAR_SIZE: int = 24
 BAR_MARGIN: List[int] = [4, 10, 0, 10]
 WIDGET_DEFAULTS: Dict[str, Any] = dict(
-    fontsize=14,
-    font="JetBrains Mono",
+    fontsize=12,
+    padding=4,
+    font="Hack Nerd Font",
 )
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=10),
-                widget.CurrentLayoutIcon(scale=0.7),
-                widget.CurrentLayout(**WIDGET_DEFAULTS),
+                widget.TextBox(
+                    text=" ",
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    **WIDGET_DEFAULTS,
+                ),
+                widget.CurrentLayout(
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    **WIDGET_DEFAULTS,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
                 widget.GroupBox(
-                    borderwidth=2,
-                    inactive="969696",
-                    this_current_screen_border="eee8d5",
-                    this_screen_border="eee8d5",
-                    **WIDGET_DEFAULTS
+                    borderwidth=4,
+                    active=Colors.PURE_WHITE.value,
+                    inactive=Colors.DARK_BLACK.value,
+                    block_highlight_text_color=Colors.CATPUCCIN_CYAN.value,
+                    this_current_screen_border=Colors.CATPUCCIN_CYAN.value,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    highlight_method="line",
+                    **WIDGET_DEFAULTS,
                 ),
-                widget.Sep(size_percent=100, padding=12),
-                widget.TaskList(
-                    borderwidth=0,
-                    padding_x=4,
-                    padding=0,
-                    margin=0,
-                    spacing=4,
-                    **WIDGET_DEFAULTS
+                widget.Spacer(),
+                widget.WindowName(**WIDGET_DEFAULTS),
+                widget.Spacer(length=10),
+                widget.Systray(
+                    **WIDGET_DEFAULTS,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
                 ),
-                widget.Sep(size_percent=100, padding=12),
-                widget.BatteryIcon(),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.BatteryIcon(
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
                 widget.Battery(
                     charge_char="+",
                     discharge_char="",
                     unknown_char="",
                     format="{char}{percent:2.0%}",
-                    **WIDGET_DEFAULTS
+                    **WIDGET_DEFAULTS,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
                 ),
-                widget.Spacer(length=10),
-                widget.Volume(emoji=True),
-                widget.Volume(**WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Backlight(backlight_name="intel_backlight", **WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Systray(**WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Clock(**WIDGET_DEFAULTS, format="%d.%m.%y - %H:%M"),
-                widget.Spacer(length=10),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Volume(
+                    emoji=True,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.PulseVolume(
+                    **WIDGET_DEFAULTS,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.TextBox(
+                    "",
+                    fontsize=26,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Backlight(
+                    backlight_name="intel_backlight",
+                    **WIDGET_DEFAULTS,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Clock(
+                    **WIDGET_DEFAULTS,
+                    format="%d.%m.%y - %H:%M",
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
             ],
             size=BAR_SIZE,
             margin=BAR_MARGIN,

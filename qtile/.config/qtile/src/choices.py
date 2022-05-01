@@ -1,0 +1,18 @@
+from enum import Enum
+
+
+class Colors(Enum):
+    TRANSPARENT = "#232136"
+    DARK_BLACK = "#000000"
+    PURE_WHITE = "#FFFFFF"
+    DARK_YELLOW = "#F6C177"
+
+    # Catpuccin Colors
+    CATPUCCIN_BLACK = "#6E6C7E"
+    CATPUCCIN_RED = "#E38C8F"
+    CATPUCCIN_GREEN = "#B1E3AD"
+    CATPUCCIN_YELLOW = "#EBDDAA"
+    CATPUCCIN_BLUE = "#A4B9EF"
+    CATPUCCIN_MAGENTA = "#C6AAE8"
+    CATPUCCIN_CYAN = "#E5B4E2"
+    CATPUCCIN_WHITE = "#DADAE8"
