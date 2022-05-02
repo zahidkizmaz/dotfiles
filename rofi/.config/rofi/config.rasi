@@ -1,0 +1,76 @@
+configuration {
+  matching: "fuzzy";
+  display-drun: "Applications:";
+  display-window: "Windows:";
+  drun-display-format: "{name}";
+  combi-display-format: "{text}";
+  window-format: "{c}";
+  font: "JetBrains Mono 16";
+  modi: [window,drun];
+  drun-icon-theme: "Papirus";
+  show-icons: true;
+  sort: true;
+  max-history-size: 100;
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #1E1E29;
+  bg-alt: #332E41;
+  fg: #DADAE8;
+  fg-alt: #E5B4E2;
+
+  background-color: @bg;
+
+  border: 4;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 30%;
+}
+
+element {
+  padding: 8 0;
+  text-color: @fg;
+}
+
+element selected {
+  text-color: @fg-alt;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+  margin: 12;
+}
+
+element-icon {
+  size: 50;
+}
+
+entry {
+  background-color: @bg-alt;
+  padding: 12;
+  text-color: @fg;
+}
+
+inputbar {
+  children: [entry];
+}
+
+listview {
+  padding: 8 12;
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
+}
+
+mainbox {
+  background-color: @bg;
+  children: [inputbar, listview];
+}

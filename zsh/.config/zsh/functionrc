@@ -59,10 +59,6 @@ function fzf-man(){
 	fi
 }
 
-function fzf-eval(){
-  echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
-}
-
 function fzf-aliases-functions() {
     CMD=$(
         (

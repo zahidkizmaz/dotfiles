@@ -205,7 +205,12 @@ return packer.startup(function(use)
 			require("neogen").setup({})
 		end,
 	})
-	use({ "ludovicchabant/vim-gutentags" })
+	use({
+		"ludovicchabant/vim-gutentags",
+		config = function()
+			require("plugins.gutentags-plugin")
+		end,
+	})
 	-----------------------------
 	if packer_bootstrap then
 		require("packer").sync()

@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import os
 import re
 import subprocess
@@ -33,6 +7,7 @@ from typing import Any, Dict
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from src.choices import Colors
 
 mod = "mod1"
 terminal = "kitty"
@@ -66,10 +41,6 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
     Key(
         [mod, "shift"],
         "Return",
@@ -77,8 +48,6 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -86,10 +55,16 @@ keys = [
     Key(
         ["mod4"],
         "space",
-        lazy.spawn(
-            'rofi -combi-modi "drun,run,keys" -theme solarized -font "hack 16" -show combi -icon-theme "Papirus" -show-icons'
-        ),
+        lazy.spawn("rofi -show drun"),
         desc="Run rofi",
+    ),
+    Key(
+        [mod],
+        "Tab",
+        lazy.spawn(
+            'rofi -show window -kb-accept-entry "!Alt-Tab,!Alt+Alt_L,Return" -kb-row-down "Alt+Tab" -selected-row 1'
+        ),
+        desc="Run rofi window switcher",
     ),
 ]
 
@@ -120,76 +95,144 @@ for i in groups:
     )
 
 LAYOUT_DEFAULTS = {
-    "border_focus": "4c9ad4",
-    "border_normal": "a57fc4",
+    "border_focus": Colors.CATPUCCIN_WHITE.value,
+    "border_normal": Colors.CATPUCCIN_BLACK.value,
     "margin": 8,
     "border_width": 3,
 }
 layouts = [
     layout.MonadTall(**LAYOUT_DEFAULTS),
     layout.Max(**LAYOUT_DEFAULTS),
-    # Try more layouts by unleashing below layouts.
-    # layout.Columns(border_focus_stack="#d75f5f", margin=8),
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 BAR_SIZE: int = 24
 BAR_MARGIN: List[int] = [4, 10, 0, 10]
 WIDGET_DEFAULTS: Dict[str, Any] = dict(
-    fontsize=14,
-    font="JetBrains Mono",
+    fontsize=12,
+    padding=4,
+    font="Hack Nerd Font",
 )
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=10),
-                widget.CurrentLayoutIcon(scale=0.7),
-                widget.CurrentLayout(**WIDGET_DEFAULTS),
+                widget.TextBox(
+                    text=" ",
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    **WIDGET_DEFAULTS,
+                ),
+                widget.CurrentLayout(
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    **WIDGET_DEFAULTS,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
                 widget.GroupBox(
-                    borderwidth=2,
-                    inactive="969696",
-                    this_current_screen_border="eee8d5",
-                    this_screen_border="eee8d5",
-                    **WIDGET_DEFAULTS
+                    borderwidth=4,
+                    active=Colors.PURE_WHITE.value,
+                    inactive=Colors.DARK_BLACK.value,
+                    block_highlight_text_color=Colors.CATPUCCIN_CYAN.value,
+                    this_current_screen_border=Colors.CATPUCCIN_CYAN.value,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                    highlight_method="line",
+                    **WIDGET_DEFAULTS,
                 ),
-                widget.Sep(size_percent=100, padding=12),
-                widget.TaskList(
-                    borderwidth=0,
-                    padding_x=4,
-                    padding=0,
-                    margin=0,
-                    spacing=4,
-                    **WIDGET_DEFAULTS
+                widget.Spacer(),
+                widget.WindowName(**WIDGET_DEFAULTS),
+                widget.Spacer(length=10),
+                widget.Systray(
+                    **WIDGET_DEFAULTS,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
                 ),
-                widget.Sep(size_percent=100, padding=12),
-                widget.BatteryIcon(),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.BatteryIcon(
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
                 widget.Battery(
                     charge_char="+",
                     discharge_char="",
                     unknown_char="",
                     format="{char}{percent:2.0%}",
-                    **WIDGET_DEFAULTS
+                    **WIDGET_DEFAULTS,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
                 ),
-                widget.Spacer(length=10),
-                widget.Volume(emoji=True),
-                widget.Volume(**WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Backlight(backlight_name="intel_backlight", **WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Systray(**WIDGET_DEFAULTS),
-                widget.Spacer(length=10),
-                widget.Clock(**WIDGET_DEFAULTS, format="%d.%m.%y - %H:%M"),
-                widget.Spacer(length=10),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Volume(
+                    emoji=True,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.PulseVolume(
+                    **WIDGET_DEFAULTS,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.TextBox(
+                    "",
+                    fontsize=26,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Backlight(
+                    backlight_name="intel_backlight",
+                    **WIDGET_DEFAULTS,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.CATPUCCIN_BLUE.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Clock(
+                    **WIDGET_DEFAULTS,
+                    format="%d.%m.%y - %H:%M",
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
+                widget.Spacer(
+                    length=10,
+                    background=Colors.DARK_YELLOW.value,
+                    foreground=Colors.DARK_BLACK.value,
+                ),
             ],
             size=BAR_SIZE,
             margin=BAR_MARGIN,
@@ -246,12 +289,4 @@ def start_once():
     subprocess.call([home + "/.config/qtile/autostart.sh"])
 
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
 wmname = "LG3D"
