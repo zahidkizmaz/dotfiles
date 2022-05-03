@@ -160,13 +160,16 @@ return packer.startup(function(use)
 		after = "nvim-treesitter",
 	})
 	use({
-		"kyazdani42/nvim-tree.lua",
-		cmd = { "NvimTreeToggle" },
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		cmd = { "Neotree" },
 		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("plugins.nvimtree-plugin")
+			vim.g.neo_tree_remove_legacy_commands = 1
 		end,
 	})
 	use({
