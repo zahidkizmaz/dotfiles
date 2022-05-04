@@ -169,7 +169,7 @@ return packer.startup(function(use)
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			vim.g.neo_tree_remove_legacy_commands = 1
+			require("plugins.neotree-plugin")
 		end,
 	})
 	use({

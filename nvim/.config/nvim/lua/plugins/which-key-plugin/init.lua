@@ -32,7 +32,7 @@ wk.register({
 --------------
 -- NvimTree --
 --------------
-wk.register({ ["<C-n>"] = { "<cmd>Neotree<cr>", "Open Neotree" } })
+wk.register({ ["<C-n>"] = { "<cmd>Neotree toggle<cr>", "Toggle Neotree" } })
 
 --------------
 -- TrueZen --
