@@ -108,9 +108,9 @@ layouts = [
 BAR_SIZE: int = 24
 BAR_MARGIN: List[int] = [4, 10, 0, 10]
 WIDGET_DEFAULTS: Dict[str, Any] = dict(
-    fontsize=12,
+    fontsize=14,
     padding=4,
-    font="Hack Nerd Font",
+    font="OpenDyslexic Nerd Font",
 )
 
 screens = [
