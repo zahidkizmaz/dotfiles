@@ -30,9 +30,10 @@ wk.register({
 })
 
 --------------
--- NvimTree --
+-- Neotree --
 --------------
 wk.register({ ["<C-n>"] = { "<cmd>Neotree toggle<cr>", "Toggle Neotree" } })
+wk.register({ ["<leader>ng"] = { "<cmd>Neotree float git_status<cr>", "Neotree Git Status" } })
 
 --------------
 -- TrueZen --
