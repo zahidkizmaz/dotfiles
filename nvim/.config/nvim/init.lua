@@ -3,9 +3,7 @@ function Prequire(module_str)
 	if status_ok then
 		return module
 	else
-		print("Couldn't load ", module_str)
-		print(debug.traceback())
-		return
+		print("Could not load:", module_str)
 	end
 end
 
