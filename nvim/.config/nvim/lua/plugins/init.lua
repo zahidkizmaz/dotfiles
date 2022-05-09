@@ -121,7 +121,7 @@ return packer.startup(function(use)
 	-- LSP Related Plugins --
 	-------------------------
 	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp
-	use({ "neovim/nvim-lspconfig", event = "BufReadPre" })
+	use({ "neovim/nvim-lspconfig", event = "BufReadPre", cmd = { "LspInfo" } })
 	use({
 		"williamboman/nvim-lsp-installer",
 		after = "nvim-lspconfig",
@@ -149,6 +149,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufRead",
+		cmd = { "TSInstall", "TSInstallSync" },
 		run = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter-plugin")
