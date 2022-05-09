@@ -155,7 +155,7 @@ return packer.startup(function(use)
 			require("plugins.treesitter-plugin")
 		end,
 	})
-	use({ "romgrk/nvim-treesitter-context" })
+	use({ "romgrk/nvim-treesitter-context", after = "nvim-treesitter" })
 	use({
 		"p00f/nvim-ts-rainbow",
 		after = "nvim-treesitter",
