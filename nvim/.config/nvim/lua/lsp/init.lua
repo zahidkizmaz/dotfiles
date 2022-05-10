@@ -6,7 +6,6 @@ local LSP_SERVERS = {
 	"html",
 	"jsonls",
 	"pylsp",
-	"pylsp_mypy",
 	"sumneko_lua",
 	"texlab",
 	"tsserver",
@@ -15,6 +14,7 @@ local LSP_SERVERS = {
 	"gopls",
 	"ansiblels",
 }
+local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html" }
 
 require("nvim-lsp-installer").setup({
 	ensure_installed = LSP_SERVERS,
@@ -26,7 +26,7 @@ local on_attach_without_formatting = require("lsp.handlers").on_attach_without_f
 local capabilities = require("lsp.handlers").capabilities
 
 for _, server in ipairs(LSP_SERVERS) do
-	if not (server == "sumneko_lua" or server == "pylsp" or server == "tsserver" or server == "html") then
+	if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
 		lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
 	end
 end
