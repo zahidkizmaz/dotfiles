@@ -22,15 +22,25 @@ require("nvim-lsp-installer").setup({
 })
 local lspconfig = require("lspconfig")
 local on_attach = require("lsp.handlers").on_attach
+local on_attach_without_formatting = require("lsp.handlers").on_attach_without_formatting
 local capabilities = require("lsp.handlers").capabilities
 
 for _, server in ipairs(LSP_SERVERS) do
-	if not (server == "sumneko_lua" or server == "pylsp") then
+	if not (server == "sumneko_lua" or server == "pylsp" or server == "tsserver" or server == "html") then
 		lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
 	end
 end
+
+lspconfig.html.setup({
+	on_attach = on_attach_without_formatting,
+	capabilities = capabilities,
+})
+lspconfig.tsserver.setup({
+	on_attach = on_attach_without_formatting,
+	capabilities = capabilities,
+})
 lspconfig.sumneko_lua.setup({
-	on_attach = on_attach,
+	on_attach = on_attach_without_formatting,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -53,7 +63,7 @@ lspconfig.sumneko_lua.setup({
 	},
 })
 lspconfig.pylsp.setup({
-	on_attach = on_attach,
+	on_attach = on_attach_without_formatting,
 	capabilities = capabilities,
 	settings = {
 		format = {

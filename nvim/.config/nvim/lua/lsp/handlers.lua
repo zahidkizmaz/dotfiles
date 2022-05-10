@@ -83,10 +83,18 @@ M.on_attach = function(client, bufnr)
 			vim.lsp.buf.formatting_sync(nil, 2500)
 		end,
 	})
+end
 
-	if client.name == "pylsp" or client.name == "html" or client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
+M.on_attach_without_formatting = function(client, bufnr)
+	lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		pattern = "<buffer>",
+		callback = function()
+			vim.lsp.buf.formatting_sync(nil, 2500)
+		end,
+	})
+	client.resolved_capabilities.document_formatting = false
 end
 
 return M
