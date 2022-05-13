@@ -8,7 +8,7 @@ local buffer_local = vim.bo
 local set_opt = vim.opt
 
 global.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "python-lsp-server/bin/python"
-global.mapleader = ","
+global.mapleader = " "
 global.did_load_filetypes = 1 -- filetype.nvim setting
 
 set.mouse = "a"

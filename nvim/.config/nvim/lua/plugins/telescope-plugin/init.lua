@@ -1,3 +1,5 @@
+local tag_file_location = "~/.cache/tags/" .. string.gsub(vim.fn.getcwd(), "/", "-"):sub(2) .. "-tags"
+
 require("telescope").setup({
 	defaults = {
 		layout_strategy = "vertical",
@@ -10,6 +12,10 @@ require("telescope").setup({
 				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			},
 		},
+	},
+	pickers = {
+		tags = { ctags_file = tag_file_location },
+		current_buffer_tags = { ctags_file = tag_file_location },
 	},
 	pcall(require("telescope").load_extension, "fzf"),
 })
