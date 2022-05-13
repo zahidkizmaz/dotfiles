@@ -121,10 +121,9 @@ return packer.startup(function(use)
 	-- LSP Related Plugins --
 	-------------------------
 	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp
-	use({ "neovim/nvim-lspconfig", event = "BufReadPre", cmd = { "LspInfo" } })
+	use({ "neovim/nvim-lspconfig" })
 	use({
 		"williamboman/nvim-lsp-installer",
-		after = "nvim-lspconfig",
 		config = function()
 			require("lsp")
 		end,
@@ -148,26 +147,21 @@ return packer.startup(function(use)
 	use("editorconfig/editorconfig-vim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufRead",
-		cmd = { "TSInstall", "TSInstallSync" },
 		run = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter-plugin")
 		end,
 	})
-	use({ "romgrk/nvim-treesitter-context", after = "nvim-treesitter" })
-	use({
-		"p00f/nvim-ts-rainbow",
-		after = "nvim-treesitter",
-	})
+	use({ "nvim-treesitter/nvim-treesitter-context" })
+	use({ "p00f/nvim-ts-rainbow" })
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		cmd = { "Neotree" },
 		requires = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
+			{ "nvim-lua/plenary.nvim" },
+			{ "kyazdani42/nvim-web-devicons", opt = true, event = "BufRead" },
+			{ "MunifTanjim/nui.nvim" },
 		},
 		config = function()
 			require("plugins.neotree-plugin")
@@ -184,7 +178,7 @@ return packer.startup(function(use)
 		"numToStr/Comment.nvim",
 		keys = { "gcc", "gc" },
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup({})
 		end,
 	})
 	use({

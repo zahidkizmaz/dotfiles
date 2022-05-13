@@ -13,7 +13,6 @@ local LSP_SERVERS = {
 	"yamlls",
 	"gopls",
 	"ansiblels",
-	"sourcery",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html" }
 
