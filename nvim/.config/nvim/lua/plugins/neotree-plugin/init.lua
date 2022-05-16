@@ -23,7 +23,6 @@ require("neo-tree").setup({
 			["C"] = "close_node",
 			["a"] = {
 				"add",
-				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 				config = {
 					show_path = "relative", -- "none", "relative", "absolute"
 				},
@@ -39,6 +38,7 @@ require("neo-tree").setup({
 			["q"] = "close_window",
 			["R"] = "refresh",
 			["?"] = "show_help",
+			["z"] = "",
 		},
 	},
 })
