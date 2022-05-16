@@ -10,6 +10,16 @@ error_symbol = "[✖](bold red)"
 [package]
 disabled = true
 
+[battery]
+disabled = true
+
+[nodejs]
+detect_extensions = []
+
+[python]
+detect_extensions = []
+python_binary = "python3"
+
 [cmd_duration]
 min_time = 500
 format = "took [$duration]($style)"
@@ -46,7 +56,7 @@ deleted = "🗑"
 style_user = "white bold"
 style_root = "black bold"
 format = "|[$user]($style) "
-disabled = false
+disabled = true
 
 [directory]
 format = "[$path]($style)[$lock_symbol]($lock_style) "
