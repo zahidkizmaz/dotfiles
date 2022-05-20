@@ -6,6 +6,7 @@ local wk = require("which-key")
 wk.register({
 	["<leader>f"] = {
 		name = "FzfLua",
+		l = { "<cmd>FzfLua<cr>", "FzfLua" },
 		f = { "<cmd>FzfLua files<cr>", "Find File" },
 		g = { "<cmd>FzfLua git_files<cr>", "Find Git File" },
 		s = { "<cmd>FzfLua btags<cr>", "Current File Fuzzy Search" },
@@ -14,7 +15,7 @@ wk.register({
 		t = { "<cmd>FzfLua tags<cr>", "FzfLua Tags" },
 		h = { "<cmd>FzfLua help_tags<cr>", "FzfLua Help Tags" },
 		b = { "<cmd>FzfLua buffers<cr>", "FzfLua Buffers" },
-		d = { "<cmd>FzfLua lsp_document_diagnostics<cr>", "FzfLua Diagnostics" },
+		d = { "<cmd>FzfLua lsp_definitions<cr>", "FzfLua Definitions" },
 	},
 })
 wk.register({

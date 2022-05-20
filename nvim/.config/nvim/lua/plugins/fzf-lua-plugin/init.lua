@@ -7,4 +7,5 @@ require("fzf-lua").setup({
 	},
 	tags = { ctags_file = tag_file_location },
 	btags = { ctags_file = tag_file_location },
+	lsp = { async_or_timeout = 10000 },
 })
