@@ -23,4 +23,4 @@ export BAT_THEME="Monokai Extended"
 #----------
 # Pipx Vars
 #----------
-export PIPX_HOME="$HOME/.local/pipx/venvs/"
+export PIPX_HOME="$HOME/.local/pipx/"
