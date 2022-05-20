@@ -5,6 +5,7 @@ xset r rate 250 30 &
 nm-applet &
 blueman-applet &
 picom &
+dunst &
 nitrogen --restore &
 xrandr --output HDMI1 --auto
 xbindkeys
