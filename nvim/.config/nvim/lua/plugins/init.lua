@@ -128,17 +128,13 @@ return packer.startup(function(use)
 			require("lsp")
 		end,
 	})
-	-------------------------------
-	-- Telescope Related Plugins --
-	-------------------------------
 	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		"ibhagwan/fzf-lua",
+		cmd = { "FzfLua" },
 		config = function()
-			require("plugins.telescope-plugin")
+			require("plugins.fzf-lua-plugin")
 		end,
 	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	-------------------------------
 
 	-----------------------------

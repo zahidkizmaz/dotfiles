@@ -4,6 +4,7 @@ if not ok_status then
 end
 
 vim.cmd([[colorscheme catppuccin]])
+
 catppuccin.setup({
 	transparent_background = false,
 	term_colors = false,
@@ -35,28 +36,25 @@ catppuccin.setup({
 		cmp = true,
 		lsp_saga = false,
 		gitgutter = false,
-		gitsigns = false,
-		telescope = true,
-		nvimtree = {
-			enabled = true,
-			show_root = false,
-		},
+		gitsigns = true,
+		telescope = false,
+		nvimtree = false,
 		which_key = true,
 		indent_blankline = {
 			enabled = true,
 			colored_indent_levels = true,
 		},
-		dashboard = true,
+		dashboard = false,
 		neogit = false,
 		vim_sneak = false,
 		fern = false,
 		barbar = false,
-		bufferline = true,
-		markdown = true,
+		bufferline = false,
+		markdown = false,
 		lightspeed = false,
 		ts_rainbow = true,
 		hop = false,
-		notify = true,
-		telekasten = true,
+		notify = false,
+		telekasten = false,
 	},
 })

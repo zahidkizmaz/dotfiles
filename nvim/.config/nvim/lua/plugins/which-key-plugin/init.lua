@@ -1,32 +1,26 @@
 local wk = require("which-key")
 
 ------------------------
--- Telescope Bindings --
+-- FzfLua Bindings --
 ------------------------
 wk.register({
 	["<leader>f"] = {
-		name = "Telescope",
-		f = { "<cmd>Telescope find_files<cr>", "Find File" },
-		g = { "<cmd>Telescope git_files<cr>", "Find Git File" },
-		s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current File Fuzzy Search" },
-		S = { "<cmd>Telescope lsp_document_symbols<cr>", "Current File Symbol Search" },
-		r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
-		t = { "<cmd>Telescope tags<cr>", "Telescope Tags" },
-		h = { "<cmd>Telescope help_tags<cr>", "Telescope Help Tags" },
-		b = { "<cmd>Telescope buffers<cr>", "Telescope Buffers" },
-		d = {
-			"<cmd>lua require'telescope.builtin'.diagnostics({ severity = 1})<cr>",
-			"LSP Document Diagnostics",
-		},
+		name = "FzfLua",
+		f = { "<cmd>FzfLua files<cr>", "Find File" },
+		g = { "<cmd>FzfLua git_files<cr>", "Find Git File" },
+		s = { "<cmd>FzfLua btags<cr>", "Current File Fuzzy Search" },
+		c = { "<cmd>FzfLua grep_curbuf<cr>", "Current File Fuzzy Search" },
+		r = { "<cmd>FzfLua lsp_references<cr>", "Find References" },
+		t = { "<cmd>FzfLua tags<cr>", "FzfLua Tags" },
+		h = { "<cmd>FzfLua help_tags<cr>", "FzfLua Help Tags" },
+		b = { "<cmd>FzfLua buffers<cr>", "FzfLua Buffers" },
+		d = { "<cmd>FzfLua lsp_document_diagnostics<cr>", "FzfLua Diagnostics" },
 	},
 })
 wk.register({
-	["<leader>rg"] = { "<cmd>Telescope live_grep<cr>", "Ripgrep Search" },
-	["<leader>gs"] = { "<cmd>Telescope grep_string<cr>", "Ripgrep Current Word" },
-	["<leader>ca"] = {
-		"<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>",
-		"LSP Code Actions",
-	},
+	["<leader>rg"] = { "<cmd>FzfLua live_grep<cr>", "Ripgrep Search" },
+	["<leader>gs"] = { "<cmd>FzfLua grep_cword<cr>", "Ripgrep Current Word" },
+	["<leader>ca"] = { "<cmd>FzfLua lsp_code_actions<cr>", "LSP Code Actions" },
 })
 
 --------------

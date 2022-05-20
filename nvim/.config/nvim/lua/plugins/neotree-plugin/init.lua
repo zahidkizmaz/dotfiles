@@ -19,7 +19,6 @@ require("neo-tree").setup({
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
 			["t"] = "open_tabnew",
-			["w"] = "open",
 			["C"] = "close_node",
 			["a"] = {
 				"add",
@@ -39,6 +38,7 @@ require("neo-tree").setup({
 			["R"] = "refresh",
 			["?"] = "show_help",
 			["z"] = "",
+			["w"] = "",
 		},
 	},
 })
