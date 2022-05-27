@@ -3,6 +3,7 @@ if not ok_status then
 	return
 end
 
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
 
 catppuccin.setup({
@@ -56,5 +57,10 @@ catppuccin.setup({
 		hop = false,
 		notify = false,
 		telekasten = false,
+		neotree = {
+			enabled = true,
+			show_root = false,
+			transparent_panel = true,
+		},
 	},
 })
