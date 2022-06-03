@@ -22,6 +22,7 @@ wk.register({
 	["<leader>rg"] = { "<cmd>FzfLua live_grep<cr>", "Ripgrep Search" },
 	["<leader>gs"] = { "<cmd>FzfLua grep_cword<cr>", "Ripgrep Current Word" },
 	["<leader>ca"] = { "<cmd>FzfLua lsp_code_actions<cr>", "LSP Code Actions" },
+	["<leader>bl"] = { "<cmd>FzfLua blines<cr>", "Buffer Line Search" },
 })
 
 --------------
