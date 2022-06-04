@@ -6,6 +6,6 @@ nm-applet &
 blueman-applet &
 picom &
 dunst &
-nitrogen --restore &
+xwallpaper --stretch "$WALLPAPER" &
 xrandr --output HDMI1 --auto
 xbindkeys

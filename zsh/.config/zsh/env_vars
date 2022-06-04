@@ -1,4 +1,10 @@
 #--------
+# Wallpaper Location
+#--------
+export WALLPAPER="$HOME/.config/wallpaper"
+
+
+#--------
 # FD Vars
 #--------
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
