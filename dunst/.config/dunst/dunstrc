@@ -50,17 +50,19 @@
 [experimental]
     per_monitor_dpi = false
 
+
+frame_color = "#96CDFB"
+separator_color= frame
+
 [urgency_low]
-    background = "#11121D"
-    foreground = "#A0A8CD"
-    timeout = 10
+background = "#1E1E2E"
+foreground = "#D9E0EE"
 
 [urgency_normal]
-    background = "#11121D"
-    foreground = "#A0A8CD"
-    timeout = 10
+background = "#1E1E2E"
+foreground = "#D9E0EE"
 
 [urgency_critical]
-    background = "#11121D"
-    foreground = "#EE6D85"
-    timeout = 30
+background = "#1E1E2E"
+foreground = "#D9E0EE"
+frame_color = "#F8BD96"
