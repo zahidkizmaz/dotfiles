@@ -1,3 +1,19 @@
+#---------
+# ZSH Vars
+#---------
+export HISTSIZE=10000
+export HISTFILE=$HOME/.cache/zsh/history
+export SAVEHIST=$HISTSIZE
+export EDITOR='nvim'
+export PSQL_EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+export MANPAGER='nvim +Man!'
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH="$HOME/.local/bin:$PATH"
+
+
 #--------
 # FD Vars
 #--------
@@ -9,7 +25,6 @@ export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
 #---------
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
 export FZF_DEFAULT_OPTS="--no-hscroll --height 40% --layout=reverse --margin=0 --info=inline --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD"
-
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 

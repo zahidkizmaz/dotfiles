@@ -1,8 +1,4 @@
-# History in cache directory:
-export HISTSIZE=10000
-export HISTFILE=$HOME/.cache/zsh/history
-export SAVEHIST=$HISTSIZE
-
+# History settings
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
@@ -19,16 +15,6 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
 setopt AUTO_PARAM_SLASH   # if completed parameter is a directory, add a trailing slash
-
-export EDITOR='nvim'
-export PSQL_EDITOR='nvim'
-export VISUAL='nvim'
-export PAGER='less'
-export MANPAGER='nvim +Man!'
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export PATH="$HOME/.local/bin:$PATH"
-export ZSH_PYENV_LAZY_VIRTUALENV=true
 
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line
@@ -69,7 +55,7 @@ if [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
 fi
 
-# CUSTOM ALIASESES AND FUNCTIONS
+# CUSTOM ALIASESES - FUNCTIONS - ENV VARS
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 [ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
 [ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
