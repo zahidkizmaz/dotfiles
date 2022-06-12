@@ -2,7 +2,6 @@ configuration {
   lines: 5;
   show-icons: true;
   icon-theme: "Oranchelo";
-  matching: "fuzzy";
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
