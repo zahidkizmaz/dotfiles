@@ -1,4 +1,6 @@
-local tag_file_location = "~/.cache/tags/" .. string.gsub(vim.fn.getcwd(), "/", "-"):sub(2) .. "-tags"
+local current_dir_seperated_with_dashes = string.gsub(vim.fn.getcwd(), "/", "-"):sub(2)
+local tag_filename = current_dir_seperated_with_dashes .. "-tags"
+local tag_file_location = vim.g.gutentags_cache_dir .. "/" .. tag_filename
 require("fzf-lua").setup({
 	height = 0.95,
 	fzf_opts = { ["--layout"] = "default" },
