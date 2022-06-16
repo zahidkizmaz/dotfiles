@@ -42,6 +42,10 @@ cnoreabbrev QA qa
 cnoreabbrev Qa qa
 cnoreabbrev q1 q!
 cnoreabbrev Q1 q!
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=99
 ]])
 
 vim.api.nvim_create_autocmd("VimResized", { pattern = "*", command = "wincmd =" })
