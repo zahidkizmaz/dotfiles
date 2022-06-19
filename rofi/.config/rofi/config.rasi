@@ -1,7 +1,7 @@
 configuration {
   lines: 5;
   show-icons: true;
-  icon-theme: "Oranchelo";
+  icon-theme: "Papirus";
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
@@ -9,7 +9,7 @@ configuration {
   window-format: "{c}";
   modi: [window,drun];
   max-history-size: 100;
-  font: "JetBrainsMono Nerd Font 14";
+  font: "JetBrains Mono 18";
   disable-history: false;
   hide-scrollbar: true;
 }
@@ -19,13 +19,13 @@ configuration {
 * {
     bg-col:  #1E1D2F;
     bg-col-light: #1E1D2F;
-    border-col: #1E1D2F;
+    border-col: #1E1D30;
     selected-col: #1E1D2F;
     blue: #7aa2f7;
     fg-col: #D9E0EE;
     fg-col2: #F28FAD;
     grey: #D9E0EE;
-    width: 600;
+    width: 1000;
 }
 
 element-text, element-icon , mode-switcher {
@@ -35,7 +35,7 @@ element-text, element-icon , mode-switcher {
 
 window {
     height: 360px;
-    border: 3px;
+    border: 4px;
     border-color: @border-col;
     background-color: @bg-col;
 }
@@ -86,7 +86,7 @@ element {
 }
 
 element-icon {
-    size: 25px;
+    size: 30px;
 }
 
 element selected {
