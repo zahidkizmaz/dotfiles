@@ -95,7 +95,7 @@ for i in groups:
     )
 
 LAYOUT_DEFAULTS = {
-    "border_focus": Colors.CATPUCCIN_WHITE.value,
+    "border_focus": Colors.CATPUCCIN_YELLOW.value,
     "border_normal": Colors.CATPUCCIN_BLACK.value,
     "margin": 8,
     "border_width": 3,

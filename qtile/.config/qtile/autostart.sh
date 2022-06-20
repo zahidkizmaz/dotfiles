@@ -6,6 +6,6 @@ nm-applet &
 blueman-applet &
 picom &
 dunst &
+autorandr --change --force &
 nitrogen --restore &
-xrandr --output HDMI1 --auto
 xbindkeys
