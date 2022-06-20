@@ -110,7 +110,7 @@ BAR_MARGIN: List[int] = [4, 10, 0, 10]
 WIDGET_DEFAULTS: Dict[str, Any] = dict(
     fontsize=14,
     padding=4,
-    font="OpenDyslexic Nerd Font",
+    font="Noto Nerd Font",
 )
 
 screens = [
