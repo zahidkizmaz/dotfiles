@@ -205,6 +205,13 @@ return packer.startup(function(use)
 			require("plugins.gutentags-plugin")
 		end,
 	})
+	use({
+		"j-hui/fidget.nvim",
+		event = "InsertEnter",
+		config = function()
+			require("fidget").setup({})
+		end,
+	})
 	-----------------------------
 	if packer_bootstrap then
 		require("packer").sync()
