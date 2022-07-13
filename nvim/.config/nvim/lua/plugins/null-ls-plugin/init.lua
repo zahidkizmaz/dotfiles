@@ -11,12 +11,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.djhtml.with({
-			filetypes = { "django", "jinja.html", "htmldjango", "html" },
 			args = function(params)
 				return {
+					"-ic",
 					"--tabwidth",
 					vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
-					"-iq",
 				}
 			end,
 		}),
@@ -27,6 +26,9 @@ null_ls.setup({
 		null_ls.builtins.formatting.shfmt.with({
 			filetypes = { "sh", "bash", "zsh" },
 			extra_args = { "-i=2", "-ci", "-bn" },
+		}),
+		null_ls.builtins.formatting.sqlfluff.with({
+			extra_args = { "--dialect", "postgres" },
 		}),
 	},
 	debounce = vim.opt.updatetime:get(),

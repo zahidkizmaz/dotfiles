@@ -41,9 +41,11 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
-		"tpope/vim-surround",
+		"kylechui/nvim-surround",
 		event = "BufRead",
-		requires = { { "tpope/vim-repeat", opt = true, event = "BufRead" } },
+		config = function()
+			require("nvim-surround").setup({})
+		end,
 	})
 	---------------------
 
