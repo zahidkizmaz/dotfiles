@@ -24,6 +24,7 @@ set_opt.undofile = true
 set_opt.updatetime = 300
 set_opt.lazyredraw = true
 set_opt.relativenumber = true
+set_opt.tagcase = "smart"
 set_opt.clipboard = "unnamedplus"
 
 buffer_local.shiftwidth = 4
