@@ -1,3 +1,0 @@
-autorandr --change &
-
-exec bspwm

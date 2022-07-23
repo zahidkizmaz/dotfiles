@@ -1,7 +1,8 @@
 #! /bin/sh
 
-monitor_name=$(bspc query -M --names | head -1)
-bspc monitor "$monitor_name" -d I II III IV V VI VII VIII IX
+"$HOME/.config/bspwm/autostart.sh"
+
+bspc monitor -d I II III IV V VI VII VIII IX
 
 bspc config border_width 2
 bspc config window_gap 4
@@ -11,8 +12,4 @@ bspc config gapless_monocle true
 
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
-
-# Currently doesn't work
-bspc rule -a CopyQ state=floating
-
-"$HOME/.config/bspwm/autostart.sh"
+bspc config merge_overlapping_monitors true

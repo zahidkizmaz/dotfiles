@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-autorandr --change &
-
 # Set key repeat rate
 xset r rate 250 30 &
 setxkbmap -option caps:escape,shift:both_capslock &
@@ -13,5 +11,6 @@ pgrep -x polybar >/dev/null || polybar top_bar &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 
+autorandr --change &
 nitrogen --restore &
-xbindkeys
+exec xbindkeys
