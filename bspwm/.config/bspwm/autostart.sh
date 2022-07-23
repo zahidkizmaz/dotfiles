@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Set key repeat rate
 autorandr --change &
+
+# Set key repeat rate
 xset r rate 250 30 &
 setxkbmap -option caps:escape,shift:both_capslock &
 
