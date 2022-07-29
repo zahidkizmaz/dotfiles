@@ -120,10 +120,30 @@ super + alt + shift + {h,j,k,l}
 super + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-#
-# custom shortcuts
-#
-
 # run copyq
-mod1 + shift + c
-	copyq toggle
+mod1 + shift + x
+  copyq toggle
+
+#Volume Up
+XF86AudioRaiseVolume
+  amixer -q sset Master '2%+'
+
+#Volume Down
+XF86AudioLowerVolume
+  amixer -q sset Master '2%-'
+
+#Volume Mute
+XF86AudioMute
+  amixer -q sset Master toggle
+
+#Play Next
+XF86AudioNext
+  playerctl next
+
+#Play_Pause
+XF86AudioPlay
+  playerctl play-pause
+
+#Play previous
+XF86AudioPrev
+  playerctl previous
