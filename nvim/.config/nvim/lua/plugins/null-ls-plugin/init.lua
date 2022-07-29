@@ -36,7 +36,7 @@ null_ls.setup({
 	diagnostics_format = "[#{c}] #{m} (#{s})",
 	should_attach = function()
 		local filetype = vim.bo.filetype
-		if filetype == "go" or filetype == "json" then
+		if filetype == "go" or filetype == "json" or filetype == "tex" then
 			return false
 		else
 			return true

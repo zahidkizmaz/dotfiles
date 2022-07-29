@@ -26,6 +26,21 @@ set_opt.lazyredraw = true
 set_opt.relativenumber = true
 set_opt.tagcase = "smart"
 set_opt.clipboard = "unnamedplus"
+-- search files into subfolders
+-- provides tab-complete for all files
+-- by default we had `/usr/include` in here, which we don't need
+set_opt.path = { ".", "**" }
+-- vim wildignore. Used for path autocomplete and `gf`.
+set_opt.wildignore:append({
+	"*/.git/", -- I might have to remove this when fugitive has problems
+	"*/__pycache__/",
+	"*/.direnv/",
+	"*/node_modules/",
+	"*/.pytest_cache/",
+	"*/.mypy_cache/",
+	"*/target/", -- rust target directory
+	"tags",
+})
 
 buffer_local.shiftwidth = 4
 buffer_local.softtabstop = 4
