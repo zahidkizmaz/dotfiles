@@ -147,3 +147,7 @@ XF86AudioPlay
 #Play previous
 XF86AudioPrev
   playerctl previous
+
+# Take Screenshot
+Print
+  flameshot gui
