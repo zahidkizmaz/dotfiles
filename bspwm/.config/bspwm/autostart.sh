@@ -12,4 +12,5 @@ pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x copyq >/dev/null || copyq --start-server &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 
+nitrogen --restore &
 exec autorandr --change
