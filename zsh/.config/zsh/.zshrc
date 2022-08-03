@@ -16,6 +16,9 @@ compinit
 _comp_options+=(globdots) # Include hidden files.
 setopt AUTO_PARAM_SLASH   # if completed parameter is a directory, add a trailing slash
 
+# Enable vi mode
+bindkey -v
+
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line
 zle -N edit-command-line
