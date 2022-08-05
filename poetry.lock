@@ -151,7 +151,7 @@ graph = ["objgraph (>=1.7.2)"]
 
 [[package]]
 name = "djhtml"
-version = "1.5.1"
+version = "1.5.2"
 description = "Django/Jinja template indenter"
 category = "main"
 optional = false
@@ -495,7 +495,7 @@ all = ["whatthepatch", "yapf", "rope (>=0.10.5)", "pylint (>=2.5.0)", "pyflakes 
 
 [[package]]
 name = "pytoolconfig"
-version = "1.2.1"
+version = "1.2.2"
 description = "Python tool configuration"
 category = "main"
 optional = false
@@ -801,7 +801,7 @@ dill = [
     {file = "dill-0.3.5.1.tar.gz", hash = "sha256:d75e41f3eff1eee599d738e76ba8f4ad98ea229db8b085318aa2b3333a208c86"},
 ]
 djhtml = [
-    {file = "djhtml-1.5.1.tar.gz", hash = "sha256:d3b9060e9c45e2a56125203f2508ae591aba41a2f14ed2fa8bafb99b0fc15eb3"},
+    {file = "djhtml-1.5.2.tar.gz", hash = "sha256:b54c4ab6effaf3dbe87d616ba30304f1dba22f07127a563df4130a71acc290ea"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
@@ -1049,8 +1049,8 @@ python-lsp-server = [
     {file = "python_lsp_server-1.5.0-py3-none-any.whl", hash = "sha256:77aac9861b0e23cafb251f116448157e6c45957e625097ed4846891281cffc18"},
 ]
 pytoolconfig = [
-    {file = "pytoolconfig-1.2.1-py3-none-any.whl", hash = "sha256:5f291567f0363a7314406be4f2381ece4e552a8608d2629544679e4d36d0df2b"},
-    {file = "pytoolconfig-1.2.1.tar.gz", hash = "sha256:5ac82f78d731531f9f82e5cc7f5ebae9473b1404c0e75aa5ac0b8b41cd99b510"},
+    {file = "pytoolconfig-1.2.2-py3-none-any.whl", hash = "sha256:825d97b052e58b609c2684b04efeb543075588d33a4916a6dc2ae39676458c7d"},
+    {file = "pytoolconfig-1.2.2.tar.gz", hash = "sha256:2512a1f261a40e73cef2e58e786184261b60c802ae7ed01249342b1949ec3aa2"},
 ]
 pyyaml = [
     {file = "PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d4db7c7aef085872ef65a8fd7d6d09a14ae91f691dec3e87ee5ee0539d516f53"},
