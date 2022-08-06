@@ -12,14 +12,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# Set cursor to arrow
-xsetroot -cursor_name left_ptr &
-
 # Set key repeat rate
 xset r rate 250 30 &
+
+# Set cursor to arrow
+xsetroot -cursor_name left_ptr &
 
 # Map Caps Lock to Escape and R-Shift&L-Shift Caps Lock
 setxkbmap -option caps:escape,shift:both_capslock &
 
+# Setup monitors
 autorandr --change &
+
 exec bspwm
