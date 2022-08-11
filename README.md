@@ -1,48 +1,29 @@
 # Personal Dotfiles
 My dotfiles that used in MacOS and Arch Linux.
 
-#### Uses [stow](https://www.gnu.org/software/stow/) for managing the symlinks.
+#### How to install
 
-#### Customized apps
+I use symlinks to manage dotfiles. [Stow](https://www.gnu.org/software/stow/) is my go to tool for managing the symlinks.
 
-- [ Alacritty ](#alacritty)
-- [ Ctags ](#ctags)
-- [ Direnv ](#direnv)
-- [ Git ](#git)
-- [ Kitty ](#kitty)
-- [ Nvim ](#nvim)
-- [ Pgcli ](#pgcli)
-- [ Qtile ](#qtile)
-- [ Starship ](#starship)
-- [ Tmux ](#tmux)
-- [ Xbindkeys ](#xbindkeys)
-- [ Xorg ](#xorg)
-- [ Zsh ](#zsh)
-
-## Setup
-
-### Alacritty
-### Ctags
-### Direnv
-### Git
-### Kitty
-### Nvim
-### Pgcli
-### Qtile
-### Starship
-### Tmux
-[Tmux](https://github.com/tmux/tmux)
+Example command:
 ```sh
 stow -vSt ~ tmux
 ```
+This creates symlinks to tmux config files in `~/.config/` folder:
 
-#### Tmux Plugin Manager:
-[Tpm](https://github.com/tmux-plugins/tpm)
+### Current Setup
 
-```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-Hit `prefix + I` to fetch the plugin and source it.
+- Shell: zsh
+- Shell prompt: starship
+- Terminal emulator: kitty
+- Terminal multiplexer: tmux
+- Text editor / IDE: Neovim
 
-### Xbindkeys
-### Xorg
+#### Arch specific
+
+- Window manager: BSPWM
+- Status bar: polybar
+- Login manager: ly
+- Hotkey daemon: sxhkd
+- Notifications manager: dunst
+- Application launcher: rofi
