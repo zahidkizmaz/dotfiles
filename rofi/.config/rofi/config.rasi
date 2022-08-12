@@ -25,7 +25,6 @@ configuration {
     fg-col: #D9E0EE;
     fg-col2: #F28FAD;
     grey: #D9E0EE;
-    width: 1000;
 }
 
 element-text, element-icon , mode-switcher {
@@ -34,7 +33,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
+    height: 20%;
+    width: 25%;
     border: 4px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -75,7 +75,7 @@ listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
-    columns: 2;
+    columns: 1;
     background-color: @bg-col;
 }
 
