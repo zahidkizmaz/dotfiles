@@ -5,39 +5,28 @@
 
 [core]
     editor = nvim
+    pager = delta
 
-[pager]
-    difftool = true
+[delta]
+    dark = true
+    side-by-side = true
 
 [merge]
-    conflictStyle = diff3
     tool = nvimdiff
+    conflictStyle = diff3
 
 [mergetool]
     keepBackup = false
 
-[diff]
-    tool = difftastic
-
-[difftool]
-    prompt = false
-
-[difftool "difftastic"]
-    cmd = difft "$LOCAL" "$REMOTE"
-
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
     ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 
 [interactive]
     diffFilter = delta --color-only
 
 [blame]
     date = short
-
-[alias]
-    # show different commits between branches
-    branchdiff = log --graph --left-right --cherry-pick --oneline

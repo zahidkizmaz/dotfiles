@@ -3,10 +3,11 @@
 #------------------------------
 # Aliases
 #------------------------------
-alias grep='grep --colour=auto'
-alias mkdir='mkdir -v'
-alias ls='ls --color=auto -h -F '
 alias nv='nvim'
+alias pls='sudo!!'
+alias mkdir='mkdir -v'
+alias grep='grep --colour=auto'
+alias ls='ls --color=auto -h -F '
 
 #------------------------------
 # Screen Aliases
@@ -28,7 +29,7 @@ alias gc="git commit "
 alias gl="git log"
 alias gf="git fetch --all"
 alias gco="git checkout "
-alias gd="git difftool"
+alias gd="git diff"
 alias gdc='git diff --cached'
 alias gm="git commit -m "
 alias gfrb="git fetch origin && git rebase origin/master"
