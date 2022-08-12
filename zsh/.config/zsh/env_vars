@@ -32,7 +32,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 #---------
 # BAT Vars
 #---------
-export BAT_THEME="Monokai Extended"
+export BAT_THEME="Catppuccin-mocha"
 
 
 #----------
