@@ -4,8 +4,8 @@
 # Aliases
 #------------------------------
 alias nv='nvim'
-alias pls='sudo!!'
 alias mkdir='mkdir -v'
+alias pls='sudo $(fc -ln -1)'
 alias grep='grep --colour=auto'
 alias ls='ls --color=auto -h -F '
 
