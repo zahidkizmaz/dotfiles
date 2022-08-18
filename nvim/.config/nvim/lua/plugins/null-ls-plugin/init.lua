@@ -30,6 +30,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
 		}),
+		null_ls.builtins.formatting.rustfmt,
 	},
 	debounce = vim.opt.updatetime:get(),
 	update_on_insert = false,

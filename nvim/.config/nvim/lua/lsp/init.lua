@@ -13,8 +13,9 @@ local LSP_SERVERS = {
 	"yamlls",
 	"gopls",
 	"ansiblels",
+	"rust_analyzer",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html" }
+local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html", "rust_analyzer" }
 
 require("nvim-lsp-installer").setup({
 	ensure_installed = LSP_SERVERS,
@@ -88,5 +89,9 @@ lspconfig.pylsp.setup({
 			},
 		},
 	},
+})
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+	on_attach = on_attach_without_formatting,
 })
 require("lsp.handlers").setup()
