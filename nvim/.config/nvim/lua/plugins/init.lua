@@ -131,7 +131,13 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source for nvim-cmp
 	use({ "neovim/nvim-lspconfig" })
 	use({
-		"williamboman/nvim-lsp-installer",
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
+	use({
+		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("lsp")
 		end,

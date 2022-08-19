@@ -16,15 +16,15 @@ local LSP_SERVERS = {
 	"rust_analyzer",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html", "rust_analyzer" }
-
-require("nvim-lsp-installer").setup({
+require("mason-lspconfig").setup({
 	ensure_installed = LSP_SERVERS,
 	automatic_installation = true,
 })
-local lspconfig = require("lspconfig")
+
 local on_attach = require("lsp.handlers").on_attach
 local on_attach_without_formatting = require("lsp.handlers").on_attach_without_formatting
 local capabilities = require("lsp.handlers").capabilities
+local lspconfig = require("lspconfig")
 
 for _, server in ipairs(LSP_SERVERS) do
 	if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
