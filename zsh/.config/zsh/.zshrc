@@ -58,6 +58,11 @@ if [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
 fi
 
+# Rust
+if [[ -f "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
+fi
+
 # CUSTOM ALIASESES - FUNCTIONS - ENV VARS
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 [ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
