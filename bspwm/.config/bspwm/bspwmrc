@@ -11,6 +11,7 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
+bspc rule -a Galculator state=floating
 bspc rule -a copyq state=floating follow=on
 bspc rule -a '*:*:Picture-in-Picture' state=floating follow=on sticky=on border=off # Firefox
 bspc rule -a '*:*:Picture in picture' state=floating follow=on sticky=on border=off # Chromium based
