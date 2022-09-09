@@ -2,7 +2,6 @@ local LSP_SERVERS = {
 	"bashls",
 	"cssls",
 	"dockerls",
-	"grammarly",
 	"html",
 	"jsonls",
 	"pylsp",
