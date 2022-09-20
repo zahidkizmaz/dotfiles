@@ -79,3 +79,8 @@ env.bak/
 venv.bak/
 .direnv/
 .tool-versions
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
