@@ -45,6 +45,11 @@ if type "direnv" &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+# Zoxide
+if type "zoxide" &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 # Pipx
 if type "pipx" &>/dev/null; then
   eval "$(register-python-argcomplete pipx)"
