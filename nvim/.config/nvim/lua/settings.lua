@@ -9,7 +9,6 @@ local set_opt = vim.opt
 
 global.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
 global.mapleader = " "
-global.did_load_filetypes = 1 -- filetype.nvim setting
 
 set.mouse = "a"
 set.hlsearch = false
