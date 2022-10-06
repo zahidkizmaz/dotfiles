@@ -18,6 +18,7 @@ set.ignorecase = true
 set.breakindent = true
 set.termguicolors = true
 set.splitright = true
+set.cmdheight = 0
 
 set_opt.number = true
 set_opt.undofile = true
