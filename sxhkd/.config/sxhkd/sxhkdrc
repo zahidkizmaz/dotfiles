@@ -156,7 +156,3 @@ XF86AudioPrev
 # Take Screenshot
 Print
   flameshot gui
-
-# Suspend computer
-Super_L
-  systemctl suspend
