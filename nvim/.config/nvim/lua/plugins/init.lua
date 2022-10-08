@@ -53,12 +53,6 @@ return packer.startup(function(use)
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
-	use({
-		"vimwiki/vimwiki",
-		config = function()
-			require("plugins.vimwiki-plugin")
-		end,
-	})
 	---------------------
 
 	-------------------------
