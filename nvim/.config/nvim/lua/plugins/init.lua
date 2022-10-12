@@ -53,6 +53,10 @@ return packer.startup(function(use)
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
+	use({
+		"sindrets/winshift.nvim",
+		event = "BufWinEnter",
+	})
 	---------------------
 
 	-------------------------

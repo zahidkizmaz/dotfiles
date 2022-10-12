@@ -60,3 +60,14 @@ wk.register({
 ------------
 wk.register({ ["<leader>ps"] = { "<cmd>PackerSync<cr>", "Packer Sync" } })
 wk.register({ ["<leader>pc"] = { "<cmd>PackerCompile<cr>", "Packer Compile" } })
+
+----------------
+-- Winshift --
+----------------
+wk.register({
+	["<C-W>"] = {
+		name = "Window Movement",
+		m = { "<cmd>WinShift<cr>", "Run WinShift" },
+		["<C-m>"] = { "<cmd>WinShift<cr>", "Run WinShift" },
+	},
+})
