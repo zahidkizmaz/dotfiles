@@ -11,6 +11,8 @@ global.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-serve
 global.mapleader = " "
 
 set.mouse = "a"
+set.spell = true
+set.spelloptions = "camel"
 set.hlsearch = false
 set.smartcase = true
 set.ignorecase = true
