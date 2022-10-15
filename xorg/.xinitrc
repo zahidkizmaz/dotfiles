@@ -18,8 +18,8 @@ xset r rate 250 30 &
 # Set cursor to arrow
 xsetroot -cursor_name left_ptr &
 
-# Map Caps Lock to Escape and R-Shift&L-Shift Caps Lock
-setxkbmap -option caps:escape,shift:both_capslock &
+# Map Caps Lock to Escape and Shift+Caps  Caps Lock
+setxkbmap -option caps:escape_shifted_capslock &
 
 # Setup monitors
 autorandr --change &
