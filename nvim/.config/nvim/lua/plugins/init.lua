@@ -111,12 +111,12 @@ return packer.startup(function(use)
 				run = "./install.sh",
 				after = "nvim-cmp",
 				config = function()
-					require("plugins.comp-plugin.tabnine")
+					require("plugins.cmp-plugin.tabnine")
 				end,
 			},
 		},
 		config = function()
-			require("plugins.comp-plugin")
+			require("plugins.cmp-plugin")
 		end,
 	})
 	use({
