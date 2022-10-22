@@ -3,64 +3,63 @@ if not ok_status then
 	return
 end
 
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-vim.cmd([[colorscheme catppuccin]])
-
 catppuccin.setup({
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
+	background = { -- :h background
+		light = "latte",
+		dark = "mocha",
+	},
+	compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
 	transparent_background = false,
 	term_colors = false,
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
 	styles = {
-		comments = "italic",
-		functions = "italic",
-		keywords = "italic",
-		strings = "NONE",
-		variables = "italic",
+		comments = { "italic" },
+		conditionals = {},
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
 	},
 	integrations = {
-		treesitter = true,
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
-			},
-			underlines = {
-				errors = "underline",
-				hints = "underline",
-				warnings = "underline",
-				information = "underline",
-			},
-		},
-		lsp_trouble = false,
 		cmp = true,
-		lsp_saga = false,
-		gitgutter = false,
 		gitsigns = true,
-		telescope = false,
-		nvimtree = false,
-		which_key = true,
-		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = true,
-		},
-		dashboard = false,
-		neogit = false,
-		vim_sneak = false,
-		fern = false,
-		barbar = false,
-		bufferline = false,
-		markdown = false,
-		lightspeed = false,
+		treesitter = true,
+		neotree = true,
+		mason = true,
 		ts_rainbow = true,
-		hop = false,
-		notify = false,
-		telekasten = false,
-		neotree = {
-			enabled = true,
-			show_root = false,
-			transparent_panel = true,
+		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+	},
+	indent_blankline = {
+		enabled = true,
+		colored_indent_levels = true,
+	},
+	native_lsp = {
+		enabled = true,
+		virtual_text = {
+			errors = { "italic" },
+			hints = { "italic" },
+			warnings = { "italic" },
+			information = { "italic" },
+		},
+		underlines = {
+			errors = { "underline" },
+			hints = { "underline" },
+			warnings = { "underline" },
+			information = { "underline" },
 		},
 	},
+	custom_highlights = {},
 })
+
+vim.api.nvim_command("colorscheme catppuccin")
