@@ -214,7 +214,7 @@ return packer.startup(function(use)
 		"danymat/neogen",
 		cmd = { "Neogen" },
 		config = function()
-			require("neogen").setup({})
+			require("plugins.neogen-plugin")
 		end,
 	})
 	use({
@@ -227,11 +227,7 @@ return packer.startup(function(use)
 		"j-hui/fidget.nvim",
 		event = "InsertEnter",
 		config = function()
-			require("fidget").setup({
-				window = {
-					blend = 0,
-				},
-			})
+			require("plugins.fidget-plugin")
 		end,
 	})
 	-----------------------------
