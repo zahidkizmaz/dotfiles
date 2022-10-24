@@ -227,7 +227,11 @@ return packer.startup(function(use)
 		"j-hui/fidget.nvim",
 		event = "InsertEnter",
 		config = function()
-			require("fidget").setup({})
+			require("fidget").setup({
+				window = {
+					blend = 0,
+				},
+			})
 		end,
 	})
 	-----------------------------

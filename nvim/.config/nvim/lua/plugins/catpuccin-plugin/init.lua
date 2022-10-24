@@ -10,7 +10,7 @@ catppuccin.setup({
 		dark = "mocha",
 	},
 	compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	dim_inactive = {
 		enabled = false,
@@ -33,10 +33,11 @@ catppuccin.setup({
 	},
 	integrations = {
 		cmp = true,
+		mason = true,
+		fidget = true,
+		neotree = true,
 		gitsigns = true,
 		treesitter = true,
-		neotree = true,
-		mason = true,
 		ts_rainbow = true,
 		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
