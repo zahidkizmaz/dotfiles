@@ -42,21 +42,17 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	if client.server_capabilities.document_highlight then
-		local lsp_document_highlight_group = vim.api.nvim_create_augroup("LSPDocumentHighlight", { clear = true })
-		vim.api.nvim_create_autocmd("CursorHold", {
+	if client.server_capabilities.documentHighlightProvider then
+		local lsp_document_highlight_group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 			group = lsp_document_highlight_group,
-			pattern = "<buffer>",
-			callback = function()
-				require("vim.lsp.buf").document_highlight()
-			end,
+			buffer = 0,
+			callback = vim.lsp.buf.document_highlight,
 		})
 		vim.api.nvim_create_autocmd("CursorMoved", {
 			group = lsp_document_highlight_group,
-			pattern = "<buffer>",
-			callback = function()
-				require("vim.lsp.buf").clear_references()
-			end,
+			buffer = 0,
+			callback = vim.lsp.buf.clear_references,
 		})
 	end
 end
