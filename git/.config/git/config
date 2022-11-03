@@ -30,3 +30,4 @@
 
 [blame]
     date = short
+	ignoreRevsFile = .git-blame-ignore-revs
