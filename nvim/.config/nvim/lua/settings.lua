@@ -60,6 +60,12 @@ cnoreabbrev QA qa
 cnoreabbrev Qa qa
 cnoreabbrev q1 q!
 cnoreabbrev Q1 q!
+cnoreabbrev qa1 qa!
+cnoreabbrev qA! qa!
+cnoreabbrev Qa! qa!
+cnoreabbrev QA! qa!
+cnoreabbrev Qa1 qa!
+cnoreabbrev QA1 qa!
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
