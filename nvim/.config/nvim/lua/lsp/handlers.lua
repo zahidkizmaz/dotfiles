@@ -74,7 +74,7 @@ M.on_attach = function(client, bufnr)
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		pattern = "<buffer>",
 		callback = function()
-			vim.lsp.buf.format(nil, 2500)
+			vim.lsp.buf.format(nil, 3000)
 		end,
 	})
 end
@@ -85,7 +85,7 @@ M.on_attach_without_formatting = function(client, bufnr)
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		pattern = "<buffer>",
 		callback = function()
-			vim.lsp.buf.format(nil, 2500)
+			vim.lsp.buf.format(nil, 3000)
 		end,
 	})
 	client.server_capabilities.document_formatting = false
