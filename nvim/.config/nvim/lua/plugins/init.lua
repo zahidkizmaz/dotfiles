@@ -99,7 +99,6 @@ return packer.startup(function(use)
 	---------------------
 	use({
 		"hrsh7th/nvim-cmp",
-		commit = "c8d4afdad684895bfecd061c67b4c007e7647a09", -- TAB complete errors because of the next commit
 		event = "InsertEnter",
 		requires = {
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },

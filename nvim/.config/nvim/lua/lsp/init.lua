@@ -12,6 +12,7 @@ local LSP_SERVERS = {
 	"yamlls",
 	"gopls",
 	"ansiblels",
+	"tailwindcss",
 	"rust_analyzer",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html", "rust_analyzer" }
