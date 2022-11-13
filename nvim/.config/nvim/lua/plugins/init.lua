@@ -158,7 +158,7 @@ return packer.startup(function(use)
 	-----------------------------
 	-- Dev Environment Plugins --
 	-----------------------------
-	use("editorconfig/editorconfig-vim")
+	use("gpanders/editorconfig.nvim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
