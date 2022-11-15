@@ -168,6 +168,7 @@ return packer.startup(function(use)
 	})
 	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "p00f/nvim-ts-rainbow" })
+	use("David-Kunz/markid")
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
