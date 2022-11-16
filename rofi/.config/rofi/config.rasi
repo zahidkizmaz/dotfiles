@@ -7,7 +7,7 @@ configuration {
   drun-display-format: "{name}";
   combi-display-format: "{text}";
   window-format: "{c}";
-  modi: [window,drun];
+  modi: [drun,run];
   max-history-size: 100;
   font: "JetBrains Mono 18";
   disable-history: false;

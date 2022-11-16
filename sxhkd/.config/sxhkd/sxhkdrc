@@ -7,9 +7,9 @@
 mod1 + Return
 	kitty
 
-# program launcher
-super + @space
-	rofi -show drun
+# rofi program launcher
+mod1 + r
+	rofi -show
 
 # make sxhkd reload its configuration files:
 mod1 + Escape
