@@ -61,6 +61,7 @@ desktop.ini
 pyrightconfig.json
 .envrc
 .ropeproject
+.luarc.json
 
 # Ctags tag-files #
 ###################
