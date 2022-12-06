@@ -22,12 +22,15 @@ set.splitright = true
 set.cmdheight = 0
 
 set_opt.number = true
+set_opt.backup = false
 set_opt.undofile = true
+set_opt.swapfile = false
 set_opt.updatetime = 300
+set_opt.tagcase = "smart"
 set_opt.lazyredraw = true
 set_opt.relativenumber = true
-set_opt.tagcase = "smart"
 set_opt.clipboard = "unnamedplus"
+set_opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 -- search files into subfolders
 -- provides tab-complete for all files
 -- by default we had `/usr/include` in here, which we don't need

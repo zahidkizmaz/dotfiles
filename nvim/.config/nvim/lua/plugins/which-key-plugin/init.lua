@@ -10,7 +10,6 @@ wk.register({
 		f = { "<cmd>FzfLua files<cr>", "Find File" },
 		g = { "<cmd>FzfLua git_files<cr>", "Find Git File" },
 		s = { "<cmd>FzfLua btags<cr>", "Current File Fuzzy Search" },
-		c = { "<cmd>FzfLua grep_curbuf<cr>", "Current File Fuzzy Search" },
 		r = { "<cmd>FzfLua lsp_references<cr>", "Find References" },
 		t = { "<cmd>FzfLua tags<cr>", "FzfLua Tags" },
 		h = { "<cmd>FzfLua help_tags<cr>", "FzfLua Help Tags" },
