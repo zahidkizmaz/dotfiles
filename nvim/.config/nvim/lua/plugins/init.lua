@@ -170,6 +170,10 @@ return packer.startup(function(use)
 			require("plugins.treesitter-plugin")
 		end,
 	})
+	use({ -- Additional text objects via treesitter
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+	})
 	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "p00f/nvim-ts-rainbow" })
 	use({
