@@ -70,3 +70,9 @@ wk.register({
 		["<C-m>"] = { "<cmd>WinShift<cr>", "Run WinShift" },
 	},
 })
+
+--------------
+-- Undotree --
+--------------
+wk.register({ ["<leader>uu"] = { "<cmd>UndotreeToggle | UndotreeFocus<cr>", "Undotree Toggle" } })
+wk.register({ ["<leader>uf"] = { "<cmd>UndotreeFocus<cr>", "Undotree Focus" } })

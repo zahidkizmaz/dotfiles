@@ -57,6 +57,10 @@ return packer.startup(function(use)
 		"sindrets/winshift.nvim",
 		event = "BufWinEnter",
 	})
+	use({
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+	})
 	---------------------
 
 	-------------------------
