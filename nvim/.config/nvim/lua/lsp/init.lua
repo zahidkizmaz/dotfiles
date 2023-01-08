@@ -82,9 +82,10 @@ lspconfig.pylsp.setup({
 					enabled = false,
 				},
 				pylsp_mypy = {
+					dmypy = true,
 					enabled = true,
 					live_mode = false,
-					dmypy = true,
+					report_progress = true,
 				},
 			},
 		},

@@ -3,71 +3,26 @@ if not present then
 	return
 end
 
+local width = vim.api.nvim_win_get_width(0)
+local padding_left = math.floor(width / 4) + math.floor(width / 8)
+local padding_right = math.floor(width / 4) - math.floor(width / 8)
+
 true_zen.setup({
-	ui = {
-		bottom = {
-			laststatus = 0,
-			ruler = true,
-			showmode = false,
-			showcmd = false,
-			cmdheight = 1,
-		},
-		top = {
-			showtabline = 0,
-		},
-		left = {
-			number = true,
-			relativenumber = true,
-			signcolumn = "yes",
-		},
-	},
 	modes = {
 		ataraxis = {
-			left_padding = 32,
-			right_padding = 32,
-			top_padding = 1,
-			bottom_padding = 0,
-			ideal_writing_area_width = { 100 },
-			auto_padding = true,
-			keep_default_fold_fillchars = true,
-			custom_bg = { "none", "" },
-			bg_configuration = true,
-			quit = "untoggle",
-			ignore_floating_windows = true,
-			affected_higroups = {
-				NonText = true,
-				FoldColumn = true,
-				ColorColumn = true,
-				VertSplit = true,
-				StatusLine = true,
-				StatusLineNC = true,
-				SignColumn = true,
+			shade = "dark", -- if `dark` then dim the padding windows, otherwise if it's `light` it'll brighten said windows
+			backdrop = 0, -- percentage by which padding windows should be dimmed/brightened. Must be a number between 0 and 1. Set to 0 to keep the same background color
+			minimum_writing_area = { -- minimum size of main window
+				width = 80,
+				height = 44,
+			},
+			quit_untoggles = true, -- type :q or :qa to quit Ataraxis mode
+			padding = { -- padding windows
+				left = padding_left,
+				right = padding_right,
+				top = 0,
+				bottom = 0,
 			},
 		},
-		focus = {
-			margin_of_error = 5,
-			focus_method = "experimental",
-		},
-	},
-	integrations = {
-		vim_gitgutter = false,
-		galaxyline = false,
-		tmux = false,
-		gitsigns = false,
-		nvim_bufferline = false,
-		limelight = false,
-		twilight = false,
-		vim_airline = false,
-		vim_powerline = false,
-		vim_signify = false,
-		express_line = false,
-		lualine = true,
-		lightline = false,
-		feline = false,
-	},
-	misc = {
-		on_off_commands = true,
-		ui_elements_commands = true,
-		cursor_by_mode = true,
 	},
 })
