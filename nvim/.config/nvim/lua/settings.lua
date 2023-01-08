@@ -37,7 +37,7 @@ set_opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set_opt.path = { ".", "**" }
 -- vim wildignore. Used for path autocomplete and `gf`.
 set_opt.wildignore:append({
-	"*/.git/", -- I might have to remove this when fugitive has problems
+	"*/.git/",
 	"*/__pycache__/",
 	"*/.direnv/",
 	"*/node_modules/",

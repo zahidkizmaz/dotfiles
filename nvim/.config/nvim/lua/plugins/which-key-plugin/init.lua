@@ -55,11 +55,10 @@ wk.register({
 	},
 })
 
-------------
--- Packer --
-------------
-wk.register({ ["<leader>ps"] = { "<cmd>PackerSync<cr>", "Packer Sync" } })
-wk.register({ ["<leader>pc"] = { "<cmd>PackerCompile<cr>", "Packer Compile" } })
+-------------
+-- Packages -
+-------------
+wk.register({ ["<leader>ps"] = { "<cmd>Lazy sync<cr>", "Lazy Sync" } })
 
 ----------------
 -- Winshift --

@@ -1,4 +1,4 @@
-vim.g.gutentags_cache_dir = "~/.cache/tags/"
+vim.g.gutentags_cache_dir = vim.env.HOME .. "/.cache/tags"
 
 vim.cmd([[
 let g:gutentags_file_list_command = {
