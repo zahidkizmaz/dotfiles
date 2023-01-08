@@ -126,9 +126,9 @@ require("lazy").setup({
 			require("plugins.treesitter-plugin")
 		end,
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "p00f/nvim-ts-rainbow" },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+	{ "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
+	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
