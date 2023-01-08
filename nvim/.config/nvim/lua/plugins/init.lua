@@ -10,6 +10,7 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
+		event = "VeryLazy",
 		config = function()
 			require("plugins.lualine-plugin")
 		end,
@@ -30,15 +31,13 @@ require("lazy").setup({
 	{ "kylechui/nvim-surround", config = true, event = "InsertEnter" },
 	{
 		"iamcco/markdown-preview.nvim",
+		event = "VeryLazy",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	{ "sindrets/winshift.nvim" },
-	{
-		"mbbill/undotree",
-		cmd = { "UndotreeToggle" },
-	},
+	{ "sindrets/winshift.nvim", cmd = { "WinShift" } },
+	{ "mbbill/undotree", cmd = { "UndotreeToggle" } },
 	---------------------
 
 	-----------------
