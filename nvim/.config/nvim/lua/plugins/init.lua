@@ -49,13 +49,32 @@ require("lazy").setup({
 	-----------------
 	-- Git Plugins --
 	-----------------
-	{ "rhysd/committia.vim" }, -- nice commit setup,
+	{
+		"rhysd/committia.vim", -- nice commit setup,
+		config = function()
+			vim.g.committia_open_only_vim_starting = 0
+		end,
+	},
 	{
 		"ruifm/gitlinker.nvim", -- Open current working line in remove git host
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugins.gitlinker-plugin")
 		end,
+		keys = {
+			{
+				"<leader>hh",
+				'<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>',
+				desc = "Create VCS remote link for line",
+				mode = "n",
+			},
+			{
+				"<leader>hh",
+				'<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>',
+				desc = "Create VCS remote link for line",
+				mode = "v",
+			},
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",

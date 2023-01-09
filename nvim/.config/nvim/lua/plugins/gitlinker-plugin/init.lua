@@ -8,5 +8,5 @@ require("gitlinker").setup({
 		-- print the url after performing the action
 		print_url = true,
 	},
-	mappings = "<leader>hh",
+	mappings = nil,
 })
