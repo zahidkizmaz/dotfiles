@@ -22,22 +22,28 @@ require("lazy").setup({
 		end,
 	},
 	{ "norcalli/nvim-colorizer.lua", config = true },
-	{
-		"folke/which-key.nvim",
-		config = function()
-			require("plugins.which-key-plugin")
-		end,
-	},
 	{ "kylechui/nvim-surround", config = true, event = "InsertEnter" },
 	{
 		"iamcco/markdown-preview.nvim",
-		event = "VeryLazy",
+		ft = "markdown",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	{ "sindrets/winshift.nvim", cmd = { "WinShift" } },
-	{ "mbbill/undotree", cmd = { "UndotreeToggle" } },
+	{
+		"sindrets/winshift.nvim",
+		keys = {
+			{ "<C-W>m", "<cmd>WinShift<cr>", desc = "Run WinShift" },
+			{ "<C-W><C-m>", "<cmd>WinShift<cr>", desc = "Run WinShift" },
+		},
+	},
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>uf", "<cmd>UndotreeFocus<cr>", desc = "Undotree Focus" },
+			{ "<leader>uu", "<cmd>UndotreeToggle | UndotreeFocus<cr>", desc = "Undotree Toggle" },
+		},
+	},
 	---------------------
 
 	-----------------
@@ -108,10 +114,25 @@ require("lazy").setup({
 	},
 	{
 		"ibhagwan/fzf-lua",
-		cmd = { "FzfLua" },
 		config = function()
 			require("plugins.fzf-lua-plugin")
 		end,
+		keys = {
+			{ "<leader>fl", "<cmd>FzfLua<cr>", desc = "FzfLua" },
+			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find File" },
+			{ "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Find Git File" },
+			{ "<leader>fs", "<cmd>FzfLua btags<cr>", desc = "Current File Fuzzy Search" },
+			{ "<leader>fr", "<cmd>FzfLua lsp_references<cr>", desc = "Find References" },
+			{ "<leader>ft", "<cmd>FzfLua tags<cr>", desc = "FzfLua Tags" },
+			{ "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "FzfLua Help Tags" },
+			{ "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua Buffers" },
+			{ "<leader>fd", "<cmd>FzfLua lsp_definitions<cr>", desc = "FzfLua Definitions" },
+			{ "<leader>rg", "<cmd>FzfLua live_grep<cr>", desc = "Ripgrep Search" },
+			{ "<leader>gs", "<cmd>FzfLua grep_cword<cr>", desc = "Ripgrep Current Word" },
+			{ "<leader>ca", "<cmd>FzfLua ls_code_actions<cr>", desc = "LSP Code Actions" },
+			{ "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
+			{ "<leader>ds", "<cmd>FzfLua ls_document_symbols<cr>", desc = "Document Symbols" },
+		},
 	},
 	-------------------------------
 
@@ -132,7 +153,6 @@ require("lazy").setup({
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		cmd = { "Neotree" },
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "kyazdani42/nvim-web-devicons" },
@@ -141,9 +161,13 @@ require("lazy").setup({
 		config = function()
 			require("plugins.neotree-plugin")
 		end,
+		keys = {
+			{ "<C-n>", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+		},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugins.null-ls-plugin")
@@ -156,10 +180,12 @@ require("lazy").setup({
 	},
 	{
 		"Pocco81/TrueZen.nvim",
-		cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
 		config = function()
 			require("plugins.true-zen-plugin")
 		end,
+		keys = {
+			{ "<leader>zm", "<cmd>TZAtaraxis<cr>", desc = "Toggle Zen Mode" },
+		},
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -183,6 +209,7 @@ require("lazy").setup({
 	},
 	{
 		"j-hui/fidget.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("plugins.fidget-plugin")
 		end,
