@@ -17,11 +17,12 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("plugins.indent-blankline-plugin")
 		end,
 	},
-	{ "norcalli/nvim-colorizer.lua", config = true },
+	{ "norcalli/nvim-colorizer.lua", config = true, event = "BufReadPre" },
 	{ "kylechui/nvim-surround", config = true, event = "InsertEnter" },
 	{
 		"iamcco/markdown-preview.nvim",
