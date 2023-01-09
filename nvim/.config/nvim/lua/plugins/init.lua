@@ -124,10 +124,11 @@ require("lazy").setup({
 	-------------------------
 	-- LSP Related Plugins --
 	-------------------------
-	{ "neovim/nvim-lspconfig" },
-	{ "williamboman/mason.nvim", config = true },
+	{ "neovim/nvim-lspconfig", lazy = true },
+	{ "williamboman/mason.nvim", config = true, lazy = true },
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("lsp")
 		end,
