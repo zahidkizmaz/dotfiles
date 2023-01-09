@@ -138,6 +138,14 @@ require("lazy").setup({
 		config = function()
 			require("plugins.fzf-lua-plugin")
 		end,
+		dependencies = {
+			{
+				"ludovicchabant/vim-gutentags",
+				config = function()
+					require("plugins.gutentags-plugin")
+				end,
+			},
+		},
 		keys = {
 			{ "<leader>fl", "<cmd>FzfLua<cr>", desc = "FzfLua" },
 			{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find File" },
@@ -164,12 +172,15 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		event = "BufReadPre",
 		config = function()
 			require("plugins.treesitter-plugin")
 		end,
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+		},
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
-	{ "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre" },
 	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -220,12 +231,6 @@ require("lazy").setup({
 		cmd = { "Neogen" },
 		config = function()
 			require("plugins.neogen-plugin")
-		end,
-	},
-	{
-		"ludovicchabant/vim-gutentags",
-		config = function()
-			require("plugins.gutentags-plugin")
 		end,
 	},
 	{
