@@ -277,6 +277,3 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# nvim
-lazy-lock.json
