@@ -119,14 +119,16 @@ require("lazy").setup({
 	-------------------------
 	-- LSP Related Plugins --
 	-------------------------
-	{ "neovim/nvim-lspconfig", lazy = true },
-	{ "williamboman/mason.nvim", config = true, lazy = true },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = "VeryLazy",
 		config = function()
 			require("lsp")
 		end,
+		dependencies = {
+			{ "neovim/nvim-lspconfig", lazy = true },
+			{ "williamboman/mason.nvim", config = true, lazy = true },
+		},
 	},
 	{
 		"ibhagwan/fzf-lua",
@@ -172,11 +174,11 @@ require("lazy").setup({
 			require("plugins.treesitter-plugin")
 		end,
 		dependencies = {
+			{ "p00f/nvim-ts-rainbow", lazy = true }, -- NO LONGER MAINTAINED!!!
 			{ "nvim-treesitter/nvim-treesitter-context", lazy = true },
 			{ "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
 		},
 	},
-	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
