@@ -177,8 +177,8 @@ require("lazy").setup({
 			require("plugins.treesitter-plugin")
 		end,
 		dependencies = {
-			{ "nvim-treesitter/nvim-treesitter-context" },
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{ "nvim-treesitter/nvim-treesitter-context", lazy = true },
+			{ "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
 		},
 	},
 	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
