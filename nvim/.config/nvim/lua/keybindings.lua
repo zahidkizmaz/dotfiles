@@ -23,3 +23,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Keep the register same after pasting in Visual mode
 keymap("v", "p", '"_dP', opts)
+
+-- Tabs
+keymap("n", "<leader>tt", "<cmd>tabnew<cr>", opts)
+keymap("n", "<leader>tc", "<cmd>tabclose<cr>", opts)
+keymap("n", "<leader>tn", "<cmd>tabnext<cr>", opts)
+keymap("n", "<leader>tp", "<cmd>tabprevious<cr>", opts)

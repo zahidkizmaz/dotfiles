@@ -7,12 +7,6 @@ function Prequire(module_str)
 	end
 end
 
-function Print_table(table)
-	for k, v in pairs(table) do
-		print(k, v)
-	end
-end
-
 function Array_contains(array, value)
 	for _, element in ipairs(array) do
 		if element == value then
@@ -22,7 +16,6 @@ function Array_contains(array, value)
 	return false
 end
 
-Prequire("impatient")
 Prequire("settings")
-Prequire("keybindings")
 Prequire("plugins")
+Prequire("keybindings")
