@@ -50,12 +50,7 @@ require("lazy").setup({
 	-----------------
 	-- Git Plugins --
 	-----------------
-	{
-		"rhysd/committia.vim", -- nice commit setup,
-		config = function()
-			vim.g.committia_open_only_vim_starting = 0
-		end,
-	},
+	{ "rhysd/committia.vim" }, -- nice commit setup
 	{
 		"ruifm/gitlinker.nvim", -- Open current working line in remove git host
 		dependencies = { "nvim-lua/plenary.nvim" },
