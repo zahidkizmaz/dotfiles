@@ -175,8 +175,8 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			{ "p00f/nvim-ts-rainbow", lazy = true }, -- NO LONGER MAINTAINED!!!
-			{ "nvim-treesitter/nvim-treesitter-context", lazy = true },
 			{ "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
+			{ "nvim-treesitter/nvim-treesitter-context", config = true, lazy = true },
 		},
 	},
 	{
