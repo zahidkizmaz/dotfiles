@@ -74,7 +74,7 @@ require("lazy").setup({
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
+		event = "BufReadPre",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugins.gitsigns-plugin")
@@ -204,8 +204,17 @@ require("lazy").setup({
 	},
 	{
 		"numToStr/Comment.nvim",
-		event = "VeryLazy",
 		config = true,
+		keys = {
+			{
+				"gcc",
+				mode = "n",
+			},
+			{
+				"gcc",
+				mode = "x",
+			},
+		},
 	},
 	{
 		"Pocco81/TrueZen.nvim",
