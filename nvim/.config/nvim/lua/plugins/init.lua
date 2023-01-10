@@ -1,5 +1,8 @@
 require("plugins.init_lazy")
 require("lazy").setup({
+	defaults = { lazy = true },
+
+	-- PLUGINS: --
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -126,8 +129,8 @@ require("lazy").setup({
 			require("lsp")
 		end,
 		dependencies = {
-			{ "neovim/nvim-lspconfig", lazy = true },
-			{ "williamboman/mason.nvim", config = true, lazy = true },
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim", config = true },
 		},
 	},
 	{
@@ -174,9 +177,9 @@ require("lazy").setup({
 			require("plugins.treesitter-plugin")
 		end,
 		dependencies = {
-			{ "p00f/nvim-ts-rainbow", lazy = true }, -- NO LONGER MAINTAINED!!!
-			{ "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
-			{ "nvim-treesitter/nvim-treesitter-context", config = true, lazy = true },
+			{ "p00f/nvim-ts-rainbow" }, -- NO LONGER MAINTAINED!!!
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{ "nvim-treesitter/nvim-treesitter-context", config = true },
 		},
 	},
 	{
