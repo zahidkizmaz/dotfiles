@@ -155,7 +155,7 @@ require("lazy").setup({
 			{ "<leader>fd", "<cmd>FzfLua lsp_definitions<cr>", desc = "FzfLua Definitions" },
 			{ "<leader>rg", "<cmd>FzfLua live_grep<cr>", desc = "Ripgrep Search" },
 			{ "<leader>gs", "<cmd>FzfLua grep_cword<cr>", desc = "Ripgrep Current Word" },
-			{ "<leader>ca", "<cmd>FzfLua ls_code_actions<cr>", desc = "LSP Code Actions" },
+			{ "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "LSP Code Actions" },
 			{ "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
 			{ "<leader>ds", "<cmd>FzfLua ls_document_symbols<cr>", desc = "Document Symbols" },
 		},

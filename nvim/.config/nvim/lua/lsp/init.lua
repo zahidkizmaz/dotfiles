@@ -81,6 +81,12 @@ lspconfig.pylsp.setup({
 				pyflakes = {
 					enabled = false,
 				},
+				rope_autoimport = {
+					enabled = false, -- Currently doesn't work!
+				},
+				jedi_signature_help = {
+					enabled = true,
+				},
 				pylsp_mypy = {
 					dmypy = true,
 					enabled = true,
