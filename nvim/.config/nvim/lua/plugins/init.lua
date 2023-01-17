@@ -52,7 +52,7 @@ require("lazy").setup({
 		-----------------
 		-- Git Plugins --
 		-----------------
-		{ "rhysd/committia.vim" }, -- nice commit setup
+		{ "rhysd/committia.vim", lazy = false }, -- nice commit setup
 		{
 			"ruifm/gitlinker.nvim", -- Open current working line in remove git host
 			dependencies = { "nvim-lua/plenary.nvim" },
