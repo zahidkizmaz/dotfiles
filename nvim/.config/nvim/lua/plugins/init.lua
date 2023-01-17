@@ -19,12 +19,12 @@ require("lazy").setup({
 		},
 		{
 			"lukas-reineke/indent-blankline.nvim",
-			event = "BufReadPre",
+			event = "UIEnter",
 			config = function()
 				require("plugins.indent-blankline-plugin")
 			end,
 		},
-		{ "norcalli/nvim-colorizer.lua", config = true, event = "BufReadPre" },
+		{ "norcalli/nvim-colorizer.lua", config = true, event = "UIEnter" },
 		{ "kylechui/nvim-surround", config = true, event = "InsertEnter" },
 		{
 			"iamcco/markdown-preview.nvim",
@@ -76,7 +76,7 @@ require("lazy").setup({
 		},
 		{
 			"lewis6991/gitsigns.nvim",
-			event = "BufReadPre",
+			event = "UIEnter",
 			dependencies = { "nvim-lua/plenary.nvim" },
 			config = function()
 				require("plugins.gitsigns-plugin")
@@ -171,7 +171,7 @@ require("lazy").setup({
 		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
-			event = "BufReadPre",
+			event = "UIEnter",
 			config = function()
 				require("plugins.treesitter-plugin")
 			end,
