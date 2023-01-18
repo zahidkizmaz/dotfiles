@@ -96,7 +96,6 @@ require("lazy").setup({
 				{ "hrsh7th/cmp-nvim-lua" },
 				{ "hrsh7th/cmp-nvim-lsp" },
 				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
-				{ "saadparwaiz1/cmp_luasnip" },
 				{
 					"tzachar/cmp-tabnine",
 					build = "./install.sh",
@@ -110,7 +109,7 @@ require("lazy").setup({
 						require("luasnip.loaders.from_vscode").load({})
 					end,
 				},
-				{ "rafamadriz/friendly-snippets" },
+				{ "saadparwaiz1/cmp_luasnip" },
 			},
 			config = function()
 				require("plugins.cmp-plugin")
