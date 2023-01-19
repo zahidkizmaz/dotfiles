@@ -37,14 +37,14 @@ set_opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set_opt.path = { ".", "**" }
 -- vim wildignore. Used for path autocomplete and `gf`.
 set_opt.wildignore:append({
-	"*/.git/",
-	"*/__pycache__/",
-	"*/.direnv/",
-	"*/node_modules/",
-	"*/.pytest_cache/",
-	"*/.mypy_cache/",
-	"*/target/", -- rust target directory
-	"tags",
+  "*/.git/",
+  "*/__pycache__/",
+  "*/.direnv/",
+  "*/node_modules/",
+  "*/.pytest_cache/",
+  "*/.mypy_cache/",
+  "*/target/", -- rust target directory
+  "tags",
 })
 
 buffer_local.shiftwidth = 4
@@ -77,8 +77,8 @@ set foldlevelstart=99
 
 vim.api.nvim_create_autocmd("VimResized", { pattern = "*", command = "wincmd =" })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	callback = function()
-		require("vim.highlight").on_yank({ timeout = 250 })
-	end,
+  pattern = "*",
+  callback = function()
+    require("vim.highlight").on_yank({ timeout = 250 })
+  end,
 })
