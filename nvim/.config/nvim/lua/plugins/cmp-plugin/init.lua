@@ -94,12 +94,12 @@ cmp.setup({
 		format = function(entry, item)
 			item.kind = lsp_symbols[item.kind]
 			item.menu = ({
-				buffer = "[Buf]",
+				luasnip = "[SNIP]",
 				nvim_lsp = "[LSP]",
-				nvim_lua = "[Api]",
-				path = "[Path]",
-				luasnip = "[Snip]",
-				cmp_tabnine = "[Tab9]",
+				buffer = "[BUF]",
+				nvim_lua = "[API]",
+				path = "[PATH]",
+				cmp_tabnine = "[TAB9]",
 			})[entry.source.name]
 			return item
 		end,

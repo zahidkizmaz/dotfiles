@@ -108,6 +108,7 @@ require("lazy").setup({
 					config = function()
 						require("luasnip.loaders.from_vscode").load({})
 					end,
+					dependencies = { { "rafamadriz/friendly-snippets" } },
 				},
 				{ "saadparwaiz1/cmp_luasnip" },
 			},
