@@ -73,7 +73,7 @@ lspconfig.pylsp.setup({
 		pylsp = {
 			plugins = {
 				pydocstyle = {
-					enabled = false,
+					enabled = true,
 				},
 				pycodestyle = {
 					enabled = false,
