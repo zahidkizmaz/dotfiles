@@ -60,7 +60,6 @@ catppuccin.setup({
 			information = { "underline" },
 		},
 	},
-	custom_highlights = {},
 })
 
 vim.api.nvim_command("colorscheme catppuccin")
