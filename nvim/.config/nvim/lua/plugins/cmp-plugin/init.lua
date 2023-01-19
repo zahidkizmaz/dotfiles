@@ -82,10 +82,10 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
+		{ name = "luasnip" },
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
-		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
 		{ name = "buffer", keyword_length = 2 },
 		{ name = "path" },
@@ -94,11 +94,11 @@ cmp.setup({
 		format = function(entry, item)
 			item.kind = lsp_symbols[item.kind]
 			item.menu = ({
+				path = "[PATH]",
+				buffer = "[BUF]",
 				luasnip = "[SNIP]",
 				nvim_lsp = "[LSP]",
-				buffer = "[BUF]",
 				nvim_lua = "[API]",
-				path = "[PATH]",
 				cmp_tabnine = "[TAB9]",
 			})[entry.source.name]
 			return item
