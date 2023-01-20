@@ -47,6 +47,16 @@ require("lazy").setup({
         { "<leader>uu", "<cmd>UndotreeToggle | UndotreeFocus<cr>", desc = "Undotree Toggle" },
       },
     },
+    {
+      "akinsho/toggleterm.nvim",
+      config = function()
+        require("plugins.toggleterm-plugin")
+      end,
+      keys = {
+        { "<leader>nt", "<cmd>ToggleTerm<cr>", desc = "Openn Terminal" },
+        { "<leader>g", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
+      },
+    },
     ---------------------
 
     -----------------
