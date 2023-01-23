@@ -24,7 +24,6 @@ require("lazy").setup({
         require("plugins.indent-blankline-plugin")
       end,
     },
-    { "norcalli/nvim-colorizer.lua", config = true, event = "UIEnter" },
     { "kylechui/nvim-surround", config = true, event = "InsertEnter" },
     {
       "iamcco/markdown-preview.nvim",
