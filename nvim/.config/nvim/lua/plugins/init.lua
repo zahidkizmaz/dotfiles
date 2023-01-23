@@ -263,6 +263,10 @@ require("lazy").setup({
   ui = { border = "rounded" },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = false },
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = false,
+  },
   performance = {
     rtp = {
       disabled_plugins = {
