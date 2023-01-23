@@ -258,6 +258,15 @@ require("lazy").setup({
         require("plugins.fidget-plugin")
       end,
     },
+    {
+      "klen/nvim-test",
+      config = true,
+      opts = { silent = true },
+      keys = {
+        { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run all tests for the current file" },
+        { "<leader>tr", "<cmd>TestNearest<cr>", desc = "Run the test nearest to the cursor" },
+      },
+    },
   },
   defaults = { lazy = true },
   ui = { border = "rounded" },
