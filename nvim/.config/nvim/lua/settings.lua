@@ -1,42 +1,42 @@
 --------------------------
 -- General Vim Settings --
 --------------------------
-local set = vim.o
+local o = vim.o
 local cmd = vim.cmd
-local global = vim.g
-local buffer_local = vim.bo
-local set_opt = vim.opt
+local g = vim.g
+local bo = vim.bo
+local opt = vim.opt
 
-global.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
-global.mapleader = " "
+g.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
+g.mapleader = " "
 
-set.mouse = "a"
-set.spell = true
-set.spelloptions = "camel"
-set.hlsearch = false
-set.smartcase = true
-set.ignorecase = true
-set.breakindent = true
-set.termguicolors = true
-set.splitright = true
-set.cmdheight = 0
+o.mouse = "a"
+o.spell = true
+o.spelloptions = "camel"
+o.hlsearch = false
+o.smartcase = true
+o.ignorecase = true
+o.breakindent = true
+o.termguicolors = true
+o.splitright = true
+o.cmdheight = 0
 
-set_opt.number = true
-set_opt.backup = false
-set_opt.undofile = true
-set_opt.swapfile = false
-set_opt.updatetime = 300
-set_opt.tagcase = "smart"
-set_opt.lazyredraw = true
-set_opt.relativenumber = true
-set_opt.clipboard = "unnamedplus"
-set_opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.number = true
+opt.backup = false
+opt.undofile = true
+opt.swapfile = false
+opt.updatetime = 300
+opt.tagcase = "smart"
+opt.lazyredraw = true
+opt.relativenumber = true
+opt.clipboard = "unnamedplus"
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 -- search files into subfolders
 -- provides tab-complete for all files
 -- by default we had `/usr/include` in here, which we don't need
-set_opt.path = { ".", "**" }
+opt.path = { ".", "**" }
 -- vim wildignore. Used for path autocomplete and `gf`.
-set_opt.wildignore:append({
+opt.wildignore:append({
   "*/.git/",
   "*/__pycache__/",
   "*/.direnv/",
@@ -47,9 +47,9 @@ set_opt.wildignore:append({
   "tags",
 })
 
-buffer_local.shiftwidth = 4
-buffer_local.softtabstop = 4
-buffer_local.expandtab = true
+bo.shiftwidth = 4
+bo.softtabstop = 4
+bo.expandtab = true
 
 cmd([[
 cnoreabbrev E e
