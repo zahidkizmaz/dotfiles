@@ -75,10 +75,14 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldlevelstart=99
 ]])
 
-vim.api.nvim_create_autocmd("VimResized", { pattern = "*", command = "wincmd =" })
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     require("vim.highlight").on_yank({ timeout = 250 })
   end,
+})
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("win_autoresize", { clear = true }),
+  desc = "Auto resize windows on resizing",
+  command = "wincmd =",
 })
