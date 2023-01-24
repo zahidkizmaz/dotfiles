@@ -261,6 +261,7 @@ require("lazy").setup({
       config = true,
       opts = { silent = true },
       keys = {
+        { "<leader>tl", "<cmd>TestLast<cr>", desc = "Run the last ran test" },
         { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run all tests for the current file" },
         { "<leader>tr", "<cmd>TestNearest<cr>", desc = "Run the test nearest to the cursor" },
       },
