@@ -53,7 +53,7 @@ require("lazy").setup({
       end,
       keys = {
         { "<leader>nt", "<cmd>ToggleTerm<cr>", desc = "Openn Terminal" },
-        { "<leader>g", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
+        { "<leader>gg", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
       },
     },
     ---------------------
