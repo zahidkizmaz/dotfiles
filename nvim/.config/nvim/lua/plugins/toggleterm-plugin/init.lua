@@ -7,7 +7,7 @@ function Toggle_lazygit()
   local lazygit = Terminal:new({
     cmd = "lazygit",
     hidden = true,
-    direction = "float",
+    direction = "tab",
   })
   lazygit:toggle()
 end
