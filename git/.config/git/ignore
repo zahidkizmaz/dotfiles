@@ -85,3 +85,6 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# lazygit
+**/lazygit/state.yml
