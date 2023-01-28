@@ -29,3 +29,6 @@ keymap("n", "<leader>tt", "<cmd>tabnew<cr>", opts)
 keymap("n", "<leader>tc", "<cmd>tabclose<cr>", opts)
 keymap("n", "<leader>tn", "<cmd>tabnext<cr>", opts)
 keymap("n", "<leader>tp", "<cmd>tabprevious<cr>", opts)
+
+-- Terminal mode
+keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
