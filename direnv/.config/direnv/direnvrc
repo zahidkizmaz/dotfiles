@@ -4,10 +4,15 @@ use_poetry_env() {
     exit 2
   fi
 
-  # create venv if it doesn't exist
-  poetry run true
+  venv_path=$(poetry env info --path)
+  venv_already_exists=$?
+  if [ $venv_already_exists -ne 0 ]; then
+    # create venv
+    poetry run true
+    venv_path=$(poetry env info --path)
+  fi
 
-  export VIRTUAL_ENV=$(poetry env info --path)
+  export VIRTUAL_ENV=$venv_path
   export POETRY_ACTIVE=1
   PATH_add "$VIRTUAL_ENV/bin"
 }
