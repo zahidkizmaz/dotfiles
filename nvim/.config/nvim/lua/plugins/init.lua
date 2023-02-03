@@ -121,15 +121,6 @@ require("lazy").setup({
         },
         {
           "dcampos/nvim-snippy",
-          opt = {
-            mappings = {
-              is = {
-                ["<Tab>"] = "expand_or_advance",
-                ["<S-Tab>"] = "previous",
-              },
-              nx = { ["<leader>x"] = "cut_text" },
-            },
-          },
           dependencies = { "honza/vim-snippets", "dcampos/cmp-snippy" },
         },
       },
