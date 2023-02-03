@@ -120,13 +120,18 @@ require("lazy").setup({
           end,
         },
         {
-          "L3MON4D3/LuaSnip",
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-          dependencies = { { "rafamadriz/friendly-snippets" } },
+          "dcampos/nvim-snippy",
+          opt = {
+            mappings = {
+              is = {
+                ["<Tab>"] = "expand_or_advance",
+                ["<S-Tab>"] = "previous",
+              },
+              nx = { ["<leader>x"] = "cut_text" },
+            },
+          },
+          dependencies = { "honza/vim-snippets", "dcampos/cmp-snippy" },
         },
-        { "saadparwaiz1/cmp_luasnip" },
       },
       config = function()
         require("plugins.cmp-plugin")
