@@ -5,7 +5,6 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     disable = { "python" }, -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
   },
-  rainbow = { enable = true, extended_mode = true },
   textobjects = {
     select = {
       enable = true,
