@@ -12,10 +12,13 @@ null_ls.setup({
     null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.djhtml.with({
-      args = function(params)
+      extra_args = function(params)
+        local file_name = vim.api.nvim_buf_get_name(params.bufnr)
+        local tabwidth = vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth")
         return {
           "--tabwidth",
-          vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+          tabwidth,
+          file_name,
         }
       end,
     }),
