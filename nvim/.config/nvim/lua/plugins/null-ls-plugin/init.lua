@@ -14,7 +14,6 @@ null_ls.setup({
     null_ls.builtins.formatting.djhtml.with({
       args = function(params)
         return {
-          "-ic",
           "--tabwidth",
           vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
         }
