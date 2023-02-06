@@ -188,7 +188,6 @@ require("lazy").setup({
         require("plugins.treesitter-plugin")
       end,
       dependencies = {
-        { "nvim-treesitter/nvim-treesitter-textobjects" },
         { "nvim-treesitter/nvim-treesitter-context", config = true },
       },
     },
