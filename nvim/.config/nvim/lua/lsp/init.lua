@@ -21,10 +21,11 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
 })
 
-local on_attach = require("lsp.handlers").on_attach
-local on_attach_without_formatting = require("lsp.handlers").on_attach_without_formatting
-local capabilities = require("lsp.handlers").capabilities
 local lspconfig = require("lspconfig")
+local lsp_handlers = require("lsp.handlers")
+local on_attach = lsp_handlers.on_attach
+local capabilities = lsp_handlers.capabilities
+local on_attach_without_formatting = lsp_handlers.on_attach_without_formatting
 
 for _, server in ipairs(LSP_SERVERS) do
   if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
@@ -99,4 +100,4 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = on_attach_without_formatting,
 })
-require("lsp.handlers").setup()
+lsp_handlers.setup()
