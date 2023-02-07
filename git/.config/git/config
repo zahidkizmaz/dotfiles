@@ -12,6 +12,7 @@
     side-by-side = true
 
 [merge]
+    # See all options: git mergetool --tool-help
     tool = nvimdiff3
     conflictStyle = diff3
 
