@@ -84,7 +84,7 @@ cmp.setup({
   sources = {
     { name = "snippy", max_item_count = 3 },
     { name = "nvim_lua" },
-    { name = "nvim_lsp", max_item_count = 10 },
+    { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
     { name = "cmp_tabnine", max_item_count = 5 },
     { name = "buffer", keyword_length = 2 },
