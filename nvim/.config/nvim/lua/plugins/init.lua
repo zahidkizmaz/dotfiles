@@ -56,13 +56,6 @@ require("lazy").setup({
         { "<leader>gg", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
       },
     },
-    {
-      "stevearc/oil.nvim",
-      config = true,
-      keys = {
-        { "<leader>-", "<cmd>lua require('oil').open()<CR>", desc = "Open Oil nvim" },
-      },
-    },
     ---------------------
 
     -----------------
