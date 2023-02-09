@@ -190,6 +190,7 @@ require("lazy").setup({
         require("plugins.treesitter-plugin")
       end,
       dependencies = {
+        { "nvim-treesitter/nvim-treesitter-refactor" },
         { "nvim-treesitter/nvim-treesitter-context", config = true },
       },
     },
