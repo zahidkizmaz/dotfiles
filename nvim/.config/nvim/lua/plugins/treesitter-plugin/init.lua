@@ -13,6 +13,8 @@ require("nvim-treesitter.configs").setup({
     navigation = {
       enable = true,
       keymaps = {
+        goto_next_usage = "gn",
+        goto_previous_usage = "gp",
         goto_definition_lsp_fallback = "gd",
       },
     },
