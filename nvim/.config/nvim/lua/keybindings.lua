@@ -32,3 +32,6 @@ keymap("n", "<leader>tp", "<cmd>tabprevious<cr>", opts)
 
 -- Terminal mode
 keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
+
+-- Diagnostics
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
