@@ -98,6 +98,7 @@ require("lazy").setup({
         require("plugins.gitsigns-plugin")
       end,
     },
+    { "akinsho/git-conflict.nvim", config = true, cmd = "GitConflictListQf" },
     -----------------
 
     ---------------------
