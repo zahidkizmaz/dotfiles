@@ -58,8 +58,7 @@ fi
 # asdf-vm
 if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then
   source /opt/asdf-vm/asdf.sh
-fi
-if [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
+elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
   source /usr/local/opt/asdf/libexec/asdf.sh
 fi
 
