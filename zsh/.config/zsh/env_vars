@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #---------
 # ZSH Vars
 #---------
@@ -13,12 +15,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
 
-
 #--------
 # FD Vars
 #--------
 export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
-
 
 #---------
 # FZF Vars
@@ -28,14 +28,17 @@ export FZF_DEFAULT_OPTS="--no-hscroll --height 40% --layout=reverse --margin=0 -
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 
-
 #---------
 # BAT Vars
 #---------
 export BAT_THEME="Catppuccin-mocha"
 
-
 #----------
 # Pipx Vars
 #----------
 export PIPX_HOME="$HOME/.local/pipx/"
+
+#------------
+# Pip Setting
+#------------
+export PIP_REQUIRE_VIRTUALENV=true
