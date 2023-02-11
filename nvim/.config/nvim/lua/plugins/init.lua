@@ -96,8 +96,8 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("git-conflict").setup({ default_mappings = false })
-        vim.keymap.set("n", "co", "<Plug>(git-conflict-ours)")
-        vim.keymap.set("n", "ct", "<Plug>(git-conflict-theirs)")
+        vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")
+        vim.keymap.set("n", "cr", "<Plug>(git-conflict-theirs)")
         vim.keymap.set("n", "cb", "<Plug>(git-conflict-both)")
         vim.keymap.set("n", "c0", "<Plug>(git-conflict-none)")
         vim.keymap.set("n", "[x", "<Plug>(git-conflict-prev-conflict)")
