@@ -8,6 +8,7 @@ function Toggle_lazygit()
     cmd = "lazygit",
     hidden = true,
     direction = "tab",
+    env = { EDITOR = "nvr" },
   })
   lazygit:toggle()
 end
