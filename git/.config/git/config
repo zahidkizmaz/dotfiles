@@ -4,7 +4,6 @@
     email = tech@zahid.rocks
 
 [core]
-    editor = nvim
     pager = delta
 
 [delta]
