@@ -41,7 +41,7 @@ lspconfig.tsserver.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
 })
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
   settings = {
