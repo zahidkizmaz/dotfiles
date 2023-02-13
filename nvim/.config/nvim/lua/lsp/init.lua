@@ -5,7 +5,7 @@ local LSP_SERVERS = {
   "html",
   "jsonls",
   "pylsp",
-  "sumneko_lua",
+  "lua_ls",
   "texlab",
   "tsserver",
   "vimls",
@@ -15,7 +15,7 @@ local LSP_SERVERS = {
   "tailwindcss",
   "rust_analyzer",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "sumneko_lua", "pylsp", "tsserver", "html", "rust_analyzer" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "html", "rust_analyzer" }
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
