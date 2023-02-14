@@ -24,7 +24,13 @@ require("lazy").setup({
         require("plugins.indent-blankline-plugin")
       end,
     },
-    { "kylechui/nvim-surround", config = true, event = "InsertEnter" },
+    {
+      "echasnovski/mini.surround",
+      event = "InsertEnter",
+      config = function()
+        require("mini.surround").setup()
+      end,
+    },
     {
       "iamcco/markdown-preview.nvim",
       ft = "markdown",
