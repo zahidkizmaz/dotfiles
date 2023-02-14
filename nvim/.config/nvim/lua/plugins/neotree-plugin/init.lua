@@ -11,7 +11,9 @@ require("neo-tree").setup({
       hide_dotfiles = false,
       hide_gitignored = true,
     },
+    group_empty_dirs = true,
     follow_current_file = true,
+    use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes instead of relying on nvim autocmd events.
   },
   window = {
     mappings = {
