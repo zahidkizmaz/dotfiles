@@ -6,6 +6,11 @@ require("neo-tree").setup({
     padding = 0, -- no extra padding on left hand side
   },
   filesystem = {
+    filtered_items = {
+      hide_hidden = false,
+      hide_dotfiles = false,
+      hide_gitignored = true,
+    },
     follow_current_file = true,
   },
   window = {
