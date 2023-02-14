@@ -72,21 +72,14 @@ lspconfig.pylsp.setup({
     },
     pylsp = {
       plugins = {
-        pydocstyle = {
-          enabled = false,
-        },
-        pycodestyle = {
-          enabled = false,
-        },
-        pyflakes = {
-          enabled = false,
-        },
-        rope_autoimport = {
-          enabled = false, -- Currently doesn't work!
-        },
-        jedi_signature_help = {
-          enabled = true,
-        },
+        yapf = { enabled = false },
+        mccabe = { enabled = false },
+        pyflakes = { enabled = false },
+        autopep8 = { enabled = false },
+        pydocstyle = { enabled = false },
+        pycodestyle = { enabled = false },
+        rope_autoimport = { enabled = false }, -- Currently doesn't work!
+        jedi_signature_help = { enabled = true },
         pylsp_mypy = {
           dmypy = true,
           enabled = true,
