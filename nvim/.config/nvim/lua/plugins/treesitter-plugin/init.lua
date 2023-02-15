@@ -5,6 +5,11 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     disable = { "python" }, -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  },
   refactor = {
     highlight_definitions = {
       enable = true,

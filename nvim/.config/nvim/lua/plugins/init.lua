@@ -201,6 +201,7 @@ require("lazy").setup({
         require("plugins.treesitter-plugin")
       end,
       dependencies = {
+        { "mrjones2014/nvim-ts-rainbow" },
         { "nvim-treesitter/nvim-treesitter-refactor" },
         { "nvim-treesitter/nvim-treesitter-context", config = true },
       },
