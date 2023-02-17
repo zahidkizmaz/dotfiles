@@ -275,8 +275,12 @@ require("lazy").setup({
     },
     {
       "klen/nvim-test",
-      config = true,
-      opts = { silent = true },
+      config = function()
+        require("nvim-test.runners.pytest"):setup({
+          args = { "--disable-warnings" }, -- Warnings can create a lot of clutter in small buffers.
+        })
+        require("nvim-test").setup({ silent = true })
+      end,
       keys = {
         { "<leader>tl", "<cmd>TestLast<cr>", desc = "Run the last ran test" },
         { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run all tests for the current file" },
