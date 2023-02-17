@@ -187,6 +187,16 @@ require("lazy").setup({
         { "<leader>gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
       },
     },
+    {
+      "dnlhc/glance.nvim",
+      opts = { height = 30, border = { enable = true } },
+      keys = {
+        { "gR", "<CMD>Glance references<CR>", desc = "Glance References" },
+        { "gD", "<CMD>Glance definitions<CR>", desc = "Glance Definitions" },
+        { "gM", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
+        { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance Type Definitions" },
+      },
+    },
     -------------------------------
 
     -----------------------------
