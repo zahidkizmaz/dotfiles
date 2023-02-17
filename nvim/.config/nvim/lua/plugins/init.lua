@@ -279,9 +279,7 @@ require("lazy").setup({
     {
       "j-hui/fidget.nvim",
       event = "VeryLazy",
-      config = function()
-        require("plugins.fidget-plugin")
-      end,
+      opts = { window = { blend = 0 } },
     },
     {
       "klen/nvim-test",
