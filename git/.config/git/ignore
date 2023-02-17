@@ -88,3 +88,6 @@ dmypy.json
 
 # lazygit
 **/lazygit/state.yml
+
+# ruff
+ruff.toml
