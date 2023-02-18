@@ -179,7 +179,7 @@ require("lazy").setup({
         { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "FzfLua Help Tags" },
         { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua Buffers" },
         { "<leader>fd", "<cmd>FzfLua lsp_definitions<cr>", desc = "FzfLua Definitions" },
-        { "<leader>rg", "<cmd>FzfLua live_grep<cr>", desc = "Ripgrep Search" },
+        { "<leader>rg", "<cmd>FzfLua live_grep_glob<cr>", desc = "Ripgrep Search" },
         { "<leader>gs", "<cmd>FzfLua grep_cword<cr>", desc = "Ripgrep Current Word" },
         { "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "LSP Code Actions" },
         { "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
