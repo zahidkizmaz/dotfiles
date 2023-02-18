@@ -1,3 +1,5 @@
+local C = require("catppuccin.palettes").get_palette()
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -24,7 +26,12 @@ require("lualine").setup({
     lualine_z = { "location" },
   },
   inactive_sections = {
-    lualine_a = {},
+    lualine_a = {
+      {
+        "vim.api.nvim_win_get_number(0)",
+        color = { bg = C.blue, fg = C.mantle, gui = "bold" },
+      },
+    },
     lualine_b = { { "filename", path = 1 } },
     lualine_c = {},
     lualine_x = {},

@@ -35,3 +35,10 @@ keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
 
 -- Diagnostics
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+
+-- Move between windows
+for i = 1, 9 do
+  local lhs = "<leader>" .. i
+  local rhs = i .. "<c-w>w"
+  keymap("n", lhs, rhs, opts)
+end
