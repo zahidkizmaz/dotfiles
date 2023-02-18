@@ -185,6 +185,7 @@ require("lazy").setup({
         { "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
         { "<leader>ds", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
         { "<leader>gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
+        { "<leader>ss", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Correction Suggestions" },
       },
     },
     {
