@@ -44,5 +44,5 @@ for i = 1, 9 do
   keymap("n", lhs, rhs, opts)
 end
 
--- Bring justice to all window sizes
-keymap("n", "<leader>=", "<cmd>wincmd =<cr>", opts)
+-- Bring justice to all window sizes and to cmdheight
+keymap("n", "<leader>=", "<cmd>wincmd = | set cmdheight=0<cr>", opts)
