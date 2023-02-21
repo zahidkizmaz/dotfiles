@@ -255,12 +255,15 @@ require("lazy").setup({
       },
     },
     {
-      "Pocco81/TrueZen.nvim",
-      config = function()
-        require("plugins.true-zen-plugin")
-      end,
+      "folke/zen-mode.nvim",
+      opts = {
+        plugins = {
+          tmux = { enabled = true }, -- disables the tmux statusline
+          twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
+        },
+      },
       keys = {
-        { "<leader>zm", "<cmd>TZAtaraxis<cr>", desc = "Toggle Zen Mode" },
+        { "<leader>zm", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
       },
     },
     {
