@@ -1,6 +1,7 @@
 vim.g.neo_tree_remove_legacy_commands = 1
 
 require("neo-tree").setup({
+  enable_diagnostics = false,
   indent = {
     indent_size = 2,
     padding = 0, -- no extra padding on left hand side
@@ -12,7 +13,7 @@ require("neo-tree").setup({
       hide_gitignored = true,
     },
     group_empty_dirs = true,
-    follow_current_file = true,
+    follow_current_file = false,
     use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes instead of relying on nvim autocmd events.
   },
   window = {
