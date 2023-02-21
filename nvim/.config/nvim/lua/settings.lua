@@ -84,3 +84,22 @@ vim.api.nvim_create_autocmd("VimResized", {
   desc = "Auto resize windows on resizing",
   command = "wincmd =",
 })
+
+-- Extra filetypes
+vim.filetype.add({
+  filename = {
+    ["Pipfile"] = "toml",
+    ["Pipfile.lock"] = "json",
+    ["poetry.lock"] = "toml",
+    [".env"] = "sh",
+    [".envrc"] = "sh",
+    ["direnvrc"] = "sh",
+    [".xinitrc"] = "sh",
+    [".zshrc"] = "sh",
+    [".bash_profile"] = "sh",
+  },
+  pattern = {
+    ["requirements*.in"] = "requirements",
+    ["requirements*.txt"] = "requirements",
+  },
+})
