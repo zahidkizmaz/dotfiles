@@ -68,6 +68,6 @@ return {
       mods = "SUPER",
       action = wezterm.action.CloseCurrentTab({ confirm = true }),
     },
-    { key = "q", mods = "CMD", action = wezterm.action.QuitApplication },
+    { key = "q", mods = "SUPER", action = wezterm.action.QuitApplication },
   },
 }
