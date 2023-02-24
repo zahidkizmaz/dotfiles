@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 use_poetry_env() {
   if [[ ! -f pyproject.toml ]]; then
     log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one first.'
@@ -27,6 +29,6 @@ use_venv_from_tool_versions() {
     local python_location="$(asdf where python)/bin/python"
     $python_location -m venv $venv_location
   fi
-  export VIRTUAL_ENV=$venv_location
-  export PATH=$venv_bin_folder:$PATH
+
+  source $venv_location/bin/activate
 }
