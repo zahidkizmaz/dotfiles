@@ -42,3 +42,8 @@ export PIPX_HOME="$HOME/.local/pipx/"
 # Pip Setting
 #------------
 export PIP_REQUIRE_VIRTUALENV=true
+
+#-----------------------------
+# Term Setting Works With Tmux
+#-----------------------------
+export TERM=xterm-256color
