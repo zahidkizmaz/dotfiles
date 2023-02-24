@@ -21,16 +21,22 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Tabs
-keymap("n", "<leader>tt", "<cmd>tabnew<cr>", opts)
-keymap("n", "<leader>tc", "<cmd>tabclose<cr>", opts)
-keymap("n", "<leader>tn", "<cmd>tabnext<cr>", opts)
-keymap("n", "<leader>tp", "<cmd>tabprevious<cr>", opts)
+keymap("n", "<leader>tt", "<CMD>tabnew<cr>", opts)
+keymap("n", "<leader>tc", "<CMD>tabclose<cr>", opts)
+keymap("n", "<leader>tn", "<CMD>tabnext<cr>", opts)
+keymap("n", "<leader>tp", "<CMD>tabprevious<cr>", opts)
+
+for i = 1, 9 do
+  local lhs = "t" .. i
+  local rhs = "<CMD>tabn " .. i .. "<CR>"
+  keymap("n", lhs, rhs, opts)
+end
 
 -- Terminal mode
 keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
 
 -- Diagnostics
-keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- Move between windows
 keymap("n", "<c-j>", "<c-w>j", opts)
@@ -45,4 +51,4 @@ for i = 1, 9 do
 end
 
 -- Bring justice to all window sizes and to cmdheight
-keymap("n", "<leader>=", "<cmd>wincmd = | set cmdheight=0<cr>", opts)
+keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
