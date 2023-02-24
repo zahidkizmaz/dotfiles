@@ -1,17 +1,27 @@
 local wezterm = require("wezterm")
 
-wezterm.on("window-resized", function(window, _)
+local function set_font_size(window)
   local window_dimensions = window:get_dimensions()
+  local dpi = window_dimensions.dpi
   local width = window_dimensions.pixel_width
   local height = window_dimensions.pixel_height
+
   local font_size = 12
-  if width > 1920 and height > 1080 then
+  if width > 1920 and height > 1080 and dpi < 80 then
     font_size = 14
   end
 
   local overrides = window:get_config_overrides() or {}
   overrides.font_size = font_size
   window:set_config_overrides(overrides)
+end
+
+wezterm.on("window-resized", function(window, _)
+  set_font_size(window)
+end)
+
+wezterm.on("window-config-reloaded", function(window, _)
+  set_font_size(window)
 end)
 
 return {
