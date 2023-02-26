@@ -33,9 +33,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-
 local cmp = require("cmp")
 local snippy = require("snippy")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -51,8 +48,8 @@ cmp.setup({
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<S-up>"] = cmp.mapping.scroll_docs(-4),
+    ["<S-down>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
@@ -104,16 +101,16 @@ cmp.setup({
       return item
     end,
   },
-  window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  completion = {
+    autocomplete = {
+      cmp.TriggerEvent.TextChanged,
+      cmp.TriggerEvent.InsertEnter,
     },
+    completeopt = "menu,menuone,noselect",
   },
-  view = {
-    entries = "native",
-  },
-  experimental = {
-    ghost_text = true,
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 })
 

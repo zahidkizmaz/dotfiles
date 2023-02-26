@@ -25,7 +25,6 @@ opt.undofile = true
 opt.swapfile = false
 opt.updatetime = 300
 opt.tagcase = "smart"
-opt.lazyredraw = true
 opt.relativenumber = true
 opt.clipboard = "unnamedplus"
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"

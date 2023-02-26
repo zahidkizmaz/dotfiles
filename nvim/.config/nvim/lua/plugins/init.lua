@@ -62,6 +62,41 @@ require("lazy").setup({
         { "<leader>gg", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
       },
     },
+    {
+      "folke/noice.nvim",
+      event = "UIEnter",
+      opts = {
+        popupmenu = { enabled = false },
+        cmdline = { view = "cmdline" },
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["cmp.entry.get_documentation"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          },
+        },
+        presets = {
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          bottom_search = true, -- use a classic bottom cmdline for search
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+        },
+        routes = {
+          {
+            view = "mini",
+            filter = { event = "msg_showmode" },
+          },
+        },
+        views = {
+          mini = {
+            win_options = { winblend = 0 }, -- Transparent background
+          },
+        },
+      },
+      dependencies = { "MunifTanjim/nui.nvim" },
+    },
     ---------------------
 
     -----------------
@@ -191,7 +226,20 @@ require("lazy").setup({
     },
     {
       "dnlhc/glance.nvim",
-      opts = { height = 30, border = { enable = true } },
+      config = function()
+        local glance = require("glance")
+        local actions = glance.actions
+        glance.setup({
+          height = 30,
+          border = { enable = true },
+          mappings = {
+            list = {
+              ["<S-up>"] = actions.preview_scroll_win(5),
+              ["<S-down>"] = actions.preview_scroll_win(-5),
+            },
+          },
+        })
+      end,
       keys = {
         { "gR", "<CMD>Glance references<CR>", desc = "Glance References" },
         { "gD", "<CMD>Glance definitions<CR>", desc = "Glance Definitions" },
@@ -280,11 +328,6 @@ require("lazy").setup({
       config = function()
         require("plugins.neogen-plugin")
       end,
-    },
-    {
-      "j-hui/fidget.nvim",
-      event = "VeryLazy",
-      opts = { window = { blend = 0 } },
     },
     {
       "klen/nvim-test",
