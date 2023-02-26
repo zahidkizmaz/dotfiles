@@ -247,6 +247,13 @@ require("lazy").setup({
         { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance Type Definitions" },
       },
     },
+    {
+      "smjonas/inc-rename.nvim",
+      config = true,
+      keys = {
+        { "<leader>rn", ":IncRename ", desc = "Rename" },
+      },
+    },
     -------------------------------
 
     -----------------------------
