@@ -378,6 +378,11 @@ require("lazy").setup({
         { "<leader>tr", "<cmd>TestNearest<cr>", desc = "Run the test nearest to the cursor" },
       },
     },
+    {
+      "NvChad/nvim-colorizer.lua",
+      config = true,
+      cmd = { "ColorizerToggle" },
+    },
   },
   defaults = { lazy = true },
   ui = { border = "rounded" },
