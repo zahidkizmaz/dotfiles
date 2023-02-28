@@ -90,9 +90,7 @@ require("lazy").setup({
           },
         },
         views = {
-          mini = {
-            win_options = { winblend = 0 }, -- Transparent background
-          },
+          mini = { win_options = { winblend = 0 } }, -- Transparent background
         },
       },
       dependencies = { "MunifTanjim/nui.nvim" },
@@ -219,9 +217,9 @@ require("lazy").setup({
         { "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "LSP Code Actions" },
         { "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
         { "<leader>ds", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
-        { "<leader>gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
         { "<leader>ss", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Correction Suggestions" },
         { "<leader>rr", "<cmd>FzfLua resume<cr>", desc = "Resume last search" },
+        { "gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
       },
     },
     {
