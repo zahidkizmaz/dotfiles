@@ -95,6 +95,36 @@ require("lazy").setup({
       },
       dependencies = { "MunifTanjim/nui.nvim" },
     },
+    {
+      "ThePrimeagen/harpoon",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      keys = {
+        {
+          "<leader>jj",
+          '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+          desc = "View all project marks",
+          mode = "n",
+        },
+        {
+          "<leader>ja",
+          '<cmd>lua require("harpoon.mark").add_file()<cr>',
+          desc = "Mark files you want to revisit later on",
+          mode = "n",
+        },
+        {
+          "<leader>jn",
+          '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+          desc = "Navigates to next mark",
+          mode = "n",
+        },
+        {
+          "<leader>jp",
+          '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
+          desc = "Navigates to prev mark",
+          mode = "n",
+        },
+      },
+    },
     ---------------------
 
     -----------------
