@@ -292,6 +292,7 @@ require("lazy").setup({
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
       event = "UIEnter",
+      cmd = { "TSUpdate", "TSUpdateSync" }, -- Needed for headless runs such as: nvim --headless -c "TSUpdateSync" +qa
       config = function()
         require("plugins.treesitter-plugin")
       end,
