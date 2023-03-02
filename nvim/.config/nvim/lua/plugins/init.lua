@@ -278,10 +278,13 @@ require("lazy").setup({
     },
     {
       "smjonas/inc-rename.nvim",
-      config = true,
-      keys = {
-        { "<leader>rn", ":IncRename ", desc = "Rename" },
-      },
+      keys = { "<leader>rn" },
+      config = function()
+        require("inc_rename").setup()
+        vim.keymap.set("n", "<leader>rn", function()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end, { expr = true })
+      end,
     },
     -------------------------------
 
