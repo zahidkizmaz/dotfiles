@@ -44,3 +44,16 @@ require("fzf-lua").setup({
     glob_flag = "--hidden --iglob", -- for case sensitive globs use '--glob'
   },
 })
+
+function Git_checkout()
+  local list_branches_cmd = 'git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)"'
+  local opts = {
+    actions = {
+      ["default"] = function(selected, _)
+        local checkout_cmd = "git checkout " .. selected[1]
+        vim.cmd("!" .. checkout_cmd)
+      end,
+    },
+  }
+  require("fzf-lua").fzf_exec(list_branches_cmd, opts)
+end

@@ -249,6 +249,7 @@ require("lazy").setup({
         { "<leader>ds", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
         { "<leader>ss", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Correction Suggestions" },
         { "<leader>rr", "<cmd>FzfLua resume<cr>", desc = "Resume last search" },
+        { "<leader>fc", "<cmd>lua Git_checkout()<cr>", desc = "Custom git checkout" },
         { "gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
       },
     },
