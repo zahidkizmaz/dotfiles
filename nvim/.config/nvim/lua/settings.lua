@@ -100,5 +100,12 @@ vim.filetype.add({
   pattern = {
     ["requirements*.in"] = "requirements",
     ["requirements*.txt"] = "requirements",
+    ["main.y[a]?ml"] = "yaml.ansible",
+    ["install.y[a]?ml"] = "yaml.ansible",
+    ["update.y[a]?ml"] = "yaml.ansible",
+    ["playbook.y[a]?ml"] = "yaml.ansible",
+    [".*/roles/.*/*.y[a]?ml"] = "yaml.ansible",
+    [".*/tasks/.*/*.y[a]?ml"] = "yaml.ansible",
+    [".*/handlers/.*/*.y[a]?ml"] = "yaml.ansible",
   },
 })
