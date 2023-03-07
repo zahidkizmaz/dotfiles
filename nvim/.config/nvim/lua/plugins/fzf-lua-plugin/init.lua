@@ -46,11 +46,15 @@ require("fzf-lua").setup({
 })
 
 function Git_checkout()
+  local checkout_cmd = "git checkout "
   local list_branches_cmd = 'git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)"'
   local opts = {
     actions = {
       ["default"] = function(selected, _)
-        local checkout_cmd = "git checkout " .. selected[1]
+        if string.find(selected[1], "origin/") then
+          checkout_cmd = checkout_cmd .. "--track "
+        end
+        checkout_cmd = checkout_cmd .. selected[1]
         vim.cmd("!" .. checkout_cmd)
       end,
     },
