@@ -24,6 +24,9 @@ wezterm.on("window-config-reloaded", function(window, _)
   set_font_size(window)
 end)
 
+local custom_mocha = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+custom_mocha.indexed = { [16] = "#000000" } -- Make ipython shell autocomplete readable
+
 return {
   window_padding = {
     top = 4,
@@ -33,7 +36,8 @@ return {
   },
   enable_tab_bar = false,
   window_decorations = "RESIZE",
-  color_scheme = "Catppuccin Mocha",
+  color_schemes = { ["custom_mocha"] = custom_mocha },
+  color_scheme = "custom_mocha",
   font = wezterm.font({ family = "JetBrainsMono Nerd Font", weight = "Regular" }),
   adjust_window_size_when_changing_font_size = false,
 
