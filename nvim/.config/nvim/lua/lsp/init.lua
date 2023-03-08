@@ -14,7 +14,6 @@ local LSP_SERVERS = {
   "ansiblels",
   "tailwindcss",
   "rust_analyzer",
-  "docker_compose_language_service",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "html", "rust_analyzer" }
 require("mason-lspconfig").setup({
