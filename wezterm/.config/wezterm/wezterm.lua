@@ -61,9 +61,9 @@ return {
 
     -- Copy & Paste
     { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
-    { key = "c", mods = "SUPER", action = wezterm.action.CopyTo("Clipboard") },
+    { key = "c", mods = "ALT", action = wezterm.action.CopyTo("Clipboard") },
     { key = "V", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
-    { key = "v", mods = "SUPER", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "v", mods = "ALT", action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Font size
     { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
