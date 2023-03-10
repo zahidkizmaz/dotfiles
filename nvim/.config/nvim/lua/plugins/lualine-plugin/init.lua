@@ -6,7 +6,7 @@ require("lualine").setup({
     theme = "catppuccin",
     component_separators = "|",
     section_separators = "",
-    disabled_filetypes = {},
+    disabled_filetypes = { "neo-tree" },
     always_divide_middle = false,
   },
   sections = {
@@ -39,5 +39,5 @@ require("lualine").setup({
     lualine_z = {},
   },
   tabline = {},
-  extensions = { "neo-tree", "toggleterm" },
+  extensions = { "toggleterm" },
 })
