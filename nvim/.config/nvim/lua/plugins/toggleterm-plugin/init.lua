@@ -4,7 +4,7 @@ require("toggleterm").setup({
 
 function Toggle_lazygit()
   local Terminal = require("toggleterm.terminal").Terminal
-  local nvr_command = "nvr --nostart --remote-tab-wait +'set bufhidden=wipe'"
+  local nvr_command = "nvr --nostart --remote-tab-wait +'set bufhidden=delete'"
   local lazygit = Terminal:new({
     cmd = "lazygit",
     hidden = true,
@@ -13,6 +13,25 @@ function Toggle_lazygit()
       VISUAL = nvr_command,
       EDITOR = nvr_command,
     },
+    on_open = function()
+      Toggle_lines()
+    end,
+    on_close = function()
+      Toggle_lines()
+    end,
   })
   lazygit:toggle()
+end
+
+function Toggle_lines()
+  local lua_line = require("lualine")
+
+  if vim.opt.showtabline._value == 0 then
+    lua_line.hide({ unhide = true })
+    vim.opt.showtabline = 1
+  else
+    lua_line.hide()
+    vim.opt.laststatus = 0
+    vim.opt.showtabline = 0
+  end
 end
