@@ -7,6 +7,7 @@ local g = vim.g
 local bo = vim.bo
 local opt = vim.opt
 
+g.loaded_perl_provider = 0
 g.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
 g.mapleader = " "
 
