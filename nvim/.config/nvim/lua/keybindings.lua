@@ -43,6 +43,10 @@ keymap("n", "<c-j>", "<c-w>j", opts)
 keymap("n", "<c-k>", "<c-w>k", opts)
 keymap("n", "<c-h>", "<c-w>h", opts)
 keymap("n", "<c-l>", "<c-w>l", opts)
+keymap("t", "<c-j>", "<c-\\><c-n><c-w>j", { silent = true })
+keymap("t", "<c-k>", "<c-\\><c-n><c-w>k", { silent = true })
+keymap("t", "<c-h>", "<c-\\><c-n><c-w>h", { silent = true })
+keymap("t", "<c-l>", "<c-\\><c-n><c-w>l", { silent = true })
 
 for i = 1, 9 do
   local lhs = "<leader>" .. i
