@@ -8,10 +8,10 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Resize with arrows
-keymap("n", "<leader>j", ":resize +2<CR>", opts)
-keymap("n", "<leader>k", ":resize -2<CR>", opts)
-keymap("n", "<leader>l", ":vertical resize -2<CR>", opts)
-keymap("n", "<leader>h", ":vertical resize +2<CR>", opts)
+keymap("n", "<leader>J", ":resize +2<CR>", opts)
+keymap("n", "<leader>K", ":resize -2<CR>", opts)
+keymap("n", "<leader>L", ":vertical resize -2<CR>", opts)
+keymap("n", "<leader>H", ":vertical resize +2<CR>", opts)
 
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
@@ -37,6 +37,10 @@ keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
 
 -- Diagnostics
 keymap("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
+
+-- Format
+keymap("n", "<leader>jq", "<CMD>%!jq .<CR>", opts)
+keymap("n", "<leader>fo", "<CMD>lua vim.lsp.buf.format()<CR>", opts)
 
 -- Move between windows
 keymap("n", "<c-j>", "<c-w>j", opts)
