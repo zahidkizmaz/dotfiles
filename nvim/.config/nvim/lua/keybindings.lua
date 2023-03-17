@@ -32,9 +32,6 @@ for i = 1, 9 do
   keymap("n", lhs, rhs, opts)
 end
 
--- Terminal mode
-keymap("t", "<c-\\><c-\\>", "<c-\\><c-n>", opts)
-
 -- Diagnostics
 keymap("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
 
@@ -47,10 +44,7 @@ keymap("n", "<c-j>", "<c-w>j", opts)
 keymap("n", "<c-k>", "<c-w>k", opts)
 keymap("n", "<c-h>", "<c-w>h", opts)
 keymap("n", "<c-l>", "<c-w>l", opts)
-keymap("t", "<c-j>", "<c-\\><c-n><c-w>j", { silent = true })
-keymap("t", "<c-k>", "<c-\\><c-n><c-w>k", { silent = true })
-keymap("t", "<c-h>", "<c-\\><c-n><c-w>h", { silent = true })
-keymap("t", "<c-l>", "<c-\\><c-n><c-w>l", { silent = true })
+keymap("t", "<Esc>", "<c-\\><c-n>", { silent = true })
 
 for i = 1, 9 do
   local lhs = "<leader>" .. i
