@@ -27,6 +27,14 @@ end)
 local custom_mocha = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 custom_mocha.indexed = { [16] = "#000000" } -- Make ipython shell autocomplete readable
 
+local function get_modifier()
+  if wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+    return "ALT"
+  end
+  return "SUPER"
+end
+local modifier = get_modifier()
+
 return {
   window_padding = {
     top = 4,
@@ -61,17 +69,17 @@ return {
 
     -- Copy & Paste
     { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
-    { key = "c", mods = "ALT", action = wezterm.action.CopyTo("Clipboard") },
+    { key = "c", mods = modifier, action = wezterm.action.CopyTo("Clipboard") },
     { key = "V", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
-    { key = "v", mods = "ALT", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "v", mods = modifier, action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Font size
     { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
-    { key = "=", mods = "SUPER", action = wezterm.action.IncreaseFontSize },
-    { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
-    { key = "-", mods = "SUPER", action = wezterm.action.DecreaseFontSize },
+    { key = "=", mods = modifier, action = wezterm.action.IncreaseFontSize },
+    { key = "-", mods = modifier, action = wezterm.action.DecreaseFontSize },
+    { key = "-", mods = modifier, action = wezterm.action.DecreaseFontSize },
     { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
-    { key = "0", mods = "SUPER", action = wezterm.action.ResetFontSize },
+    { key = "0", mods = modifier, action = wezterm.action.ResetFontSize },
 
     -- The debug overlay
     { key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
@@ -82,6 +90,6 @@ return {
       mods = "SUPER",
       action = wezterm.action.CloseCurrentTab({ confirm = true }),
     },
-    { key = "q", mods = "SUPER", action = wezterm.action.QuitApplication },
+    { key = "q", mods = modifier, action = wezterm.action.QuitApplication },
   },
 }
