@@ -14,10 +14,12 @@ function Toggle_lazygit()
       EDITOR = nvr_command,
     },
     on_open = function()
+      vim.api.nvim_del_keymap("t", "<Esc>")
       Toggle_lines()
     end,
     on_close = function()
       Toggle_lines()
+      vim.api.nvim_set_keymap("t", "<Esc>", "<c-\\><c-n>", { silent = true })
     end,
   })
   lazygit:toggle()
