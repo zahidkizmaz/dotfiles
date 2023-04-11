@@ -293,7 +293,6 @@ require("lazy").setup({
     -----------------------------
     -- Dev Environment Plugins --
     -----------------------------
-    { "gpanders/editorconfig.nvim", event = "VeryLazy" },
     {
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
