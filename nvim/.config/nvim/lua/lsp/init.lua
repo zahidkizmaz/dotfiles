@@ -2,7 +2,6 @@ local LSP_SERVERS = {
   "bashls",
   "cssls",
   "dockerls",
-  "html",
   "jsonls",
   "pylsp",
   "lua_ls",
@@ -15,7 +14,7 @@ local LSP_SERVERS = {
   "tailwindcss",
   "rust_analyzer",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "html", "rust_analyzer" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer" }
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
@@ -33,10 +32,6 @@ for _, server in ipairs(LSP_SERVERS) do
   end
 end
 
-lspconfig.html.setup({
-  on_attach = on_attach_without_formatting,
-  capabilities = capabilities,
-})
 lspconfig.tsserver.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
