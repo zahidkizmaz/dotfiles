@@ -9,7 +9,6 @@ local LSP_SERVERS = {
   "tsserver",
   "vimls",
   "yamlls",
-  "gopls",
   "ansiblels",
   "tailwindcss",
   "rust_analyzer",
