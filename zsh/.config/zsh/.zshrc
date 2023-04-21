@@ -59,10 +59,12 @@ if type "pipx" &>/dev/null; then
 fi
 
 # asdf-vm
-if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then
+if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then  # Linux
   source /opt/asdf-vm/asdf.sh
-elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then
+elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then  # Intel Mac
   source /usr/local/opt/asdf/libexec/asdf.sh
+elif [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then  # Arm Mac
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 # Rust
