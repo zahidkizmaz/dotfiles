@@ -38,6 +38,13 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search   # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+# CUSTOM ALIASESES - FUNCTIONS - ENV VARS
+[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
+[ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
+[ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
+[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
 # Starship
 if type "starship" &>/dev/null; then
   eval "$(starship init zsh)"
@@ -59,11 +66,11 @@ if type "pipx" &>/dev/null; then
 fi
 
 # asdf-vm
-if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then  # Linux
+if [[ -f "/opt/asdf-vm/asdf.sh" ]]; then # Linux
   source /opt/asdf-vm/asdf.sh
-elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then  # Intel Mac
+elif [[ -f "/usr/local/opt/asdf/libexec/asdf.sh" ]]; then # Intel Mac
   source /usr/local/opt/asdf/libexec/asdf.sh
-elif [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then  # Arm Mac
+elif [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then # Arm Mac
   source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
@@ -71,13 +78,6 @@ fi
 if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
-
-# CUSTOM ALIASESES - FUNCTIONS - ENV VARS
-[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
-[ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
-[ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
-[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # PLUGINS
 [ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"

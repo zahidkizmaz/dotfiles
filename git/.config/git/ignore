@@ -91,3 +91,7 @@ dmypy.json
 
 # ruff
 .ruff.toml
+
+# zsh
+.zsh_history
+.zsh_sessions
