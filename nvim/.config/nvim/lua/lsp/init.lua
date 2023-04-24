@@ -13,7 +13,7 @@ local LSP_SERVERS = {
   "tailwindcss",
   "rust_analyzer",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls" }
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
@@ -24,6 +24,7 @@ local lsp_handlers = require("lsp.handlers")
 local on_attach = lsp_handlers.on_attach
 local capabilities = lsp_handlers.capabilities
 local on_attach_without_formatting = lsp_handlers.on_attach_without_formatting
+local on_attach_with_formatting = lsp_handlers.on_attach
 
 for _, server in ipairs(LSP_SERVERS) do
   if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
@@ -31,6 +32,15 @@ for _, server in ipairs(LSP_SERVERS) do
   end
 end
 
+lspconfig.yamlls.setup({
+  on_attach = on_attach_with_formatting,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    },
+  },
+})
 lspconfig.tsserver.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
