@@ -12,6 +12,7 @@ local LSP_SERVERS = {
   "ansiblels",
   "tailwindcss",
   "rust_analyzer",
+  "lemminx",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls" }
 require("mason-lspconfig").setup({
