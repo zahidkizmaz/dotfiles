@@ -8,6 +8,7 @@ local bo = vim.bo
 local opt = vim.opt
 
 g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
 g.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
 g.mapleader = " "
 
@@ -108,5 +109,6 @@ vim.filetype.add({
     [".*/roles/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/tasks/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/handlers/.*/*.y[a]?ml"] = "yaml.ansible",
+    [".*.cls"] = "java",
   },
 })
