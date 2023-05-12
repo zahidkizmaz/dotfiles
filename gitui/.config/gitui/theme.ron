@@ -1,3 +1,4 @@
+// Catppuccin mocha theme
 (
     selected_tab: Reset,
     command_fg: Rgb(205, 214, 244),
