@@ -45,12 +45,12 @@ conflicted = "🏳"
 ahead = "💨"
 behind = "😰"
 diverged = "😵"
-untracked = "🤷‍"
+untracked = "🤷"
 stashed = "📦"
 modified = "📝"
 staged = '[++\($count\)](green)'
 renamed = "👅"
-deleted = "🗑"
+deleted = "🗑️"
 
 [username]
 style_user = "white bold"
