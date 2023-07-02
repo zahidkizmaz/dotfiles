@@ -256,6 +256,20 @@ require("lazy").setup({
       },
     },
     {
+      "zahidkizmaz/python-docs.nvim",
+      dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
+      dev = true,
+      keys = {
+        {
+          "<leader>fp",
+          function()
+            return require("python-docs").fzf_lua()
+          end,
+          desc = "Search for installed python library docs.",
+        },
+      },
+    },
+    {
       "dnlhc/glance.nvim",
       config = function()
         local glance = require("glance")
@@ -394,6 +408,7 @@ require("lazy").setup({
   ui = { border = "rounded" },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = false },
+  dev = { path = "~/Projects" },
   performance = {
     rtp = {
       disabled_plugins = {
