@@ -109,6 +109,5 @@ vim.filetype.add({
     [".*/roles/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/tasks/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/handlers/.*/*.y[a]?ml"] = "yaml.ansible",
-    [".*.cls"] = "java",
   },
 })
