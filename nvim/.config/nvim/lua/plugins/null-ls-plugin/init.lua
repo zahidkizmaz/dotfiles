@@ -23,6 +23,10 @@ null_ls.setup({
         }
       end,
     }),
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "apexcode" },
+      extra_args = { "--plugin=prettier-plugin-apex" },
+    }), -- Just for apexcode
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.stylua,

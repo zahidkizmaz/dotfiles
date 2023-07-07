@@ -13,8 +13,9 @@ local LSP_SERVERS = {
   "tailwindcss",
   "rust_analyzer",
   "lemminx",
+  "apex_ls",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls" }
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
@@ -97,5 +98,10 @@ lspconfig.pylsp.setup({
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = on_attach_without_formatting,
+})
+lspconfig.apex_ls.setup({
+  apex_jar_path = vim.fn.expand("$HOME/apex-jorje-lsp.jar"),
+  apex_enable_semantic_errors = false, -- Whether to allow Apex Language Server to surface semantic errors
+  apex_enable_completion_statistics = false, -- Whether to allow Apex Language Server to collect telemetry on code completion usage
 })
 lsp_handlers.setup()
