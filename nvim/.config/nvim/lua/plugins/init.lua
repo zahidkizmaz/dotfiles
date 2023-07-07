@@ -267,6 +267,14 @@ require("lazy").setup({
           end,
           desc = "Search for installed python library docs.",
         },
+        {
+          "<leader>fp",
+          function()
+            return require("python-docs").fzf_lua({ search = true })
+          end,
+          mode = "v",
+          desc = "Search for selection in installed python library docs.",
+        },
       },
     },
     {
