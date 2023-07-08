@@ -19,3 +19,4 @@ end
 Prequire("settings")
 Prequire("plugins")
 Prequire("keybindings")
+Prequire("commands")
