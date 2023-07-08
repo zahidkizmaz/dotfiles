@@ -16,7 +16,6 @@ local function git_show(branch)
   vim.api.nvim_buf_set_option(buf, "filetype", file_type)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, git_command)
   vim.api.nvim_buf_set_option(buf, "readonly", true)
-  vim.api.nvim_buf_set_option(buf, "modifiable", false)
   vim.api.nvim_win_set_buf(win, buf)
 end
 
@@ -25,12 +24,22 @@ vim.api.nvim_create_user_command("Gshow", function(opts)
   git_show(branch)
 end, {
   nargs = "?",
-  complete = function()
+  complete = function(arg)
     local Job = require("plenary.job")
     local result = Job:new({
       command = "git",
       args = { "for-each-ref", "--sort=-committerdate", "refs/", "--format=%(refname:short)" },
     }):sync()
+
+    if arg then
+      local filtered_result = {}
+      for _, value in ipairs(result) do
+        if vim.startswith(value:lower(), arg:lower()) then
+          table.insert(filtered_result, value)
+        end
+      end
+      return filtered_result
+    end
     return result
   end,
 })
