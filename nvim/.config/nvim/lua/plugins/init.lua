@@ -216,6 +216,7 @@ require("lazy").setup({
         require("lsp")
       end,
       dependencies = {
+        { "folke/neodev.nvim", config = true },
         { "neovim/nvim-lspconfig" },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },

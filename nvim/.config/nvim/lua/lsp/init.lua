@@ -52,6 +52,7 @@ lspconfig.lua_ls.setup({
   capabilities = capabilities,
   settings = {
     Lua = {
+      completion = { callSnippet = "Replace" }, -- comes from folke/neodev
       runtime = { version = "LuaJIT" },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
