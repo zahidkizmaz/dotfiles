@@ -14,6 +14,7 @@ g.mapleader = " "
 
 o.mouse = "a"
 o.hlsearch = false
+o.incsearch = true
 o.smartcase = true
 o.ignorecase = true
 o.breakindent = true
@@ -21,12 +22,14 @@ o.termguicolors = true
 o.splitright = true
 o.cmdheight = 0
 
+opt.wrap = false
 opt.number = true
 opt.backup = false
 opt.undofile = true
 opt.swapfile = false
-opt.updatetime = 300
+opt.updatetime = 50
 opt.tagcase = "smart"
+opt.smartindent = true
 opt.relativenumber = true
 opt.clipboard = "unnamedplus"
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"

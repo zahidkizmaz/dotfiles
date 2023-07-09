@@ -1,8 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-keymap("v", "<leader>y", '"+y', opts)
-
 -- Visual shifting (does not exit Visual mode)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -19,6 +17,8 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Keep the register same after pasting in Visual mode
 keymap("v", "p", '"_dP', opts)
+
+keymap("n", "Q", "<nop>", opts)
 
 -- Tabs
 keymap("n", "<leader>tt", "<CMD>tabnew<cr>", opts)
@@ -54,3 +54,4 @@ end
 
 -- Bring justice to all window sizes and to cmdheight
 keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
+keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
