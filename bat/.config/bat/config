@@ -1,1 +1,1 @@
---map-syntax='*.cls:Java'
+--map-syntax='*.{cls,trigger}:Java'
