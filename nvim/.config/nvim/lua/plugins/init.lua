@@ -99,6 +99,11 @@ require("lazy").setup({
     {
       "ThePrimeagen/harpoon",
       dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {
+        menu = {
+          width = math.floor(vim.api.nvim_win_get_width(0) * 0.5),
+        },
+      },
       keys = {
         {
           "<leader>jj",
@@ -113,13 +118,13 @@ require("lazy").setup({
           mode = "n",
         },
         {
-          "<leader>jn",
+          "<leader>jh",
           '<cmd>lua require("harpoon.ui").nav_next()<cr>',
           desc = "Navigates to next mark",
           mode = "n",
         },
         {
-          "<leader>jp",
+          "<leader>jl",
           '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
           desc = "Navigates to prev mark",
           mode = "n",
