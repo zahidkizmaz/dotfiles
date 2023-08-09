@@ -80,7 +80,7 @@ cmp.setup({
   },
   sources = {
     { name = "snippy", max_item_count = 3 },
-    { name = "nvim_lua" },
+    -- { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "cmp_tabnine", max_item_count = 5 },
     { name = "buffer", keyword_length = 2 },
@@ -94,7 +94,7 @@ cmp.setup({
         buffer = "[BUF]",
         snippy = "[SNIP]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[API]",
+        -- nvim_lua = "[API]",
         cmp_tabnine = "[TAB9]",
       })[entry.source.name]
       return item
