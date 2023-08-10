@@ -10,6 +10,11 @@ null_ls.setup({
     null_ls.builtins.diagnostics.curlylint,
     null_ls.builtins.diagnostics.ansiblelint,
     null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.diagnostics.pmd.with({
+      filetypes = { "apexcode" },
+      args = { "pmd", "--dir", "$ROOT/force-app", "--format", "json" },
+      extra_args = { "-R", "pmd-apex-ruleset.xml", "--cache", vim.fn.expand("$HOME/.cache/pmd") },
+    }),
     null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.djhtml.with({
