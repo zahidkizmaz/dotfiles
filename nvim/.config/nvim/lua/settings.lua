@@ -113,5 +113,6 @@ vim.filetype.add({
     [".*/tasks/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/handlers/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*.cls"] = "apexcode",
+    [".*.trigger"] = "apexcode",
   },
 })
