@@ -415,6 +415,38 @@ require("lazy").setup({
       config = true,
       cmd = { "ColorizerToggle" },
     },
+    {
+      "epwalsh/obsidian.nvim",
+      event = { "BufReadPre " .. vim.fn.expand("~") .. "/Notes/obsidian/**.md" },
+      cmd = { "ObsidianNew" },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+        "ibhagwan/fzf-lua",
+      },
+      opts = {
+        dir = "~/Notes/obisidian", -- no need to call 'vim.fn.expand' here
+        finder = "fzf-lua",
+      },
+      keys = {
+        { "<leader>nc", "<cmd>ObsidianNew<cr>", desc = "Create new note" },
+        { "<leader>nd", "<cmd>ObsidianToday<cr>", desc = "Create todays note" },
+        { "<leader>ny", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterdays note" },
+        { "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search notes" },
+        { "<leader>ng", "<cmd>ObsidianSearch<cr>", desc = "Grep notes" },
+      },
+      config = function(_, opts)
+        require("obsidian").setup(opts)
+
+        vim.keymap.set("n", "gf", function()
+          if require("obsidian").util.cursor_on_markdown_link() then
+            return "<cmd>ObsidianFollowLink<CR>"
+          else
+            return "gf"
+          end
+        end, { noremap = false, expr = true })
+      end,
+    },
   },
   defaults = { lazy = true },
   ui = { border = "rounded" },
