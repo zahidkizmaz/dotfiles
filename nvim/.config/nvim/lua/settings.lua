@@ -22,7 +22,7 @@ o.termguicolors = true
 o.splitright = true
 o.cmdheight = 0
 
-opt.wrap = false
+opt.wrap = true
 opt.number = true
 opt.backup = false
 opt.undofile = true
