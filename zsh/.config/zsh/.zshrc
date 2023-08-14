@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # History settings
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS

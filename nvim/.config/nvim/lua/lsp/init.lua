@@ -14,8 +14,9 @@ local LSP_SERVERS = {
   "rust_analyzer",
   "lemminx",
   "apex_ls",
+  "efm",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls", "efm" }
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
@@ -96,4 +97,8 @@ lspconfig.apex_ls.setup({
   apex_enable_semantic_errors = true, -- Whether to allow Apex Language Server to surface semantic errors
   apex_enable_completion_statistics = false, -- Whether to allow Apex Language Server to collect telemetry on code completion usage
 })
+lspconfig.efm.setup({
+  init_options = { documentFormatting = true },
+})
+
 lsp_handlers.setup()

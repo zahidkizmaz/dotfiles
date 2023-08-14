@@ -1,0 +1,201 @@
+version: 2
+root-markers:
+    - .git/
+lint-debounce: 1s
+log-file: /tmp/efm.log
+log-level: 1
+
+tools:
+    trim_spaces: &trim-spaces
+        format-command: awk '{ sub(/[ \t]+$/, ""); print }'
+        format-stdin: true
+
+    trim_newlines: &trim-newlines
+        format-command: awk 'NF{print s $0; s=""; next} {s=s ORS}'
+        format-stdin: true
+
+    stylua: &stylua
+        format-command: >
+            stylua ${--indent-width:tabSize} ${--range-start:charStart}
+            ${--range-end:charEnd} --color Never -
+        format-stdin: true
+        format-can-range: true
+
+    black: &black
+        format-command: black --quiet --fast -
+        format-stdin: true
+
+    isort: &isort
+        format-command: isort --quiet -
+        format-stdin: true
+
+    ruff: &ruff
+        prefix: ruff
+        lint-stdin: true
+        lint-ignore-exit-code: true
+        lint-command: ruff check -n -e --quiet ${INPUT}
+        root-markers:
+            - pyproject.toml
+            - ruff.toml
+            - .ruff.toml
+
+    yamllint: &yamllint
+        prefix: yamllint
+        lint-stdin: true
+        lint-ignore-exit-code: true
+        lint-command: yamllint -f parsable -
+
+    shellcheck: &shellcheck
+        prefix: shellcheck
+        lint-stdin: true
+        lint-ignore-exit-code: true
+        lint-command: shellcheck --color=never --format=gcc -
+
+    ansible_lint: &ansible-lint
+        prefix: ansible-lint
+        lint-stdin: true
+        lint-command: ansible-lint --nocolor -
+
+    shfmt: &shfmt
+        format-command: shfmt -i=2 -ci -bn
+        format-stdin: true
+
+    sqlfluff-fix: &sqlfluff-fix
+        format-command: >
+            sqlfluff fix
+            --force
+            --disable-progress-bar
+            --dialect postgres -n -
+        format-stdin: true
+
+    djhtml: &djhtml
+        format-command: djhtml ${--tabwidth=tabSize} -
+        format-stdin: true
+
+    html-prettier: &html-prettier
+        format-stdin: true
+        format-command: >
+            prettier ${--tab-width:tabWidth}
+            ${--single-quote:singleQuote} --parser html --write
+
+    css-prettier: &css-prettier
+        format-stdin: true
+        format-command: >
+            prettier ${--tab-width:tabWidth}
+            ${--single-quote:singleQuote} --parser css --write
+
+    prettierd: &prettierd
+        format-command: >
+            prettierd ${INPUT} ${--range-start=charStart}
+            ${--range-end=charEnd} ${--tab-width=tabSize}
+        format-stdin: true
+        format-can-range: true
+        root-markers:
+            - package.json
+            - .prettierrc
+            - .prettierrc.json
+            - .prettierrc.js
+            - .prettierrc.yml
+            - .prettierrc.yaml
+            - .prettierrc.json5
+            - .prettierrc.mjs
+            - .prettierrc.cjs
+            - .prettierrc.toml
+
+    prettier: &prettier
+        format-command: >
+            ./node_modules/.bin/prettier ${INPUT} ${--range-start:charStart}
+            ${--range-end:charEnd} ${--tab-width:tabSize}
+            ${--use-tabs:!insertSpaces}
+        format-stdin: true
+        format-can-range: true
+        root-markers:
+            - package.json
+            - .prettierrc
+            - .prettierrc.json
+            - .prettierrc.js
+            - .prettierrc.yml
+            - .prettierrc.yaml
+            - .prettierrc.json5
+            - .prettierrc.mjs
+            - .prettierrc.cjs
+            - .prettierrc.toml
+
+    prettier_apex: &prettier-apex
+        format-command: >
+            ./node_modules/.bin/prettier ${INPUT} ${--range-start:charStart}
+            ${--range-end:charEnd} ${--tab-width:tabSize}
+            ${--use-tabs:!insertSpaces} --plugin=prettier-plugin-apex
+        format-stdin: true
+        format-can-range: true
+        root-markers:
+            - package.json
+            - .prettierrc
+            - .prettierrc.json
+            - .prettierrc.js
+            - .prettierrc.yml
+            - .prettierrc.yaml
+            - .prettierrc.json5
+            - .prettierrc.mjs
+            - .prettierrc.cjs
+            - .prettierrc.toml
+
+    javascript-eslint: &javascript-eslint
+        lint-command: "eslint -f visualstudio --stdin --stdin-filename ${INPUT}"
+        lint-ignore-exit-code: true
+        lint-stdin: true
+        lint-formats:
+            - "%f(%l,%c): %tarning %m"
+            - "%f(%l,%c): %rror %m"
+
+    rustfmt: &rustfmt
+        format-stdin: true
+        format-command: rustfmt --emit=stdout
+
+languages:
+    ansible.yaml:
+        - <<: *ansible-lint
+    yaml:
+        - <<: *yamllint
+    python:
+        - <<: *ruff
+        - <<: *isort
+        - <<: *black
+    lua:
+        - <<: *stylua
+    sh:
+        - <<: *shellcheck
+        - <<: *shfmt
+    zsh:
+        - <<: *shfmt
+    htmldjango:
+        - <<: *djhtml
+        - <<: *trim-spaces
+        - <<: *trim-newlines
+    rust:
+        - <<: *rustfmt
+    sql:
+        - <<: *sqlfluff-fix
+    html:
+        - <<: *html-prettier
+        - <<: *trim-spaces
+        - <<: *trim-newlines
+    css:
+        - <<: *css-prettier
+    typescript:
+        - <<: *prettierd
+        - <<: *javascript-eslint
+    typescriptreact:
+        - <<: *prettierd
+        - <<: *javascript-eslint
+    javascript:
+        - <<: *prettierd
+        - <<: *javascript-eslint
+    javascriptreact:
+        - <<: *prettierd
+        - <<: *javascript-eslint
+    apexcode:
+        - <<: *prettier-apex
+    =:
+        - <<: *trim-spaces
+        - <<: *trim-newlines

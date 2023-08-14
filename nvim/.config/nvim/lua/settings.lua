@@ -99,7 +99,6 @@ vim.filetype.add({
     [".envrc"] = "sh",
     ["direnvrc"] = "sh",
     [".xinitrc"] = "sh",
-    [".zshrc"] = "sh",
     [".bash_profile"] = "sh",
   },
   pattern = {
