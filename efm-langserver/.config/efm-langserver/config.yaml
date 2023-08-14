@@ -72,6 +72,12 @@ tools:
         format-command: djhtml ${--tabwidth=tabSize} -
         format-stdin: true
 
+    markdown-prettier: &markdown-prettier
+        format-stdin: true
+        format-command: >
+            prettier ${--tab-width:tabWidth}
+            ${--single-quote:singleQuote} --parser markdown --write
+
     html-prettier: &html-prettier
         format-stdin: true
         format-command: >
@@ -180,8 +186,14 @@ languages:
         - <<: *html-prettier
         - <<: *trim-spaces
         - <<: *trim-newlines
+    markdown:
+        - <<: *markdown-prettier
+        - <<: *trim-spaces
+        - <<: *trim-newlines
     css:
         - <<: *css-prettier
+        - <<: *trim-spaces
+        - <<: *trim-newlines
     typescript:
         - <<: *prettierd
         - <<: *javascript-eslint
