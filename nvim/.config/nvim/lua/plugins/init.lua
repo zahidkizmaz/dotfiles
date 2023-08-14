@@ -447,6 +447,18 @@ require("lazy").setup({
         end, { noremap = false, expr = true })
       end,
     },
+    {
+      "zahidkizmaz/sf.nvim",
+      dev = true,
+      config = { split = { position = "left" } },
+      keys = {
+        { "<leader>sfd", "<cmd>SFDeploy<cr>", desc = "Deploy current buffer to default sf org" },
+        { "<leader>sft", "<cmd>SFTest<cr>", desc = "Run test class in current buffer" },
+        { "<leader>sfT", "<cmd>SFDeployTest<cr>", desc = "Deploy and run tests of the current buffer" },
+        { "<leader>sfs", "<cmd>SFShow<cr>", desc = "Show sf.nvim split" },
+        { "<leader>sfh", "<cmd>SFHide<cr>", desc = "Hide sf.nvim split" },
+      },
+    },
   },
   defaults = { lazy = true },
   ui = { border = "rounded" },
