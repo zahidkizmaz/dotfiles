@@ -163,6 +163,8 @@ languages:
         - <<: *ansible-lint
     yaml:
         - <<: *yamllint
+        - <<: *trim-spaces
+        - <<: *trim-newlines
     python:
         - <<: *ruff
         - <<: *isort
