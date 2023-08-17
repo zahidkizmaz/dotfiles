@@ -44,7 +44,7 @@ M.on_attach = function(_, bufnr)
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "<buffer>",
     callback = function()
-      vim.lsp.buf.format(nil, 3000)
+      vim.lsp.buf.format({ timeout_ms = 3000 })
     end,
   })
 end
