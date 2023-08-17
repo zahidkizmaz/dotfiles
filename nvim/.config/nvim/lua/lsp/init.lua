@@ -1,20 +1,20 @@
 local LSP_SERVERS = {
+  "ansiblels",
+  "apex_ls",
   "bashls",
   "cssls",
   "dockerls",
+  "efm",
   "jsonls",
-  "pylsp",
+  "lemminx",
   "lua_ls",
+  "pylsp",
+  "rust_analyzer",
+  "tailwindcss",
   "texlab",
   "tsserver",
   "vimls",
   "yamlls",
-  "ansiblels",
-  "tailwindcss",
-  "rust_analyzer",
-  "lemminx",
-  "apex_ls",
-  "efm",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls", "efm" }
 require("mason-lspconfig").setup({
