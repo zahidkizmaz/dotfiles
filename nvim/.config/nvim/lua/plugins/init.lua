@@ -411,6 +411,25 @@ require("lazy").setup({
       },
     },
     {
+      "nvim-pack/nvim-spectre",
+      config = true,
+      dependencies = { "nvim-lua/plenary.nvim" },
+      keys = {
+        { "<leader>r", "<cmd>lua require('spectre').toggle()<CR>", desc = "Toggle Spectre" },
+        {
+          "<leader>rw",
+          "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
+          desc = "Search current word",
+        },
+        {
+          "<leader>rw",
+          "<esc><cmd>lua require('spectre').open_visual()<CR>",
+          mode = "v",
+          desc = "Search current word",
+        },
+      },
+    },
+    {
       "NvChad/nvim-colorizer.lua",
       config = true,
       cmd = { "ColorizerToggle" },
