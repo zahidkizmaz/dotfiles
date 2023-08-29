@@ -469,7 +469,7 @@ require("lazy").setup({
     {
       "zahidkizmaz/sf.nvim",
       dev = true,
-      config = { split = { position = "left" } },
+      config = true,
       keys = {
         { "<leader>sfd", "<cmd>SFDeploy<cr>", desc = "Deploy current buffer to default sf org" },
         { "<leader>sft", "<cmd>SFTest<cr>", desc = "Run test class in current buffer" },
