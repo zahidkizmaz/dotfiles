@@ -21,7 +21,7 @@ require("lazy").setup({
       "lukas-reineke/indent-blankline.nvim",
       event = "UIEnter",
       config = function()
-        require("plugins.indent-blankline-plugin")
+        require("ibl").setup()
       end,
     },
     {
