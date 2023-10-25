@@ -21,10 +21,6 @@ tools:
         format-stdin: true
         format-can-range: true
 
-    black: &black
-        format-command: black --quiet --fast -
-        format-stdin: true
-
     isort: &isort
         format-command: isort --quiet -
         format-stdin: true
@@ -38,6 +34,10 @@ tools:
             - pyproject.toml
             - ruff.toml
             - .ruff.toml
+
+    ruff_format: &ruff-format
+        format-command: ruff format -s -
+        format-stdin: true
 
     yamllint: &yamllint
         prefix: yamllint
@@ -167,8 +167,8 @@ languages:
         - <<: *trim-newlines
     python:
         - <<: *ruff
+        - <<: *ruff-format
         - <<: *isort
-        - <<: *black
     lua:
         - <<: *stylua
     sh:
