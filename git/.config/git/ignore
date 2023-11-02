@@ -80,6 +80,7 @@ env.bak/
 venv.bak/
 .direnv/
 .tool-versions
+.rtx.toml
 
 # mypy
 .mypy_cache/
