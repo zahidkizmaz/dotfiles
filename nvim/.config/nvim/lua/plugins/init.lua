@@ -349,14 +349,6 @@ require("lazy").setup({
       },
     },
     {
-      "jose-elias-alvarez/null-ls.nvim",
-      event = "VeryLazy",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      config = function()
-        require("plugins.null-ls-plugin")
-      end,
-    },
-    {
       "numToStr/Comment.nvim",
       config = true,
       keys = {
