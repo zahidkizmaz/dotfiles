@@ -7,7 +7,13 @@ alias nv='nvim'
 alias mkdir='mkdir -v'
 alias pls='sudo $(fc -ln -1)'
 alias grep='grep --colour=auto'
+
+#------------------------------
+# LS Aliases
+#------------------------------
 alias ls='ls --color=auto -h -F '
+alias ll='ls --color=auto -h -F -l '
+alias la='ls --color=auto -h -F -a '
 
 #------------------------------
 # Screen Aliases
