@@ -126,7 +126,7 @@ super + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # run copyq
-mod1 + shift + x
+super + shift + x
   copyq toggle
 
 #Volume Up
