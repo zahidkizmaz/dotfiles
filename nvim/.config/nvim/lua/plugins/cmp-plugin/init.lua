@@ -35,7 +35,6 @@ end
 
 local cmp = require("cmp")
 local snippy = require("snippy")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 cmp.setup({
   snippet = {
@@ -112,5 +111,3 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
 })
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

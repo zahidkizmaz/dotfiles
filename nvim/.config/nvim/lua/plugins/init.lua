@@ -375,13 +375,6 @@ require("lazy").setup({
       },
     },
     {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-      config = function()
-        require("plugins.autopairs-plugin")
-      end,
-    },
-    {
       "danymat/neogen",
       cmd = { "Neogen" },
       config = function()
