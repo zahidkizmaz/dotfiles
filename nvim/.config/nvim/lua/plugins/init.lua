@@ -72,6 +72,7 @@ require("lazy").setup({
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
+            ["cmp.entry.get_documentation"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           },
@@ -184,29 +185,8 @@ require("lazy").setup({
     -- Auto Completion --
     ---------------------
     {
-      "ms-jpq/coq_nvim",
-      branch = "coq",
-      event = "InsertEnter",
-      dependencies = {
-        { "ms-jpq/coq.artifacts", branch = "artifacts" },
-      },
-      config = function()
-        vim.g.coq_settings = {
-          clients = { tabnine = { enabled = true } },
-          keymap = { jump_to_mark = "" },
-          display = {
-            pum = { source_context = { "[", "]" } },
-            ghost_text = { context = { " ", "" } },
-            icons = { mode = "none" },
-          },
-        }
-        vim.cmd("COQnow --shut-up")
-      end,
-    },
-    {
       "hrsh7th/nvim-cmp",
       event = "InsertEnter",
-      cond = false,
       dependencies = {
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-buffer" },
@@ -396,7 +376,6 @@ require("lazy").setup({
     },
     {
       "windwp/nvim-autopairs",
-      cond = false,
       event = "InsertEnter",
       config = function()
         require("plugins.autopairs-plugin")
