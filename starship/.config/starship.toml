@@ -14,7 +14,7 @@ disabled = true
 disabled = true
 
 [nodejs]
-disabled = true
+disabled = false
 detect_extensions = []
 
 [python]
