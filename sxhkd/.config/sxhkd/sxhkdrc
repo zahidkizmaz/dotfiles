@@ -8,8 +8,12 @@ mod1 + Return
 	kitty
 
 # rofi program launcher
-mod1 + r
+super + space
 	rofi -show
+
+# dmenu_run
+super + r
+	dmenu_run
 
 # make sxhkd reload its configuration files:
 mod1 + Escape
