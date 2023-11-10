@@ -51,9 +51,9 @@ if type "starship" &>/dev/null; then
   eval "$(starship init zsh)"
 fi
 
-# Direnv
-if type "direnv" &>/dev/null; then
-  eval "$(direnv hook zsh)"
+# rtx
+if type "rtx" &>/dev/null; then
+  eval "$(rtx activate zsh)"
 fi
 
 # Zoxide
@@ -65,9 +65,6 @@ fi
 if type "pipx" &>/dev/null; then
   eval "$(register-python-argcomplete pipx)"
 fi
-
-# rtx
-eval "$(rtx activate zsh)"
 
 # Rust
 if [[ -f "$HOME/.cargo/env" ]]; then
