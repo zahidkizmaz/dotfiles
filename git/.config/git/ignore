@@ -81,6 +81,7 @@ venv.bak/
 .direnv/
 .tool-versions
 .rtx.toml
+**/rtx/trusted-configs
 
 # mypy
 .mypy_cache/
