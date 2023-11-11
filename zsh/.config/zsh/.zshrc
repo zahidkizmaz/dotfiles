@@ -8,11 +8,14 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 
+# Basic auto/tab complete:
+
+# This is necessary for the arch.
+autoload bashcompinit
+bashcompinit
 
 autoload -Uz compinit
 compinit -C
-
-# Basic auto/tab complete:
 fpath+=~/.zfunc
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
