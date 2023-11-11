@@ -8,15 +8,15 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 
+
+autoload -Uz compinit
+compinit -C
+
 # Basic auto/tab complete:
-autoload -U bashcompinit
-bashcompinit
 fpath+=~/.zfunc
-autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots) # Include hidden files.
 setopt AUTO_PARAM_SLASH   # if completed parameter is a directory, add a trailing slash
 
