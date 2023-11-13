@@ -131,6 +131,20 @@ require("lazy").setup({
         },
       },
     },
+    {
+      "sontungexpt/url-open",
+      branch = "mini",
+      cmd = "URLOpenUnderCursor",
+      config = true,
+      keys = {
+        {
+          "<leader>o",
+          "<cmd>URLOpenUnderCursor<cr>",
+          desc = "Open url under cursor",
+          mode = "n",
+        },
+      },
+    },
     ---------------------
 
     -----------------
