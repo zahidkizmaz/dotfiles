@@ -10,6 +10,7 @@ export EDITOR='nvim'
 export PSQL_EDITOR='nvim'
 export VISUAL='nvim'
 export PAGER='less'
+export LESS='-R'
 export MANPAGER='nvim +Man!'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
