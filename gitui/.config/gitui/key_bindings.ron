@@ -13,7 +13,7 @@
 // find `KeysList` type in src/keys/key_list.rs for all possible keys.
 // every key not overwritten via the config file will use the default specified there
 (
-    open_help: Some(( code: F(1), modifiers: ( bits: 0,),)),
+    open_help: Some(( code: Char('?'), modifiers: ( bits: 0,),)),
 
     move_left: Some(( code: Char('h'), modifiers: ( bits: 0,),)),
     move_right: Some(( code: Char('l'), modifiers: ( bits: 0,),)),
