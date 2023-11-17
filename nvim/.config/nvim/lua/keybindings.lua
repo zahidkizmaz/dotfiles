@@ -55,3 +55,6 @@ end
 -- Bring justice to all window sizes and to cmdheight
 keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
+
+-- Open gitui
+keymap("n", "<leader>gg", "<CMD>lua Gitui()<CR>", opts)

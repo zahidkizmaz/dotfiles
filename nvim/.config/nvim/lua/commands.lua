@@ -43,3 +43,31 @@ end, {
     return result
   end,
 })
+
+function Gitui()
+  local cmd = "gitui"
+  local width = vim.api.nvim_get_option("columns")
+  local height = vim.api.nvim_get_option("lines")
+  local window_options = {
+    style = "minimal",
+    relative = "editor",
+    width = width,
+    height = height,
+    row = 0,
+    col = 0,
+    border = "rounded",
+    noautocmd = true,
+  }
+
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_open_win(bufnr, true, window_options)
+
+  vim.api.nvim_del_keymap("t", "<Esc>")
+  vim.fn.termopen(cmd, {
+    on_exit = function()
+      vim.api.nvim_set_keymap("t", "<Esc>", "<c-\\><c-n>", { silent = true })
+      vim.api.nvim_buf_delete(bufnr, { force = true })
+    end,
+  })
+  vim.cmd([[startinsert!]])
+end
