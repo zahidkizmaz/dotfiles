@@ -53,17 +53,6 @@ require("lazy").setup({
       },
     },
     {
-      "akinsho/toggleterm.nvim",
-      config = function()
-        require("plugins.toggleterm-plugin")
-      end,
-      keys = {
-        { "<leader>nt", "<cmd>ToggleTerm<cr>", desc = "Open Terminal" },
-        { "<leader>gg", "<cmd>lua Toggle_lazygit()<CR>", desc = "Open lazygit" },
-        { "<leader>tl", "<cmd>lua Toggle_lines()<CR>", desc = "Show/Hide Status and Tab bars" },
-      },
-    },
-    {
       "folke/noice.nvim",
       event = "UIEnter",
       opts = {
