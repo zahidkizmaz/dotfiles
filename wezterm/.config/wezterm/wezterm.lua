@@ -48,7 +48,12 @@ return {
   window_decorations = "RESIZE",
   color_schemes = { ["custom_mocha"] = custom_mocha },
   color_scheme = "custom_mocha",
-  font = wezterm.font({ family = "NotoMono Nerd Font", weight = "Regular" }),
+  font = wezterm.font({
+    family = "IosevkaTerm NFM",
+    weight = "DemiBold",
+    stretch = "Normal",
+    style = "Normal",
+  }),
   adjust_window_size_when_changing_font_size = false,
 
   text_background_opacity = 1,
