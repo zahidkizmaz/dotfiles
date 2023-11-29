@@ -6,11 +6,11 @@ local function set_font_size(window)
   local width = window_dimensions.pixel_width
   local height = window_dimensions.pixel_height
 
-  local font_size = 12
+  local font_size = 14
   if width > 1920 and height > 1080 and dpi < 80 then
-    font_size = 14
-  elseif width > 1920 and height > 1080 and dpi > 80 then
     font_size = 16
+  elseif width > 1920 and height > 1080 and dpi > 80 then
+    font_size = 18
   end
 
   local overrides = window:get_config_overrides() or {}
