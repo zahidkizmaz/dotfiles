@@ -20,4 +20,4 @@ require("nvim-treesitter.configs").setup({
     },
   },
 })
-vim.treesitter.language.register("java", "apexcode") -- Treestter doesn't have apexcode support. However, java seems to work fine for it.
+vim.treesitter.language.register("apex", "apexcode") -- Treestter doesn't have apexcode support. However, java seems to work fine for it.
