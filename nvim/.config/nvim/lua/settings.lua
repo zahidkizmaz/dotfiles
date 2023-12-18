@@ -111,7 +111,16 @@ vim.filetype.add({
     [".*/roles/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/tasks/.*/*.y[a]?ml"] = "yaml.ansible",
     [".*/handlers/.*/*.y[a]?ml"] = "yaml.ansible",
-    [".*.cls"] = "apexcode",
-    [".*.trigger"] = "apexcode",
+  },
+})
+
+-- Apex file types
+vim.filetype.add({
+  extension = {
+    cls = "apex",
+    apex = "apex",
+    trigger = "apex",
+    soql = "soql",
+    sosl = "sosl",
   },
 })
