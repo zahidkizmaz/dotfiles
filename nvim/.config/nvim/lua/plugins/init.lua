@@ -88,33 +88,42 @@ require("lazy").setup({
     {
       "ThePrimeagen/harpoon",
       dependencies = { "nvim-lua/plenary.nvim" },
-      opts = {
-        menu = {
-          width = math.floor(vim.api.nvim_win_get_width(0) * 0.5),
-        },
-      },
+      branch = "harpoon2",
+      config = true,
       keys = {
         {
           "<leader>jj",
-          '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
+          function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
           desc = "View all project marks",
           mode = "n",
         },
         {
           "<leader>ja",
-          '<cmd>lua require("harpoon.mark").add_file()<cr>',
+          function()
+            local harpoon = require("harpoon")
+            harpoon:list():append()
+          end,
           desc = "Mark files you want to revisit later on",
           mode = "n",
         },
         {
-          "<leader>jh",
-          '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+          "<leader>jl",
+          function()
+            local harpoon = require("harpoon")
+            harpoon:list():next()
+          end,
           desc = "Navigates to next mark",
           mode = "n",
         },
         {
-          "<leader>jl",
-          '<cmd>lua require("harpoon.ui").nav_prev()<cr>',
+          "<leader>jh",
+          function()
+            local harpoon = require("harpoon")
+            harpoon:list():prev()
+          end,
           desc = "Navigates to prev mark",
           mode = "n",
         },
