@@ -294,26 +294,16 @@ require("lazy").setup({
       },
     },
     {
-      "dnlhc/glance.nvim",
-      config = function()
-        local glance = require("glance")
-        local actions = glance.actions
-        glance.setup({
-          height = 30,
-          border = { enable = true },
-          mappings = {
-            list = {
-              ["<S-up>"] = actions.preview_scroll_win(5),
-              ["<S-down>"] = actions.preview_scroll_win(-5),
-            },
-          },
-        })
-      end,
+      "rmagatti/goto-preview",
+      config = true,
       keys = {
-        { "gR", "<CMD>Glance references<CR>", desc = "Glance References" },
-        { "gD", "<CMD>Glance definitions<CR>", desc = "Glance Definitions" },
-        { "gM", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
-        { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance Type Definitions" },
+        { "gD", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Glance Definitions" },
+        { "gM", "<CMD>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Glance implementations" },
+        {
+          "gY",
+          "<CMD>lua require('goto-preview').goto_preview_type_definition()<CR>",
+          desc = "Glance Type Definitions",
+        },
       },
     },
     {
