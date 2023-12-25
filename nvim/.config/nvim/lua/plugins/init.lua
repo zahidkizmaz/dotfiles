@@ -316,6 +316,14 @@ require("lazy").setup({
         end, { expr = true })
       end,
     },
+    {
+      "stevearc/oil.nvim",
+      config = true,
+      keys = {
+        { "<leader>-", "<CMD>tabnew | Oil<CR>", desc = "Open parent directory" },
+      },
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
     -------------------------------
 
     -----------------------------
