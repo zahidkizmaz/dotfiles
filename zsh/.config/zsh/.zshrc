@@ -3,7 +3,7 @@
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt hist_verify
-,
+
 setopt hist_expire_dups_first # expire duplicate events first
 setopt hist_find_no_dups      # ignore duplicates in find
 setopt hist_ignore_dups       # dont save duplicate entries in history
