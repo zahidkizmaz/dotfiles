@@ -1,9 +1,22 @@
-#!/bin/sh
-#
+#!/usr/bin/env zsh
+
+#--------------
+# ZSH Functions
+#--------------
+#--------------------------------------------------------
+# ZSH prevent failed commands to be added to history
+#--------------------------------------------------------
+zshaddhistory() {
+  local j=1
+  while ([[ ${${(z)1}[$j]} == *=* ]]) {
+    ((j++))
+  }
+  whence ${${(z)1}[$j]} >| /dev/null || return 1
+}
+
 #--------------
 # FZF Functions
 #--------------
-
 #------------------------------
 # Checkout git branch (including remote branches), sorted by most recent commit
 # remote branches are checked out as a new local branch if they don't exist
