@@ -45,3 +45,8 @@ alias gmo='git merge origin/master'
 alias gpm='git pull origin $(git branch --show-current)'
 alias gfgp='git fetch origin && git pull origin '
 alias 'git wipe'='git reset --hard HEAD '
+
+#------------------------------
+# GitHub CLI Aliases
+#------------------------------
+alias pro="gh pr view --web"
