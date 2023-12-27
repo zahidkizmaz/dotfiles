@@ -1,12 +1,14 @@
 #!/usr/bin/env zsh
 # History settings
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_SPACE
-setopt HIST_VERIFY
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt hist_verify
+,
+setopt hist_expire_dups_first # expire duplicate events first
+setopt hist_find_no_dups      # ignore duplicates in find
+setopt hist_ignore_dups       # dont save duplicate entries in history
+setopt hist_ignore_space      # do not save history entries that start with a space
+setopt inc_append_history     # save commands in history immediately
 
 # Basic auto/tab complete:
 
