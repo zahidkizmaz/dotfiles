@@ -2,3 +2,6 @@
 go = "latest"
 node = "lts"
 python = "latest"
+
+[settings]
+experimental = true
