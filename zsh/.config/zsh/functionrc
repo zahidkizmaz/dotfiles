@@ -97,12 +97,9 @@ function fzf-kill-processes() {
 #------------------------------
 function prc() {
   local cmd
-  local git_username
-  local gh_pr_create
   local pr_template
-
-  git_username=$(git config user.username)
-  gh_pr_create="gh pr create --draft --assignee $git_username"
+  local gh_pr_create
+  gh_pr_create='gh pr create --draft --assignee "@me"'
 
   pr_template="$(git ls-files | grep -i -o -F "pull_request_template.md" | head -n 1)"
   if [ ! -z "${pr_template}" ] && [ "${pr_template}" != "" ]; then
@@ -110,5 +107,6 @@ function prc() {
   else
     cmd="$gh_pr_create --fill"
   fi
+
   eval "$cmd" && gh pr view --web
 }
