@@ -31,13 +31,14 @@ local on_attach_with_formatting = lsp_handlers.on_attach
 
 for _, server in ipairs(LSP_SERVERS) do
   if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
-    lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities })
+    lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities, handlers = lsp_handlers.handlers })
   end
 end
 
 lspconfig.yamlls.setup({
   on_attach = on_attach_with_formatting,
   capabilities = capabilities,
+  handlers = lsp_handlers.handlers,
   settings = {
     yaml = {
       keyOrdering = false,
@@ -47,10 +48,12 @@ lspconfig.yamlls.setup({
 lspconfig.tsserver.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
+  handlers = lsp_handlers.handlers,
 })
 lspconfig.lua_ls.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
+  handlers = lsp_handlers.handlers,
   settings = {
     Lua = {
       completion = { callSnippet = "Replace" }, -- comes from folke/neodev
@@ -64,6 +67,7 @@ lspconfig.lua_ls.setup({
 lspconfig.pylsp.setup({
   on_attach = on_attach_without_formatting,
   capabilities = capabilities,
+  handlers = lsp_handlers.handlers,
   settings = {
     format = {
       enable = false,
@@ -91,6 +95,7 @@ lspconfig.pylsp.setup({
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = on_attach_without_formatting,
+  handlers = lsp_handlers.handlers,
 })
 lspconfig.apex_ls.setup({
   apex_jar_path = vim.fn.expand("$HOME/apex-lsp/apex-jorje-lsp.jar"),
@@ -99,6 +104,7 @@ lspconfig.apex_ls.setup({
 })
 lspconfig.efm.setup({
   init_options = { documentFormatting = true },
+  handlers = lsp_handlers.handlers,
 })
 
 lsp_handlers.setup()
