@@ -208,7 +208,7 @@ languages:
     javascriptreact:
         - <<: *prettierd
         - <<: *javascript-eslint
-    apexcode:
+    apex:
         - <<: *prettier-apex
     =:
         - <<: *trim-spaces
