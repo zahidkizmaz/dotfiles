@@ -103,8 +103,9 @@ lspconfig.apex_ls.setup({
   apex_enable_completion_statistics = false, -- Whether to allow Apex Language Server to collect telemetry on code completion usage
 })
 lspconfig.efm.setup({
-  init_options = { documentFormatting = true },
+  on_attach = on_attach_with_formatting,
   handlers = lsp_handlers.handlers,
+  init_options = { documentFormatting = true },
 })
 
 lsp_handlers.setup()
