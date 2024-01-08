@@ -197,14 +197,14 @@ require("lazy").setup({
     -- LSP Related Plugins --
     -------------------------
     {
-      "williamboman/mason-lspconfig.nvim",
-      event = "VeryLazy",
+      "neovim/nvim-lspconfig",
+      lazy = false,
       config = function()
         require("lsp")
       end,
       dependencies = {
         { "folke/neodev.nvim", config = true },
-        { "neovim/nvim-lspconfig" },
+        { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },

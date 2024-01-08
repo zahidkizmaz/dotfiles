@@ -17,6 +17,8 @@ local LSP_SERVERS = {
   "yamlls",
 }
 local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls", "efm" }
+
+require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = LSP_SERVERS,
   automatic_installation = true,
