@@ -56,6 +56,13 @@ tools:
         lint-stdin: true
         lint-command: ansible-lint --nocolor -
 
+    gitcommit-gitlint: &gitcommit-gitlint
+        lint-command: 'gitlint'
+        lint-stdin: true
+        lint-formats:
+            - '%l: %m: "%r"'
+            - '%l: %m'
+
     shfmt: &shfmt
         format-command: shfmt -i=2 -ci -bn
         format-stdin: true
@@ -210,6 +217,8 @@ languages:
         - <<: *javascript-eslint
     apex:
         - <<: *prettier-apex
+    gitcommit:
+        - <<: *gitcommit-gitlint
     =:
         - <<: *trim-spaces
         - <<: *trim-newlines
