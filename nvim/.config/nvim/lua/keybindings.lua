@@ -12,8 +12,8 @@ keymap("n", "<leader>L", ":vertical resize -2<CR>", opts)
 keymap("n", "<leader>H", ":vertical resize +2<CR>", opts)
 
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
 
 -- Keep the register same after pasting in Visual mode
 keymap("v", "p", '"_dP', opts)
