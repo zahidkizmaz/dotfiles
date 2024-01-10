@@ -268,6 +268,7 @@ require("lazy").setup({
     {
       "rmagatti/goto-preview",
       config = true,
+      opts = { border = "rounded" },
       keys = {
         { "gD", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Glance Definitions" },
         { "gM", "<CMD>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Glance implementations" },
