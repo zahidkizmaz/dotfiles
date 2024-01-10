@@ -64,7 +64,7 @@ tools:
             - '%l: %m'
 
     shfmt: &shfmt
-        format-command: shfmt -i=2 -ci -bn
+        format-command: shfmt -i=2 -ci -s -bn
         format-stdin: true
 
     sqlfluff-fix: &sqlfluff-fix

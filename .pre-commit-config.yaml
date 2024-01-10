@@ -25,6 +25,6 @@ repos:
       - id: shfmt
         name: shfmt
         entry: shfmt
-        args: [-i=2, -ci, -bn]
+        args: [-l, -d, -i=2, -ci, -s, -bn, -w]
         language: system
-        files: '(.*\.sh$)|(.*rc$)'
+        files: '(.*\.sh$)|(\.zshrc|functionrc|aliasrc)'
