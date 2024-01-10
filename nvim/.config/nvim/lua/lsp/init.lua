@@ -29,7 +29,6 @@ local lsp_handlers = require("lsp.handlers")
 local on_attach = lsp_handlers.on_attach
 local capabilities = lsp_handlers.capabilities
 local on_attach_without_formatting = lsp_handlers.on_attach_without_formatting
-local on_attach_with_formatting = lsp_handlers.on_attach
 
 for _, server in ipairs(LSP_SERVERS) do
   if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
@@ -38,7 +37,7 @@ for _, server in ipairs(LSP_SERVERS) do
 end
 
 lspconfig.yamlls.setup({
-  on_attach = on_attach_with_formatting,
+  on_attach = on_attach,
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
   settings = {
@@ -106,7 +105,7 @@ lspconfig.apex_ls.setup({
   filetypes = { "apexcode", "apex" },
 })
 lspconfig.efm.setup({
-  on_attach = on_attach_with_formatting,
+  on_attach = on_attach,
   handlers = lsp_handlers.handlers,
   init_options = { documentFormatting = true },
 })
