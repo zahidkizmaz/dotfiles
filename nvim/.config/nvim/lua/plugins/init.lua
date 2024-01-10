@@ -5,6 +5,7 @@ require("lazy").setup({
       "catppuccin/nvim",
       name = "catppuccin",
       lazy = false,
+      priority = 1000,
       config = function()
         require("plugins.catpuccin-plugin")
       end,
