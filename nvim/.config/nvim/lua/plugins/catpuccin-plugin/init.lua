@@ -33,9 +33,10 @@ catppuccin.setup({
     mason = true,
     fidget = true,
     neotree = true,
+    harpoon = true,
     gitsigns = true,
     treesitter = true,
-    ts_rainbow = true,
+    rainbow_delimiters = true,
     indent_blankline = {
       enabled = true,
       colored_indent_levels = true,
