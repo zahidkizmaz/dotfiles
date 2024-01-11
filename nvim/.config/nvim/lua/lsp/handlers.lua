@@ -37,15 +37,7 @@ M.handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
 
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "H", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-end
-
-M.on_attach = function(_, bufnr)
-  lsp_keymaps(bufnr)
+M.on_attach = function(_)
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "<buffer>",
     callback = function()
@@ -54,8 +46,8 @@ M.on_attach = function(_, bufnr)
   })
 end
 
-M.on_attach_without_formatting = function(client, bufnr)
-  M.on_attach(client, bufnr)
+M.on_attach_without_formatting = function(client)
+  M.on_attach(client)
   client.server_capabilities.document_formatting = false
 end
 

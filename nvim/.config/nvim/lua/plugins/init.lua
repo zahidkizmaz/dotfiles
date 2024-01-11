@@ -203,11 +203,11 @@ require("lazy").setup({
         require("lsp")
       end,
       dependencies = {
-        { "folke/neodev.nvim", config = true },
         { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },
+    { "folke/neodev.nvim" },
     {
       "ibhagwan/fzf-lua",
       config = function()

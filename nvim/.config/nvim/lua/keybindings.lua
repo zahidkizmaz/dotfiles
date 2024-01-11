@@ -61,3 +61,20 @@ keymap("n", "<leader>gg", "<CMD>lua Gitui()<CR>", opts)
 
 -- Open netrw
 keymap("n", "<c-n>", "<CMD>Texplore<CR><CR>", opts)
+
+-- LSP
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local lsp_keymap_opts = { buffer = ev.buf, noremap = true, silent = true }
+
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, lsp_keymap_opts)
+    vim.keymap.set("n", "H", vim.lsp.buf.signature_help, lsp_keymap_opts)
+    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, lsp_keymap_opts)
+  end,
+})

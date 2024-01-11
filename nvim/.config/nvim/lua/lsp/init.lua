@@ -24,6 +24,7 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
 })
 
+require("neodev").setup({})
 local lspconfig = require("lspconfig")
 local lsp_handlers = require("lsp.handlers")
 local on_attach = lsp_handlers.on_attach
