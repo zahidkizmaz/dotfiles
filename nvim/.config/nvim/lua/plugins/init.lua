@@ -339,21 +339,6 @@ require("lazy").setup({
       },
     },
     {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v3.x",
-      dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "kyazdani42/nvim-web-devicons" },
-        { "MunifTanjim/nui.nvim" },
-      },
-      config = function()
-        require("plugins.neotree-plugin")
-      end,
-      keys = {
-        { "<C-n>", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
-      },
-    },
-    {
       "numToStr/Comment.nvim",
       config = true,
       keys = {
@@ -461,7 +446,6 @@ require("lazy").setup({
         "gzip",
         "matchit",
         "matchparen",
-        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",

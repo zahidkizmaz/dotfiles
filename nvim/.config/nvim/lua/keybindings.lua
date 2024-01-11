@@ -58,3 +58,6 @@ keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 
 -- Open gitui
 keymap("n", "<leader>gg", "<CMD>lua Gitui()<CR>", opts)
+
+-- Open netrw
+keymap("n", "<c-n>", "<CMD>Texplore<CR><CR>", opts)

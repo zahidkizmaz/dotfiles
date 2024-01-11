@@ -32,7 +32,6 @@ catppuccin.setup({
     cmp = true,
     mason = true,
     fidget = true,
-    neotree = true,
     harpoon = true,
     gitsigns = true,
     treesitter = true,
