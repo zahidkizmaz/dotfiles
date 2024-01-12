@@ -16,7 +16,7 @@ local LSP_SERVERS = {
   "vimls",
   "yamlls",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "tsserver", "rust_analyzer", "yamlls", "apex_ls", "efm" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "yamlls", "apex_ls", "efm" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -43,10 +43,6 @@ lspconfig.yamlls.setup({
       keyOrdering = false,
     },
   },
-})
-lspconfig.tsserver.setup({
-  capabilities = capabilities,
-  handlers = lsp_handlers.handlers,
 })
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
@@ -85,10 +81,6 @@ lspconfig.pylsp.setup({
       },
     },
   },
-})
-lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
-  handlers = lsp_handlers.handlers,
 })
 lspconfig.apex_ls.setup({
   apex_jar_path = vim.fn.expand("$HOME/apex-lsp/apex-jorje-lsp.jar"),
