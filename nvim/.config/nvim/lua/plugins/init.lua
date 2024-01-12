@@ -19,7 +19,7 @@ require("lazy").setup({
     },
     {
       "lukas-reineke/indent-blankline.nvim",
-      event = "UIEnter",
+      event = "BufReadPost",
       config = function()
         require("ibl").setup()
       end,
@@ -144,7 +144,7 @@ require("lazy").setup({
     },
     {
       "lewis6991/gitsigns.nvim",
-      event = "UIEnter",
+      event = "BufReadPost",
       dependencies = { "nvim-lua/plenary.nvim" },
       config = function()
         require("plugins.gitsigns-plugin")
@@ -311,7 +311,7 @@ require("lazy").setup({
     {
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
-      event = "UIEnter",
+      event = "BufReadPre",
       cmd = { "TSUpdate", "TSUpdateSync" }, -- Needed for headless runs such as: nvim --headless -c "TSUpdateSync" +qa
       config = function()
         require("plugins.treesitter-plugin")
