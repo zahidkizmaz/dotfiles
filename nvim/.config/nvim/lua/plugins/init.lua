@@ -12,7 +12,7 @@ require("lazy").setup({
     {
       "nvim-lualine/lualine.nvim",
       dependencies = { "kyazdani42/nvim-web-devicons" },
-      event = "VeryLazy",
+      event = { "BufRead", "BufNewFile", "InsertEnter" },
       config = function()
         require("plugins.lualine-plugin")
       end,
@@ -120,7 +120,7 @@ require("lazy").setup({
     -----------------
     -- Git Plugins --
     -----------------
-    { "rhysd/committia.vim", lazy = false }, -- nice commit setup
+    { "rhysd/committia.vim", ft = "gitcommit" }, -- nice commit setup
     {
       "ruifm/gitlinker.nvim", -- Open current working line in remove git host
       dependencies = { "nvim-lua/plenary.nvim" },
@@ -198,17 +198,17 @@ require("lazy").setup({
     -------------------------
     {
       "neovim/nvim-lspconfig",
-      lazy = false,
+      event = { "BufReadPre", "BufNewFile" },
       config = function()
         require("lsp")
       end,
       dependencies = {
+        { "folke/neodev.nvim" },
+        { "b0o/schemastore.nvim" },
         { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },
-    { "folke/neodev.nvim" },
-    { "b0o/schemastore.nvim" },
     {
       "ibhagwan/fzf-lua",
       config = function()
