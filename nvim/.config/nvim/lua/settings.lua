@@ -12,6 +12,10 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
 g.mapleader = " "
 
+-- netrw settings
+g.netrw_liststyle = 3 -- tree style view in netrw
+g.netrw_altv = 1 -- change from left splitting to right splitting
+
 o.mouse = "a"
 o.hlsearch = false
 o.incsearch = true

@@ -60,7 +60,7 @@ keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 keymap("n", "<leader>gg", "<CMD>lua Gitui()<CR>", opts)
 
 -- Open netrw
-keymap("n", "<c-n>", "<CMD>Texplore<CR><CR>", opts)
+keymap("n", "<c-n>", "<CMD>Explore<CR><CR>", opts)
 
 -- LSP
 -- Use LspAttach autocommand to only map the following keys
