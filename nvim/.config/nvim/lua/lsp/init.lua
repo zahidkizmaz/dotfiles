@@ -16,7 +16,7 @@ local LSP_SERVERS = {
   "vimls",
   "yamlls",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "yamlls", "apex_ls", "efm" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "yamlls", "apex_ls", "efm", "jsonls" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -28,6 +28,7 @@ require("neodev").setup({})
 local lspconfig = require("lspconfig")
 local lsp_handlers = require("lsp.handlers")
 local capabilities = lsp_handlers.capabilities
+local schemastore = require("schemastore")
 
 require("lspconfig.ui.windows").default_options.border = "rounded"
 
@@ -43,6 +44,24 @@ lspconfig.yamlls.setup({
   settings = {
     yaml = {
       keyOrdering = false,
+      schemaStore = {
+        -- disable built-in schemaStore support if you want to use
+        -- schemastore plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
+      },
+      schemas = schemastore.yaml.schemas(),
+    },
+  },
+})
+lspconfig.jsonls.setup({
+  capabilities = capabilities,
+  handlers = lsp_handlers.handlers,
+  settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+      validate = { enable = true },
     },
   },
 })
