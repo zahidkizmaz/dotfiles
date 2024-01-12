@@ -373,10 +373,18 @@ require("lazy").setup({
     },
     {
       "danymat/neogen",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
       cmd = { "Neogen" },
-      config = function()
-        require("plugins.neogen-plugin")
-      end,
+      config = true,
+      opts = {
+        languages = {
+          python = {
+            template = {
+              annotation_convention = "google_docstrings",
+            },
+          },
+        },
+      },
     },
     {
       "klen/nvim-test",
