@@ -269,8 +269,13 @@ require("lazy").setup({
     {
       "rmagatti/goto-preview",
       config = true,
-      opts = { border = "rounded" },
+      opts = {
+        border = "rounded",
+        stack_floating_preview_windows = false, -- Whether to nest floating windows
+        preview_window_title = { enable = true, position = "right" }, -- Whether to set the preview window title as the filename
+      },
       keys = {
+        { "gC", "<CMD>lua require('goto-preview').close_all_win()<CR>", desc = "Close all windows" },
         { "gD", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Glance Definitions" },
         { "gM", "<CMD>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Glance implementations" },
         {
