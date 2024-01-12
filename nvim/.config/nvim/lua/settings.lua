@@ -88,6 +88,12 @@ vim.api.nvim_create_autocmd("VimResized", {
   desc = "Auto resize windows on resizing",
   command = "wincmd =",
 })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  callback = function()
+    -- get rid of auto commenting next line
+    vim.cmd("set formatoptions-=cro")
+  end,
+})
 
 -- Extra filetypes
 vim.filetype.add({
