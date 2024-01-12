@@ -53,6 +53,10 @@ opt.wildignore:append({
   "tags",
 })
 
+-- spell checker
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
 bo.shiftwidth = 4
 bo.softtabstop = 4
 bo.expandtab = true
