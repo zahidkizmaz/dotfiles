@@ -29,6 +29,8 @@ local lspconfig = require("lspconfig")
 local lsp_handlers = require("lsp.handlers")
 local capabilities = lsp_handlers.capabilities
 
+require("lspconfig.ui.windows").default_options.border = "rounded"
+
 for _, server in ipairs(LSP_SERVERS) do
   if not vim.tbl_contains(CUSTOM_CONFIGURED_SERVERS, server) then
     lspconfig[server].setup({ capabilities = capabilities, handlers = lsp_handlers.handlers })
