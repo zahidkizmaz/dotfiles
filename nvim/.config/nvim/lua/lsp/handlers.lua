@@ -30,25 +30,29 @@ M.setup = function()
     },
   }
   vim.diagnostic.config(config)
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspFormattingConfig", {}),
+    callback = function()
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "<buffer>",
+        callback = function()
+          vim.lsp.buf.format({
+            filter = function(client)
+              local disable_formating = { "tsserver", "lua_ls", "pylsp", "rust_analyzer" }
+              return not vim.tbl_contains(disable_formating, client.name)
+            end,
+            timeout_ms = 3000,
+          })
+        end,
+      })
+    end,
+  })
 end
 
 M.handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
-
-M.on_attach = function(_)
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "<buffer>",
-    callback = function()
-      vim.lsp.buf.format({ timeout_ms = 3000 })
-    end,
-  })
-end
-
-M.on_attach_without_formatting = function(client)
-  M.on_attach(client)
-  client.server_capabilities.document_formatting = false
-end
 
 return M

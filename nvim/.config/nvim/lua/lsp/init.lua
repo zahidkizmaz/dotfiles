@@ -27,18 +27,15 @@ require("mason-lspconfig").setup({
 require("neodev").setup({})
 local lspconfig = require("lspconfig")
 local lsp_handlers = require("lsp.handlers")
-local on_attach = lsp_handlers.on_attach
 local capabilities = lsp_handlers.capabilities
-local on_attach_without_formatting = lsp_handlers.on_attach_without_formatting
 
 for _, server in ipairs(LSP_SERVERS) do
-  if not Array_contains(CUSTOM_CONFIGURED_SERVERS, server) then
-    lspconfig[server].setup({ on_attach = on_attach, capabilities = capabilities, handlers = lsp_handlers.handlers })
+  if not vim.tbl_contains(CUSTOM_CONFIGURED_SERVERS, server) then
+    lspconfig[server].setup({ capabilities = capabilities, handlers = lsp_handlers.handlers })
   end
 end
 
 lspconfig.yamlls.setup({
-  on_attach = on_attach,
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
   settings = {
@@ -48,12 +45,10 @@ lspconfig.yamlls.setup({
   },
 })
 lspconfig.tsserver.setup({
-  on_attach = on_attach_without_formatting,
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
 })
 lspconfig.lua_ls.setup({
-  on_attach = on_attach_without_formatting,
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
   settings = {
@@ -67,13 +62,10 @@ lspconfig.lua_ls.setup({
   },
 })
 lspconfig.pylsp.setup({
-  on_attach = on_attach_without_formatting,
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
   settings = {
-    format = {
-      enable = false,
-    },
+    format = { enable = false },
     pylsp = {
       plugins = {
         yapf = { enabled = false },
@@ -96,7 +88,6 @@ lspconfig.pylsp.setup({
 })
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
-  on_attach = on_attach_without_formatting,
   handlers = lsp_handlers.handlers,
 })
 lspconfig.apex_ls.setup({
@@ -106,7 +97,6 @@ lspconfig.apex_ls.setup({
   filetypes = { "apexcode", "apex" },
 })
 lspconfig.efm.setup({
-  on_attach = on_attach,
   handlers = lsp_handlers.handlers,
   init_options = { documentFormatting = true },
 })
