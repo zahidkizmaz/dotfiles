@@ -88,3 +88,10 @@ subdirectories
 Django
 env
 tmp
+sudo
+ansible
+AUR
+pacman
+pipx
+flatpak
+nvim
