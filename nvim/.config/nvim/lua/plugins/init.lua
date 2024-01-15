@@ -321,7 +321,7 @@ require("lazy").setup({
         { "nvim-treesitter/nvim-treesitter-refactor" },
         { "nvim-treesitter/nvim-treesitter-context", config = true },
         {
-          "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+          "HiPhish/rainbow-delimiters.nvim",
           config = function()
             local rainbow_delimiters = require("rainbow-delimiters")
 
