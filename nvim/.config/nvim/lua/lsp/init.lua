@@ -1,6 +1,7 @@
 local M = {}
+
 M.SERVER_CONFIGURATIONS = {
-  ansiblels = { pattern = { "*.yaml", ".yml" } },
+  ansiblels = { pattern = { "*.yaml", "*.yml" } },
   apex_ls = {
     pattern = { "*.cls", "*.trigger" },
     setup_config = function()
