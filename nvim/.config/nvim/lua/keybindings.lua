@@ -1,4 +1,4 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Visual shifting (does not exit Visual mode)
@@ -33,11 +33,11 @@ for i = 1, 9 do
 end
 
 -- Diagnostics
-keymap("n", "gl", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "gl", vim.diagnostic.open_float, opts)
 
 -- Format
 keymap("n", "<leader>jq", "<CMD>%!jq .<CR>", opts)
-keymap("n", "<leader>fo", "<CMD>lua vim.lsp.buf.format()<CR>", opts)
+keymap("n", "<leader>fo", vim.lsp.buf.format, opts)
 
 -- Move between windows
 keymap("n", "<c-j>", "<c-w>j", opts)
@@ -57,7 +57,7 @@ keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
 -- Open gitui
-keymap("n", "<leader>gg", "<CMD>lua Gitui()<CR>", opts)
+keymap("n", "<leader>gg", Gitui, opts)
 
 -- Open netrw
 keymap("n", "<c-n>", "<CMD>Explore<CR><CR>", opts)
@@ -72,7 +72,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local lsp_keymap_opts = { buffer = ev.buf, noremap = true, silent = true }
 
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, lsp_keymap_opts)
     vim.keymap.set("n", "H", vim.lsp.buf.signature_help, lsp_keymap_opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_keymap_opts)

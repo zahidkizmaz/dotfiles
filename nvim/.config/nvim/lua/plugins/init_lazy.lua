@@ -10,4 +10,4 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-vim.api.nvim_set_keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ps", "<cmd>Lazy sync<cr>", { noremap = true, silent = true })

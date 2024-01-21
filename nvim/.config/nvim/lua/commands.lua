@@ -65,7 +65,7 @@ function Gitui()
   vim.api.nvim_del_keymap("t", "<Esc>")
   vim.fn.termopen(cmd, {
     on_exit = function()
-      vim.api.nvim_set_keymap("t", "<Esc>", "<c-\\><c-n>", { silent = true })
+      vim.keymap.set("t", "<Esc>", "<c-\\><c-n>", { silent = true })
       vim.api.nvim_buf_delete(bufnr, { force = true })
     end,
   })
