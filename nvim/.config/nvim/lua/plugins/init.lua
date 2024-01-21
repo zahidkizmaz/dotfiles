@@ -204,19 +204,16 @@ require("lazy").setup({
         require("lsp").setup()
       end,
       dependencies = {
-        { "folke/neodev.nvim" },
-        { "b0o/schemastore.nvim" },
         {
           "williamboman/mason-lspconfig.nvim",
-          config = function()
-            require("mason-lspconfig").setup({
-              ensure_installed = require("lsp").SERVER_NAMES,
-            })
-          end,
+          -- Auto install LSP servers if they have setup
+          opts = { automatic_installation = true },
         },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },
+    { "folke/neodev.nvim" }, -- Setup called in lsp/init.lua
+    { "b0o/schemastore.nvim" }, -- Setup called in lsp/init.lua
     {
       "ibhagwan/fzf-lua",
       config = function()
