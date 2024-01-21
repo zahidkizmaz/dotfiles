@@ -11,12 +11,11 @@ local LSP_SERVERS = {
   "pylsp",
   "rust_analyzer",
   "tailwindcss",
-  "texlab",
   "tsserver",
   "vimls",
   "yamlls",
 }
-local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "yamlls", "apex_ls", "efm", "jsonls" }
+local CUSTOM_CONFIGURED_SERVERS = { "lua_ls", "pylsp", "yamlls", "apex_ls", "efm", "jsonls", "rust_analyzer" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -38,20 +37,12 @@ for _, server in ipairs(LSP_SERVERS) do
   end
 end
 
-lspconfig.yamlls.setup({
+lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   handlers = lsp_handlers.handlers,
   settings = {
-    yaml = {
-      keyOrdering = false,
-      schemaStore = {
-        -- disable built-in schemaStore support if you want to use
-        -- schemastore plugin and its advanced options like `ignore`.
-        enable = false,
-        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-        url = "",
-      },
-      schemas = schemastore.yaml.schemas(),
+    ["rust-analyzer"] = {
+      checkOnSave = { command = "clippy" },
     },
   },
 })
