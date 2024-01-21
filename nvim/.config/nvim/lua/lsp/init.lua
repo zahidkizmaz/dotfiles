@@ -102,6 +102,7 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
+  taplo = { pattern = { "*.toml" } },
   tailwindcss = { pattern = { "*.css", "*.scss" } },
   tsserver = { pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" } },
   yamlls = {
