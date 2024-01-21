@@ -84,7 +84,7 @@ M.SERVER_CONFIGURATIONS = {
               autopep8 = { enabled = false },
               pydocstyle = { enabled = false },
               pycodestyle = { enabled = false },
-              rope_autoimport = { enabled = false }, -- Currently doesn't work!
+              rope_autoimport = { enabled = true },
               jedi_signature_help = { enabled = true },
               pylsp_mypy = {
                 dmypy = true,
