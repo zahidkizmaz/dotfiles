@@ -21,15 +21,9 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
-  cssls = {
-    pattern = { "*.css", "*.scss" },
-  },
-  dockerls = {
-    pattern = { "*Dockerfile*" },
-  },
-  docker_compose_language_service = {
-    pattern = { "*docker-compose*" },
-  },
+  cssls = { pattern = { "*.css", "*.scss" } },
+  dockerls = { pattern = { "*Dockerfile*" } },
+  docker_compose_language_service = { pattern = { "*docker-compose*" } },
   efm = {
     pattern = { "*" },
     setup_config = function()
@@ -50,9 +44,7 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
-  lemminx = {
-    pattern = { "*.xml" },
-  },
+  lemminx = { pattern = { "*.xml" } },
   lua_ls = {
     pattern = { "*.lua" },
     setup_config = function()
@@ -110,12 +102,8 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
-  tailwindcss = {
-    pattern = { "*.css", "*.scss" },
-  },
-  tsserver = {
-    pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" },
-  },
+  tailwindcss = { pattern = { "*.css", "*.scss" } },
+  tsserver = { pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" } },
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = function()
