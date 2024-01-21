@@ -95,3 +95,4 @@ pacman
 pipx
 flatpak
 nvim
+lsp
