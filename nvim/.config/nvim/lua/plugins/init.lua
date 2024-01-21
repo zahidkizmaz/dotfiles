@@ -322,8 +322,14 @@ require("lazy").setup({
         require("plugins.treesitter-plugin")
       end,
       dependencies = {
-        { "nvim-treesitter/nvim-treesitter-refactor" },
-        { "nvim-treesitter/nvim-treesitter-context", config = true },
+        {
+          "RRethy/vim-illuminate",
+          keys = {
+            { "gn", "<cmd>lua require('illuminate').goto_next_reference()<cr>" },
+            { "gp", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
+          },
+        },
+        { "nvim-treesitter/nvim-treesitter-context" },
         {
           "HiPhish/rainbow-delimiters.nvim",
           config = function()

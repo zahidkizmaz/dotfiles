@@ -75,6 +75,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, lsp_keymap_opts)
     vim.keymap.set("n", "H", vim.lsp.buf.signature_help, lsp_keymap_opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_keymap_opts)
     vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, lsp_keymap_opts)
   end,
 })
