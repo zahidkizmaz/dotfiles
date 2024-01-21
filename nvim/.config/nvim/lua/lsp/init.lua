@@ -1,8 +1,7 @@
-local lspconfig = require("lspconfig")
-local lsp_handlers = require("lsp.handlers")
 local schemastore = require("schemastore")
 
-local LSP_SERVERS = {
+local M = {}
+M.SERVER_CONFIGURATIONS = {
   ansiblels = { pattern = { "*.yaml", ".yml" } },
   apex_ls = {
     pattern = { "*.cls", "*.trigger" },
@@ -16,8 +15,6 @@ local LSP_SERVERS = {
   bashls = {
     pattern = { "*.sh", "*.zsh", "*rc", "*zsh*" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       filetypes = { "sh", "zsh" },
     },
   },
@@ -27,15 +24,16 @@ local LSP_SERVERS = {
   dockerls = {
     pattern = { "*Dockerfile*" },
   },
+  docker_compose_language_service = {
+    pattern = { "*docker-compose*" },
+  },
   efm = {
     pattern = { "*" },
-    setup_config = { handlers = lsp_handlers.handlers, init_options = { documentFormatting = true } },
+    setup_config = { init_options = { documentFormatting = true } },
   },
   jsonls = {
     pattern = { "*.json" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       settings = {
         json = {
           schemas = schemastore.json.schemas(),
@@ -50,8 +48,6 @@ local LSP_SERVERS = {
   lua_ls = {
     pattern = { "*.lua" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       settings = {
         Lua = {
           completion = { callSnippet = "Replace" }, -- comes from folke/neodev
@@ -66,8 +62,6 @@ local LSP_SERVERS = {
   pylsp = {
     pattern = { "*.py" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       settings = {
         format = { enable = false },
         pylsp = {
@@ -94,8 +88,6 @@ local LSP_SERVERS = {
   rust_analyzer = {
     pattern = { "*.rs" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       settings = {
         ["rust-analyzer"] = {
           checkOnSave = { command = "clippy" },
@@ -115,8 +107,6 @@ local LSP_SERVERS = {
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = {
-      capabilities = lsp_handlers.capabilities,
-      handlers = lsp_handlers.handlers,
       settings = {
         yaml = {
           keyOrdering = false,
@@ -134,27 +124,37 @@ local LSP_SERVERS = {
   },
 }
 
-for name, config in pairs(LSP_SERVERS) do
-  local default_setup_config = { capabilities = lsp_handlers.capabilities, handlers = lsp_handlers.handlers }
-  local setup_config = config.setup_config or default_setup_config
+M.SERVER_NAMES = vim.tbl_keys(M.SERVER_CONFIGURATIONS)
 
-  local group = vim.api.nvim_create_augroup("setup_lsp_config_" .. name, { clear = true })
-  vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    group = group,
-    pattern = config.pattern,
-    callback = function()
-      if not vim.tbl_isempty(vim.lsp.get_clients({ name = name })) then
-        return
-      end
+M.setup = function()
+  local lspconfig = require("lspconfig")
+  local lsp_handlers = require("lsp.handlers")
 
-      if name == "lua_ls" then
-        require("neodev").setup({})
-      end
+  for name, config in pairs(M.SERVER_CONFIGURATIONS) do
+    local custom_setup_config = config.setup_config or {}
+    local default_setup_config = { capabilities = lsp_handlers.capabilities, handlers = lsp_handlers.handlers }
+    local setup_config = vim.tbl_extend("force", default_setup_config, custom_setup_config)
 
-      lspconfig[name].setup(setup_config)
-    end,
-  })
+    local group = vim.api.nvim_create_augroup("setup_lsp_config_" .. name, { clear = true })
+    vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+      group = group,
+      pattern = config.pattern,
+      callback = function()
+        if not vim.tbl_isempty(vim.lsp.get_clients({ name = name })) then
+          return
+        end
+
+        if name == "lua_ls" then
+          require("neodev").setup({})
+        end
+
+        lspconfig[name].setup(setup_config)
+      end,
+    })
+  end
+
+  lsp_handlers.setup()
+  require("lspconfig.ui.windows").default_options.border = "rounded"
 end
 
-lsp_handlers.setup()
-require("lspconfig.ui.windows").default_options.border = "rounded"
+return M

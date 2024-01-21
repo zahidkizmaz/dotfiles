@@ -201,12 +201,19 @@ require("lazy").setup({
       event = { "BufReadPre", "BufNewFile" },
       cmd = { "Mason" },
       config = function()
-        require("lsp")
+        require("lsp").setup()
       end,
       dependencies = {
         { "folke/neodev.nvim" },
         { "b0o/schemastore.nvim" },
-        { "williamboman/mason-lspconfig.nvim" },
+        {
+          "williamboman/mason-lspconfig.nvim",
+          config = function()
+            require("mason-lspconfig").setup({
+              ensure_installed = require("lsp").SERVER_NAMES,
+            })
+          end,
+        },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },
