@@ -13,9 +13,9 @@ local function git_show(branch)
   local win = vim.api.nvim_get_current_win()
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, branch_file)
-  vim.api.nvim_buf_set_option(buf, "filetype", file_type)
+  vim.api.nvim_set_option_value("filetype", file_type, { buf = buf })
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, git_command)
-  vim.api.nvim_buf_set_option(buf, "readonly", true)
+  vim.api.nvim_set_option_value("readonly", true, { buf = buf })
   vim.api.nvim_win_set_buf(win, buf)
 end
 
