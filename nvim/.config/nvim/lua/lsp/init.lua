@@ -116,9 +116,6 @@ M.SERVER_CONFIGURATIONS = {
   tsserver = {
     pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" },
   },
-  vimls = {
-    pattern = { "*.lua" },
-  },
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = function()
