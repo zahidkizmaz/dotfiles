@@ -46,8 +46,8 @@ end, {
 
 function Gitui()
   local cmd = "gitui"
-  local width = vim.api.nvim_win_get_width(0)
-  local height = vim.api.nvim_win_get_height(0)
+  local height = vim.go.lines
+  local width = vim.go.columns
   local window_options = {
     style = "minimal",
     relative = "editor",
