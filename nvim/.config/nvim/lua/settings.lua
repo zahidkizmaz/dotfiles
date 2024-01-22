@@ -53,9 +53,12 @@ opt.wildignore:append({
   "tags",
 })
 
+-- For obsidian.nvim
+opt.conceallevel = 1
+
 -- spell checker
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+opt.spell = true
+opt.spelllang = "en_us"
 
 bo.shiftwidth = 4
 bo.softtabstop = 4
