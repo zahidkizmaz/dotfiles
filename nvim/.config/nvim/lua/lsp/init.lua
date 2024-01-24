@@ -129,7 +129,6 @@ M.SERVER_CONFIGURATIONS = {
 }
 
 M.setup = function()
-  local lspconfig = require("lspconfig")
   local lsp_handlers = require("lsp.handlers")
   local default_setup_config = { capabilities = lsp_handlers.capabilities, handlers = lsp_handlers.handlers }
 
@@ -140,8 +139,7 @@ M.setup = function()
       pattern = config.pattern,
       callback = function()
         if not vim.tbl_isempty(vim.lsp.get_clients({ name = name })) then
-          -- This server was already setup
-          return
+          return -- This server was already setup
         end
 
         local custom_setup_config = {}
@@ -149,7 +147,7 @@ M.setup = function()
           custom_setup_config = config.setup_config()
         end
         local setup_config = vim.tbl_extend("force", default_setup_config, custom_setup_config)
-        lspconfig[name].setup(setup_config)
+        require("lspconfig")[name].setup(setup_config)
       end,
     })
   end
