@@ -122,22 +122,20 @@ require("lazy").setup({
     -----------------
     { "rhysd/committia.vim", ft = "gitcommit" }, -- nice commit setup
     {
-      "ruifm/gitlinker.nvim", -- Open current working line in remove git host
-      dependencies = { "nvim-lua/plenary.nvim" },
-      config = function()
-        require("plugins.gitlinker-plugin")
-      end,
+      "tpope/vim-fugitive", -- Open current working line in remove git host
+      dependencies = { "tpope/vim-rhubarb" },
+      cmd = { "Git", "GBrowse", "Gedit", "Gread", "Gdiffsplit", "Gvdiffsplit" },
       keys = {
         {
           "<leader>hh",
-          '<cmd>lua require"gitlinker".get_buf_range_url("n")<cr>',
-          desc = "Create VCS remote link for line",
+          ":GBrowse <CR>",
+          desc = "Create VCS remote link for line and open",
           mode = "n",
         },
         {
           "<leader>hh",
-          '<cmd>lua require"gitlinker".get_buf_range_url("v")<cr>',
-          desc = "Create VCS remote link for line",
+          ":GBrowse <CR>",
+          desc = "Create VCS remote link for selection and open",
           mode = "v",
         },
       },
