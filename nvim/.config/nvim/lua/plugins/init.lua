@@ -122,7 +122,7 @@ require("lazy").setup({
     -----------------
     { "rhysd/committia.vim", ft = "gitcommit" }, -- nice commit setup
     {
-      "tpope/vim-fugitive", -- Open current working line in remove git host
+      "tpope/vim-fugitive",
       dependencies = { "tpope/vim-rhubarb" },
       cmd = { "Git", "GBrowse", "Gedit", "Gread", "Gdiffsplit", "Gvdiffsplit" },
       keys = {
