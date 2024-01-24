@@ -82,6 +82,7 @@ cnoreabbrev Qa! qa!
 cnoreabbrev QA! qa!
 cnoreabbrev Qa1 qa!
 cnoreabbrev QA1 qa!
+cnoreabbrev git Git
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
