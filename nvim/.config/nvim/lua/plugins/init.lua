@@ -27,9 +27,7 @@ require("lazy").setup({
     {
       "echasnovski/mini.surround",
       event = "InsertEnter",
-      config = function()
-        require("mini.surround").setup()
-      end,
+      config = true,
     },
     {
       "iamcco/markdown-preview.nvim",
@@ -198,9 +196,7 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       event = { "BufReadPre", "BufNewFile" },
       cmd = { "Mason" },
-      config = function()
-        require("lsp").setup()
-      end,
+      config = require("lsp").setup,
       dependencies = {
         {
           "williamboman/mason-lspconfig.nvim",
@@ -447,6 +443,7 @@ require("lazy").setup({
     },
     {
       "zahidkizmaz/sf.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
       dev = true,
       config = true,
       keys = {
