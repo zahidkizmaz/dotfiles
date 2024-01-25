@@ -20,9 +20,8 @@ require("lazy").setup({
     {
       "lukas-reineke/indent-blankline.nvim",
       event = "VeryLazy",
-      config = function()
-        require("ibl").setup()
-      end,
+      main = "ibl",
+      config = true,
     },
     {
       "echasnovski/mini.surround",
@@ -217,7 +216,12 @@ require("lazy").setup({
         {
           "ludovicchabant/vim-gutentags",
           config = function()
-            require("plugins.gutentags-plugin")
+            vim.g.gutentags_cache_dir = vim.env.HOME .. "/.cache/tags"
+            vim.g.gutentags_file_list_command = {
+              markers = {
+                [".git"] = "git ls-files --cached --others --exclude-standard",
+              },
+            }
           end,
         },
       },
