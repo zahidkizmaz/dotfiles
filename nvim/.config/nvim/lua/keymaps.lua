@@ -59,6 +59,10 @@ keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 -- Open gitui
 keymap("n", "<leader>gg", Gitui, opts)
 
+-- Open terminal in split
+keymap("n", "<leader>T", ":sp<CR>:terminal<CR>i<CR>", opts)
+keymap("n", "<leader>vt", ":vsp<CR>:terminal<CR>i<CR>", opts)
+
 -- Open netrw
 keymap("n", "<c-n>", "<CMD>Explore<CR><CR>", opts)
 

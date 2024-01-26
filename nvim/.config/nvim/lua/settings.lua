@@ -24,6 +24,7 @@ o.ignorecase = true
 o.breakindent = true
 o.termguicolors = true
 o.splitright = true
+o.splitbelow = true
 o.cmdheight = 0
 
 opt.wrap = true
@@ -33,6 +34,7 @@ opt.undofile = true
 opt.swapfile = false
 opt.updatetime = 50
 opt.tagcase = "smart"
+opt.autoindent = true
 opt.smartindent = true
 opt.relativenumber = true
 opt.clipboard = "unnamedplus"
