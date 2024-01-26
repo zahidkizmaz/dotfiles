@@ -105,6 +105,7 @@ M.SERVER_CONFIGURATIONS = {
   taplo = { pattern = { "*.toml" } },
   tailwindcss = { pattern = { "*.css", "*.scss" } },
   tsserver = { pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" } },
+  typos_lsp = { pattern = { "*" } },
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = function()
