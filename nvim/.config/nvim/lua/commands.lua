@@ -71,3 +71,11 @@ function Gitui()
   })
   vim.cmd([[startinsert!]])
 end
+
+function TabnewGitcommit()
+  -- A helper function that ties up vim-fugitive and committia.vim together
+  -- When called create a new tab with committia's commit setup
+  vim.g.committia_open_only_vim_starting = 0
+  vim.cmd("tab Git commit")
+  vim.g.committia_open_only_vim_starting = 1
+end

@@ -135,6 +135,12 @@ require("lazy").setup({
           desc = "Create VCS remote link for selection and open",
           mode = "v",
         },
+        {
+          "<leader>cc",
+          "<CMD>lua TabnewGitcommit()<CR>",
+          desc = "Open a new tab and run git commit",
+          mode = "n",
+        },
       },
     },
     {
