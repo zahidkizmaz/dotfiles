@@ -146,7 +146,6 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       event = "BufReadPost",
-      dependencies = { "nvim-lua/plenary.nvim" },
       config = function()
         require("plugins.gitsigns-plugin")
       end,
