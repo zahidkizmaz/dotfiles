@@ -2,6 +2,6 @@ experimental = true
 python_venv_auto_create = true
 
 [status]
-missing_tools = true # warn if tools are not installed
-show_env = true      # show configured env vars
-show_tools = true    # show active tools
+missing_tools = "always" # warn if tools are not installed
+show_env = true          # show configured env vars
+show_tools = true        # show active tools
