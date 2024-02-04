@@ -51,7 +51,7 @@ require("lazy").setup({
     },
     {
       "j-hui/fidget.nvim",
-      event = "BufReadPost",
+      event = { "BufReadPost", "BufNewFile" },
       opts = { notification = { window = { winblend = 0 } } },
     },
     {
@@ -145,7 +145,7 @@ require("lazy").setup({
     },
     {
       "lewis6991/gitsigns.nvim",
-      event = "BufReadPost",
+      event = { "BufReadPost", "BufNewFile" },
       config = function()
         require("plugins.gitsigns-plugin")
       end,
@@ -370,14 +370,8 @@ require("lazy").setup({
       "numToStr/Comment.nvim",
       config = true,
       keys = {
-        {
-          "gcc",
-          mode = "n",
-        },
-        {
-          "gcc",
-          mode = "x",
-        },
+        { "gcc", mode = "n" },
+        { "gcc", mode = "x" },
       },
     },
     {
