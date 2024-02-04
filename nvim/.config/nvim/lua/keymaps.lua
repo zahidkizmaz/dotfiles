@@ -56,8 +56,9 @@ end
 keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
--- Open gitui
-keymap("n", "<leader>gg", Gitui, opts)
+-- Open Git helpers
+keymap("n", "<leader>gu", Gitui, opts)
+keymap("n", "<leader>gg", "<CMD>tab Git<CR>", opts)
 
 -- Open terminal in split
 keymap("n", "<leader>T", ":sp<CR>:terminal<CR>i<CR>", opts)
