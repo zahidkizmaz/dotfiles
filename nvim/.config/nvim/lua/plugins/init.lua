@@ -306,6 +306,15 @@ require("lazy").setup({
     {
       "stevearc/oil.nvim",
       config = true,
+      opts = {
+        view_options = {
+          show_hidden = true,
+          is_always_hidden = function(name, _)
+            local always_hidden = { ".git" }
+            return vim.tbl_contains(always_hidden, name)
+          end,
+        },
+      },
       keys = {
         { "<leader>-", "<CMD>tabnew | Oil<CR>", desc = "Open parent directory" },
       },
