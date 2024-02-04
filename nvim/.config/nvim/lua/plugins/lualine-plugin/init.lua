@@ -1,12 +1,9 @@
-local C = require("catppuccin.palettes").get_palette()
-
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "catppuccin",
+    theme = "auto",
     component_separators = "|",
     section_separators = "",
-    disabled_filetypes = { "neo-tree" },
     always_divide_middle = false,
   },
   sections = {
@@ -26,12 +23,7 @@ require("lualine").setup({
     lualine_z = { "location" },
   },
   inactive_sections = {
-    lualine_a = {
-      {
-        "vim.api.nvim_win_get_number(0)",
-        color = { bg = C.blue, fg = C.mantle, gui = "bold" },
-      },
-    },
+    lualine_a = { { "vim.api.nvim_win_get_number(0)" } },
     lualine_b = { { "filename", path = 1 } },
     lualine_c = {},
     lualine_x = { "diff" },
@@ -39,5 +31,5 @@ require("lualine").setup({
     lualine_z = {},
   },
   tabline = {},
-  extensions = { "toggleterm" },
+  extensions = { "fugitive", "oil", "quickfix" },
 })

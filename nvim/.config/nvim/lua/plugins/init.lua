@@ -12,7 +12,7 @@ require("lazy").setup({
     {
       "nvim-lualine/lualine.nvim",
       dependencies = { "nvim-tree/nvim-web-devicons" },
-      event = { "BufRead", "BufNewFile", "InsertEnter" },
+      event = "VeryLazy",
       config = function()
         require("plugins.lualine-plugin")
       end,
