@@ -15,6 +15,11 @@ keymap("n", "<leader>H", ":vertical resize +2<CR>", opts)
 keymap("x", "J", ":move '>+1<CR>gv=gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
 
+-- Quickfix
+keymap("n", "<leader>co", ":copen <CR>", opts)
+keymap("n", "<leader>cn", ":cnext <CR>", opts)
+keymap("n", "<leader>cp", ":cprevious <CR>", opts)
+
 -- Keep the register same after pasting in Visual mode
 keymap("v", "p", '"_dP', opts)
 
