@@ -1,5 +1,5 @@
-local current_dir_seperated_with_dashes = string.gsub(vim.fn.getcwd(), "/", "-"):sub(2)
-local tag_filename = current_dir_seperated_with_dashes .. "-tags"
+local current_dir_separated_with_dashes = string.gsub(vim.fn.getcwd(), "/", "-"):sub(2)
+local tag_filename = current_dir_separated_with_dashes .. "-tags"
 local tag_file_location = vim.g.gutentags_cache_dir .. "/" .. tag_filename
 
 local rg_opts = "--iglob !*.git "
@@ -46,7 +46,7 @@ require("fzf-lua").setup({
 })
 
 function Git_checkout()
-  local checkout_cmd = "git checkout "
+  local checkout_cmd = "git switch "
   local list_branches_cmd = 'git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)"'
   local opts = {
     actions = {
