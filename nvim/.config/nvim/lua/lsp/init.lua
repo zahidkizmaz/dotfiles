@@ -76,7 +76,7 @@ M.SERVER_CONFIGURATIONS = {
               autopep8 = { enabled = false },
               pydocstyle = { enabled = false },
               pycodestyle = { enabled = false },
-              rope_autoimport = { enabled = true },
+              rope_autoimport = { enabled = false },
               jedi_signature_help = { enabled = true },
               pylsp_mypy = {
                 dmypy = true,
@@ -166,8 +166,8 @@ M.setup_format_on_write = function()
         callback = function()
           vim.lsp.buf.format({
             filter = function(client)
-              local disable_formating = { "tsserver", "lua_ls", "pylsp", "rust_analyzer" }
-              return not vim.tbl_contains(disable_formating, client.name)
+              local disable_formatting = { "tsserver", "lua_ls", "pylsp", "rust_analyzer" }
+              return not vim.tbl_contains(disable_formatting, client.name)
             end,
             timeout_ms = 3000,
           })
