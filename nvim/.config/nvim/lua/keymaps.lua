@@ -18,6 +18,7 @@ keymap("x", "K", ":move '<-2<CR>gv=gv", opts)
 -- Quickfix
 keymap("n", "<leader>co", ":copen <CR>", opts)
 keymap("n", "<leader>cn", ":cnext <CR>", opts)
+keymap("n", "<leader>cq", ":cclose <CR>", opts)
 keymap("n", "<leader>cp", ":cprevious <CR>", opts)
 
 -- Keep the register same after pasting in Visual mode
