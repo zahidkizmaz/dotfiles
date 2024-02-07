@@ -37,6 +37,9 @@ local cmp = require("cmp")
 local snippy = require("snippy")
 
 cmp.setup({
+  performance = {
+    max_view_entries = 15,
+  },
   snippet = {
     expand = function(args)
       snippy.expand_snippet(args.body)
@@ -80,9 +83,10 @@ cmp.setup({
   sources = {
     { name = "snippy", max_item_count = 3 },
     { name = "nvim_lsp" },
-    { name = "cmp_tabnine", max_item_count = 5 },
+    { name = "cmp_tabnine" },
     {
       name = "buffer",
+      max_item_count = 3,
       keyword_length = 2,
       option = {
         get_bufnrs = function()
