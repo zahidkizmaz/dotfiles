@@ -11,7 +11,7 @@ M.setup_inlay_hint = function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("InlayHintConfig", {}),
     callback = function(ev)
-      if vim.fn.has("nvim-0.10") then
+      if vim.fn.has("nvim-0.10") == 1 then
         local lsp_client = vim.lsp.get_client_by_id(ev.data.client_id)
         if lsp_client and lsp_client.server_capabilities.inlayHintProvider then
           vim.lsp.inlay_hint.enable(ev.buf, true)
