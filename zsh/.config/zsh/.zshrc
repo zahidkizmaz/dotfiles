@@ -1,17 +1,6 @@
 #!/usr/bin/env zsh
-# History settings
-setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
-setopt hist_verify
-
-setopt hist_expire_dups_first # expire duplicate events first
-setopt hist_find_no_dups      # ignore duplicates in find
-setopt hist_ignore_dups       # dont save duplicate entries in history
-setopt hist_ignore_space      # do not save history entries that start with a space
-setopt inc_append_history     # save commands in history immediately
 
 # Basic auto/tab complete:
-
 # This is necessary for the arch.
 autoload bashcompinit
 bashcompinit
@@ -50,6 +39,13 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 [ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+# atuin
+if type "atuin" &>/dev/null; then
+  # disable zsh history
+  HISTSIZE=1
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
 # Starship
 if type "starship" &>/dev/null; then
