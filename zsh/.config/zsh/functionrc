@@ -1,20 +1,6 @@
 #!/usr/bin/env zsh
 
 #--------------
-# ZSH Functions
-#--------------
-#--------------------------------------------------------
-# ZSH prevent failed commands to be added to history
-#--------------------------------------------------------
-zshaddhistory() {
-  local j=1
-  while ([[ ${${(z)1}[$j]} == *=* ]]) {
-    ((j++))
-  }
-  whence ${${(z)1}[$j]} >| /dev/null || return 1
-}
-
-#--------------
 # FZF Functions
 #--------------
 #------------------------------
@@ -23,16 +9,15 @@ zshaddhistory() {
 #------------------------------
 fco() {
   local branches branch
-  branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") &&
-    branch=$(
-      echo "$branches" |
-        fzf \
+  branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") \
+    && branch=$(
+      echo "$branches" \
+        | fzf \
           --no-sort \
           --preview="git --no-pager branchdiff -150 '..{}'"
-    ) &&
-    git checkout $(echo "$branch" | sed "s/origin\///")
+    ) \
+    && git checkout $(echo "$branch" | sed "s/origin\///")
 }
-
 
 #--------------------------------
 # Open a file with default editor
@@ -40,39 +25,39 @@ fco() {
 vv() {
   local file
   file=$(
-    eval "$FZF_DEFAULT_COMMAND" |
-      fzf --preview 'bat --color=always {} | head -$LINES'
+    eval "$FZF_DEFAULT_COMMAND" \
+      | fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
 
 # Man without options will use fzf to select a page
-function fzf-man(){
-	MAN="/usr/bin/man"
-	if [ -n "$1" ]; then
-		$MAN "$@"
-		return $?
-	else
-		$MAN -k . | fzf --reverse --preview="echo {1,2} | sed 's/ (/./' | sed -E 's/\)\s*$//' | xargs $MAN" | awk '{print $1 "." $2}' | tr -d '()' | xargs -r $MAN
-		return $?
-	fi
+function fzf-man() {
+  MAN="/usr/bin/man"
+  if [ -n "$1" ]; then
+    $MAN "$@"
+    return $?
+  else
+    $MAN -k . | fzf --reverse --preview="echo {1,2} | sed 's/ (/./' | sed -E 's/\)\s*$//' | xargs $MAN" | awk '{print $1 "." $2}' | tr -d '()' | xargs -r $MAN
+    return $?
+  fi
 }
 
 function fzf-aliases-functions() {
-    CMD=$(
-        (
-            (alias)
-            (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_" )
-        ) | fzf | cut -d '=' -f1
-    );
+  CMD=$(
+    (
+      (alias)
+      (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_")
+    ) | fzf | cut -d '=' -f1
+  )
 
-    eval $CMD
+  eval $CMD
 }
 
 function fzf-cd-to-file() {
-   local file
-   local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
-   ls
+  local file
+  local dir
+  file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+  ls
 }
 
 function fzf-env-vars() {
@@ -85,12 +70,10 @@ function fzf-kill-processes() {
   local pid
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
-  if [ "x$pid" != "x" ]
-  then
+  if [ "x$pid" != "x" ]; then
     echo $pid | xargs kill -${1:-9}
   fi
 }
-
 
 #------------------------------
 # GitHub CLI Functions

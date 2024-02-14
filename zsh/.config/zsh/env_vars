@@ -3,9 +3,6 @@
 #---------
 # ZSH Vars
 #---------
-export HISTSIZE=10000
-export HISTFILE=$HOME/.cache/zsh/history
-export SAVEHIST=$HISTSIZE
 export EDITOR='nvim'
 export PSQL_EDITOR='nvim'
 export VISUAL='nvim'
