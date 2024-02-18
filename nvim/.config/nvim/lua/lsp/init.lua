@@ -139,7 +139,7 @@ M.setup = function()
       group = group,
       pattern = config.pattern,
       callback = function()
-        if not vim.tbl_isempty(vim.lsp.get_clients({ name = name })) then
+        if not vim.tbl_isempty(vim.lsp.get_active_clients({ name = name })) then
           return -- This server was already setup
         end
 
