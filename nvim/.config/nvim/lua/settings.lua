@@ -25,7 +25,6 @@ o.breakindent = true
 o.termguicolors = true
 o.splitright = true
 o.splitbelow = true
-o.cmdheight = 0
 
 opt.wrap = true
 opt.number = true
