@@ -18,6 +18,9 @@
 [mergetool]
     keepBackup = false
 
+[diff]
+    algorithm = histogram
+
 [color]
     ui = true
     diff = auto
