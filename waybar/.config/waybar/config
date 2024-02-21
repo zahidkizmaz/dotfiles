@@ -7,22 +7,26 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
-    "modules-right": ["wireplumber", "cpu", "memory", "backlight", "clock"],
+    "modules-right": ["keyboard-state", "sway/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
     "tray": {
         "icon-size": 20,
         "spacing": 8
     },
     "cpu": {
-        "format": " {usage}%"
+        "format": "  {usage}%"
     },
     "memory": {
-        "format": " {}%"
+        "format": "  {}%"
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
+        "format": "{icon}  {percent}%",
         "states": [0,50],
         "format-icons": ["", ""]
+    },
+    "sway/language": {
+        "format": "{}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
     "battery": {
         "states": {
@@ -30,20 +34,20 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": ["", "", ""]
     },
     "clock": {
         // Calendar
-        "format": " {:%H:%M}",
-        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "format": "  {:%H:%M}",
+        "format-alt": "{:%A, %B %d, %Y %R}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "year",
