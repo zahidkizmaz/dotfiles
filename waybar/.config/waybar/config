@@ -41,7 +41,9 @@
     },
     "wireplumber": {
         "format": "{icon}  {volume}%",
-        "format-muted": "",
+        "format-muted": " {volume}%",
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
         "format-icons": ["", "", ""]
     },
     "clock": {

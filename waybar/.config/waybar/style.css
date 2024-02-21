@@ -61,6 +61,11 @@ window#waybar {
   color: @red;
 }
 
+#wireplumber.muted {
+  color: @red;
+  text-decoration: line-through;
+}
+
 #tray {
   border-radius: 1rem;
 }
