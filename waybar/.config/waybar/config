@@ -1,10 +1,7 @@
 // # vi: ft=json
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    // "height": 32, // Waybar height
-    // "width": 120, // Waybar width
-    // Choose the order of the modules
+    "layer": "top",
+    "position": "top",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
     "modules-right": ["keyboard-state", "hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
