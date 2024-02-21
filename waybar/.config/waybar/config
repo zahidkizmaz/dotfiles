@@ -5,29 +5,22 @@
     // "height": 32, // Waybar height
     // "width": 120, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
-    "modules-right": ["wireplumber", "cpu", "memory", "temperature", "backlight", "battery", "clock"],
+    "modules-right": ["wireplumber", "cpu", "memory", "backlight", "clock"],
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 20,
+        "spacing": 8
     },
     "clock": {
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{%d %b %Y %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% "
+        "format": "{usage}% "
     },
     "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
+        "format": "{}% "
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -46,11 +39,9 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "Disconnected ⚠",
-        "interval" : 7
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": ["", "", ""]
     },
 }
