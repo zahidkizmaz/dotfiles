@@ -53,35 +53,11 @@ window#waybar {
   border-radius: 1rem;
 }
 
-#clock {
-  color: @lavender;
-}
-
-#battery {
-  color: @green;
-}
-
 #battery.charging {
   color: @green;
 }
 
 #battery.warning:not(.charging) {
-  color: @red;
-}
-
-#network {
-  color: @flamingo;
-}
-
-#backlight {
-  color: @yellow;
-}
-
-#wireplumber {
-  color: @pink;
-}
-
-#wireplumber.muted {
   color: @red;
 }
 
