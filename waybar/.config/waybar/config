@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
-    "modules-right": ["keyboard-state", "sway/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
+    "modules-right": ["keyboard-state", "hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
     "tray": {
         "icon-size": 20,
         "spacing": 8
@@ -24,9 +24,8 @@
         "states": [0,50],
         "format-icons": ["", ""]
     },
-    "sway/language": {
-        "format": "{}",
-        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "keyboard-state" : {
+        "format": "{icon}  {name}",
     },
     "battery": {
         "states": {
