@@ -8,8 +8,9 @@
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
     "modules-right": ["keyboard-state", "hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
+    "spacing": 8,
     "tray": {
-        "icon-size": 20,
+        "icon-size": 18,
         "spacing": 8
     },
     "cpu": {
