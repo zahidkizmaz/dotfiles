@@ -4,17 +4,17 @@
     "position": "top",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["tray"],
-    "modules-right": ["keyboard-state", "hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
+    "modules-right": ["hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
     "spacing": 8,
     "tray": {
         "icon-size": 18,
         "spacing": 8
     },
     "cpu": {
-        "format": "  {usage}%"
+        "format": "   {usage}%"
     },
     "memory": {
-        "format": "  {}%"
+        "format": "   {}%"
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -34,7 +34,7 @@
         "format": "{icon}  {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["  ", "  ", "  ", "  ", "  "]
     },
     "wireplumber": {
         "format": "{icon}  {volume}%",

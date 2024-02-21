@@ -3,7 +3,6 @@
 * {
   /* reference the color by using @color-name */
   color: @text;
-  padding-right: 2px;
 }
 
 window#waybar {
