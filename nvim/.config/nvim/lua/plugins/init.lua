@@ -163,6 +163,7 @@ require("lazy").setup({
         vim.keymap.set("n", "]x", "<Plug>(git-conflict-next-conflict)")
       end,
     },
+    { "sindrets/diffview.nvim", cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
     -----------------
 
     ---------------------
