@@ -1,5 +1,5 @@
 # demnu theme
-anchor = bottom
+anchor = top
 width = 100%
 height = 30
 horizontal = true
