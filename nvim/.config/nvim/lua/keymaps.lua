@@ -59,7 +59,7 @@ for i = 1, 9 do
 end
 
 -- Bring justice to all window sizes and to cmdheight
-keymap("n", "<leader>=", "<CMD>wincmd = | set cmdheight=0<CR>", opts)
+keymap("n", "<leader>=", "<CMD>wincmd = <CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
 -- Open Git helpers
