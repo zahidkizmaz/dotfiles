@@ -54,9 +54,6 @@ opt.wildignore:append({
   "tags",
 })
 
--- For obsidian.nvim
-opt.conceallevel = 1
-
 -- spell checker
 opt.spell = true
 opt.spelllang = "en_us"
