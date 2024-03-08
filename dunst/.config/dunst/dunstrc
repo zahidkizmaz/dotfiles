@@ -21,7 +21,7 @@
     separator_color = frame
     sort = yes
     idle_threshold = 120
-    font = JetBrainsMono NFM 10
+    font =Noto Color Emoji 10, JetBrainsMono NFM 10
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
