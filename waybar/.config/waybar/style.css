@@ -22,7 +22,7 @@ window#waybar {
   border-radius: 1rem;
   padding-left: 6px;
   box-shadow: inset 0 -3px transparent;
-  transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.68);
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
   background-color: transparent;
 }
 
@@ -47,7 +47,7 @@ window#waybar {
 #wireplumber,
 #keyboard-state {
   background-color: @surface0;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 4px 0px 4px;
   border-radius: 1rem;
 }
 
