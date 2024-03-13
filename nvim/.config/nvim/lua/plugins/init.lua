@@ -424,6 +424,7 @@ require("lazy").setup({
       opts = {
         dir = "~/Notes/obisidian", -- no need to call 'vim.fn.expand' here
         finder = "fzf-lua",
+        ui = { enable = false },
       },
       keys = {
         { "<leader>nc", "<cmd>ObsidianNew<cr>", desc = "Create new note" },
@@ -432,17 +433,6 @@ require("lazy").setup({
         { "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search notes" },
         { "<leader>ng", "<cmd>ObsidianSearch<cr>", desc = "Grep notes" },
       },
-      config = function(_, opts)
-        require("obsidian").setup(opts)
-
-        vim.keymap.set("n", "gf", function()
-          if require("obsidian").util.cursor_on_markdown_link() then
-            return "<cmd>ObsidianFollowLink<CR>"
-          else
-            return "gf"
-          end
-        end, { noremap = false, expr = true })
-      end,
     },
     {
       "zahidkizmaz/sf.nvim",
