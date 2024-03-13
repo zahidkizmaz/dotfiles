@@ -140,3 +140,6 @@ vim.filetype.add({
     sosl = "sosl",
   },
 })
+vim.filetype.add({
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
