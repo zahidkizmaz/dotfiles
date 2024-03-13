@@ -18,15 +18,13 @@ This creates symlinks to tmux config files in `~/.config/` folder:
 
 - Shell: zsh
 - Shell prompt: starship
-- Terminal emulator: kitty
+- Terminal emulator: wezterm
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
 
 #### Arch specific
 
-- Window manager: BSPWM
-- Status bar: polybar
-- Login manager: ly
-- Hotkey daemon: sxhkd
+- Window manager: Hyprland
+- Status bar: waybar
 - Notifications manager: dunst
-- Application launcher: rofi
+- Application launcher: tofi
