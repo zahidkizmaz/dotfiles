@@ -3,6 +3,7 @@
 * {
   /* reference the color by using @color-name */
   color: @text;
+  min-height: 0;
 }
 
 window#waybar {
@@ -47,7 +48,7 @@ window#waybar {
 #wireplumber,
 #keyboard-state {
   background-color: @surface0;
-  padding: 0px 4px 0px 4px;
+  padding: 0px 8px 0px 8px;
   border-radius: 1rem;
 }
 
