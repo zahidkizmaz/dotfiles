@@ -55,50 +55,6 @@ require("lazy").setup({
       opts = { notification = { window = { winblend = 0 } } },
     },
     {
-      "ThePrimeagen/harpoon",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      branch = "harpoon2",
-      config = true,
-      keys = {
-        {
-          "<leader>jj",
-          function()
-            local harpoon = require("harpoon")
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end,
-          desc = "View all project marks",
-          mode = "n",
-        },
-        {
-          "<leader>ja",
-          function()
-            local harpoon = require("harpoon")
-            harpoon:list():append()
-          end,
-          desc = "Mark files you want to revisit later on",
-          mode = "n",
-        },
-        {
-          "<leader>jl",
-          function()
-            local harpoon = require("harpoon")
-            harpoon:list():next()
-          end,
-          desc = "Navigates to next mark",
-          mode = "n",
-        },
-        {
-          "<leader>jh",
-          function()
-            local harpoon = require("harpoon")
-            harpoon:list():prev()
-          end,
-          desc = "Navigates to prev mark",
-          mode = "n",
-        },
-      },
-    },
-    {
       "sontungexpt/url-open",
       branch = "mini",
       cmd = "URLOpenUnderCursor",
@@ -411,28 +367,6 @@ require("lazy").setup({
       "NvChad/nvim-colorizer.lua",
       config = true,
       cmd = { "ColorizerToggle" },
-    },
-    {
-      "epwalsh/obsidian.nvim",
-      event = { "BufReadPre " .. vim.fn.expand("~") .. "/Notes/obsidian/**.md" },
-      cmd = { "ObsidianNew" },
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-        "ibhagwan/fzf-lua",
-      },
-      opts = {
-        dir = "~/Notes/obisidian", -- no need to call 'vim.fn.expand' here
-        finder = "fzf-lua",
-        ui = { enable = false },
-      },
-      keys = {
-        { "<leader>nc", "<cmd>ObsidianNew<cr>", desc = "Create new note" },
-        { "<leader>nd", "<cmd>ObsidianToday<cr>", desc = "Create todays note" },
-        { "<leader>ny", "<cmd>ObsidianYesterday<cr>", desc = "Open yesterdays note" },
-        { "<leader>nf", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search notes" },
-        { "<leader>ng", "<cmd>ObsidianSearch<cr>", desc = "Grep notes" },
-      },
     },
     {
       "zahidkizmaz/sf.nvim",
