@@ -14,9 +14,6 @@ zmodload zsh/complist
 _comp_options+=(globdots) # Include hidden files.
 setopt AUTO_PARAM_SLASH   # if completed parameter is a directory, add a trailing slash
 
-# Enable vi mode
-bindkey -v
-
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line
 zle -N edit-command-line
@@ -72,6 +69,14 @@ if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
 
-# PLUGINS
-[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# zeesh-man
+zeesh_dir=${XDG_DATA_HOME:-"$HOME/.local/share"}/zeesh/zeesh-man
+if [[ ! -f $zeesh_dir/zeesh.zsh ]]; then
+  command git clone https://github.com/zahidkizmaz/zeesh-man.git "$zeesh_dir"
+fi
+source "$zeesh_dir/zeesh.zsh"
+
+zeesh_get "zsh-users/zsh-syntax-highlighting"
+zeesh_get "zsh-users/zsh-autosuggestions"
+zeesh_get "jeffreytse/zsh-vi-mode"
+zeesh_get "Aloxaf/fzf-tab"
