@@ -130,7 +130,6 @@ vim.filetype.add({
   },
 })
 
--- Apex file types
 vim.filetype.add({
   extension = {
     cls = "apex",
@@ -138,11 +137,9 @@ vim.filetype.add({
     trigger = "apex",
     soql = "soql",
     sosl = "sosl",
+
+    typ = "typst",
   },
-})
-vim.filetype.add({
+  filename = { justfile = "just" },
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
-vim.filetype.add({
-  extension = { typ = "typst" },
 })
