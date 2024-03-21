@@ -143,3 +143,6 @@ vim.filetype.add({
 vim.filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+vim.filetype.add({
+  extension = { typ = "typst" },
+})
