@@ -1,0 +1,88 @@
+{
+  "hyprland/window": {
+    "format": "{initialClass}: {title}",
+    "rewrite": {
+      "firefox-Module: (.*) — Mozilla Firefox": "Firefox: $1"
+    },
+    "separate-outputs": true
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
+  },
+  "cpu": {
+    "format": "   {usage}%"
+  },
+  "memory": {
+    "format": "   {}%"
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "keyboard-state": {
+    "format": "{icon}  {name}"
+  },
+  "battery": {
+    "states": {
+      "good": 85,
+      "warning": 20,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-icons": [
+      "  ",
+      "  ",
+      "  ",
+      "  ",
+      "  "
+    ]
+  },
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-muted": " {volume}%",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format": "  {:%H:%M}",
+    "format-alt": "{:%A, %B %d, %Y %R}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  }
+}
