@@ -267,6 +267,13 @@ require("lazy").setup({
         { "<leader>-", "<CMD>tabnew | Oil<CR>", desc = "Open parent directory" },
       },
     },
+    {
+      "echasnovski/mini.files",
+      config = true,
+      keys = {
+        { "<leader>m", "<CMD>:lua MiniFiles.open()<CR>", desc = "Open mini.files" },
+      },
+    },
     -------------------------------
 
     -----------------------------
