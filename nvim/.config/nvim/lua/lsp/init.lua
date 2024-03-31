@@ -29,6 +29,7 @@ M.SERVER_CONFIGURATIONS = {
       return { init_options = { documentFormatting = true } }
     end,
   },
+  htmx = { pattern = { "*.html" } },
   jsonls = {
     pattern = { "*.json" },
     setup_config = function()
