@@ -136,6 +136,7 @@ M.SERVER_CONFIGURATIONS = {
   tailwindcss = { pattern = { "*.css", "*.scss" } },
   ts_ls = { pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" } },
   typos_lsp = { pattern = { "*" } },
+  nil_ls = { pattern = { "*.nix" } },
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = function()
