@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = { "zahid" = import ./home.nix; };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zahid = {
     isNormalUser = true;
