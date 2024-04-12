@@ -5,7 +5,6 @@
     blueman
     copyq
     dunst
-    glib
     grim
     networkmanagerapplet
     playerctl
