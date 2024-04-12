@@ -15,8 +15,8 @@
     packages = with pkgs; [
         atuin
         bat
-        curl
         copyq
+        curl
         fd
         feh
         firefox
@@ -30,6 +30,7 @@
         neovim
         pipx
         powertop
+        python3
         ripgrep
         rustup
         shfmt
