@@ -33,6 +33,7 @@
             ./common/podman.nix
             ./common/sound-pipewire.nix
             ./common/user-zahid.nix
+            ./common/virt-manager.nix
             ./common/waybar.nix
             ./common/wayland-desktop-environment.nix
           ];
