@@ -38,11 +38,6 @@ if type "starship" &>/dev/null; then
   eval "$(starship init zsh)"
 fi
 
-# mise
-if type "mise" &>/dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
 # Zoxide
 if type "zoxide" &>/dev/null; then
   eval "$(zoxide init zsh)"
