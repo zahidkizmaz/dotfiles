@@ -2,15 +2,14 @@
 
 {
   environment.systemPackages = with pkgs; [
-    blueman
     copyq
     dunst
     grim
     networkmanagerapplet
+    pcmanfm
     playerctl
     slurp
     tofi
     wl-clipboard
-    xdg-utils
   ];
 }

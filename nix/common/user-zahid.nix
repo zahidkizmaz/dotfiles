@@ -13,27 +13,38 @@
     extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      bat
-      firefox
-      flatpak
-      fzf
-      git
-      kitty
-      neofetch
-      powertop
-      ripgrep
-      starship
-      stow
-      tmux
-      tree
-      universal-ctags
-      unzip
-      zoxide
-
-      # themes
-      arc-theme
-      papirus-icon-theme
-    ];
+        atuin
+        bat
+        curl
+        copyq
+        fd
+        feh
+        firefox
+        flatpak
+        fzf
+        git
+        jq
+        kitty
+        man
+        neofetch
+        neovim
+        pipx
+        powertop
+        ripgrep
+        rustup
+        shfmt
+        starship
+        stow
+        stylua
+        tmux
+        tree
+        universal-ctags
+        unzip
+        viu
+        wget
+        zip
+        zoxide
+      ];
   };
   programs.zsh.enable = true;
 
