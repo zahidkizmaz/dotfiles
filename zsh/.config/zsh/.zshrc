@@ -49,7 +49,7 @@ if type "zoxide" &>/dev/null; then
 fi
 
 # Pipx
-if type "pipx" &>/dev/null; then
+if type "pipx" &>/dev/null && type "register-python-argcomplete" &>/dev/null; then
   eval "$(register-python-argcomplete pipx)"
 fi
 
