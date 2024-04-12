@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     copyq
+    dconf
     dunst
     grim
     networkmanagerapplet
