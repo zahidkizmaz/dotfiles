@@ -13,11 +13,11 @@
 
   gtk = {
     enable = true;
-    cursorTheme.name = "macOS-Monterey-White";
+    cursorTheme.name = "macOS-Monterey-Dark";
     cursorTheme.package = pkgs.apple-cursor;
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.papirus-icon-theme;
-    theme.name = "Catppuccin-Mocha-Standard-Lavender-dark";
+    theme.name = "Catppuccin-Mocha-Standard-Pink-Dark";
     theme.package = pkgs.catppuccin-gtk.override {
       accents = [ "pink" ];
       size = "standard";
