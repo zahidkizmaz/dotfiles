@@ -31,14 +31,12 @@
   time.timeZone = "Europe/Berlin";
 
   environment.systemPackages = with pkgs; [
-    curl
     firefox
     git
     gnumake
     htop
     magic-wormhole
     neovim
-    tmux
     wget
   ];
 
