@@ -34,7 +34,6 @@
     firefox
     git
     gnumake
-    htop
     magic-wormhole
     neovim
     wget
