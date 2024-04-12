@@ -28,7 +28,6 @@
         man
         neofetch
         neovim
-        pipx
         powertop
         python3
         ripgrep
