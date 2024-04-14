@@ -1,6 +1,8 @@
 {pkgs, ...}:
 
 {
+
+  nixpkgs.config.allowUnfree = true; # because of tabnine
   environment.systemPackages = [
     pkgs.neovim
 
@@ -20,6 +22,7 @@
     pkgs.python311Packages.pylsp-mypy
     pkgs.python311Packages.python-lsp-server
     pkgs.rust-analyzer
+    pkgs.tabnine
     pkgs.tailwindcss-language-server
     pkgs.taplo
     pkgs.typos-lsp
