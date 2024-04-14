@@ -160,11 +160,7 @@ require("lazy").setup({
       cmd = { "Mason" },
       config = require("lsp").setup,
       dependencies = {
-        {
-          "williamboman/mason-lspconfig.nvim",
-          -- Auto install LSP servers if they have setup
-          opts = { automatic_installation = true },
-        },
+        { "williamboman/mason-lspconfig.nvim" },
         { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
       },
     },
