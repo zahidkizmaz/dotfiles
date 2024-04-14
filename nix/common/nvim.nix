@@ -26,6 +26,7 @@
     pkgs.tailwindcss-language-server
     pkgs.taplo
     pkgs.typos-lsp
+    pkgs.vimPlugins.SchemaStore-nvim
     pkgs.yaml-language-server
 
     # Linters&Formatters
