@@ -30,6 +30,7 @@
             ./common/hyprland.nix
             ./common/login-manager-tuigreet.nix
             ./common/nix-settings.nix
+            ./common/nvim.nix
             ./common/podman.nix
             ./common/sound-pipewire.nix
             ./common/user-zahid.nix
