@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -16,6 +20,7 @@
     , nixos-hardware
     , nixpkgs-unstable
     , home-manager
+    , nix-ld
     , ...
     } @ inputs: {
       nixosConfigurations = {
@@ -24,6 +29,7 @@
           modules = [
             ./hosts/lenovo-y5070/configuration.nix
             home-manager.nixosModules.home-manager
+            nix-ld.nixosModules.nix-ld
             ./common/bluetooth.nix
             ./common/bootloader-systemd.nix
             ./common/gc.nix
