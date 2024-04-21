@@ -42,7 +42,6 @@
         unzip
         viu
         wget
-        xdg-utils
         zip
         zoxide
       ];
