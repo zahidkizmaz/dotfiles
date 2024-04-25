@@ -29,6 +29,7 @@
             ./common/gc.nix
             ./common/hyprland.nix
             ./common/login-manager-tuigreet.nix
+            ./common/mise.nix
             ./common/nix-settings.nix
             ./common/nvim.nix
             ./common/podman.nix
