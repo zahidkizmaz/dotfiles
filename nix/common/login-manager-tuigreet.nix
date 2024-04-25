@@ -9,6 +9,7 @@
         user = "greeter";
       };
     };
+    vt = 2;
   };
 
   environment.systemPackages = with pkgs; [
