@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# pretty print the python objects
+# example: echo "{ 'a': 1, 'b': 2,     }" | pretty
+# out: {'a': 1, 'b': 2}
+pretty() {
+  python -c '__import__("pprint").pprint(eval(__import__("sys").stdin.read()))'
+}
+
 #--------------
 # FZF Functions
 #--------------
