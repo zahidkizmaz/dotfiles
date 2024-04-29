@@ -97,3 +97,6 @@ dmypy.json
 # zsh
 .zsh_history
 .zsh_sessions
+
+# nix
+shell.nix
