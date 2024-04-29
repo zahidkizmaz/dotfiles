@@ -54,8 +54,8 @@ if type "pipx" &>/dev/null; then
 fi
 
 # Rust
-if [[ -f "$HOME/.cargo/env" ]]; then
-  source "$HOME/.cargo/env"
+if type "cargo" &>/dev/null; then
+  export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # zeesh-man
