@@ -139,6 +139,7 @@ vim.filetype.add({
     sosl = "sosl",
 
     typ = "typst",
+    edi = "edi",
   },
   filename = { justfile = "just" },
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
