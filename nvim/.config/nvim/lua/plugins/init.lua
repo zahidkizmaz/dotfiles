@@ -360,7 +360,7 @@ require("lazy").setup({
       "klen/nvim-test",
       config = function()
         require("nvim-test.runners.pytest"):setup({
-          args = { "--disable-warnings" }, -- Warnings can create a lot of clutter in small buffers.
+          args = { "--disable-warnings", "-s" }, -- Warnings can create a lot of clutter in small buffers.
         })
         require("nvim-test").setup({ silent = true })
       end,
