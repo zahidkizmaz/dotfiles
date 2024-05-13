@@ -56,6 +56,8 @@ fi
 # Rust
 if type "cargo" &>/dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"
+elif [[ -f "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
 fi
 
 # zeesh-man
