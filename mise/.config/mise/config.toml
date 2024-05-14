@@ -2,6 +2,3 @@
 go = "latest"
 node = "lts"
 python = "latest"
-
-[env]
-MISE_ENV_FILE = ".env"
