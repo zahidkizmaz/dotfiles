@@ -6,7 +6,7 @@ default:
   just --list
 
 stow arg:
-  stow --no -vSt ~ {{arg}}
+  stow -vSt ~ {{arg}}
 
 _stow-common:
   just stow alacritty
