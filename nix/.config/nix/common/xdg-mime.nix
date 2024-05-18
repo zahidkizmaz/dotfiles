@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-      xdg-utils
+    xdg-utils
   ];
 
   xdg.mime.defaultApplications = {
