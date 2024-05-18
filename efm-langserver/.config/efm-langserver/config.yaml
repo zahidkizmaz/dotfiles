@@ -165,7 +165,13 @@ tools:
         format-stdin: true
         format-command: rustfmt --emit=stdout
 
+    edi-format: &edi-format
+        format-stdin: true
+        format-command: 'edi-format -l error --stdin'
+
 languages:
+    edi:
+        - <<: *edi-format
     ansible.yaml:
         - <<: *ansible-lint
     yaml:
