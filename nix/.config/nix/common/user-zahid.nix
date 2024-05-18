@@ -23,6 +23,7 @@
         flatpak
         fzf
         git
+        just
         jq
         kitty
         man
