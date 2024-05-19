@@ -44,11 +44,14 @@
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
-        "dom.security.https_only_mode" = true;
         "extensions.pocket.enabled" = false;
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
+
+        # security
+        "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_ever_enabled" = true;
 
         # privacy
         "browser.send_pings" = false;
