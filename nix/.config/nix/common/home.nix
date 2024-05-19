@@ -144,7 +144,6 @@
         darkreader
         facebook-container
         ublock-origin
-        startpage-private-search
       ];
     };
   };
