@@ -25,16 +25,6 @@
     };
   };
 
-  programs = {
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
-    zsh.enable = true;
-  };
-
   xdg.enable = true;
   xdg.configFile = {
     "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
