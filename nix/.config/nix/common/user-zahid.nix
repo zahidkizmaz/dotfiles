@@ -48,6 +48,7 @@
     ];
   };
   programs.zsh.enable = true;
+  programs.direnv.enable = true;
 
   fonts.packages = with pkgs; [
     nerdfonts
