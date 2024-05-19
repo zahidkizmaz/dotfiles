@@ -78,6 +78,7 @@
         "toolkit.telemetry.firstShutdownPing.enabled" = false;
         "toolkit.telemetry.hybridContent.enabled" = false;
         "toolkit.telemetry.newProfilePing.enabled" = false;
+        "toolkit.telemetry.pioneer-new-studies-available" = false;
         "toolkit.telemetry.prompted" = 2;
         "toolkit.telemetry.rejected" = true;
         "toolkit.telemetry.reportingpolicy.firstRun" = false;
