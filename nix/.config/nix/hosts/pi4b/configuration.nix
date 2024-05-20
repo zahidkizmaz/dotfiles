@@ -20,6 +20,7 @@
   users.users.pi = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" ];
   };
   programs.zsh.enable = true;
 
