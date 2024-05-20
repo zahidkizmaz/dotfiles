@@ -17,6 +17,12 @@
     firewall.allowedTCPPorts = [ 22 80 443 ];
   };
 
+  users.users.pi = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
+  programs.zsh.enable = true;
+
   i18n.defaultLocale = "en_US.UTF-8";
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";

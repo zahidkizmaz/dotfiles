@@ -47,8 +47,8 @@
         pi4b = nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
+            nixos-hardware.nixosModules.raspberry-pi-4
             ./hosts/pi4b/configuration.nix
-            ./common/bootloader-systemd.nix
             ./common/gc.nix
             ./common/nix-settings.nix
             ./common/podman.nix
