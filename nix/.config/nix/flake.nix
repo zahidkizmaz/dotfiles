@@ -44,6 +44,18 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        pi4b = nixpkgs-unstable.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/pi4b/configuration.nix
+            ./common/bootloader-systemd.nix
+            ./common/gc.nix
+            ./common/nix-settings.nix
+            ./common/podman.nix
+            ./common/ssh.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
 }
