@@ -1,6 +1,6 @@
 # Personal Dotfiles
 
-My dotfiles that used in MacOS and Arch Linux.
+My dotfiles that used in MacOS and NixOS.
 
 #### How to install
 
@@ -18,11 +18,11 @@ This creates symlinks to tmux config files in `~/.config/` folder:
 
 - Shell: zsh
 - Shell prompt: starship
-- Terminal emulator: wezterm
+- Terminal emulator: wezterm/kitty
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
 
-#### Arch specific
+#### Nix specific
 
 - Window manager: Hyprland
 - Status bar: waybar
