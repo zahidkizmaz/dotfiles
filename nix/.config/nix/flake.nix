@@ -54,7 +54,7 @@
             ./common/podman.nix
             ./common/ssh.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; user = "pi"; };
         };
       };
     };
