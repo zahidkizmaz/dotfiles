@@ -1,12 +1,8 @@
 { pkgs, user, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   networking = {
     hostName = "pi4b";
-    networkmanager.enable = true;
+    networkmanager.enable = false;
     interfaces.eth0.ipv4.addresses = [{
       address = "192.168.178.24";
       prefixLength = 24;
