@@ -21,7 +21,19 @@
     , nixpkgs-unstable
     , home-manager
     , ...
-    } @ inputs: {
+    } @ inputs: rec {
+      images = {
+        pi4b = (self.nixosConfigurations.pi4b.extendModules {
+          modules = [
+            "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            {
+              disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
+            }
+          ];
+        }).config.system.build.sdImage;
+      };
+      packages.x86_64-linux.pi-image = images.pi4b;
+      packages.aarch64-linux.pi-image = images.pi4b;
       nixosConfigurations = {
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
@@ -48,6 +60,7 @@
           system = "aarch64-linux";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
+            ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
             ./common/gc.nix
             ./common/nix-settings.nix
