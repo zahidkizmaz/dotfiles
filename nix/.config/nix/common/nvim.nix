@@ -6,6 +6,10 @@
   environment.systemPackages = [
     pkgs.neovim
 
+    # Dependencies
+    pkgs.viu
+    pkgs.universal-ctags
+
     # LSPs
     pkgs.ansible-language-server
     pkgs.docker-compose-language-service
@@ -34,11 +38,13 @@
     pkgs.djhtml
     pkgs.gawk
     pkgs.gitlint
+    pkgs.nixpkgs-fmt
     pkgs.nodePackages_latest.eslint
     pkgs.nodePackages_latest.prettier
     pkgs.prettierd
     pkgs.ruff
     pkgs.rustfmt
+    pkgs.rustup
     pkgs.shellcheck
     pkgs.shfmt
     pkgs.sqlfluff
