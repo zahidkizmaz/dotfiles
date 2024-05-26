@@ -3,52 +3,52 @@
 {
 
   nixpkgs.config.allowUnfree = true; # because of tabnine
-  environment.systemPackages = [
-    pkgs.neovim
+  environment.systemPackages = with pkgs; [
+    neovim
 
     # Dependencies
-    pkgs.viu
-    pkgs.universal-ctags
+    viu
+    universal-ctags
 
     # LSPs
-    pkgs.ansible-language-server
-    pkgs.docker-compose-language-service
-    pkgs.dockerfile-language-server-nodejs
-    pkgs.efm-langserver
-    pkgs.htmx-lsp
-    pkgs.lemminx
-    pkgs.lua-language-server
-    pkgs.nil
-    pkgs.nodePackages_latest.bash-language-server
-    pkgs.nodePackages_latest.typescript-language-server
-    pkgs.nodePackages_latest.vscode-css-languageserver-bin
-    pkgs.nodePackages_latest.vscode-json-languageserver-bin
-    pkgs.python311Packages.pylsp-mypy
-    pkgs.python311Packages.python-lsp-server
-    pkgs.rust-analyzer
-    pkgs.tabnine
-    pkgs.tailwindcss-language-server
-    pkgs.taplo
-    pkgs.typos-lsp
-    pkgs.vimPlugins.SchemaStore-nvim
-    pkgs.yaml-language-server
+    ansible-language-server
+    docker-compose-language-service
+    dockerfile-language-server-nodejs
+    efm-langserver
+    htmx-lsp
+    lemminx
+    lua-language-server
+    nil
+    nodePackages_latest.bash-language-server
+    nodePackages_latest.typescript-language-server
+    nodePackages_latest.vscode-css-languageserver-bin
+    nodePackages_latest.vscode-json-languageserver-bin
+    python311Packages.pylsp-mypy
+    python311Packages.python-lsp-server
+    rust-analyzer
+    tabnine
+    tailwindcss-language-server
+    taplo
+    typos-lsp
+    vimPlugins.SchemaStore-nvim
+    yaml-language-server
 
     # Linters&Formatters
-    pkgs.ansible-lint
-    pkgs.djhtml
-    pkgs.gawk
-    pkgs.gitlint
-    pkgs.nixpkgs-fmt
-    pkgs.nodePackages_latest.eslint
-    pkgs.nodePackages_latest.prettier
-    pkgs.prettierd
-    pkgs.ruff
-    pkgs.rustfmt
-    pkgs.rustup
-    pkgs.shellcheck
-    pkgs.shfmt
-    pkgs.sqlfluff
-    pkgs.stylua
-    pkgs.yamllint
+    ansible-lint
+    djhtml
+    gawk
+    gitlint
+    nixpkgs-fmt
+    nodePackages_latest.eslint
+    nodePackages_latest.prettier
+    prettierd
+    ruff
+    rustfmt
+    rustup
+    shellcheck
+    shfmt
+    sqlfluff
+    stylua
+    yamllint
   ];
 }
