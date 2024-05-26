@@ -19,7 +19,6 @@
       curl
       fd
       feh
-      firefox
       flatpak
       fzf
       git
@@ -27,21 +26,13 @@
       jq
       kitty
       man
-      neofetch
       neovim
-      powertop
-      python3
       ripgrep
-      rustup
-      shfmt
       starship
       stow
-      stylua
       tmux
       tree
-      universal-ctags
       unzip
-      viu
       wget
       zip
       zoxide
