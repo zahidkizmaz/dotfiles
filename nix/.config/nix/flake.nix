@@ -43,6 +43,7 @@
             ./common/bluetooth.nix
             ./common/bootloader-systemd.nix
             ./common/gc.nix
+            ./common/gui-applications.nix
             ./common/hyprland.nix
             ./common/login-manager-tuigreet.nix
             ./common/nix-settings.nix
