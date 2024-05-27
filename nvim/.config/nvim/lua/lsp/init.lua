@@ -62,29 +62,13 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
-  pylsp = {
+  basedpyright = {
     pattern = { "*.py" },
     setup_config = function()
       return {
         settings = {
-          format = { enable = false },
-          pylsp = {
-            plugins = {
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pyflakes = { enabled = false },
-              autopep8 = { enabled = false },
-              pydocstyle = { enabled = false },
-              pycodestyle = { enabled = false },
-              rope_autoimport = { enabled = false },
-              jedi_signature_help = { enabled = true },
-              pylsp_mypy = {
-                dmypy = true,
-                enabled = true,
-                live_mode = false,
-                report_progress = true,
-              },
-            },
+          basedpyright = {
+            typeCheckingMode = "basic",
           },
         },
       }
