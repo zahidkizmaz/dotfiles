@@ -28,11 +28,6 @@
     starship.enable = true;
   };
 
-  fonts.packages = with pkgs; [
-    fira-code-nerdfont
-    noto-fonts-color-emoji
-  ];
-
   i18n.defaultLocale = "en_US.UTF-8";
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";
@@ -42,10 +37,6 @@
     magic-wormhole
     neovim
   ];
-
-  # Limit update size/frequency of rebuilds
-  # Also preserve space on SD card
-  documentation.nixos.enable = false;
 
   nixpkgs.overlays = [
     (final: super: {
