@@ -6,7 +6,6 @@
   };
   networking = {
     hostName = "pi4b";
-    networkmanager.enable = false;
     interfaces.eth0.ipv4.addresses = [{
       address = "192.168.178.24";
       prefixLength = 24;
@@ -17,10 +16,11 @@
     firewall.allowedTCPPorts = [ 22 443 ];
   };
 
+  security.sudo.wheelNeedsPassword = false;
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" ];
+    extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
   programs = {
     zsh = {
