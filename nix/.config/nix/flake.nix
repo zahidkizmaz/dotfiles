@@ -61,6 +61,7 @@
           system = "aarch64-linux";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
+            "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
             ./common/gc.nix
