@@ -6,10 +6,6 @@
   };
   networking = {
     hostName = "pi4b";
-    interfaces.eth0.ipv4.addresses = [{
-      address = "192.168.178.24";
-      prefixLength = 24;
-    }];
     wireless.enable = false;
 
     firewall.enable = true;
