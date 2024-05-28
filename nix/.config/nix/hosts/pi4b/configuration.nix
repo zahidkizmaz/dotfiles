@@ -15,6 +15,7 @@
   security.sudo.wheelNeedsPassword = false;
   users.users.${user} = {
     isNormalUser = true;
+    password = user;
     shell = pkgs.zsh;
     extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
