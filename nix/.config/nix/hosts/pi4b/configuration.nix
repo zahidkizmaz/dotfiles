@@ -1,5 +1,9 @@
 { pkgs, user, ... }:
 {
+  hardware = {
+    bluetooth.enabled = false;
+    bluetooth.powerOnBoot = false;
+  };
   networking = {
     hostName = "pi4b";
     networkmanager.enable = false;
