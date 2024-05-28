@@ -46,5 +46,12 @@
   # Also preserve space on SD card
   documentation.nixos.enable = false;
 
+  nixpkgs.overlays = [
+    (final: super: {
+      makeModuleClosure = x:
+        super.makeModuleClosure (x // { allowMissing = true; });
+    })
+  ];
+
   system.stateVersion = "24.05";
 }
