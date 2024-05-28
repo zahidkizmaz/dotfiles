@@ -6,6 +6,7 @@
   };
   networking = {
     hostName = "pi4b";
+    interfaces.eth0.useDHCP = true;
     wireless.enable = false;
 
     firewall.enable = true;
@@ -15,7 +16,6 @@
   security.sudo.wheelNeedsPassword = false;
   users.users.${user} = {
     isNormalUser = true;
-    password = user;
     shell = pkgs.zsh;
     extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
