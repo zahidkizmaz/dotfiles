@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 {
   hardware = {
-    bluetooth.enabled = false;
+    bluetooth.enable = false;
     bluetooth.powerOnBoot = false;
   };
   networking = {
