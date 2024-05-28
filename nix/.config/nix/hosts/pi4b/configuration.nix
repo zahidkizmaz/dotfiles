@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ lib, pkgs, user, ... }:
 {
   hardware = {
     bluetooth.enable = false;
@@ -37,6 +37,8 @@
     magic-wormhole
     neovim
   ];
+  # This causes an overlay which causes a lot of rebuilding
+  environment.noXlibs = lib.mkForce false;
 
   nixpkgs.overlays = [
     (final: super: {
