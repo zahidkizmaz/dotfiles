@@ -16,6 +16,7 @@
       atuin
       bat
       copyq
+      easyeffects
       fd
       feh
       fzf
