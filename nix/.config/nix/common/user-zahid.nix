@@ -16,12 +16,10 @@
       atuin
       bat
       copyq
-      curl
       fd
       feh
-      flatpak
       fzf
-      git
+      gitMinimal
       just
       jq
       kitty
@@ -33,7 +31,6 @@
       tmux
       tree
       unzip
-      wget
       zip
       zoxide
     ];
