@@ -1,10 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, user, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "zahid";
-  home.homeDirectory = "/home/zahid";
+  home.username = "${user}";
+  home.homeDirectory = "/home/${user}";
 
   qt = {
     enable = true;
