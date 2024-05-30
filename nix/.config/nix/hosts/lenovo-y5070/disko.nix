@@ -2,13 +2,16 @@
   disko.devices = {
     disk = {
       vdb = {
-        device = "/dev/sda";
         type = "disk";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              end = "500M";
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "128M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -17,12 +20,12 @@
               };
             };
             root = {
-              name = "root";
-              end = "-0";
+              size = "100%";
               content = {
-                type = "filesystem";
-                format = "bcachefs";
+                type = "btrfs";
+                extraArgs = [ "-f" ]; # Override existing partition
                 mountpoint = "/";
+                mountOptions = [ "compress=zstd" "noatime" ];
               };
             };
           };
