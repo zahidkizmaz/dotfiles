@@ -12,6 +12,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -20,6 +24,7 @@
     , nixos-hardware
     , nixpkgs-unstable
     , home-manager
+    , disko
     , ...
     } @ inputs: rec {
       images = {
@@ -38,6 +43,7 @@
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            disko.nixosModules.disko
             ./hosts/lenovo-y5070/configuration.nix
             home-manager.nixosModules.home-manager
             ./common/bluetooth.nix
