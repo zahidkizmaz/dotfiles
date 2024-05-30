@@ -12,6 +12,7 @@
 
     # LSPs
     ansible-language-server
+    basedpyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
     efm-langserver
@@ -23,8 +24,6 @@
     nodePackages_latest.typescript-language-server
     nodePackages_latest.vscode-css-languageserver-bin
     nodePackages_latest.vscode-json-languageserver-bin
-    python311Packages.pylsp-mypy
-    python311Packages.python-lsp-server
     rust-analyzer
     tabnine
     tailwindcss-language-server
