@@ -54,6 +54,7 @@
             ./common/virt-manager.nix
             ./common/waybar.nix
             ./common/wayland-desktop-environment.nix
+            ./common/wlan.nix
           ];
           specialArgs = { inherit inputs; };
         };
