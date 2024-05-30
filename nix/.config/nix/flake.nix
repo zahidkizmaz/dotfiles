@@ -56,13 +56,14 @@
             ./common/nvim.nix
             ./common/podman.nix
             ./common/sound-pipewire.nix
+            ./common/ssh.nix
             ./common/user-zahid.nix
             ./common/virt-manager.nix
             ./common/waybar.nix
             ./common/wayland-desktop-environment.nix
             ./common/wlan.nix
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; user = "zahid"; };
         };
         pi4b = nixpkgs-unstable.lib.nixosSystem {
           system = "aarch64-linux";
