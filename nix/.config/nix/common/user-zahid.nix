@@ -9,7 +9,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zahid = {
     isNormalUser = true;
-    description = "zahid";
+    password = "${user}";
+    description = "${user}";
     extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
