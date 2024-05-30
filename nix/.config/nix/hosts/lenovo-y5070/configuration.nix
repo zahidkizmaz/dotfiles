@@ -6,7 +6,6 @@
 
   networking = {
     hostName = "y5070";
-    networkmanager.enable = true;
   };
 
   services = {
@@ -32,11 +31,9 @@
 
   environment.systemPackages = with pkgs; [
     firefox
-    git
-    gnumake
+    gitMinimal
     magic-wormhole
     neovim
-    wget
   ];
 
   system.stateVersion = "23.11";
