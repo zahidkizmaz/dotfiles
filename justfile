@@ -30,7 +30,6 @@ _stow-common:
 
 stow-linux: _stow-common
   just stow dunst
-  just stow gtk-3.0
   just stow hypr
   just stow nix
   just stow tofi
