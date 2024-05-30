@@ -15,18 +15,6 @@
   boot.extraModulePackages = [ ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/5278f222-1546-4de1-9bed-5c14056c6d86";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/EED9-84D0";
-      fsType = "vfat";
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
