@@ -155,7 +155,13 @@ tools:
         format-stdin: true
         format-command: 'edi-format -l error --stdin'
 
+    nixpkgs-fmt: &nixpkgs-fmt
+        format-stdin: true
+        format-command: 'nixpkgs-fmt'
+
 languages:
+    nix:
+        - <<: *nixpkgs-fmt
     edi:
         - <<: *edi-format
     ansible.yaml:
