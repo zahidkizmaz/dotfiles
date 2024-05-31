@@ -46,22 +46,22 @@
             disko.nixosModules.disko
             ./hosts/lenovo-y5070/configuration.nix
             home-manager.nixosModules.home-manager
-            ./common/bluetooth.nix
-            ./common/bootloader-systemd.nix
-            ./common/gc.nix
-            ./common/gui-applications.nix
-            ./common/hyprland.nix
-            ./common/login-manager-tuigreet.nix
-            ./common/nix-settings.nix
-            ./common/nvim.nix
-            ./common/podman.nix
-            ./common/sound-pipewire.nix
-            ./common/ssh.nix
-            ./common/user-zahid.nix
-            ./common/virt-manager.nix
-            ./common/waybar.nix
-            ./common/wayland-desktop-environment.nix
-            ./common/wlan.nix
+            ./modules/bluetooth.nix
+            ./modules/bootloader-systemd.nix
+            ./modules/gc.nix
+            ./modules/gui-applications.nix
+            ./modules/hyprland.nix
+            ./modules/login-manager-tuigreet.nix
+            ./modules/nix-settings.nix
+            ./modules/nvim.nix
+            ./modules/podman.nix
+            ./modules/sound-pipewire.nix
+            ./modules/ssh.nix
+            ./modules/user-zahid.nix
+            ./modules/virt-manager.nix
+            ./modules/waybar.nix
+            ./modules/wayland-desktop-environment.nix
+            ./modules/wlan.nix
           ];
           specialArgs = { inherit inputs; user = "zahid"; };
         };
@@ -72,10 +72,10 @@
             "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
-            ./common/gc.nix
-            ./common/nix-settings.nix
-            ./common/podman.nix
-            ./common/ssh.nix
+            ./modules/gc.nix
+            ./modules/nix-settings.nix
+            ./modules/podman.nix
+            ./modules/ssh.nix
           ];
           specialArgs = { inherit inputs; user = "pi"; };
         };
