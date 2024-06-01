@@ -28,5 +28,6 @@
       "usb"
       "zha"
     ];
+    config.recorder.db_url = "postgresql://@/hass";
   };
 }
