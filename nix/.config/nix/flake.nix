@@ -73,10 +73,11 @@
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
             ./modules/gc.nix
+            ./modules/home-assistant
             ./modules/nix-settings.nix
             ./modules/podman.nix
             ./modules/ssh.nix
-            ./modules/home-assistant
+            ./modules/tailscale.nix
           ];
           specialArgs = { inherit inputs; user = "pi"; };
         };
