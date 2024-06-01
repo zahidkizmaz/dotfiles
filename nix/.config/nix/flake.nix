@@ -76,6 +76,7 @@
             ./modules/nix-settings.nix
             ./modules/podman.nix
             ./modules/ssh.nix
+            ./modules/home-assistant
           ];
           specialArgs = { inherit inputs; user = "pi"; };
         };
