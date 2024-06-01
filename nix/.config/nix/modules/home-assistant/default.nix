@@ -15,17 +15,18 @@
     extraComponents = [
       "default_config"
       "esphome"
-      "met"
       "file"
       "hue"
       "ios"
+      "met"
       "mqtt"
+      "my"
+      "philips_js"
       "raspberry_pi"
+      "recorder"
+      "shopping_list"
       "usb"
       "zha"
-      "my"
-      "shopping_list"
-      "philips_js"
     ];
   };
 }
