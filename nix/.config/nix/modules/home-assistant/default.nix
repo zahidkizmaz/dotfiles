@@ -16,10 +16,7 @@
       "default_config"
       "esphome"
       "met"
-      "ecovacs"
-      "energy"
       "file"
-      "fritzbox"
       "hue"
       "ios"
       "mqtt"
@@ -28,7 +25,6 @@
       "zha"
       "my"
       "shopping_list"
-      "epson"
       "philips_js"
     ];
   };
