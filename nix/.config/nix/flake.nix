@@ -16,6 +16,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -25,6 +29,7 @@
     , nixpkgs-unstable
     , home-manager
     , disko
+    , nix-ld
     , ...
     } @ inputs: rec {
       images = {
@@ -43,8 +48,9 @@
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            disko.nixosModules.disko
             ./hosts/lenovo-y5070/configuration.nix
+            disko.nixosModules.disko
+            nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
             ./modules/bluetooth.nix
             ./modules/bootloader-systemd.nix
