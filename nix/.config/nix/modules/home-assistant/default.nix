@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./postgres.nix
@@ -8,6 +8,17 @@
 
   services.home-assistant = {
     enable = true;
-    package = (pkgs.home-assistant.override { extraPackages = ps: [ ps.psycopg2 ]; });
+    extraPackages = python3Packages: with python3Packages; [
+      # postgresql support
+      psycopg2
+    ];
+    extraComponents = [
+      "default_config"
+      "esphome"
+      "my"
+      "shopping_list"
+      "epson"
+      "philips_js"
+    ];
   };
 }
