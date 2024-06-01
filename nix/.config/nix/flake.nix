@@ -57,12 +57,14 @@
             ./modules/gc.nix
             ./modules/gui-applications.nix
             ./modules/hyprland.nix
+            ./modules/ld.nix
             ./modules/login-manager-tuigreet.nix
             ./modules/nix-settings.nix
             ./modules/nvim.nix
             ./modules/podman.nix
             ./modules/sound-pipewire.nix
             ./modules/ssh.nix
+            ./modules/tailscale.nix
             ./modules/user-zahid.nix
             ./modules/virt-manager.nix
             ./modules/waybar.nix
