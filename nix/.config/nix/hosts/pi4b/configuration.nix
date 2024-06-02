@@ -32,10 +32,13 @@
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";
 
-  age.secrets = {
-    home_latitude.file = ../../secrets/home_latitude.age;
-    home_longitude.file = ../../secrets/home_latitude.age;
-    home_elevation.file = ../../secrets/home_elevation.age;
+  age = {
+    secrets = {
+      home_latitude.file = ../../secrets/home_latitude.age;
+      home_longitude.file = ../../secrets/home_latitude.age;
+      home_elevation.file = ../../secrets/home_elevation.age;
+    };
+    identityPaths = [ "/home/${user}/.ssh/id_ed25519" ];
   };
 
   environment.systemPackages = with pkgs; [
