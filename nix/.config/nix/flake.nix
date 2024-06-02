@@ -4,6 +4,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    agenix.url = "github:ryantm/agenix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -27,6 +28,7 @@
     , nixpkgs2311
     , nixos-hardware
     , nixpkgs-unstable
+    , agenix
     , home-manager
     , disko
     , nix-ld
@@ -49,9 +51,11 @@
           system = "x86_64-linux";
           modules = [
             ./hosts/lenovo-y5070/configuration.nix
+            agenix.nixosModules.default
             disko.nixosModules.disko
             nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
+            ./modules/agenix.nix
             ./modules/bluetooth.nix
             ./modules/bootloader-systemd.nix
             ./modules/gc.nix
