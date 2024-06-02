@@ -82,6 +82,7 @@
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
+            agenix.nixosModules.default
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
             ./modules/gc.nix
