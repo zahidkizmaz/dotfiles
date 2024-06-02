@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ lib, pkgs, user, config, ... }:
 {
   hardware = {
     bluetooth.enable = true;
@@ -40,6 +40,16 @@
     };
     identityPaths = [ "/home/${user}/.ssh/id_ed25519" ];
   };
+  system.activationScripts."home-assistant-secrets" = ''
+    latitude=$(cat "${config.age.secrets.home_latitude.path}")
+    longitude=$(cat "${config.age.secrets.home_longitude.path}")
+    elevation=$(cat "${config.age.secrets.home_elevation.path}")
+
+    configFile=/home/${user}/dotfiles/nix/.config/nix/modules/home-assistant/default.nix
+    ${pkgs.gnused}/bin/sed -i "s#latitude_secret#$latitude#" "$configFile"
+    ${pkgs.gnused}/bin/sed -i "s#longitude_secret#$longitude#" "$configFile"
+    ${pkgs.gnused}/bin/sed -i "s#elevation_secret#$elevation#" "$configFile"
+  '';
 
   environment.systemPackages = with pkgs; [
     gitMinimal
