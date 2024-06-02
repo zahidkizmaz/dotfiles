@@ -36,10 +36,6 @@
         country = "DE";
         unit_system = "metric";
         time_zone = "Europe/Berlin";
-
-        latitude = "latitude_secret";
-        longitude = "longitude_secret";
-        elevation = "elevation_secret";
       };
     };
 

@@ -1,4 +1,4 @@
-{ lib, pkgs, user, config, ... }:
+{ lib, pkgs, user, ... }:
 {
   hardware = {
     bluetooth.enable = true;
@@ -32,24 +32,15 @@
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";
 
-  age = {
-    secrets = {
-      home_latitude.file = ../../secrets/home_latitude.age;
-      home_longitude.file = ../../secrets/home_latitude.age;
-      home_elevation.file = ../../secrets/home_elevation.age;
-    };
-    identityPaths = [ "/home/${user}/.ssh/id_ed25519" ];
-  };
-  system.activationScripts."home-assistant-secrets" = ''
-    latitude=$(cat "${config.age.secrets.home_latitude.path}")
-    longitude=$(cat "${config.age.secrets.home_longitude.path}")
-    elevation=$(cat "${config.age.secrets.home_elevation.path}")
-
-    configFile=/home/${user}/dotfiles/nix/.config/nix/modules/home-assistant/default.nix
-    ${pkgs.gnused}/bin/sed -i "s#latitude_secret#$latitude#" "$configFile"
-    ${pkgs.gnused}/bin/sed -i "s#longitude_secret#$longitude#" "$configFile"
-    ${pkgs.gnused}/bin/sed -i "s#elevation_secret#$elevation#" "$configFile"
-  '';
+  # At the moment not used
+  # age = {
+  #   secrets = {
+  #     home_latitude.file = ../../secrets/home_latitude.age;
+  #     home_longitude.file = ../../secrets/home_latitude.age;
+  #     home_elevation.file = ../../secrets/home_elevation.age;
+  #   };
+  #   identityPaths = [ "/home/${user}/.ssh/id_ed25519" ];
+  # };
 
   environment.systemPackages = with pkgs; [
     gitMinimal
