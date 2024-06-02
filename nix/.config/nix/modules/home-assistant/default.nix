@@ -36,9 +36,10 @@
         country = "DE";
         unit_system = "metric";
         time_zone = "Europe/Berlin";
-        latitude = config.age.secrets.home_longitude.path;
-        longitude = config.age.secrets.home_longitude.path;
-        elevation = config.age.secrets.home_elevation.path;
+
+        latitude = ''$(cat "${config.age.secrets.home_latitude.path}")'';
+        longitude = ''$(cat "${config.age.secrets.home_longitude.path}")'';
+        elevation = ''$(cat "${config.age.secrets.home_elevation.path}")'';
       };
     };
 
