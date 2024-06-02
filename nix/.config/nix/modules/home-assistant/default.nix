@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   imports = [
     ./postgres.nix
@@ -28,6 +28,19 @@
       "usb"
       "zha"
     ];
-    config.recorder.db_url = "postgresql://@/hass";
+
+    config = {
+      recorder.db_url = "postgresql://@/hass";
+      homeassistant = {
+        name = "Home";
+        country = "DE";
+        unit_system = "metric";
+        time_zone = "Europe/Berlin";
+        latitude = config.age.secrets.home_longitude.path;
+        longitude = config.age.secrets.home_longitude.path;
+        elevation = config.age.secrets.home_elevation.path;
+      };
+    };
+
   };
 }

@@ -32,6 +32,12 @@
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";
 
+  age.secrets = {
+    home_latitude.file = ../../secrets/home_latitude.age;
+    home_longitude.file = ../../secrets/home_latitude.age;
+    home_elevation.file = ../../secrets/home_elevation.age;
+  };
+
   environment.systemPackages = with pkgs; [
     gitMinimal
     magic-wormhole
