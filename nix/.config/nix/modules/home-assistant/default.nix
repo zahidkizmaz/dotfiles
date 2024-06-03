@@ -30,7 +30,6 @@
     ];
 
     config = {
-      recorder.db_url = "postgresql://@/hass";
       homeassistant = {
         name = "Home";
         country = "DE";
