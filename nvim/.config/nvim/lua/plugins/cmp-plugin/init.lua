@@ -37,9 +37,6 @@ local cmp = require("cmp")
 local snippy = require("snippy")
 
 cmp.setup({
-  performance = {
-    max_view_entries = 15,
-  },
   snippet = {
     expand = function(args)
       snippy.expand_snippet(args.body)

@@ -150,7 +150,7 @@ M.setup_format_on_write = function()
         callback = function()
           vim.lsp.buf.format({
             filter = function(client)
-              local disable_formatting = { "tsserver", "lua_ls", "pylsp", "rust_analyzer" }
+              local disable_formatting = { "tsserver", "lua_ls", "basedpyright", "rust_analyzer" }
               return not vim.tbl_contains(disable_formatting, client.name)
             end,
             timeout_ms = 3000,

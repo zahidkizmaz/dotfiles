@@ -32,11 +32,11 @@ tools:
             - .ruff.toml
 
     ruff_isort: &ruff-isort
-        format-command: ruff --fix --silent --select I -
+        format-command: ruff --fix --select I -
         format-stdin: true
 
     ruff_format: &ruff-format
-        format-command: ruff format --silent -
+        format-command: ruff format -
         format-stdin: true
 
     yamllint: &yamllint
