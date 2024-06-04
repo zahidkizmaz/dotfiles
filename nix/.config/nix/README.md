@@ -12,7 +12,7 @@ nix flake new -t github:nix-community/nix-direnv .
 direnv allow
 ```
 
-### Example dev environment:
+### Example dev environment python poetry:
 
 flake.nix file:
 ```nix
@@ -28,6 +28,15 @@ flake.nix file:
       in
       {
         devShells.default = pkgs.mkShell {
+        NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc
+            pkgs.gcc.cc
+            pkgs.glibc
+            pkgs.zlib
+            pkgs.rustc
+            pkgs.cargo
+          ];
+          NIX_LD = lib.fileContents "${stdenv.cc}/nix-support/dynamic-linker";
           venvDir = ".venv";
           postVenvCreation = ''
             		pip install -U pip
@@ -39,10 +48,11 @@ flake.nix file:
             python312Packages.venvShellHook
             poetry
           ];
-          shellHook = (pkgs.writeShellScriptBin "python" ''
-              export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
-              exec ${pkgs.python3}/bin/python "$@"
-          '')
+          preShellHook = ''
+              # https://github.com/astral-sh/ruff/issues/1699
+              # https://github.com/NixOS/nixpkgs/issues/142383
+              export POETRY_INSTALLER_NO_BINARY="ruff"
+          ''
         };
       });
 }
