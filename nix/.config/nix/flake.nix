@@ -2,7 +2,7 @@
   description = "NixOS configuration";
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs2311.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs2405.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
@@ -25,7 +25,7 @@
 
   outputs =
     { self
-    , nixpkgs2311
+    , nixpkgs2405
     , nixos-hardware
     , nixpkgs-unstable
     , agenix
