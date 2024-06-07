@@ -17,6 +17,7 @@
       atuin
       bat
       copyq
+      delta
       easyeffects
       fd
       feh
