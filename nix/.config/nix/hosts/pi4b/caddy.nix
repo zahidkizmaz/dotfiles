@@ -4,9 +4,6 @@
   services.caddy = {
     enable = true;
     extraConfig = ''
-      log
-      encode zstd gzip
-
       (network_paths) {
         handle_path /dns/* {
           reverse_proxy /* adguard:3000
@@ -20,10 +17,16 @@
       }
 
       pi4b.quoll-ratio.ts.net {
+        log
+        encode zstd gzip
+
         import network_paths
       }
 
       http://192.168.178.24 {
+        log
+        encode zstd gzip
+
         import network_paths
       }
     '';
