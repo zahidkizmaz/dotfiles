@@ -29,6 +29,12 @@
         ];
 
         config = {
+          http.server_host = [
+            "0.0.0.0"
+            "192.168.178.24"
+            "pi4b.quoll-ratio.ts.net"
+            "::"
+          ];
           http.server_port = 8111;
           homeassistant = {
             name = "Home";
