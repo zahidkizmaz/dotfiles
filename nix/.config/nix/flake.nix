@@ -86,7 +86,7 @@
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
             ./hosts/pi4b/caddy.nix
-            ./modules/adguardhome.nix
+            ./containers/adguardhome.nix
             ./modules/gc.nix
             ./modules/home-assistant
             ./modules/nix-settings.nix
