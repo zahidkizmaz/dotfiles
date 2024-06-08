@@ -10,7 +10,7 @@
         }
 
         handle_path /home/* {
-          reverse_proxy /* homeassistant:81234
+          reverse_proxy /* homeassistant:8111
         }
 
         reverse_proxy /* localhost:8123
