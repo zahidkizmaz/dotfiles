@@ -29,7 +29,7 @@
         ];
 
         config = {
-          http.server_port = 81234;
+          http.server_port = 8111;
           homeassistant = {
             name = "Home";
             country = "DE";
@@ -42,7 +42,7 @@
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 81234 ];
+          allowedTCPPorts = [ 8111 ];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
