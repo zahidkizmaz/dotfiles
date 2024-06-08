@@ -85,6 +85,7 @@
             agenix.nixosModules.default
             ./hosts/pi4b/hardware-configuration.nix
             ./hosts/pi4b/configuration.nix
+            ./hosts/pi4b/caddy.nix
             ./modules/adguardhome.nix
             ./modules/gc.nix
             ./modules/home-assistant
