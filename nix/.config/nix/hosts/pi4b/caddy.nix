@@ -3,8 +3,10 @@
 {
   services.caddy = {
     enable = true;
-    virtualHosts."lab.home".extraConfig = ''
-      reverse_proxy :8123
+    virtualHosts."localhost".extraConfig = ''
+      encode zstd gzip
+
+      reverse_proxy /home/* 127.0.0.1:8123
     '';
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
