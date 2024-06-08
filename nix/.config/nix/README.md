@@ -12,6 +12,42 @@ nix flake new -t github:nix-community/nix-direnv .
 direnv allow
 ```
 
+
+### Example generic dev environment:
+
+flake.nix file:
+```nix
+{
+  description = "Development environment";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+
+  outputs = { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+        NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc
+            pkgs.gcc.cc
+            pkgs.glibc
+            pkgs.zlib
+            pkgs.rustc
+            pkgs.cargo
+          ];
+          NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+          packages = with pkgs; [
+            # add necessary packages here
+          ];
+        };
+      });
+}
+```
+
+
+
 ### Example dev environment python poetry:
 
 flake.nix file:
@@ -28,7 +64,7 @@ flake.nix file:
       in
       {
         devShells.default = pkgs.mkShell {
-        NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
+        NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
             pkgs.stdenv.cc.cc
             pkgs.gcc.cc
             pkgs.glibc
@@ -36,7 +72,7 @@ flake.nix file:
             pkgs.rustc
             pkgs.cargo
           ];
-          NIX_LD = lib.fileContents "${stdenv.cc}/nix-support/dynamic-linker";
+          NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
           venvDir = ".venv";
           postVenvCreation = ''
             		pip install -U pip
