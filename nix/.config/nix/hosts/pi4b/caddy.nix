@@ -11,6 +11,11 @@
         handle_path /dns/* {
           reverse_proxy /* adguard:3000
         }
+
+        handle_path /home/* {
+          reverse_proxy /* adguard:3000
+        }
+
         reverse_proxy /* localhost:8123
       }
 
