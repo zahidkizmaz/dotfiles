@@ -2,7 +2,7 @@
 
 {
   services.adguardhome = {
-    enable = true;
+    enable = false;
     port = 3000;
   };
   networking.firewall.allowedTCPPorts = [ 3000 ];
