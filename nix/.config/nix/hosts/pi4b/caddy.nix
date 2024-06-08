@@ -3,11 +3,24 @@
 {
   services.caddy = {
     enable = true;
-    virtualHosts."pi4b.quoll-ratio.ts.net".extraConfig = ''
+    extraConfig = ''
       log
       encode zstd gzip
 
-      reverse_proxy 127.0.0.1:8123
+      (network_paths) {
+        handle_path /dns/* {
+          reverse_proxy /* adguard:3000
+        }
+        reverse_proxy /* localhost:8123
+      }
+
+      pi4b.quoll-ratio.ts.net {
+        import network_paths
+      }
+
+      http://192.168.178.24 {
+        import network_paths
+      }
     '';
   };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
