@@ -7,6 +7,10 @@
     autoStart = true;
 
     config = { config, pkgs, lib, ... }: {
+      services.redis.servers.redis-unbound = {
+        enable = true;
+        port = 6379;
+      };
       services.unbound = {
         enable = true;
         settings = {
@@ -47,10 +51,6 @@
             # buffer size. This value has also been suggested in DNS Flag Day 2020.
             edns-buffer-size = 1232;
 
-            # Perform prefetching of close to expired message cache entries
-            # This only applies to domains that have been frequently queried
-            prefetch = true;
-
             # Ensure kernel buffer is large enough to not lose messages in traffic spikes
             so-rcvbuf = "1m";
 
@@ -77,6 +77,45 @@
             # Report this identity rather than the hostname of the server.
             identity = "DNS";
             hide-version = true;
+
+
+            # |Cache|
+            # Slabs reduce lock contention by threads. Set to power of 2, close to num-threads
+            msg-cache-slabs = 4;
+            rrset-cache-slabs = 4;
+            infra-cache-slabs = 4;
+            key-cache-slabs = 4;
+            # rrset-cache-size should be twice of msg-cache-size
+            msg-cache-size = "128m";
+            rrset-cache-size = "256m";
+            # Time to live minimum for messages in cache. More than an hour could easily
+            # give trouble due to stale data. Default is 0
+            cache-min-ttl = 0;
+            # I prefer to have the latest 'hot' data
+            cache-max-ttl = 21600;
+            # infra-host-ttl= 900
+            # Number of bytes size of the aggressive negative cache
+            neg-cache-size = "4m";
+            # Perform prefetching of almost expired message cache entries
+            prefetch = true;
+            # Fetch the DNSKEYs earlier in the validation process, when a DS record is
+            # encountered. This lowers the latency of requests at the expense of little
+            # more CPU usage.
+            prefetch-key = true;
+            # Have unbound attempt to serve old responses from cache with a TTL of 0 in
+            # the response without waiting for the actual resolution to finish. The
+            # actual resolution answer ends up in the cache later on.
+            serve-expired = false;
+            # TTL value to use when replying with expired data. If serve-expired-client-timeout
+            # is used then recommended to use 30. Default is 30
+            # Added for cachedb warning at unbound start. Unbound sets it to 0 for records
+            # originating from cachedb
+            serve-expired-reply-ttl = 30;
+          };
+          # redis cache
+          cachedb = {
+            backend = "redis";
+            redis-expire-records = false;
           };
         };
       };
