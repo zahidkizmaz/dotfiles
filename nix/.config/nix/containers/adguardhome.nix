@@ -12,10 +12,11 @@
         port = 3000;
         settings = {
           upstream_dns = [
-            "https://dns10.quad9.net/dns-query"
+            # Unbound container
+            "127.0.0.1:5353"
           ];
           user_rules = [
-            "'@@||nixos.wiki^$important'"
+            "@@||nixos.wiki^$important"
             ""
           ];
           filters = [
