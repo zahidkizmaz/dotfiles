@@ -16,6 +16,7 @@
         settings = {
           server = {
             interface = "127.0.0.1";
+            access-control = [ "127.0.0.1 allow" ];
             port = 5353;
             do-ip4 = true;
             do-udp = true;
@@ -52,7 +53,8 @@
             edns-buffer-size = 1232;
 
             # Ensure kernel buffer is large enough to not lose messages in traffic spikes
-            so-rcvbuf = "1m";
+            so-rcvbuf = "4m";
+            so-sndbuf = "4m";
 
 
             # |Privacy|
@@ -78,9 +80,13 @@
             identity = "DNS";
             hide-version = true;
 
+            # |Performance|
+            num-threads = 4;
+            so-reuseport = true;
 
             # |Cache|
             # Slabs reduce lock contention by threads. Set to power of 2, close to num-threads
+            slabs = 4;
             msg-cache-slabs = 4;
             rrset-cache-slabs = 4;
             infra-cache-slabs = 4;
@@ -117,6 +123,16 @@
             backend = "redis";
             redis-expire-records = false;
           };
+          forward-zone = [
+            {
+              name = ".";
+              forward-addr = [
+                "9.9.9.9#dns.quad9.net"
+                "149.112.112.112#dns.quad9.net"
+              ];
+              forward-tls-upstream = true; # Protected DNS
+            }
+          ];
         };
       };
       networking = {
