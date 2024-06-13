@@ -138,7 +138,7 @@
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 5353 ];
+          allowedTCPPorts = [ 443 5353 ];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
