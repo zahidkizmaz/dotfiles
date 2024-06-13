@@ -16,7 +16,6 @@
         settings = {
           server = {
             interface = "127.0.0.1";
-            access-control = [ "127.0.0.1 allow" ];
             port = 5353;
             do-ip4 = true;
             do-udp = true;
