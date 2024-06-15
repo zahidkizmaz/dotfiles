@@ -19,14 +19,6 @@
     shell = pkgs.zsh;
     extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-    };
-    starship.enable = true;
-  };
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = { keyMap = "us"; };
