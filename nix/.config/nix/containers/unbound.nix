@@ -17,7 +17,7 @@
           server = {
             interface = "127.0.0.1";
             access-control = [ "127.0.0.0/8 allow" ];
-            port = 5353;
+            port = 5354;
             do-ip4 = true;
             do-udp = true;
             do-tcp = true;
@@ -137,7 +137,7 @@
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 5353 ];
+          allowedTCPPorts = [ 5354 ];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
