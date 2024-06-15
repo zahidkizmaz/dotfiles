@@ -16,6 +16,7 @@
         settings = {
           server = {
             interface = "127.0.0.1";
+            access-control = [ "127.0.0.0/8 allow" ];
             port = 5353;
             do-ip4 = true;
             do-udp = true;
@@ -85,7 +86,6 @@
 
             # |Cache|
             # Slabs reduce lock contention by threads. Set to power of 2, close to num-threads
-            slabs = 4;
             msg-cache-slabs = 4;
             rrset-cache-slabs = 4;
             infra-cache-slabs = 4;
@@ -137,7 +137,7 @@
       networking = {
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 443 5353 ];
+          allowedTCPPorts = [ 5353 ];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
