@@ -24,22 +24,6 @@
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";
 
-  # At the moment not used
-  # age = {
-  #   secrets = {
-  #     home_latitude.file = ../../secrets/home_latitude.age;
-  #     home_longitude.file = ../../secrets/home_latitude.age;
-  #     home_elevation.file = ../../secrets/home_elevation.age;
-  #   };
-  #   identityPaths = [ "/home/${user}/.ssh/id_ed25519" ];
-  # };
-
-  environment.systemPackages = with pkgs; [
-    gitMinimal
-    magic-wormhole
-    neovim
-  ];
-
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 16 * 1024; # 16GB
