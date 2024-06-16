@@ -151,13 +151,6 @@
           url = "https://home-manager-options.extranix.com/?query=%s&release=master";
         }
       ];
-
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        clearurls
-        darkreader
-        facebook-container
-        ublock-origin
-      ];
     };
   };
 
