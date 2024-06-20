@@ -57,11 +57,6 @@
             }
             {
               enabled = true;
-              url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_56.txt";
-              name = "HaGeZi's The World's Most Abused TLDs";
-            }
-            {
-              enabled = true;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt";
               name = "uBlock₀ filters – Badware risks";
             }
