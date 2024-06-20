@@ -22,51 +22,56 @@
           filters = [
             {
               enabled = true;
+              url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
+              name = "Hagezi Multi PRO - Extended protection";
+            }
+            {
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
               name = "AdGuard DNS filter";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_51.txt";
               name = "HaGeZi's Pro++ Blocklist";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_59.txt";
               name = "AdGuard DNS Popup Hosts filter";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt";
               name = "Steven Black's List";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_46.txt";
               name = "HaGeZi's Anti-Piracy Blocklist";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_47.txt";
               name = "HaGeZi's Gambling Blocklist";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt";
               name = "HaGeZi's Threat Intelligence Feeds";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt";
               name = "uBlock₀ filters – Badware risks";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_54.txt";
               name = "HaGeZi's DynDNS Blocklist";
             }
             {
-              enabled = true;
+              enabled = false;
               url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_55.txt";
               name = "HaGeZi's Badware Hoster Blocklist";
             }
