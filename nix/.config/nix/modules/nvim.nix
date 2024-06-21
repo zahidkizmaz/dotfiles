@@ -19,7 +19,7 @@
     htmx-lsp
     lemminx
     lua-language-server
-    nil
+    nixd
     nodePackages_latest.bash-language-server
     nodePackages_latest.typescript-language-server
     nodePackages_latest.vscode-css-languageserver-bin
