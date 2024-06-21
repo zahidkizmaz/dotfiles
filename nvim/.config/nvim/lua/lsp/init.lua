@@ -136,27 +136,7 @@ M.SERVER_CONFIGURATIONS = {
   tailwindcss = { pattern = { "*.css", "*.scss" } },
   ts_ls = { pattern = { "*.js", "*.ts", "*.jsx", "*.tsx" } },
   typos_lsp = { pattern = { "*" } },
-  nil_ls = {
-    pattern = { "*.nix" },
-    setup_config = function()
-      return {
-        settings = {
-          ["nil"] = {
-            formatting = {
-              command = { "nixpkgs-fmt" },
-            },
-            nix = {
-              flake = {
-                autoArchive = true,
-                -- Creates too many errors
-                -- autoEvalInputs = true,
-              },
-            },
-          },
-        },
-      }
-    end,
-  },
+  nixd = { pattern = { "*.nix" } },
   yamlls = {
     pattern = { "*.yaml", "*.yml" },
     setup_config = function()
