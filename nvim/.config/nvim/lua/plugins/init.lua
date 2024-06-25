@@ -75,22 +75,32 @@ require("lazy").setup({
     -----------------
     { "rhysd/committia.vim", ft = "gitcommit" }, -- nice commit setup
     {
-      "tpope/vim-fugitive",
-      dependencies = { "tpope/vim-rhubarb" },
-      cmd = { "Git", "GBrowse", "Gedit", "Gread", "Gdiffsplit", "Gvdiffsplit" },
+      "ruifm/gitlinker.nvim",
+      opts = { mappings = nil },
       keys = {
         {
           "<leader>hh",
-          ":GBrowse <CR>",
-          desc = "Create VCS remote link for line and open",
+          function()
+            require("gitlinker").get_buf_range_url("n")
+          end,
+          desc = "Create VCS remote link for line and copy to clipboard",
           mode = "n",
         },
         {
           "<leader>hh",
-          ":GBrowse <CR>",
-          desc = "Create VCS remote link for selection and open",
+          function()
+            require("gitlinker").get_buf_range_url("v")
+          end,
+          desc = "Create VCS remote link for line and copy to clipboard",
           mode = "v",
         },
+      },
+    },
+    {
+      "tpope/vim-fugitive",
+      dependencies = { "tpope/vim-rhubarb" },
+      cmd = { "Git", "GBrowse", "Gedit", "Gread", "Gdiffsplit", "Gvdiffsplit" },
+      keys = {
         {
           "<leader>cc",
           "<CMD>lua TabnewGitcommit()<CR>",
