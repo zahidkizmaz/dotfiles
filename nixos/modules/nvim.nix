@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
 
@@ -7,6 +7,8 @@
     neovim
 
     # Dependencies
+    bat
+    fzf
     viu
     universal-ctags
 
@@ -49,4 +51,14 @@
     stylua
     yamllint
   ];
+
+  system.userActivationScripts = {
+    desktop-env.text =
+      ''
+        ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat
+        ln -sfn /home/${user}/dotfiles/fzf/.config/fzf /home/${user}/.config/fzf
+        ln -sfn /home/${user}/dotfiles/nvim/.config/nvim /home/${user}/.config/nvim
+        ln -sfn /home/${user}/dotfiles/efm-langserver/.config/efm-langserver /home/${user}/.config/efm-langserver
+      '';
+  };
 }
