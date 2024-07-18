@@ -46,30 +46,30 @@
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/lenovo-y5070/configuration.nix
+            ./nixos/hosts/lenovo-y5070/configuration.nix
             agenix.nixosModules.default
             disko.nixosModules.disko
-            nix-ld.nixosModules.nix-ld
+            # nix-ld.nixosModules.nix-ld  # at the moment fails
             home-manager.nixosModules.home-manager
-            ./modules/agenix.nix
-            ./modules/bluetooth.nix
-            ./modules/bootloader-systemd.nix
-            ./modules/gc.nix
-            ./modules/gui-applications.nix
-            ./modules/hyprland.nix
-            ./modules/ld.nix
-            ./modules/login-manager-tuigreet.nix
-            ./modules/nix-settings.nix
-            ./modules/nvim.nix
-            ./modules/podman.nix
-            ./modules/sound-pipewire.nix
-            ./modules/ssh.nix
-            ./modules/tailscale.nix
-            ./modules/user-zahid.nix
-            ./modules/virt-manager.nix
-            ./modules/waybar.nix
-            ./modules/wayland-desktop-environment.nix
-            ./modules/wlan.nix
+            ./nixos/modules/agenix.nix
+            ./nixos/modules/bluetooth.nix
+            ./nixos/modules/bootloader-systemd.nix
+            ./nixos/modules/gc.nix
+            ./nixos/modules/gui-applications.nix
+            ./nixos/modules/hyprland.nix
+            # ./nixos/modules/ld.nix
+            ./nixos/modules/login-manager-tuigreet.nix
+            ./nixos/modules/nix-settings.nix
+            ./nixos/modules/nvim.nix
+            ./nixos/modules/podman.nix
+            ./nixos/modules/sound-pipewire.nix
+            ./nixos/modules/ssh.nix
+            ./nixos/modules/tailscale.nix
+            ./nixos/modules/user-zahid.nix
+            ./nixos/modules/virt-manager.nix
+            ./nixos/modules/waybar.nix
+            ./nixos/modules/wayland-desktop-environment.nix
+            ./nixos/modules/wlan.nix
           ];
           specialArgs = { inherit inputs; user = "zahid"; };
         };
@@ -79,18 +79,18 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
             agenix.nixosModules.default
-            ./hosts/pi4b/hardware-configuration.nix
-            ./hosts/pi4b/configuration.nix
-            ./hosts/pi4b/caddy.nix
-            ./containers/adguardhome.nix
-            ./containers/unbound.nix
-            ./modules/better-shell.nix
-            ./modules/gc.nix
-            ./modules/home-assistant
-            ./modules/nix-settings.nix
-            ./modules/podman.nix
-            ./modules/ssh.nix
-            ./modules/tailscale.nix
+            ./nixos/hosts/pi4b/hardware-configuration.nix
+            ./nixos/hosts/pi4b/configuration.nix
+            ./nixos/hosts/pi4b/caddy.nix
+            ./nixos/containers/adguardhome.nix
+            ./nixos/containers/unbound.nix
+            ./nixos/modules/better-shell.nix
+            ./nixos/modules/gc.nix
+            ./nixos/modules/home-assistant
+            ./nixos/modules/nix-settings.nix
+            ./nixos/modules/podman.nix
+            ./nixos/modules/ssh.nix
+            ./nixos/modules/tailscale.nix
           ];
           specialArgs = { inherit inputs; user = "pi"; };
         };
