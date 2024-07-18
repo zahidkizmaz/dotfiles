@@ -56,6 +56,7 @@
         ln -sfn /home/${user}/dotfiles/starship/.config/starship.toml /home/${user}/.config/starship.toml
         ln -sfn /home/${user}/dotfiles/tmux/.config/tmux /home/${user}/.config/tmux
         ln -sfn /home/${user}/dotfiles/zsh/.config/zsh /home/${user}/.config/zsh
+        ln -sfn /home/${user}/dotfiles/zsh/.zshenv /home/${user}/.zshenv
       '';
   };
 }
