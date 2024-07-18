@@ -15,7 +15,7 @@
   ];
 
 
-  system.activationScripts = {
+  system.userActivationScripts = {
     desktop-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi
