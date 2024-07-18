@@ -56,6 +56,7 @@
     desktop-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat
+        ln -sfn /home/${user}/dotfiles/ctags/.ctagsd /home/${user}/.ctagsd
         ln -sfn /home/${user}/dotfiles/fzf/.fzf.zsh /home/${user}/.fzf.zsh
         ln -sfn /home/${user}/dotfiles/nvim/.config/nvim /home/${user}/.config/nvim
         ln -sfn /home/${user}/dotfiles/efm-langserver/.config/efm-langserver /home/${user}/.config/efm-langserver
