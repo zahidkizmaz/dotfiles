@@ -22,8 +22,7 @@
     nixd
     nodePackages_latest.bash-language-server
     nodePackages_latest.typescript-language-server
-    nodePackages_latest.vscode-css-languageserver-bin
-    nodePackages_latest.vscode-json-languageserver-bin
+    vscode-langservers-extracted
     rust-analyzer
     tabnine
     tailwindcss-language-server
