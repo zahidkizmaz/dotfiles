@@ -5,6 +5,7 @@
     copyq
     dconf
     dunst
+    easyeffects
     grim
     networkmanagerapplet
     pcmanfm
@@ -13,7 +14,6 @@
     tofi
     wl-clipboard
   ];
-
 
   system.userActivationScripts = {
     desktop-env.text =
