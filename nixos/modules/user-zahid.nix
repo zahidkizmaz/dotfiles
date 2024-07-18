@@ -14,28 +14,10 @@
     extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      atuin
-      bat
-      copyq
-      delta
-      easyeffects
-      fd
       feh
-      fzf
-      gitMinimal
-      just
-      jq
       kitty
-      man
-      neovim
-      ripgrep
-      starship
-      stow
-      tmux
-      tree
       unzip
       zip
-      zoxide
     ];
   };
   programs.zsh.enable = true;
@@ -45,4 +27,11 @@
     nerdfonts
     noto-fonts-color-emoji
   ];
+
+  system.userActivationScripts = {
+    desktop-env.text =
+      ''
+        ln -sfn /home/${user}/dotfiles/kitty/.config/kitty /home/${user}/.config/kitty
+      '';
+  };
 }
