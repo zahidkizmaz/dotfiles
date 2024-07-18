@@ -30,19 +30,39 @@
     , nix-ld
     , ...
     } @ inputs: rec {
-      images = {
-        pi4b = (self.nixosConfigurations.pi4b.extendModules {
-          modules = [
-            "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            {
-              disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
-            }
-          ];
-        }).config.system.build.sdImage;
-      };
-      packages.x86_64-linux.pi-image = images.pi4b;
-      packages.aarch64-linux.pi-image = images.pi4b;
       nixosConfigurations = {
+        fw13-amd = nixpkgs-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.framework-13-7040-amd
+            # TODO: write fw13-amd specific config: such as disko
+            ./nixos/hosts/fw13-amd/configuration.nix
+            agenix.nixosModules.default
+            disko.nixosModules.disko
+            # nix-ld.nixosModules.nix-ld  # at the moment fails
+            home-manager.nixosModules.home-manager
+            ./nixos/modules/agenix.nix
+            ./nixos/modules/bluetooth.nix
+            ./nixos/modules/bootloader-systemd.nix
+            ./nixos/modules/gc.nix
+            ./nixos/modules/gui-applications.nix
+            ./nixos/modules/hyprland.nix
+            # ./nixos/modules/ld.nix
+            ./nixos/modules/login-manager-tuigreet.nix
+            ./nixos/modules/nix-settings.nix
+            ./nixos/modules/nvim.nix
+            ./nixos/modules/podman.nix
+            ./nixos/modules/sound-pipewire.nix
+            ./nixos/modules/ssh.nix
+            ./nixos/modules/tailscale.nix
+            ./nixos/modules/user-zahid.nix
+            ./nixos/modules/virt-manager.nix
+            ./nixos/modules/waybar.nix
+            ./nixos/modules/wayland-desktop-environment.nix
+            ./nixos/modules/wlan.nix
+          ];
+          specialArgs = { inherit inputs; user = "zahid"; };
+        };
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -95,5 +115,17 @@
           specialArgs = { inherit inputs; user = "pi"; };
         };
       };
+      images = {
+        pi4b = (self.nixosConfigurations.pi4b.extendModules {
+          modules = [
+            "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            {
+              disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
+            }
+          ];
+        }).config.system.build.sdImage;
+      };
+      packages.x86_64-linux.pi-image = images.pi4b;
+      packages.aarch64-linux.pi-image = images.pi4b;
     };
 }
