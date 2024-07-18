@@ -18,8 +18,8 @@
   system.activationScripts = {
     desktop-env.text =
       ''
-        ln -sfn ../../dunst/.config/dunst /home/${user}/.config/dunst
-        ln -sfn ../../tofi/.config/tofi /home/${user}/.config/tofi
+        ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi
+        ln -sfn /home/${user}/dotfiles/dunst/.config/dunst /home/${user}/.config/dunst
       '';
   };
 }
