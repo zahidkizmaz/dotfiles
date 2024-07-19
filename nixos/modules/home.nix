@@ -36,6 +36,12 @@
     enable = true;
 
     profiles.zahid = {
+      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+        clearurls
+        darkreader
+        facebook-container
+        ublock-origin
+      ];
       settings = {
         "browser.startup.homepage" = "https://www.startpage.com/do/mypage.pl?prfe=2fb91ba78884cffd12306b0ab6163c87719b53a4238821eba5f075668d1a3ced3d3397730521889373e40a0c51fe15f1c81f900111ae63ca76a4ac74f7c0e1b62b071d861f10587a255615fe";
         "browser.aboutConfig.showWarning" = false;
