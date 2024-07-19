@@ -53,7 +53,7 @@
   ];
 
   system.userActivationScripts = {
-    desktop-env.text =
+    desktop-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat
         ln -sfn /home/${user}/dotfiles/ctags/.ctagsd /home/${user}/.ctagsd
