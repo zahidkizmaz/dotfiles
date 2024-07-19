@@ -22,7 +22,6 @@
 
   outputs =
     { self
-    , nixpkgs2405
     , nixos-hardware
     , nixpkgs-unstable
     , agenix
@@ -40,7 +39,7 @@
             ./nixos/hosts/fw13-amd/configuration.nix
             agenix.nixosModules.default
             disko.nixosModules.disko
-            # nix-ld.nixosModules.nix-ld  # at the moment fails
+            nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
             ./nixos/modules/agenix.nix
             ./nixos/modules/bluetooth.nix
@@ -48,7 +47,7 @@
             ./nixos/modules/gc.nix
             ./nixos/modules/gui-applications.nix
             ./nixos/modules/hyprland.nix
-            # ./nixos/modules/ld.nix
+            ./nixos/modules/ld.nix
             ./nixos/modules/login-manager-tuigreet.nix
             ./nixos/modules/nix-settings.nix
             ./nixos/modules/nvim.nix
@@ -70,7 +69,7 @@
             ./nixos/hosts/lenovo-y5070/configuration.nix
             agenix.nixosModules.default
             disko.nixosModules.disko
-            # nix-ld.nixosModules.nix-ld  # at the moment fails
+            nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
             ./nixos/modules/agenix.nix
             ./nixos/modules/bluetooth.nix
@@ -78,7 +77,7 @@
             ./nixos/modules/gc.nix
             ./nixos/modules/gui-applications.nix
             ./nixos/modules/hyprland.nix
-            # ./nixos/modules/ld.nix
+            ./nixos/modules/ld.nix
             ./nixos/modules/login-manager-tuigreet.nix
             ./nixos/modules/nix-settings.nix
             ./nixos/modules/nvim.nix
