@@ -35,7 +35,6 @@
           system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.framework-13-7040-amd
-            # TODO: write fw13-amd specific config: such as disko
             ./nixos/hosts/fw13-amd/configuration.nix
             agenix.nixosModules.default
             disko.nixosModules.disko
@@ -127,5 +126,18 @@
       };
       packages.x86_64-linux.pi-image = images.pi4b;
       packages.aarch64-linux.pi-image = images.pi4b;
+
+      devShells = {
+        x86_64-linux.default =
+          let
+            pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          in
+          pkgs.mkShell {
+            packages = with pkgs; [
+              nixd
+              nixpkgs-fmt
+            ];
+          };
+      };
     };
 }
