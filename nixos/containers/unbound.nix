@@ -95,7 +95,7 @@
             rrset-cache-size = "256m";
             # Time to live minimum for messages in cache. More than an hour could easily
             # give trouble due to stale data. Default is 0
-            cache-min-ttl = 0;
+            cache-min-ttl = 10;
             # I prefer to have the latest 'hot' data
             cache-max-ttl = 21600;
             # infra-host-ttl= 900
@@ -110,7 +110,7 @@
             # Have unbound attempt to serve old responses from cache with a TTL of 0 in
             # the response without waiting for the actual resolution to finish. The
             # actual resolution answer ends up in the cache later on.
-            serve-expired = false;
+            serve-expired = true;
             # TTL value to use when replying with expired data. If serve-expired-client-timeout
             # is used then recommended to use 30. Default is 30
             # Added for cachedb warning at unbound start. Unbound sets it to 0 for records
