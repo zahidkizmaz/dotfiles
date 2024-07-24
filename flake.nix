@@ -2,7 +2,6 @@
   description = "NixOS configuration";
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    nixpkgs2405.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
