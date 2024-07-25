@@ -30,6 +30,8 @@ M.SERVER_CONFIGURATIONS = {
     end,
   },
   htmx = { pattern = { "*.html" } },
+  nixd = { pattern = { "*.nix" } },
+  hyprls = { pattern = { "hypr*.conf" } },
   jsonls = {
     pattern = { "*.json" },
     setup_config = function()
