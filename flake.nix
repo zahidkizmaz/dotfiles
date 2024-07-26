@@ -28,7 +28,16 @@
     , disko
     , nix-ld
     , ...
-    } @ inputs: rec {
+    } @ inputs:
+    let
+      forDefaultSystems = nixpkgs-unstable.lib.genAttrs [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+    in
+    rec {
       nixosConfigurations = {
         fw13-amd = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
@@ -126,17 +135,12 @@
       packages.x86_64-linux.pi-image = images.pi4b;
       packages.aarch64-linux.pi-image = images.pi4b;
 
-      devShells = {
-        x86_64-linux.default =
+      devShells = forDefaultSystems
+        (system:
           let
-            pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+            pkgs = nixpkgs-unstable.legacyPackages.${system};
           in
-          pkgs.mkShell {
-            packages = with pkgs; [
-              nixd
-              nixpkgs-fmt
-            ];
-          };
-      };
+          import ./dev-shell.nix { inherit pkgs; }
+        );
     };
 }
