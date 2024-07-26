@@ -10,6 +10,7 @@
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
+        logfile = "/var/log/redis.log";
       };
       services.unbound = {
         enable = true;
@@ -24,6 +25,11 @@
             do-ip6 = false;
 
             do-not-query-localhost = false;
+
+            # Logging
+            logfile = "/var/log/unbound.log";
+            verbosity = 1;
+            log-queries = true;
 
             # Trust glue only if it is within the server's authority
             harden-glue = true;
