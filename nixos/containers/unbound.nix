@@ -6,7 +6,23 @@
   containers.unbound = {
     autoStart = true;
 
+    bindMounts = {
+      "/var/log/redis.log" = {
+        hostPath = "/tmp/redis/redis.log";
+        isReadOnly = false;
+      };
+      "/var/log/unbound.log" = {
+        hostPath = "/tmp/unbound/unbound.log";
+        isReadOnly = false;
+      };
+      "/var/lib/redis-redis-unbound" = {
+        hostPath = "/tmp/redis/data/";
+        isReadOnly = false;
+      };
+    };
+
     config = { lib, ... }: {
+      services.redis.vmOverCommit = true;
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
@@ -29,7 +45,7 @@
             # Logging
             logfile = "/var/log/unbound.log";
             verbosity = 1;
-            log-queries = true;
+            log-queries = false;
 
             # Trust glue only if it is within the server's authority
             harden-glue = true;
