@@ -11,7 +11,7 @@
     isNormalUser = true;
     initialPassword = "${user}";
     description = "${user}";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" ];
+    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" "libvirtd" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       atuin
