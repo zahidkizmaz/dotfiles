@@ -7,16 +7,12 @@
     autoStart = true;
 
     bindMounts = {
-      "/var/log/redis.log" = {
-        hostPath = "/tmp/redis-log/redis.log";
-        isReadOnly = false;
-      };
-      "/var/log/unbound.log" = {
-        hostPath = "/tmp/unbound-log/unbound.log";
+      "/var/log/" = {
+        hostPath = "/tmp/unbound/log";
         isReadOnly = false;
       };
       "/var/lib/redis-redis-unbound" = {
-        hostPath = "/tmp/redis";
+        hostPath = "/tmp/unbound/data";
         isReadOnly = false;
       };
     };
@@ -26,7 +22,7 @@
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
-        logfile = "/var/log/redis.log";
+        # logfile = "/var/log/redis.log";
       };
       services.unbound = {
         enable = true;
