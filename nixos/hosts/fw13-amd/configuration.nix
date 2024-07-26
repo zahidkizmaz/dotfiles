@@ -7,6 +7,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 64 * 1024; # 64GB
+  }];
+
   networking = {
     hostName = "fw13-amd";
   };
