@@ -8,15 +8,15 @@
 
     bindMounts = {
       "/var/log/redis.log" = {
-        hostPath = "/tmp/redis/redis.log";
+        hostPath = "/tmp/redis-log/redis.log";
         isReadOnly = false;
       };
       "/var/log/unbound.log" = {
-        hostPath = "/tmp/unbound/unbound.log";
+        hostPath = "/tmp/unbound-log/unbound.log";
         isReadOnly = false;
       };
       "/var/lib/redis-redis-unbound" = {
-        hostPath = "/tmp/redis/data/";
+        hostPath = "/tmp/redis";
         isReadOnly = false;
       };
     };
