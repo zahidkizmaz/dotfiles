@@ -1,5 +1,10 @@
 # NixOS Configuration
 
+Activate nixos configuration via:
+```shell
+sudo nixos-rebuild switch --flake .#fw13-amd
+```
+
 ## Install using nixos-anywhere
 
 [More options can be found here.](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md)
