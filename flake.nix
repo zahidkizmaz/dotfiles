@@ -51,6 +51,7 @@
             ./nixos/modules/agenix.nix
             ./nixos/modules/bluetooth.nix
             ./nixos/modules/bootloader-systemd.nix
+            ./nixos/modules/fingerprint.nix
             ./nixos/modules/gc.nix
             ./nixos/modules/gui-applications.nix
             ./nixos/modules/hyprland.nix
