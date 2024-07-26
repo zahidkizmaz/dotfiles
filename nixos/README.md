@@ -1,5 +1,19 @@
 # NixOS Configuration
 
+## Install using nixos-anywhere
+
+[More options can be found here.](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md)
+
+### Testing:
+```shell
+nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd --vm-test
+```
+
+### Installation:
+```shell
+nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd
+```
+
 ## Development Environment
 
 Using [nix-direnv](https://github.com/nix-community/nix-direnv) with flakes.
