@@ -3,7 +3,7 @@
     disk = {
       vdb = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-diskseq/1";
         content = {
           type = "gpt";
           partitions = {
