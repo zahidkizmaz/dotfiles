@@ -6,7 +6,7 @@
   containers.unbound = {
     autoStart = true;
 
-    config = { config, pkgs, lib, ... }: {
+    config = { lib, ... }: {
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
@@ -23,7 +23,7 @@
             do-tcp = true;
             do-ip6 = false;
 
-            do-not-query-localhost = true;
+            do-not-query-localhost = false;
 
             # Trust glue only if it is within the server's authority
             harden-glue = true;
