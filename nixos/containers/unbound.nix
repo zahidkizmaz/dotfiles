@@ -17,7 +17,7 @@
       };
     };
 
-    config = { lib, ... }: {
+    config = { pkgs, lib, ... }: {
       systemd.tmpfiles.rules = [
         "d /var/log 700 wwwrun wwwrun -"
         "d /var/lib/redis-redis-unbound 700 wwwrun wwwrun -"
@@ -32,6 +32,7 @@
       };
       services.unbound = {
         enable = true;
+        package = pkgs.unbound-full.override { withRedis = true; };
         settings = {
           server = {
             interface = "127.0.0.1";
