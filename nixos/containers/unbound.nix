@@ -27,7 +27,7 @@
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
-        logfile = "/var/log/redis.log";
+        # logfile = "/var/log/redis.log";
         logLevel = "debug";
       };
       services.unbound = {
