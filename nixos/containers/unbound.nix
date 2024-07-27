@@ -18,11 +18,17 @@
     };
 
     config = { lib, ... }: {
+      systemd.tmpfiles.rules = [
+        "d /var/log 700 wwwrun wwwrun -"
+        "d /var/lib/redis-redis-unbound 700 wwwrun wwwrun -"
+      ];
+
       services.redis.vmOverCommit = true;
       services.redis.servers.redis-unbound = {
         enable = true;
         port = 6379;
-        # logfile = "/var/log/redis.log";
+        logfile = "/var/log/redis.log";
+        logLevel = "debug";
       };
       services.unbound = {
         enable = true;
