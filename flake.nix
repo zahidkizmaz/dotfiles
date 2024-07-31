@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
+    unbound-config.url = "github:zahidkizmaz/unbound-config";
   };
 
   outputs =
@@ -27,6 +28,7 @@
     , home-manager
     , disko
     , nix-ld
+    , unbound-config
     , ...
     } @ inputs:
     let
@@ -107,6 +109,7 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
             agenix.nixosModules.default
+            unbound-config.lib.dns
             ./nixos/hosts/pi4b/hardware-configuration.nix
             ./nixos/hosts/pi4b/configuration.nix
             ./nixos/hosts/pi4b/caddy.nix
