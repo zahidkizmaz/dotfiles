@@ -114,7 +114,6 @@
             ./nixos/hosts/pi4b/configuration.nix
             ./nixos/hosts/pi4b/caddy.nix
             ./nixos/containers/adguardhome.nix
-            ./nixos/containers/unbound.nix
             ./nixos/modules/better-shell.nix
             ./nixos/modules/gc.nix
             ./nixos/modules/home-assistant
