@@ -27,11 +27,11 @@
         "onchg": "onchg"
       },
       "locked": {
-        "lastModified": 1720429515,
-        "narHash": "sha256-r73eyaZzaNgysusdaFmanOHcYMVnRxdAYzD4BvkBjmU=",
+        "lastModified": 1722379944,
+        "narHash": "sha256-MhLSK21lsW5MRDV0S/CzpDFXSoeyT4m/cIQLi0bGpy8=",
         "owner": "aksiksi",
         "repo": "compose2nix",
-        "rev": "a55aea08f1eb34cc1681c9ea2d7b42b58730df5d",
+        "rev": "d0e9dc346d2268135c162b59da388af1866fcb75",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1722062969,
-        "narHash": "sha256-QOS0ykELUmPbrrUGmegAUlpmUFznDQeR4q7rFhl8eQg=",
+        "lastModified": 1722185531,
+        "narHash": "sha256-veKR07psFoJjINLC8RK4DiLniGGMgF3QMlS4tb74S6k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b73c2221a46c13557b1b3be9c2070cc42cf01eb3",
+        "rev": "52ec9ac3b12395ad677e8b62106f0b98c1f8569d",
         "type": "github"
       },
       "original": {
@@ -436,11 +436,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1722285856,
-        "narHash": "sha256-NHOzJSmVkf2m8WlwC5PPe+eQ1/QDXZM9sf1iH+oLz+s=",
+        "lastModified": 1722455364,
+        "narHash": "sha256-FyfhR5zJACHV36paotFUbOcV6BfiAmy5iIcxE5QKS+Y=",
         "owner": "zahidkizmaz",
         "repo": "unbound-config",
-        "rev": "297e26c63c0b85d801c93549546fe535bdfe3cfe",
+        "rev": "ec7525668c3831914f35ca6123dd8409559249df",
         "type": "github"
       },
       "original": {
