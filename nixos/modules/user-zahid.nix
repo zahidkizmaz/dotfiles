@@ -42,7 +42,7 @@
   programs.direnv.enable = true;
 
   fonts.packages = with pkgs; [
-    nerdfonts
+    (nerdfonts.override { fonts = [ "IosevkaTerm" "Noto" "JetBrainsMono" ]; })
     noto-fonts-color-emoji
   ];
 
