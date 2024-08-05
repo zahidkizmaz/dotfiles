@@ -76,6 +76,7 @@
         lenovo-y5070 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            nixos-hardware.nixosModules.common-cpu-intel
             ./nixos/hosts/lenovo-y5070/configuration.nix
             agenix.nixosModules.default
             disko.nixosModules.disko
