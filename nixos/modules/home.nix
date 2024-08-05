@@ -55,6 +55,10 @@
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
+        # hardware acceleration
+        "gfx.webrender.all" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+
         # security
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_ever_enabled" = true;
