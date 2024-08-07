@@ -82,6 +82,7 @@
             disko.nixosModules.disko
             nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
+            unbound-config.nixosModules.default
             ./nixos/modules/agenix.nix
             ./nixos/modules/bluetooth.nix
             ./nixos/modules/bootloader-systemd.nix
@@ -110,7 +111,7 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
             agenix.nixosModules.default
-            unbound-config.lib.dns
+            unbound-config.nixosModules.default
             ./nixos/hosts/pi4b/hardware-configuration.nix
             ./nixos/hosts/pi4b/configuration.nix
             ./nixos/hosts/pi4b/caddy.nix
