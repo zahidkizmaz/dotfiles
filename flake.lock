@@ -338,11 +338,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1723055463,
-        "narHash": "sha256-dwAq5K28xGBAJQ4/l5o57Zh3zKiPwQqvOj9CGVS3Wd0=",
+        "lastModified": 1723055579,
+        "narHash": "sha256-CXyQDAu2a8IDi8yckcy6od9GNil1ZH2QGg26Db2dzqg=",
         "owner": "zahidkizmaz",
         "repo": "unbound-config",
-        "rev": "147f575a64fe2634d6c51bfb7cd5f37e37445721",
+        "rev": "0dbd2c4ff0d54803f89e314fe6e9d64b29631e04",
         "type": "github"
       },
       "original": {

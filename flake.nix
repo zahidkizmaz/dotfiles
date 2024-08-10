@@ -126,6 +126,7 @@
           ];
           specialArgs = { inherit inputs; user = "pi"; };
         };
+        nuc-g5 = import ./nixos/hosts/nuc-g5 { inherit inputs; };
       };
       images = {
         pi4b = (self.nixosConfigurations.pi4b.extendModules {
