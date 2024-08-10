@@ -7,9 +7,27 @@
   services.displayManager.sddm.wayland.enable = true;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
+    akonadi-contacts
+    elisa
+    kmail
+    kmail-account-wizard
+    kmailtransport
     konsole
+    kontact
+    konversation
+    kpublictransport
+    kruler
+    kteatime
+    ktouch
+    kspaceduel
+    ksquares
+    ksudoku
+    ktorrent
+    kturtle
+    kwallet
+    marble
     oxygen
+    plasma-browser-integration
+    umbrello
   ];
-
 }
