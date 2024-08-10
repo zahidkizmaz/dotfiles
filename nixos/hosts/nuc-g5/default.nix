@@ -12,6 +12,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
+    ../../modules/ssd.nix
     ../../modules/ssh.nix
   ];
   specialArgs = { inherit inputs; user = "g5"; };
