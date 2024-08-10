@@ -10,10 +10,12 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/gc.nix
+    ../../modules/kde-plasma.nix
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
+    ../../modules/tailscale.nix
   ];
   specialArgs = { inherit inputs; user = "g5"; };
 }
