@@ -10,6 +10,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../containers/adguardhome.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/default-user.nix
     ../../modules/gc.nix
     ../../modules/kde-plasma.nix
     ../../modules/nix-settings.nix

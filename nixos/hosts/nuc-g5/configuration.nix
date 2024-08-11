@@ -1,4 +1,4 @@
-{ config, pkgs, lib, user, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -35,13 +35,6 @@
   networking = {
     hostName = "nuc-g5";
     useDHCP = lib.mkDefault true;
-  };
-
-  security.sudo.wheelNeedsPassword = false;
-  users.users.${user} = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
 
   environment.systemPackages = with pkgs; [
