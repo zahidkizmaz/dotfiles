@@ -6,6 +6,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     inputs.agenix.nixosModules.default
     ./configuration.nix
+    ./disko.nix
     ../../containers/adguardhome.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix

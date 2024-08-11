@@ -2,7 +2,6 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./disko.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
