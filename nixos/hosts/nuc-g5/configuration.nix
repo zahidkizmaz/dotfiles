@@ -39,9 +39,9 @@
 
   environment.systemPackages = with pkgs; [
     brave
-    librewolf
-    kitty
     gitMinimal
+    kitty
+    librewolf
     neovim
   ];
 
