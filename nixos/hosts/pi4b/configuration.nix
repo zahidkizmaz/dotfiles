@@ -13,13 +13,6 @@
     firewall.allowedTCPPorts = [ 22 443 ];
   };
 
-  security.sudo.wheelNeedsPassword = false;
-  users.users.${user} = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
-  };
-
   i18n.defaultLocale = "en_US.UTF-8";
   console = { keyMap = "us"; };
   time.timeZone = "Europe/Berlin";

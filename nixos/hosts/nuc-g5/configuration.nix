@@ -35,6 +35,8 @@
   networking = {
     hostName = "nuc-g5";
     useDHCP = lib.mkDefault true;
+    wireless.enable = false;
+    firewall.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

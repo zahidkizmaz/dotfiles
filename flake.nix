@@ -117,6 +117,7 @@
             ./nixos/hosts/pi4b/caddy.nix
             ./nixos/containers/adguardhome.nix
             ./nixos/modules/better-shell.nix
+            ./nixos/modules/default-user.nix
             ./nixos/modules/gc.nix
             ./nixos/modules/home-assistant
             ./nixos/modules/nix-settings.nix
