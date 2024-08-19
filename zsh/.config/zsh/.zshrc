@@ -38,6 +38,11 @@ if type "starship" &>/dev/null; then
   eval "$(starship init zsh)"
 fi
 
+# direnv
+if type "direnv" &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # mise
 if type "mise" &>/dev/null; then
   eval "$(mise activate zsh)"
