@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "NixOS configurations";
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -18,7 +18,6 @@
     };
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
-
   outputs =
     { self, nixpkgs-unstable, ... } @ inputs:
     let
