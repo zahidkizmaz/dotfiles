@@ -24,6 +24,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/tailscale.nix
     ../../modules/user-zahid.nix
     ../../modules/virt-manager.nix
+    ../../modules/vm-variant.nix
     ../../modules/waybar.nix
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
