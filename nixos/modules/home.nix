@@ -51,6 +51,7 @@
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
         "extensions.pocket.enabled" = false;
+        "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
