@@ -30,7 +30,16 @@ M.SERVER_CONFIGURATIONS = {
     end,
   },
   htmx = { pattern = { "*.html" } },
-  nixd = { pattern = { "*.nix" } },
+  nixd = {
+    pattern = { "*.nix" },
+    setup_config = function()
+      return {
+        settings = {
+          nixd = { formatting = { command = { "nixpkgs-fmt" } } },
+        },
+      }
+    end,
+  },
   hyprls = { pattern = { "hypr*.conf" } },
   jsonls = {
     pattern = { "*.json" },
