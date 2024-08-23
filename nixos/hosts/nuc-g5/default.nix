@@ -18,6 +18,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/ssd.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
+    ../../modules/vm-variant.nix
   ];
   specialArgs = { inherit inputs; user = "g5"; };
 }
