@@ -14,15 +14,19 @@
 
   gtk = {
     enable = true;
+
     cursorTheme.name = "macOS-Monterey-Dark";
     cursorTheme.package = pkgs.apple-cursor;
+
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.papirus-icon-theme;
+
     theme.name = "Catppuccin-Mocha-Standard-Pink-Dark";
-    theme.package = pkgs.catppuccin-gtk.override {
-      accents = [ "pink" ];
+    theme.package = pkgs.magnetic-catppuccin-gtk.override {
+      accent = [ "pink" ];
+      shade = "dark";
       size = "standard";
-      variant = "mocha";
+      tweaks = [ "macos" ];
     };
   };
 
