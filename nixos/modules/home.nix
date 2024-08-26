@@ -21,12 +21,24 @@
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.papirus-icon-theme;
 
-    theme.name = "Catppuccin-Mocha-Standard-Pink-Dark";
+    theme.name = "Catppuccin-GTK-Dark";
     theme.package = pkgs.magnetic-catppuccin-gtk.override {
       accent = [ "pink" ];
       shade = "dark";
       size = "standard";
       tweaks = [ "macos" ];
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
     };
   };
 
