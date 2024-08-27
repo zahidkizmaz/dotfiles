@@ -15,13 +15,13 @@
   gtk = {
     enable = true;
 
-    cursorTheme.name = "macOS-Monterey-Dark";
+    cursorTheme.name = "macOS-Monterey";
     cursorTheme.package = pkgs.apple-cursor;
 
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.papirus-icon-theme;
 
-    theme.name = "Catppuccin-GTK-Dark";
+    theme.name = "Catppuccin-GTK-Pink-Dark";
     theme.package = pkgs.magnetic-catppuccin-gtk.override {
       accent = [ "pink" ];
       shade = "dark";
@@ -40,13 +40,6 @@
         gtk-application-prefer-dark-theme=1
       '';
     };
-  };
-
-  xdg.enable = true;
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 
   programs.firefox = {
