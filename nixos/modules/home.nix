@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, user, ... }:
+{ pkgs, inputs, user, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -15,18 +15,24 @@
   gtk = {
     enable = true;
 
-    cursorTheme.name = "macOS-Monterey";
-    cursorTheme.package = pkgs.apple-cursor;
+    cursorTheme = {
+      name = "macOS-Monterey";
+      package = pkgs.apple-cursor;
+    };
 
-    iconTheme.name = "Papirus-Dark";
-    iconTheme.package = pkgs.papirus-icon-theme;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
 
-    theme.name = "Catppuccin-GTK-Pink-Dark";
-    theme.package = pkgs.magnetic-catppuccin-gtk.override {
-      accent = [ "pink" ];
-      shade = "dark";
-      size = "standard";
-      tweaks = [ "macos" ];
+    theme = {
+      name = "Catppuccin-GTK-Pink-Dark";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "pink" ];
+        shade = "dark";
+        size = "standard";
+        tweaks = [ "macos" ];
+      };
     };
 
     gtk3.extraConfig = {
