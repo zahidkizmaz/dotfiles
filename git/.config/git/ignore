@@ -99,3 +99,6 @@ dmypy.json
 
 # nix
 shell.nix
+result
+*.qcow2
+*.qcow3
