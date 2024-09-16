@@ -7,7 +7,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.zahid = {
+  users.users."${user}" = {
     isNormalUser = true;
     initialPassword = "${user}";
     description = "${user}";
