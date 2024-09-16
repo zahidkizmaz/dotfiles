@@ -20,18 +20,19 @@
     dockerfile-language-server-nodejs
     efm-langserver
     htmx-lsp
+    hyprls
     lemminx
     lua-language-server
     nixd
     nodePackages_latest.bash-language-server
     nodePackages_latest.typescript-language-server
-    vscode-langservers-extracted
     rust-analyzer
     tabnine
     tailwindcss-language-server
     taplo
     typos-lsp
     vimPlugins.SchemaStore-nvim
+    vscode-langservers-extracted
     yaml-language-server
 
     # Linters&Formatters
