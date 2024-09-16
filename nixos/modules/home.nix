@@ -16,6 +16,7 @@
     enable = true;
 
     cursorTheme = {
+      size = 24;
       name = "phinger-cursors-dark";
       package = pkgs.phinger-cursors;
     };
