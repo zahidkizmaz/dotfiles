@@ -11,6 +11,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/agenix.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/desktop-user.nix
     ../../modules/gc.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
@@ -22,7 +23,6 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/sound-pipewire.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
-    ../../modules/user-zahid.nix
     ../../modules/virt-manager.nix
     ../../modules/vm-variant.nix
     ../../modules/waybar.nix
