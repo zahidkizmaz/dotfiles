@@ -28,6 +28,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/waybar.nix
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
+    ../../modules/xdg-mime.nix
   ];
   specialArgs = { inherit inputs; user = "zahid"; };
 }

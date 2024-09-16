@@ -2,6 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
+    feh
+    firefox
+    mpv
+    neovim
+    pcmanfm
     xdg-utils
   ];
 
