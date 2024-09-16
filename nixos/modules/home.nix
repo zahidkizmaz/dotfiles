@@ -16,8 +16,8 @@
     enable = true;
 
     cursorTheme = {
-      name = "macOS-Monterey";
-      package = pkgs.apple-cursor;
+      name = "phinger-cursors-dark";
+      package = pkgs.phinger-cursors;
     };
 
     iconTheme = {
