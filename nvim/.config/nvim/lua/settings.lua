@@ -37,7 +37,7 @@ opt.autoindent = true
 opt.smartindent = true
 opt.relativenumber = true
 opt.clipboard = "unnamedplus"
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = os.getenv("HOME") .. "/tmp/undodir"
 -- search files into subfolders
 -- provides tab-complete for all files
 -- by default we had `/usr/include` in here, which we don't need
