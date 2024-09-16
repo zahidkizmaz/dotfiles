@@ -3,7 +3,7 @@
 {
   home-manager = {
     extraSpecialArgs = { inherit inputs user; };
-    users = { "zahid" = import ./home.nix; };
+    users = { "${user}" = import ./home.nix; };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
