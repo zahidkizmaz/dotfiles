@@ -9,8 +9,9 @@
     # Dependencies
     bat
     fzf
-    viu
+    libgcc
     universal-ctags
+    viu
 
     # LSPs
     ansible-language-server
