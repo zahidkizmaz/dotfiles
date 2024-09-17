@@ -1,9 +1,12 @@
-{ pkgs, user, ... }:
-
+{ inputs, user, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true; # because of tabnine
+  };
+in
 {
-
-  nixpkgs.config.allowUnfree = true; # because of tabnine
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs-unstable; [
     neovim
 
     # Dependencies

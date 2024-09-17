@@ -1,6 +1,9 @@
 { inputs, ... }:
-inputs.nixpkgs-unstable.lib.nixosSystem {
+let
   system = "x86_64-linux";
+in
+inputs.nixpkgs.lib.nixosSystem {
+  system = "${system}";
   modules = [
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     inputs.agenix.nixosModules.default
@@ -31,5 +34,5 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix
   ];
-  specialArgs = { inherit inputs; user = "zahid"; };
+  specialArgs = { inherit inputs system; user = "zahid"; };
 }

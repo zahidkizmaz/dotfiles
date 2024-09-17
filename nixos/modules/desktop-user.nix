@@ -1,9 +1,8 @@
-{ inputs, pkgs, user, ... }:
-
+{ inputs, pkgs, user, system, ... }:
 {
   home-manager = {
-    extraSpecialArgs = { inherit inputs user; };
     users = { "${user}" = import ./home.nix; };
+    extraSpecialArgs = { inherit inputs user system; };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

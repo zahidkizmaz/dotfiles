@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     # Media players
-    spotify
     mpv
 
     # Chat
@@ -17,6 +16,7 @@
 
     # Browsers
     brave
+    firefox
     librewolf
   ];
 }
