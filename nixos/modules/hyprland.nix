@@ -1,15 +1,8 @@
-{ inputs, user, system, ... }:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
+{ pkgs, user, ... }:
 {
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
-  };
+  programs.hyprland = { enable = true; };
 
-  environment.systemPackages = with pkgs-unstable;
+  environment.systemPackages = with pkgs;
     [
       hypridle
       hyprlock
