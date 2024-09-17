@@ -1,5 +1,8 @@
-{ pkgs, inputs, user, ... }:
-
+{ inputs, user, system, ... }:
+let
+  pkgs = import inputs.nixpkgs { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -28,7 +31,7 @@
 
     theme = {
       name = "Catppuccin-GTK-Pink-Dark";
-      package = pkgs.magnetic-catppuccin-gtk.override {
+      package = pkgs-unstable.magnetic-catppuccin-gtk.override {
         accent = [ "pink" ];
         shade = "dark";
         size = "standard";
