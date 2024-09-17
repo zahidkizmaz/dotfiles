@@ -6,13 +6,14 @@ in
   programs.hyprland = {
     enable = true;
     package = pkgs-unstable.hyprland;
+    portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs-unstable;
     [
       hypridle
       hyprlock
-      xdg-desktop-portal-hyprland
     ];
 
   system.userActivationScripts = {
