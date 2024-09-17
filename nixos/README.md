@@ -66,7 +66,6 @@ flake.nix file:
 ```
 
 
-
 ### Example dev environment python poetry:
 
 flake.nix file:
