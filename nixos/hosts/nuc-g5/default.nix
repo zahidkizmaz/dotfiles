@@ -1,6 +1,9 @@
 { inputs, ... }:
-inputs.nixpkgs-unstable.lib.nixosSystem {
+let
   system = "x86_64_linux";
+in
+inputs.nixpkgs.lib.nixosSystem {
+  system = "${system}";
   modules = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.disko.nixosModules.disko
@@ -20,5 +23,5 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/tailscale.nix
     ../../modules/vm-variant.nix
   ];
-  specialArgs = { inherit inputs; user = "g5"; };
+  specialArgs = { inherit inputs system; user = "g5"; };
 }

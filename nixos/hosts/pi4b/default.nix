@@ -1,6 +1,9 @@
 { inputs, ... }:
-inputs.nixpkgs-unstable.lib.nixosSystem {
+let
   system = "aarch64-linux";
+in
+inputs.nixpkgs-unstable.lib.nixosSystem {
+  system = "${system}";
   modules = [
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
@@ -18,5 +21,5 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
   ];
-  specialArgs = { inherit inputs; user = "pi"; };
+  specialArgs = { inherit inputs system; user = "pi"; };
 }
