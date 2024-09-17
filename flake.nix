@@ -18,6 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
   outputs =
     { self, nixpkgs-unstable, ... } @ inputs:
