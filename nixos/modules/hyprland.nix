@@ -1,11 +1,19 @@
-{ pkgs, user, ... }: {
-  programs.hyprland.enable = true;
+{ inputs, user, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
+{
+  programs.hyprland = {
+    enable = true;
+    package = pkgs-unstable.hyprland;
+  };
 
-  environment.systemPackages = with pkgs; [
-    hypridle
-    hyprlock
-    xdg-desktop-portal-hyprland
-  ];
+  environment.systemPackages = with pkgs-unstable;
+    [
+      hypridle
+      hyprlock
+      xdg-desktop-portal-hyprland
+    ];
 
   system.userActivationScripts = {
     desktop-env.text =

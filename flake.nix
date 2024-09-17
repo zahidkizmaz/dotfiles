@@ -2,19 +2,20 @@
   description = "NixOS configurations";
   inputs = {
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-ld = {
       url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
@@ -50,7 +51,7 @@
       devShells = forDefaultSystems
         (system:
           let
-            pkgs = nixpkgs-unstable.legacyPackages.${system};
+            pkgs = import nixpkgs-unstable { inherit system; };
           in
           import ./dev-shell.nix { inherit pkgs; }
         );
