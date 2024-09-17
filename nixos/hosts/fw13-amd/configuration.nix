@@ -1,13 +1,10 @@
-{ inputs, system, ... }:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
+{ ... }:
 {
   imports = [
     ./disko.nix
+    ../../modules/latest-kernel.nix
   ];
 
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   swapDevices = [{
