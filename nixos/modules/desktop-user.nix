@@ -1,4 +1,7 @@
 { inputs, pkgs, user, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
 {
   home-manager = {
     users = { "${user}" = import ./home.nix; };
@@ -12,14 +15,11 @@
     description = "${user}";
     extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "storage" "cups" "libvirtd" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
+    packages = with pkgs-unstable; [
       atuin
       bat
-      copyq
       delta
-      easyeffects
       fd
-      feh
       fzf
       gitMinimal
       just
