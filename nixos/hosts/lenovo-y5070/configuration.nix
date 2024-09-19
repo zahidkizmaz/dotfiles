@@ -39,12 +39,5 @@
 
   time.timeZone = "Europe/Berlin";
 
-  environment.systemPackages = with pkgs; [
-    firefox
-    gitMinimal
-    magic-wormhole
-    neovim
-  ];
-
   system.stateVersion = "24.05";
 }
