@@ -5,7 +5,6 @@
     feh
     firefox
     mpv
-    neovim
     pcmanfm
     xdg-utils
   ];
