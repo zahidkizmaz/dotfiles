@@ -26,7 +26,6 @@
       jq
       kitty
       man
-      neovim
       ripgrep
       starship
       stow
