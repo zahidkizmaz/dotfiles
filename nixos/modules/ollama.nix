@@ -9,7 +9,7 @@ in
       nextjs-ollama-llm-ui
     ];
     interactiveShellInit = ''
-      alias llms='ollama serve && nextjs-ollama-llm-ui'
+      alias llms='ollama serve & nextjs-ollama-llm-ui &'
     '';
   };
 }
