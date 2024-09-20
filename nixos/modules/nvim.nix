@@ -12,7 +12,7 @@ in
     # Dependencies
     bat
     fzf
-    libgcc
+    gcc14
     universal-ctags
     viu
 
