@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/login-manager-tuigreet.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
+    ../../modules/ollama.nix
     ../../modules/podman.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssh.nix
