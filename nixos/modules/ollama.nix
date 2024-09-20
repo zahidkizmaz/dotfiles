@@ -5,13 +5,6 @@ in
 {
   environment.systemPackages = with pkgs-unstable; [
     ollama
+    nextjs-ollama-llm-ui
   ];
-  services.open-webui = {
-    package = pkgs-unstable.open-webui;
-    environment = {
-      DO_NOT_TRACK = "True";
-      SCARF_NO_ANALYTICS = "True";
-      WEBUI_AUTH = "False";
-    };
-  };
 }
