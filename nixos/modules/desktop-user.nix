@@ -29,9 +29,11 @@ in
       ripgrep
       starship
       stow
+      tldr
       tmux
       tree
       unzip
+      yazi
       zip
       zoxide
     ];
