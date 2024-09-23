@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./hardware-configuration.nix
     ./disko.nix
     ../../modules/latest-kernel.nix
   ];
