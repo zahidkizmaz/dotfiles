@@ -30,9 +30,7 @@ catppuccin.setup({
   },
   integrations = { -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     cmp = true,
-    mason = true,
     fidget = true,
-    harpoon = true,
     gitsigns = true,
     treesitter = true,
     rainbow_delimiters = true,
