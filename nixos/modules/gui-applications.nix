@@ -1,22 +1,24 @@
-{ pkgs, ... }:
-
+{ inputs, pkgs, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # Media players
-    mpv
+    pkgs.mpv
 
     # Chat
-    telegram-desktop
+    pkgs.telegram-desktop
 
     # PW manager
-    bitwarden
+    pkgs.bitwarden
 
     # Note taking
-    joplin-desktop
+    pkgs-unstable.joplin-desktop
 
     # Browsers
-    brave
-    firefox
-    librewolf
+    pkgs.brave
+    pkgs.firefox
+    pkgs.librewolf
   ];
 }
