@@ -17,6 +17,10 @@
       url = "github:Mic92/nix-ld";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
   outputs =
