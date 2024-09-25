@@ -85,6 +85,19 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
+  ruff = {
+    pattern = { "*.py" },
+    setup_config = function()
+      return {
+        init_options = {
+          settings = {
+            configurationPreference = "filesystemFirst",
+            organizeImports = true,
+          },
+        },
+      }
+    end,
+  },
   rust_analyzer = {
     pattern = { "*.rs" },
     setup_config = function()
@@ -161,7 +174,7 @@ M.setup_format_on_write = function()
         callback = function()
           vim.lsp.buf.format({
             filter = function(client)
-              local disable_formatting = { "tsserver", "lua_ls", "basedpyright", "rust_analyzer" }
+              local disable_formatting = { "ts_ls", "lua_ls", "basedpyright", "rust_analyzer" }
               return not vim.tbl_contains(disable_formatting, client.name)
             end,
             timeout_ms = 3000,

@@ -21,22 +21,8 @@ tools:
         format-stdin: true
         format-can-range: true
 
-    ruff: &ruff
-        prefix: ruff
-        lint-stdin: true
-        lint-ignore-exit-code: true
-        lint-command: ruff check -n -e --quiet ${INPUT}
-        root-markers:
-            - pyproject.toml
-            - ruff.toml
-            - .ruff.toml
-
     ruff_isort: &ruff-isort
-        format-command: ruff --fix --select I -
-        format-stdin: true
-
-    ruff_format: &ruff-format
-        format-command: ruff format -
+        format-command: ruff check --fix --select I -
         format-stdin: true
 
     yamllint: &yamllint
@@ -179,9 +165,7 @@ languages:
         - <<: *trim-spaces
         - <<: *trim-newlines
     python:
-        - <<: *ruff
         - <<: *ruff-isort
-        - <<: *ruff-format
     lua:
         - <<: *stylua
     sh:
