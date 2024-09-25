@@ -1,0 +1,16 @@
+Config(
+  prefix: "; ",
+  // Options: Google, Ecosia, Bing, DuckDuckGo, Custom
+  //
+  // NOTE: `{}` is replaced by the search query and `https://` is automatically added in front.
+  engines: [
+      Custom(
+          name: "StartPage",
+          url: "www.startpage.com/sp/search?query={}",
+      ),
+      Custom(
+          name: "Github",
+          url: "github.com/search?q={}&type=repositories",
+      ),
+  ]
+)

@@ -3,6 +3,7 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
 {
+  imports = [ ./anyrun.nix ];
   home-manager = {
     users = { "${user}" = import ./home.nix; };
     extraSpecialArgs = { inherit inputs user system; };
