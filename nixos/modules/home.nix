@@ -18,6 +18,8 @@ in
   gtk = {
     enable = true;
 
+    font = { name = "Arimo"; size = 12; };
+
     cursorTheme = {
       size = 24;
       name = "phinger-cursors-dark";
