@@ -4,6 +4,8 @@
   /* reference the color by using @color-name */
   color: @text;
   min-height: 0;
+  font-size: x-large;
+  font-family: "Arimo";
 }
 
 window#waybar {
