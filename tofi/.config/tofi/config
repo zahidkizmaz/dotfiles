@@ -3,15 +3,15 @@ anchor = top
 width = 100%
 height = 30
 horizontal = true
-font-size = 14
+font-size = 16
 prompt-text = " run: "
 outline-width = 0
 border-width = 0
 min-input-width = 120
 result-spacing = 15
-padding-top = 0
+padding-top = 4
 padding-bottom = 0
-padding-left = 0
+padding-left = 2
 padding-right = 0
 
 # cattpuccin mocha
@@ -22,7 +22,7 @@ background-color = #1e1e2e
 
 # PERFORMANCE
 # to load font faster using full path
-font = "/usr/share/fonts/TTF/NotoSansMNerdFontMono-Bold.ttf"
+font = "Arimo"
 hint-font = false
 late-keyboard-init = true
 num-results = 10
