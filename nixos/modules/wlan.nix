@@ -2,9 +2,11 @@
 
 {
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
   };
-  environment.systemPackages = [
-    pkgs.wireless-regdb
-  ];
+  hardware.firmware = [ pkgs.wireless-regdb ];
+  environment.systemPackages = [ pkgs.iw ];
 }
