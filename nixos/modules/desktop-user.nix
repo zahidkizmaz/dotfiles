@@ -39,8 +39,11 @@ in
       zoxide
     ];
   };
-  programs.zsh.enable = true;
-  programs.direnv.enable = true;
+
+  programs = {
+    zsh.enable = true;
+    direnv.enable = true;
+  };
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Arimo" "IosevkaTerm" "Noto" "JetBrainsMono" ]; })

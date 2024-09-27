@@ -3,9 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     copyq
-    dconf
     dunst
-    easyeffects
     grim
     networkmanagerapplet
     pcmanfm
@@ -15,11 +13,14 @@
     wl-clipboard
   ];
 
+  programs.dconf.enable = true;
+
   system.userActivationScripts = {
     desktop-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi
         ln -sfn /home/${user}/dotfiles/dunst/.config/dunst /home/${user}/.config/dunst
+        ln -sfn /home/${user}/dotfiles/easyeffects/.config/easyeffects /home/${user}/.config/easyeffects
       '';
   };
 }
