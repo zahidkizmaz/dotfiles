@@ -22,9 +22,6 @@
     size = 16 * 1024; # 16GB
   }];
 
-  # This causes an overlay which causes a lot of rebuilding
-  environment.noXlibs = lib.mkForce false;
-
   nixpkgs.overlays = [
     (final: super: {
       makeModulesClosure = x:
