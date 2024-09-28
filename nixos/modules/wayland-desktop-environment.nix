@@ -3,6 +3,7 @@
 {
   imports = [ ./dunst.nix ];
   environment.systemPackages = with pkgs; [
+    brightnessctl
     copyq
     grim
     networkmanagerapplet
