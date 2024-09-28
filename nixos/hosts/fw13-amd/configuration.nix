@@ -8,6 +8,8 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  services.fwupd.enable = true;
+
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 64 * 1024; # 64GB
