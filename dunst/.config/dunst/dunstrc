@@ -4,6 +4,7 @@
   origin = top-right
   width = 450
   offset = 10x20
+  gap_size = 10
   progress_bar = true
   progress_bar_height = 10
   progress_bar_frame_width = 1
