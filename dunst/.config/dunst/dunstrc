@@ -23,7 +23,7 @@
   font = Arimo 16
   line_height = 0
   markup = full
-  format = "%s %p\n%b"
+  format = "<b>%s %p</b>\n%b"
   alignment = left
   vertical_alignment = center
   show_age_threshold = 60
@@ -33,9 +33,12 @@
   stack_duplicates = true
   hide_duplicate_count = false
   show_indicators = yes
+  icon_path = "/run/current-system/sw/share/icons/"
+  enable_recursive_icon_lookup = true
   icon_position = left
   icon_theme = Papirus-Dark
-  min_icon_size = 0
+  text_icon_padding=10
+  min_icon_size = 32
   max_icon_size = 32
   sticky_history = yes
   history_length = 20
