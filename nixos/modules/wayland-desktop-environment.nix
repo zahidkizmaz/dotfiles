@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 
 {
-  imports = [ ./dunst.nix ];
+  imports = [ ./dunst.nix ./icons.nix ];
   environment.systemPackages = with pkgs; [
     brightnessctl
     copyq
