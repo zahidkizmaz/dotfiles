@@ -18,6 +18,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/kde-plasma.nix
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
+    ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
