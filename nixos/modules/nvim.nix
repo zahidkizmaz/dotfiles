@@ -15,6 +15,8 @@ in
     gcc14
     universal-ctags
     viu
+    chafa # fzf-lua
+    python312Packages.pynvim
 
     # LSPs
     ansible-language-server

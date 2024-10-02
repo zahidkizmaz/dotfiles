@@ -9,7 +9,6 @@ local opt = vim.opt
 
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
-g.python3_host_prog = vim.fn.getenv("PIPX_HOME") .. "venvs/python-lsp-server/bin/python"
 g.mapleader = " "
 
 -- netrw settings
@@ -37,7 +36,7 @@ opt.autoindent = true
 opt.smartindent = true
 opt.relativenumber = true
 opt.clipboard = "unnamedplus"
-opt.undodir = os.getenv("HOME") .. "/tmp/undodir"
+opt.undodir = vim.fn.stdpath("cache") .. "/undodir"
 -- search files into subfolders
 -- provides tab-complete for all files
 -- by default we had `/usr/include` in here, which we don't need
