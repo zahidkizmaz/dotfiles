@@ -17,6 +17,7 @@ in
     viu
     chafa # fzf-lua
     python312Packages.pynvim
+    nodePackages_latest.nodejs
 
     # LSPs
     ansible-language-server
