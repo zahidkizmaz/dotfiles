@@ -1,5 +1,6 @@
 require("plugins.init_lazy")
-require("lazy").setup({
+local lazy = require("lazy")
+lazy.setup({
   spec = {
     {
       "catppuccin/nvim",
@@ -32,9 +33,9 @@ require("lazy").setup({
       "iamcco/markdown-preview.nvim",
       ft = "markdown",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      build = "cd app && npm install",
-      init = function()
-        vim.g.mkdp_filetypes = { "markdown" }
+      build = function()
+        lazy.load({ plugins = { "markdown-preview.nvim" } })
+        vim.fn["mkdp#util#install"]()
       end,
     },
     {
