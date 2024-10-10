@@ -206,28 +206,6 @@ lazy.setup({
       },
     },
     {
-      "zahidkizmaz/python-docs.nvim",
-      dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
-      dev = true,
-      keys = {
-        {
-          "<leader>fp",
-          function()
-            return require("python-docs").fzf_lua()
-          end,
-          desc = "Search for installed python library docs.",
-        },
-        {
-          "<leader>fp",
-          function()
-            return require("python-docs").fzf_lua({ search = true })
-          end,
-          mode = "v",
-          desc = "Search for selection in installed python library docs.",
-        },
-      },
-    },
-    {
       "rmagatti/goto-preview",
       config = true,
       opts = {
@@ -335,18 +313,6 @@ lazy.setup({
       },
     },
     {
-      "folke/zen-mode.nvim",
-      opts = {
-        plugins = {
-          tmux = { enabled = true }, -- disables the tmux statusline
-          twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
-        },
-      },
-      keys = {
-        { "<leader>zm", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" },
-      },
-    },
-    {
       "danymat/neogen",
       dependencies = { "nvim-treesitter/nvim-treesitter" },
       cmd = { "Neogen" },
@@ -379,19 +345,6 @@ lazy.setup({
       "NvChad/nvim-colorizer.lua",
       config = true,
       cmd = { "ColorizerToggle" },
-    },
-    {
-      "zahidkizmaz/sf.nvim",
-      dependencies = { "MunifTanjim/nui.nvim" },
-      dev = true,
-      config = true,
-      keys = {
-        { "<leader>sfd", "<cmd>SFDeploy<cr>", desc = "Deploy current buffer to default sf org" },
-        { "<leader>sft", "<cmd>SFTest<cr>", desc = "Run test class in current buffer" },
-        { "<leader>sfT", "<cmd>SFDeployTest<cr>", desc = "Deploy and run tests of the current buffer" },
-        { "<leader>sfs", "<cmd>SFShow<cr>", desc = "Show sf.nvim split" },
-        { "<leader>sfh", "<cmd>SFHide<cr>", desc = "Hide sf.nvim split" },
-      },
     },
   },
   defaults = { lazy = true },
