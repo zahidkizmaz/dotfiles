@@ -42,6 +42,12 @@ require("fzf-lua").setup({
   grep = {
     rg_opts = rg_opts,
     glob_flag = "--hidden --iglob", -- for case sensitive globs use '--glob'
+    actions = {
+      ["ctrl-q"] = {
+        fn = require("fzf-lua.actions").file_edit_or_qf,
+        prefix = "select-all+",
+      },
+    },
   },
 })
 
