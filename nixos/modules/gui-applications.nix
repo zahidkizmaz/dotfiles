@@ -9,6 +9,7 @@ in
 
     # Chat
     pkgs.telegram-desktop
+    pkgs.element-desktop
 
     # PW manager
     pkgs.bitwarden
