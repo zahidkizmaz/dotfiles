@@ -147,10 +147,6 @@ tools:
             - "%f(%l,%c): %tarning %m"
             - "%f(%l,%c): %rror %m"
 
-    rustfmt: &rustfmt
-        format-stdin: true
-        format-command: rustfmt --emit=stdout
-
     edi-format: &edi-format
         format-stdin: true
         format-command: 'edi-format -l error --stdin'
@@ -177,8 +173,6 @@ languages:
         - <<: *djhtml
         - <<: *trim-spaces
         - <<: *trim-newlines
-    rust:
-        - <<: *rustfmt
     sql:
         - <<: *sqlfluff-fix
     html:
