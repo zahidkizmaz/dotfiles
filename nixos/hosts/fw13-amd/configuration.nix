@@ -15,6 +15,10 @@
     size = 64 * 1024; # 64GB
   }];
 
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
+
   networking = { hostName = "fw13-amd"; };
   i18n.defaultLocale = "en_US.UTF-8";
   console = { keyMap = "us"; };
