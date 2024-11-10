@@ -2,7 +2,9 @@
   "hyprland/window": {
     "format": "{initialClass}: {title}",
     "rewrite": {
-      "firefox-Module: (.*) — Mozilla Firefox": "Firefox: $1"
+      "kitty: (.*)": "   $1",
+      "Brave-browser: (.*) - Brave": "Brave:  $1",
+      "firefox: (.*) — Mozilla Firefox": "󰈹  $1"
     },
     "separate-outputs": true
   },
@@ -60,9 +62,9 @@
     ]
   },
   "clock": {
-    "format": "  {:%H:%M}",
-    "format-alt": "{:%A, %B %d, %Y %R}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format": "   {:%R}",
+    "format-alt": "   {:%d.%m.%Y %R}",
+    "tooltip-format": "<tt><span size='11pt'>{calendar}</span></tt>",
     "calendar": {
       "mode": "year",
       "mode-mon-col": 3,
@@ -83,6 +85,17 @@
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down"
+    }
+  },
+  "power-profiles-daemon": {
+    "format": "{icon} ",
+    "tooltip-format": "Profile: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "󰾅",
+      "performance": "󰓅",
+      "balanced": "󰾅",
+      "power-saver": "󰾆"
     }
   }
 }

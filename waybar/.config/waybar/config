@@ -7,7 +7,7 @@
         "include": [ "~/.config/waybar/default-modules.json" ],
         "modules-left": ["hyprland/workspaces", "hyprland/window"],
         "modules-center": ["tray"],
-        "modules-right": ["hyprland/language", "battery", "wireplumber", "cpu", "memory", "clock"],
+        "modules-right": ["hyprland/language", "battery", "wireplumber", "clock"],
         "spacing": 8,
     },
     {
@@ -17,7 +17,7 @@
         "include": [ "~/.config/waybar/default-modules.json" ],
         "modules-left": ["hyprland/workspaces", "hyprland/window"],
         "modules-center": ["tray"],
-        "modules-right": ["hyprland/language", "battery", "wireplumber", "cpu", "memory", "backlight", "clock"],
+        "modules-right": ["hyprland/language", "battery", "wireplumber", "backlight", "power-profiles-daemon", "clock"],
         "spacing": 8,
     }
 ]
