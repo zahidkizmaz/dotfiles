@@ -21,8 +21,8 @@ in
     font = { name = "Arimo"; size = 12; };
 
     cursorTheme = {
-      size = 24;
-      name = "phinger-cursors-dark";
+      size = 32;
+      name = "phinger-cursors-light";
       package = pkgs.phinger-cursors;
     };
 
