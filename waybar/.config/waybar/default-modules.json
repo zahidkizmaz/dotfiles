@@ -9,8 +9,8 @@
     "separate-outputs": true
   },
   "tray": {
-    "icon-size": 18,
-    "spacing": 8
+    "icon-size": 20,
+    "spacing": 10
   },
   "cpu": {
     "format": "   {usage}%"
@@ -86,6 +86,28 @@
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down"
     }
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 22,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
   },
   "power-profiles-daemon": {
     "format": "{icon} ",
