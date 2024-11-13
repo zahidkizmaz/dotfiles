@@ -43,6 +43,7 @@
 #memory,
 #network,
 #power-profiles-daemon,
+#privacy,
 #tray,
 #wireplumber {
   background-color: @surface0;
