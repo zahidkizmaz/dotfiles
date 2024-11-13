@@ -1,8 +1,15 @@
-{ pkgs, ... }:
-
+{ inputs, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+  };
+in
 {
   services = {
-    power-profiles-daemon.enable = true;
+    power-profiles-daemon = {
+      enable = true;
+      package = pkgs-unstable.power-profiles-daemon;
+    };
 
     # Disable conflicting services
     tlp.enable = false;
@@ -10,10 +17,10 @@
   };
 
   services.udev.extraRules = ''
-    # Set power-saver profile when AC is unplugged
-    SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver"
+    # Set power-saver profile when battery is discharging
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="BAT1", ENV{POWER_SUPPLY_STATUS}=="Discharging", RUN+="${pkgs-unstable.power-profiles-daemon}/bin/powerprofilesctl set power-saver"
 
-    # Set performance profile when AC is plugged in
-    SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance"
+    # Set performance profile when battery is charging
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="BAT1", ENV{POWER_SUPPLY_STATUS}=="Charging", RUN+="${pkgs-unstable.power-profiles-daemon}/bin/powerprofilesctl set performance"
   '';
 }
