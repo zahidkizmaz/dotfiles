@@ -6,6 +6,7 @@
     [
       hypridle
       hyprlock
+      hyprsunset
     ];
 
   system.userActivationScripts = {
