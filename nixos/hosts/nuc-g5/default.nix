@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, stateVersion, ... }:
 let
   system = "x86_64_linux";
 in
@@ -24,5 +24,5 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/tailscale.nix
     ../../modules/vm-variant.nix
   ];
-  specialArgs = { inherit inputs system; user = "g5"; };
+  specialArgs = { inherit inputs system stateVersion; user = "g5"; };
 }
