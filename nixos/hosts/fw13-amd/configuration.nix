@@ -1,4 +1,4 @@
-{ ... }:
+{ stateVersion, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -30,5 +30,5 @@
 
   time.timeZone = "Europe/Berlin";
 
-  system.stateVersion = "24.11";
+  system.stateVersion = stateVersion;
 }

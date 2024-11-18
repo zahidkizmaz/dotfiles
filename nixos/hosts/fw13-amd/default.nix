@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, stateVersion, ... }:
 let
   system = "x86_64-linux";
 in
@@ -36,5 +36,5 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix
   ];
-  specialArgs = { inherit inputs system; user = "zahid"; };
+  specialArgs = { inherit inputs system stateVersion; user = "zahid"; };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, stateVersion, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -47,5 +47,5 @@
     neovim
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = stateVersion;
 }

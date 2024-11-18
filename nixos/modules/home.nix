@@ -1,4 +1,4 @@
-{ inputs, user, system, ... }:
+{ inputs, user, system, stateVersion, ... }:
 let
   pkgs = import inputs.nixpkgs { inherit system; };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
@@ -201,5 +201,5 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.stateVersion = "24.11";
+  home.stateVersion = stateVersion;
 }
