@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ lib, pkgs, user, stateVersion, ... }:
 {
   hardware = {
     bluetooth.enable = true;
@@ -29,5 +29,5 @@
     })
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = stateVersion;
 }

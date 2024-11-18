@@ -1,4 +1,4 @@
-{ inputs, pkgs, user, system, ... }:
+{ inputs, pkgs, user, system, stateVersion, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
@@ -6,7 +6,7 @@ in
   imports = [ ./anyrun.nix ];
   home-manager = {
     users = { "${user}" = import ./home.nix; };
-    extraSpecialArgs = { inherit inputs user system; };
+    extraSpecialArgs = { inherit inputs user system stateVersion; };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

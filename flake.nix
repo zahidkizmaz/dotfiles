@@ -26,6 +26,7 @@
   outputs =
     { self, nixpkgs-unstable, ... } @ inputs:
     let
+      stateVersion = "24.11";
       forDefaultSystems = nixpkgs-unstable.lib.genAttrs [
         "aarch64-darwin"
         "aarch64-linux"
@@ -34,10 +35,10 @@
     in
     rec {
       nixosConfigurations = {
-        fw13-amd = import ./nixos/hosts/fw13-amd { inherit inputs; };
-        lenovo-y5070 = import ./nixos/hosts/lenovo-y5070 { inherit inputs; };
-        nuc-g5 = import ./nixos/hosts/nuc-g5 { inherit inputs; };
-        pi4b = import ./nixos/hosts/pi4b { inherit inputs; };
+        fw13-amd = import ./nixos/hosts/fw13-amd { stateVersion = stateVersion; inherit inputs; };
+        lenovo-y5070 = import ./nixos/hosts/lenovo-y5070 { stateVersion = stateVersion; inherit inputs; };
+        nuc-g5 = import ./nixos/hosts/nuc-g5 { stateVersion = stateVersion; inherit inputs; };
+        pi4b = import ./nixos/hosts/pi4b { stateVersion = stateVersion; inherit inputs; };
       };
       images = {
         pi4b = (self.nixosConfigurations.pi4b.extendModules {

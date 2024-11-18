@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, stateVersion, ... }:
 let
   system = "aarch64-linux";
 in
@@ -21,5 +21,5 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
   ];
-  specialArgs = { inherit inputs system; user = "pi"; };
+  specialArgs = { inherit inputs system stateVersion; user = "pi"; };
 }
