@@ -1,9 +1,20 @@
-{ lib, modulesPath, stateVersion, ... }:
+{ pkgs, lib, modulesPath, stateVersion, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./disko.nix
   ];
+
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+    ];
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
