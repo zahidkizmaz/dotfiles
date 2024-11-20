@@ -17,6 +17,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/desktop-user.nix
     ../../modules/fingerprint.nix
     ../../modules/gc.nix
+    ../../modules/kitty.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
     ../../modules/ld.nix
@@ -35,6 +36,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix
+    ../../modules/zsh.nix
   ];
   specialArgs = { inherit inputs system stateVersion; user = "zahid"; };
 }

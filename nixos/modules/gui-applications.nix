@@ -1,6 +1,6 @@
 { inputs, pkgs, system, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system=pkgs.system; };
 in
 {
   environment.systemPackages = [
