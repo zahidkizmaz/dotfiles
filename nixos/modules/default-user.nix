@@ -7,4 +7,5 @@
     shell = pkgs.zsh;
     extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
   };
+  programs.zsh.enable = true;
 }

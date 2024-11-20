@@ -39,6 +39,7 @@
         lenovo-y5070 = import ./nixos/hosts/lenovo-y5070 { stateVersion = stateVersion; inherit inputs; };
         nuc-g5 = import ./nixos/hosts/nuc-g5 { stateVersion = stateVersion; inherit inputs; };
         pi4b = import ./nixos/hosts/pi4b { stateVersion = stateVersion; inherit inputs; };
+        sgo2 = import ./nixos/hosts/sgo2 { stateVersion = stateVersion; inherit inputs; };
       };
       images = {
         pi4b = (self.nixosConfigurations.pi4b.extendModules {
