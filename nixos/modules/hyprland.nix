@@ -10,7 +10,7 @@
     ];
 
   system.userActivationScripts = {
-    desktop-env.text =
+    hyprland-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/hypr/.config/hypr /home/${user}/.config/hypr
       '';
