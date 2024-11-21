@@ -13,6 +13,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/bootloader-systemd.nix
     ../../modules/bluetooth.nix
     ../../modules/default-user.nix
+    ../../modules/documentation.nix
+    ../../modules/dotfiles.nix
     ../../modules/gc.nix
     ../../modules/kitty.nix
     ../../modules/gui-applications.nix
@@ -22,6 +24,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/ssd.nix
     ../../modules/ssh.nix
     ../../modules/vm-variant.nix
+    ../../modules/wlan.nix
     ../../modules/zsh.nix
   ];
   specialArgs = { inherit inputs system stateVersion; user = "go2"; };

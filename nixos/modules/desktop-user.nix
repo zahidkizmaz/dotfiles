@@ -19,9 +19,7 @@ in
     packages = with pkgs-unstable; [
       gitMinimal
       just
-      man
       stow
-      tldr
       tree
       unzip
       yazi
@@ -39,7 +37,7 @@ in
   ];
 
   system.userActivationScripts = {
-    desktop-env.text =
+    user-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/git/.config/git /home/${user}/.config/git
       '';

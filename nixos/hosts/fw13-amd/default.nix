@@ -15,6 +15,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/desktop-user.nix
+    ../../modules/documentation.nix
+    ../../modules/dotfiles.nix
     ../../modules/fingerprint.nix
     ../../modules/gc.nix
     ../../modules/kitty.nix

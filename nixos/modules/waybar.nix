@@ -6,7 +6,7 @@
   ];
 
   system.userActivationScripts = {
-    desktop-env.text =
+    waybar-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/waybar/.config/waybar /home/${user}/.config/waybar
       '';
