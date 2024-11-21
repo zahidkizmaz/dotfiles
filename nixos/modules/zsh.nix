@@ -19,7 +19,7 @@
   ];
 
   system.userActivationScripts = {
-    desktop-env.text =
+    zsh-env.text =
       ''
         ln -sfn /home/${user}/dotfiles/atuin/.config/atuin /home/${user}/.config/atuin
         ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat
