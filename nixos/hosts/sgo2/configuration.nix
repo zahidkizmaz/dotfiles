@@ -1,4 +1,4 @@
-{ pkgs, lib, modulesPath, stateVersion, ... }:
+{ inputs, pkgs, lib, modulesPath, stateVersion, user, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -19,8 +19,6 @@
     ];
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 10 * 1024; # 10GB
@@ -35,5 +33,11 @@
     firewall.enable = true;
   };
 
+  home-manager = {
+    users = { "${user}" = import ./home.nix; };
+    extraSpecialArgs = { inherit inputs user stateVersion; };
+  };
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = stateVersion;
 }

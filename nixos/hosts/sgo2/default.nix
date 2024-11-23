@@ -8,6 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
     inputs.disko.nixosModules.disko
     inputs.nix-ld.nixosModules.nix-ld
+    inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
