@@ -1,3 +1,4 @@
+# Currently not used. disk configuration can be found in configuration.nix
 {
   disko.devices = {
     disk = {

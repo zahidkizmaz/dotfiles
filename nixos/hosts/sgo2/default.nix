@@ -6,7 +6,6 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "${system}";
   modules = [
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
-    inputs.disko.nixosModules.disko
     inputs.nix-ld.nixosModules.nix-ld
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
