@@ -2,7 +2,6 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./disko.nix
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" "uas" ];
@@ -19,6 +18,20 @@
       libvdpau-va-gl
     ];
   };
+
+
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-uuid/047c901f-696a-444e-ae42-59f9ba7d42a2";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/D7A0-0D40";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
   swapDevices = [{
     device = "/var/lib/swapfile";
