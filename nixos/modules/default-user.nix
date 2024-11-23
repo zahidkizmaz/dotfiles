@@ -5,7 +5,7 @@
     isNormalUser = true;
     initialPassword = "${user}";
     shell = pkgs.zsh;
-    extraGroups = [ "input" "wheel" "video" "audio" "storage" ];
+    extraGroups = [ "input" "wheel" "video" "audio" "storage" "networkmanager" ];
   };
   programs.zsh.enable = true;
 }
