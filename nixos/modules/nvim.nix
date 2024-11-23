@@ -1,7 +1,7 @@
-{ inputs, user, system, ... }:
+{ inputs, pkgs, user, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit system;
+    system = pkgs.system;
     config.allowUnfree = true; # because of tabnine
   };
 in
