@@ -29,7 +29,6 @@
 
   environment.systemPackages = with pkgs; [
     bat
-    btop
     fd
     gitMinimal
     magic-wormhole
