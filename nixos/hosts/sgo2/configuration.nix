@@ -1,15 +1,16 @@
-{ inputs, pkgs, lib, modulesPath, stateVersion, user, ... }:
+{ config, inputs, pkgs, lib, modulesPath, stateVersion, user, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./disko.nix
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" "uas" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [

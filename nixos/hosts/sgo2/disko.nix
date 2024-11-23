@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/disk/by-diskseq/1";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
@@ -11,7 +11,7 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              end = "128M";
+              end = "500M";
               type = "EF00";
               content = {
                 type = "filesystem";
