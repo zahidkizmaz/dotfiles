@@ -20,6 +20,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gui-applications.nix
     ../../modules/gnome.nix
     ../../modules/nix-settings.nix
+    ../../modules/nvim.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
