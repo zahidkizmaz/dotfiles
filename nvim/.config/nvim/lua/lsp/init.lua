@@ -105,6 +105,28 @@ M.SERVER_CONFIGURATIONS = {
         settings = {
           ["rust-analyzer"] = {
             checkOnSave = { command = "clippy" },
+            assist = {
+              importMergeBehavior = "last",
+              importPrefix = "by_self",
+            },
+            files = {
+              excludeDirs = { "target" },
+            },
+            workspace = {
+              symbol = { search = { limit = 3000 } },
+            },
+            procMacro = {
+              enable = true,
+            },
+            diagnostics = {
+              enable = true,
+              disabled = { "unresolved-proc-macro" },
+              enableExperimental = true,
+            },
+            cargo = {
+              features = "all",
+              loadOutDirsFromCheck = true,
+            },
           },
         },
       }
@@ -163,6 +185,7 @@ M.setup = function()
 
   lsp_handlers.setup()
   M.setup_format_on_write()
+  M._temporary_rust_error_fix()
 end
 
 M.setup_format_on_write = function()
@@ -174,7 +197,7 @@ M.setup_format_on_write = function()
         callback = function()
           vim.lsp.buf.format({
             filter = function(client)
-              local disable_formatting = { "ts_ls", "lua_ls", "basedpyright", "rust_analyzer" }
+              local disable_formatting = { "ts_ls", "lua_ls", "basedpyright" }
               return not vim.tbl_contains(disable_formatting, client.name)
             end,
             timeout_ms = 3000,
@@ -183,6 +206,20 @@ M.setup_format_on_write = function()
       })
     end,
   })
+end
+
+M._temporary_rust_error_fix = function()
+  -- Remove this method after this issue is merged
+  -- https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
+  for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
+    local default_diagnostic_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, result, context, config)
+      if err ~= nil and err.code == -32802 then
+        return
+      end
+      return default_diagnostic_handler(err, result, context, config)
+    end
+  end
 end
 
 return M

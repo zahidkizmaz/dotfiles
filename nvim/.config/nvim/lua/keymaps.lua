@@ -74,6 +74,35 @@ keymap("n", "<leader>vt", ":vsp<CR>:terminal<CR>i<CR>", opts)
 keymap("n", "<c-n>", "<CMD>Explore<CR><CR>", opts)
 
 -- LSP
+local function open_url(url)
+  local open_cmd
+
+  if vim.fn.has("mac") == 1 then
+    open_cmd = "open"
+  elseif vim.fn.has("unix") == 1 then
+    open_cmd = "xdg-open"
+  elseif vim.fn.has("win32") == 1 then
+    open_cmd = "start"
+  else
+    vim.notify("Unsupported operating system, cannot open URL", vim.log.levels.ERROR)
+    return
+  end
+
+  vim.fn.jobstart({ open_cmd, url }, { detach = true })
+end
+
+local function open_external_docs()
+  local clients = vim.lsp.get_clients()
+  for _, client in ipairs(clients) do
+    client.request("experimental/externalDocs", vim.lsp.util.make_position_params(), function(_, url)
+      if url then
+        vim.notify("Opening: " .. url, vim.log.levels.INFO)
+        open_url(url)
+      end
+    end, 0)
+  end
+end
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -87,5 +116,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "H", vim.lsp.buf.signature_help, lsp_keymap_opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_keymap_opts)
     vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, lsp_keymap_opts)
+    vim.keymap.set("n", "<leader>od", open_external_docs, lsp_keymap_opts)
   end,
 })
