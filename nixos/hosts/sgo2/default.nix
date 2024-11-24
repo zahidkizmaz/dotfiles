@@ -25,6 +25,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/ssd.nix
     ../../modules/ssh.nix
     ../../modules/vm-variant.nix
+    ../../modules/waydroid.nix
     ../../modules/wlan.nix
     ../../modules/zsh.nix
   ];
