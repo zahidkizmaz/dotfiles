@@ -34,7 +34,9 @@
     magic-wormhole
     neovim
     ripgrep
+    unzip
     yazi
+    zip
     zoxide
   ];
 }
