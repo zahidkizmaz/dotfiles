@@ -51,6 +51,7 @@
     users = { "${user}" = import ./home.nix; };
     extraSpecialArgs = { inherit inputs user stateVersion; };
   };
+  nix.settings.trusted-users = [ "root" "${user}" "@wheel" ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = stateVersion;
