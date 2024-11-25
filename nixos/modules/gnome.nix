@@ -21,5 +21,7 @@
 
   environment.systemPackages = with pkgs; [
     gnome-tweaks
+    # extensions
+    gnomeExtensions.window-gestures
   ];
 }
