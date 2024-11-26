@@ -6,7 +6,7 @@
   ];
 
   system.userActivationScripts = {
-    update-docs.text =
+    update-docs.text /*bash*/ =
       ''
         ${pkgs.tealdeer}/bin/tldr --update
       '';

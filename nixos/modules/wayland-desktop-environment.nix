@@ -17,7 +17,7 @@
   programs.dconf.enable = true;
 
   system.userActivationScripts = {
-    desktop-env.text =
+    desktop-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi
         ln -sfn /home/${user}/dotfiles/easyeffects/.config/easyeffects /home/${user}/.config/easyeffects
