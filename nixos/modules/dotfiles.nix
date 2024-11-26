@@ -6,7 +6,7 @@
   ];
 
   system.userActivationScripts = {
-    clone-dotfiles.text =
+    clone-dotfiles.text /*bash*/ =
       ''
         if [ ! -d "$HOME/dotfiles" ]; then
             echo "Cloning dotfiles to $HOME/dotfiles..."
