@@ -68,6 +68,12 @@ in
         ln -sfn /home/${user}/dotfiles/fzf/.fzf.zsh /home/${user}/.fzf.zsh
         ln -sfn /home/${user}/dotfiles/nvim/.config/nvim /home/${user}/.config/nvim
         ln -sfn /home/${user}/dotfiles/efm-langserver/.config/efm-langserver /home/${user}/.config/efm-langserver
+
+        ${pkgs-unstable.bat}/bin/bat cache --build
+
+        if [ ! -d "$HOME/.cache/tags" ]; then
+          mkdir -p "$HOME/.cache/tags"
+        fi
       '';
   };
 }

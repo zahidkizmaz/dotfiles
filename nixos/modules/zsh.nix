@@ -19,7 +19,7 @@
   ];
 
   system.userActivationScripts = {
-    zsh-env.text =
+    zsh-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/atuin/.config/atuin /home/${user}/.config/atuin
         ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat

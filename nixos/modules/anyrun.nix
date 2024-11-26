@@ -5,7 +5,7 @@
   ];
 
   system.userActivationScripts = {
-    anyrun-dots.text =
+    anyrun-dots.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/anyrun/.config/anyrun /home/${user}/.config/
       '';

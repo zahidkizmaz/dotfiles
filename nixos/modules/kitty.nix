@@ -13,7 +13,7 @@
   ];
 
   system.userActivationScripts = {
-    kitty-env.text =
+    kitty-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/kitty/.config/kitty /home/${user}/.config/kitty
         ln -sfn /home/${user}/dotfiles/starship/.config/starship.toml /home/${user}/.config/starship.toml

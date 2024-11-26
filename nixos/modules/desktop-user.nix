@@ -37,7 +37,7 @@ in
   ];
 
   system.userActivationScripts = {
-    user-env.text =
+    user-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/git/.config/git /home/${user}/.config/git
       '';
