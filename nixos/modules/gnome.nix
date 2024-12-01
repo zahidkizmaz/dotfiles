@@ -9,7 +9,10 @@
     };
   };
 
-  programs.xwayland.enable = true;
+  programs = {
+    dconf.enable = true;
+    xwayland.enable = true;
+  };
 
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
@@ -20,6 +23,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    copyq
+    wl-clipboard
+
     gnome-tweaks
     # extensions
     gnomeExtensions.window-gestures

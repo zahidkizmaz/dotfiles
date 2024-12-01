@@ -10,15 +10,16 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
     ../../modules/better-shell.nix
-    ../../modules/bootloader-systemd.nix
     ../../modules/bluetooth.nix
+    ../../modules/bootloader-systemd.nix
     ../../modules/default-user.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
     ../../modules/gc.nix
-    ../../modules/kitty.nix
-    ../../modules/gui-applications.nix
     ../../modules/gnome.nix
+    ../../modules/gui-applications.nix
+    ../../modules/kitty.nix
+    ../../modules/libcamera.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
     ../../modules/sound-pipewire.nix
