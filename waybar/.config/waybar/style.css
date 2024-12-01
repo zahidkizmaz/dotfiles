@@ -45,6 +45,7 @@
 #power-profiles-daemon,
 #privacy,
 #tray,
+#idle_inhibitor,
 #wireplumber {
   background-color: @surface0;
   padding: 0 0.5rem;
