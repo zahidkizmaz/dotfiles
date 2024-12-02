@@ -151,6 +151,16 @@
         color-scheme = "prefer-dark";
         show-battery-percentage = true;
       };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-bindings = [ "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        bindings = "<Shift><Super>x";
+        command = "copyq toggle";
+        name = "copyq toggle";
+      };
+
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super>q" ];
         maximize = [ "<Super>m" ];
