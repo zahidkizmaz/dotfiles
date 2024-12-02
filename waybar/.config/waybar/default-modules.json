@@ -126,5 +126,16 @@
       "activated": "󱋙 ",
       "deactivated": "󰌪 "
     }
+  },
+  "custom/hyprsunset": {
+    "format": "{icon}",
+    "format-icons": {
+      "on": " ",
+      "off": " "
+    },
+    "exec": "~/.config/waybar/scripts/toggle_hyprsunset.sh",
+    "on-click": "~/.config/waybar/scripts/toggle_hyprsunset.sh toggle",
+    "interval": "once",
+    "return-type": "json"
   }
 }
