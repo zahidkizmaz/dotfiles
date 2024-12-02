@@ -7,7 +7,7 @@
         "include": [ "~/.config/waybar/default-modules.json" ],
         "modules-left": ["hyprland/workspaces", "hyprland/window"],
         "modules-center": ["tray"],
-        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "power-profiles-daemon", "clock"],
+        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "power-profiles-daemon", "custom/hyprsunset", "clock"],
         "spacing": 8,
     },
     {
@@ -17,7 +17,7 @@
         "include": [ "~/.config/waybar/default-modules.json" ],
         "modules-left": ["hyprland/workspaces", "hyprland/window"],
         "modules-center": ["tray"],
-        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "backlight", "power-profiles-daemon", "clock"],
+        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "backlight", "power-profiles-daemon", "custom/hyprsunset", "clock"],
         "spacing": 8,
     }
 ]
