@@ -152,6 +152,10 @@
         show-battery-percentage = true;
       };
 
+      "org/gnome/desktop/input-sources" = {
+        xkb-options = [ "caps:escape" ];
+      };
+
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-bindings = [ "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
       };
