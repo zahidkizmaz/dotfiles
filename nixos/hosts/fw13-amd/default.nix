@@ -19,11 +19,12 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/dotfiles.nix
     ../../modules/fingerprint.nix
     ../../modules/gc.nix
-    ../../modules/kitty.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
+    ../../modules/kitty.nix
     ../../modules/ld.nix
     ../../modules/login-manager-tuigreet.nix
+    ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
     ../../modules/ollama.nix
