@@ -183,6 +183,7 @@
           applications-menu.extensionUuid
           removable-drive-menu.extensionUuid
           window-gestures.extensionUuid
+          caffeine.extensionUuid
         ];
       };
       "org/gnome/shell/extensions/windowgestures" = {
