@@ -29,5 +29,6 @@
     gnome-tweaks
     # extensions
     gnomeExtensions.window-gestures
+    gnomeExtensions.caffeine
   ];
 }
