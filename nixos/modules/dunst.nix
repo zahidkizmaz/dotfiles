@@ -2,12 +2,8 @@
 let
   lowBatteryNotification = pkgs.writeShellApplication {
     name = "low-battery-notification";
-    runtimeInputs = [ pkgs.libnotify ];
+    runtimeInputs = [ pkgs.libnotify pkgs.dbus ];
     text /*bash*/ = ''
-      #! ${pkgs.runtimeShell}
-
-      set -x
-      echo "Hello zahid"
       notify-send -i battery-empty -u critical 'Low Battery!'
     '';
   };
@@ -19,8 +15,21 @@ in
     lowBatteryNotification
   ];
 
+  systemd.services.low-battery-notification = {
+    description = "Low Battery Notification Service";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${lowBatteryNotification}/bin/low-battery-notification";
+      User = "${user}";
+      Environment = [
+        "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+        "XDG_RUNTIME_DIR=/run/user/1000"
+      ];
+    };
+  };
+
   services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="BAT1", ENV{POWER_SUPPLY_STATUS}=="Discharging", ATTR{capacity_level}=="Critical|Low", RUN+="${lowBatteryNotification}/bin/low-battery-notification"
+    SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="BAT1", ENV{POWER_SUPPLY_STATUS}=="Discharging", ATTR{capacity_level}=="Critical|Low", TAG+="systemd", ENV{SYSTEMD_WANTS}="low-battery-notification.service"
   '';
 
   system.userActivationScripts = {
