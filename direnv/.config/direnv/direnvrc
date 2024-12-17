@@ -1,0 +1,19 @@
+layout_uv_venv() {
+  if [ -f ".python-version" ]; then
+    python_version=$(cat .python-version)
+  else
+    python_version=$(python --version 2>&1 | cut -d' ' -f2)
+  fi
+
+  VIRTUAL_ENV="$(pwd)/.venv/$python_version"
+
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+    log_status 'No virtual environment exists. Executing "uv venv" to create one.'
+    uv venv "$VIRTUAL_ENV" --python "$python_version"
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
+  export UV_ACTIVE=1
+  export VIRTUAL_ENV
+  export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
+}
