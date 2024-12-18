@@ -1,4 +1,6 @@
-layout_uv_venv() {
+# shellcheck shell=bash
+
+layout_uv() {
   if [ -f ".python-version" ]; then
     python_version=$(cat .python-version)
   else
@@ -16,4 +18,28 @@ layout_uv_venv() {
   export UV_ACTIVE=1
   export VIRTUAL_ENV
   export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
+}
+
+layout_poetry() {
+  if ! has poetry; then
+    log_error "Poetry is not installed"
+    return 1
+  fi
+
+  PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
+  if [[ ! -f $PYPROJECT_TOML ]]; then
+    log_error "No pyproject.toml found"
+    return 1
+  fi
+
+  VIRTUAL_ENV="$(poetry env info --path 2>/dev/null || true)"
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+    log_status "Executing 'poetry install' to set up initial environment"
+    poetry install
+    VIRTUAL_ENV="$(poetry env info --path)"
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
+  export POETRY_ACTIVE=1
+  export VIRTUAL_ENV
 }
