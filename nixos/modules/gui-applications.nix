@@ -1,11 +1,12 @@
-{ inputs, pkgs, system, ... }:
+{ inputs, pkgs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system=pkgs.system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
 in
 {
   environment.systemPackages = [
     # Media players
     pkgs.mpv
+    pkgs.freetube
 
     # Chat
     pkgs.telegram-desktop
