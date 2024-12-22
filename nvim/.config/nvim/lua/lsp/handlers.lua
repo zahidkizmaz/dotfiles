@@ -1,6 +1,6 @@
 local M = {}
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+M.capabilities = require("blink.cmp").get_lsp_capabilities()
 
 M.handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),

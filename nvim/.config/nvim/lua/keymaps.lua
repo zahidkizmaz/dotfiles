@@ -1,6 +1,9 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Plugins
+keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>", opts)
+
 -- Visual shifting (does not exit Visual mode)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
