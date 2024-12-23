@@ -20,6 +20,7 @@ require("lazy").setup({
   ui = { border = "rounded" },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = false },
+  change_detection = { enabled = true, notify = false },
   dev = { path = "~/Projects" },
   performance = {
     rtp = {
