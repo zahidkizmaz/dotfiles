@@ -24,7 +24,7 @@ return {
     "sontungexpt/url-open",
     branch = "mini",
     cmd = "URLOpenUnderCursor",
-    config = true,
+    opts = {},
     keys = {
       {
         "<leader>o",

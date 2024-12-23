@@ -2,7 +2,7 @@ return {
   {
     "echasnovski/mini.surround",
     event = { "BufReadPost", "BufNewFile", "InsertEnter" },
-    config = true,
+    opts = {},
   },
   {
     "zbirenbaum/copilot.lua",

@@ -17,7 +17,7 @@ return {
   },
   {
     "echasnovski/mini.files",
-    config = true,
+    opts = {},
     keys = {
       { "<leader>m", "<CMD>:lua MiniFiles.open()<CR>", desc = "Open mini.files" },
     },

@@ -72,7 +72,7 @@ return {
   },
   {
     "numToStr/Comment.nvim",
-    config = true,
+    opts = {},
     keys = {
       { "gcc", mode = "n" },
       { "gcc", mode = "x" },
@@ -82,7 +82,6 @@ return {
     "danymat/neogen",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     cmd = { "Neogen" },
-    config = true,
     opts = {
       languages = {
         python = {
@@ -109,14 +108,14 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    config = true,
+    opts = {},
     cmd = { "ColorizerToggle" },
   },
   {
     "zahidkizmaz/sf.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     dev = true,
-    config = true,
+    opts = {},
     keys = {
       { "<leader>sfd", "<cmd>SFDeploy<cr>", desc = "Deploy current buffer to default sf org" },
       { "<leader>sft", "<cmd>SFTest<cr>", desc = "Run test class in current buffer" },

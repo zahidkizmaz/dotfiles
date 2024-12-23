@@ -22,7 +22,6 @@ return {
   { "b0o/schemastore.nvim" }, -- Setup called in lsp/init.lua
   {
     "rmagatti/goto-preview",
-    config = true,
     opts = {
       border = "rounded",
       stack_floating_preview_windows = false, -- Whether to nest floating windows
