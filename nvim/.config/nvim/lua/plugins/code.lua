@@ -124,4 +124,59 @@ return {
       { "<leader>sfh", "<cmd>SFHide<cr>", desc = "Hide sf.nvim split" },
     },
   },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>fo",
+        function()
+          require("conform").format({ async = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      log_level = vim.log.levels.INFO,
+      default_format_opts = { lsp_format = "fallback" },
+      format_on_save = function(bufnr)
+        -- Disable with a global or buffer-local variable
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+        return { timeout_ms = 5000, lsp_format = "fallback" }
+      end,
+      formatters = {
+        apex_prettier = {
+          command = "./node_modules/.bin/prettier",
+          args = { "$FILENAME", "--plugin", "prettier-plugin-apex" },
+        },
+        edi_format = {
+          command = "edi-format",
+          args = { "-l", "error", "--stdin" },
+        },
+        html_django = { command = "djhtml", args = { "--tabwidth", "2", "-" } },
+      },
+      formatters_by_ft = {
+        apex = { "apex_prettier", stop_after_first = true },
+        edi = { "edi_format" },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        htmldjango = { "html_django" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        lua = { "stylua" },
+        markdown = { "prettierd", "prettier", stop_after_first = true },
+        python = { "ruff_organize_imports", "ruff_format", lsp_format = "never" },
+        rust = { "rustfmt" },
+        sh = { "shfmt", lsp_format = "never" },
+        sql = { "sqlfluff", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        zsh = { "shfmt", lsp_format = "never" },
+        ["*"] = { "trim_newlines", "trim_whitespace" },
+      },
+    },
+  },
 }

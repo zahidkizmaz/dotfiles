@@ -46,7 +46,6 @@ keymap("n", "gl", vim.diagnostic.open_float, opts)
 
 -- Format
 keymap("n", "<leader>jq", "<CMD>%!jq .<CR>", opts)
-keymap("n", "<leader>fo", vim.lsp.buf.format, opts)
 
 -- Move between windows
 keymap("n", "<c-j>", "<c-w>j", opts)
