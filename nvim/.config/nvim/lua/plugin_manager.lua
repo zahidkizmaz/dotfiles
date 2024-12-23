@@ -23,7 +23,10 @@ require("lazy").setup({
   change_detection = { enabled = true, notify = false },
   dev = { path = "~/Projects" },
   performance = {
+    cache = { enabled = true },
+    reset_packpath = true,
     rtp = {
+      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
       disabled_plugins = {
         "gzip",
         "matchit",
