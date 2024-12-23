@@ -6,14 +6,10 @@ return {
   },
   {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
     event = "InsertEnter",
     version = "v0.8.1",
+    dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         preset = "none",
         ["<Up>"] = { "select_prev", "fallback" },
@@ -33,9 +29,7 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
-      sources = {
-        default = { "lsp", "buffer", "path", "snippets" },
-      },
+      sources = { default = { "lsp", "buffer", "path", "snippets" } },
       signature = {
         enabled = true,
         window = { border = "rounded" },

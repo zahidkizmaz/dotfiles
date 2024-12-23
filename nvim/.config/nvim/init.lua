@@ -8,6 +8,6 @@ local function prequire(module_str)
 end
 
 prequire("settings")
-prequire("plugins")
+prequire("plugin_manager")
 prequire("commands")
 prequire("keymaps")
