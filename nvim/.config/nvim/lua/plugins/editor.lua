@@ -5,6 +5,27 @@ return {
     config = true,
   },
   {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    cmd = "Copilot",
+    opts = {
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        hide_during_completion = true,
+        debounce = 75,
+        keymap = {
+          accept_word = false,
+          accept_line = false,
+          accept = "<A-e>",
+          next = "<A-]>",
+          prev = "<A-[>",
+          dismiss = "<C-]>",
+        },
+      },
+    },
+  },
+  {
     "saghen/blink.cmp",
     event = "InsertEnter",
     version = "v0.8.1",
@@ -38,10 +59,9 @@ return {
         -- Insert completion item on selection, don't select by default
         list = { selection = "auto_insert" },
         menu = {
-          -- nvim-cmp style menu
           draw = {
             columns = {
-              { "label", "label_description", gap = 1 },
+              { "label", "label_description" },
               { "kind_icon", "kind" },
             },
           },
