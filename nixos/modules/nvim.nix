@@ -30,6 +30,7 @@ in
     nixd
     nodePackages_latest.bash-language-server
     nodePackages_latest.typescript-language-server
+    prettierd
     rust-analyzer
     tailwindcss-language-server
     taplo
