@@ -3,6 +3,7 @@
     packages = with pkgs; [
       nixd
       nixpkgs-fmt
+      deadnix
     ];
   };
 }
