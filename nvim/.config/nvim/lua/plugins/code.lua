@@ -180,7 +180,7 @@ return {
         typescriptreact = { "prettierd", "prettier", stop_after_first = true },
         yaml = { "yamlfmt", stop_after_first = true },
         zsh = { "shfmt", lsp_format = "never" },
-        ["*"] = { "trim_newlines", "trim_whitespace" },
+        ["*"] = { "trim_newlines", "trim_whitespace", "injected"},
       },
     },
   },
