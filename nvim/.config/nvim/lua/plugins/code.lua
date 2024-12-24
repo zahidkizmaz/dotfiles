@@ -195,6 +195,7 @@ return {
         javascript = { "eslint_d", "eslint" },
         javascriptreact = { "eslint_d", "eslint" },
         markdown = { "markdownlint" },
+        nix = { "deadnix" },
         sh = { "shellcheck" },
         typescript = { "eslint_d", "eslint" },
         typescriptreact = { "eslint_d", "eslint" },
