@@ -18,7 +18,7 @@ This creates symlinks to tmux config files in `~/.config/` folder:
 
 - Shell: zsh
 - Shell prompt: starship
-- Terminal emulator: wezterm/kitty
+- Terminal emulator: kitty
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
 
