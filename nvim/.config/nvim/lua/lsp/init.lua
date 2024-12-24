@@ -23,12 +23,6 @@ M.SERVER_CONFIGURATIONS = {
   cssls = { pattern = { "*.css", "*.scss" } },
   dockerls = { pattern = { "*Dockerfile*" } },
   docker_compose_language_service = { pattern = { "*docker-compose*" } },
-  efm = {
-    pattern = { "*" },
-    setup_config = function()
-      return { init_options = { documentFormatting = true } }
-    end,
-  },
   htmx = { pattern = { "*.html" } },
   nixd = {
     pattern = { "*.nix" },

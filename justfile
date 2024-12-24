@@ -13,7 +13,7 @@ _stow-common:
   just stow atuin
   just stow bat
   just stow ctags
-  just stow efm-langserver
+  just stow direnv
   just stow fzf
   just stow git
   just stow kitty
