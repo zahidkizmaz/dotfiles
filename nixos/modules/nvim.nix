@@ -40,13 +40,11 @@ in
 
     # Linters&Formatters
     biome
-    djhtml
     gawk
     gitlint
     nixpkgs-fmt
     ruff
     rustfmt
-    rustup
     shellcheck
     shfmt
     sqlfluff
