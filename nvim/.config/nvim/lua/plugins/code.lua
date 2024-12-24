@@ -194,6 +194,7 @@ return {
         gitcommit = { "gitlint" },
         javascript = { "eslint_d", "eslint" },
         javascriptreact = { "eslint_d", "eslint" },
+        markdown = { "markdownlint" },
         sh = { "shellcheck" },
         typescript = { "eslint_d", "eslint" },
         typescriptreact = { "eslint_d", "eslint" },
