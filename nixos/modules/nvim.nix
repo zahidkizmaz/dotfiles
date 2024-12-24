@@ -2,7 +2,6 @@
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
-    config.allowUnfree = true; # because of tabnine
   };
 in
 {
@@ -24,7 +23,6 @@ in
     basedpyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
-    efm-langserver
     htmx-lsp
     hyprls
     lemminx
@@ -33,7 +31,6 @@ in
     nodePackages_latest.bash-language-server
     nodePackages_latest.typescript-language-server
     rust-analyzer
-    tabnine
     tailwindcss-language-server
     taplo
     typos-lsp
@@ -42,14 +39,11 @@ in
     yaml-language-server
 
     # Linters&Formatters
-    ansible-lint
+    biome
     djhtml
     gawk
     gitlint
     nixpkgs-fmt
-    nodePackages_latest.eslint
-    nodePackages_latest.prettier
-    prettierd
     ruff
     rustfmt
     rustup
@@ -57,6 +51,7 @@ in
     shfmt
     sqlfluff
     stylua
+    markdownlint-cli
     yamllint
   ];
 
@@ -67,7 +62,6 @@ in
         ln -sfn /home/${user}/dotfiles/ctags/.ctagsd /home/${user}/.ctagsd
         ln -sfn /home/${user}/dotfiles/fzf/.fzf.zsh /home/${user}/.fzf.zsh
         ln -sfn /home/${user}/dotfiles/nvim/.config/nvim /home/${user}/.config/nvim
-        ln -sfn /home/${user}/dotfiles/efm-langserver/.config/efm-langserver /home/${user}/.config/efm-langserver
 
         ${pkgs-unstable.bat}/bin/bat cache --build
 
