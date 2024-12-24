@@ -140,6 +140,7 @@ return {
     },
     opts = {
       log_level = vim.log.levels.INFO,
+      notify_on_error = false,
       default_format_opts = { lsp_format = "fallback" },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable
@@ -164,8 +165,8 @@ return {
         edi = { "edi_format" },
         html = { "prettierd", "prettier", stop_after_first = true },
         htmldjango = { "html_django" },
-        javascript = { "prettierd", "prettier", stop_after_first = true },
-        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettierd", "prettier", stop_after_first = true, lsp_format = "never" },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true, lsp_format = "never" },
         lua = { "stylua" },
         markdown = { "prettierd", "prettier", stop_after_first = true },
         python = { "ruff_organize_imports", "ruff_format", lsp_format = "never" },
@@ -180,5 +181,30 @@ return {
         ["*"] = { "trim_newlines", "trim_whitespace" },
       },
     },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local opts = {
+        dockerfile = { "hadolint" },
+        gitcommit = { "gitlint" },
+        javascript = { "eslint_d", "eslint" },
+        javascriptreact = { "eslint_d", "eslint" },
+        sh = { "shellcheck" },
+        typescript = { "eslint_d", "eslint" },
+        typescriptreact = { "eslint_d", "eslint" },
+        yaml = { "yamllint" },
+        zsh = { "zsh" },
+      }
+      local lint = require("lint")
+      lint.linters_by_ft = opts
+
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        callback = function()
+          require("lint").try_lint(nil, { ignore_errors = true })
+        end,
+      })
+    end,
   },
 }

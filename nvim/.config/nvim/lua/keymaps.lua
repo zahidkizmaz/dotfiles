@@ -65,7 +65,6 @@ keymap("n", "<leader>=", "<CMD>wincmd = <CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
 -- Open Git helpers
-keymap("n", "<leader>gu", Gitui, opts)
 keymap("n", "<leader>gg", "<CMD>tab Git<CR>", opts)
 
 -- Open terminal in split
