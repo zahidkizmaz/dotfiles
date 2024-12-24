@@ -1,6 +1,9 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Plugins
+keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>", opts)
+
 -- Visual shifting (does not exit Visual mode)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -43,7 +46,6 @@ keymap("n", "gl", vim.diagnostic.open_float, opts)
 
 -- Format
 keymap("n", "<leader>jq", "<CMD>%!jq .<CR>", opts)
-keymap("n", "<leader>fo", vim.lsp.buf.format, opts)
 
 -- Move between windows
 keymap("n", "<c-j>", "<c-w>j", opts)
@@ -63,7 +65,6 @@ keymap("n", "<leader>=", "<CMD>wincmd = <CR>", opts)
 keymap("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {})
 
 -- Open Git helpers
-keymap("n", "<leader>gu", Gitui, opts)
 keymap("n", "<leader>gg", "<CMD>tab Git<CR>", opts)
 
 -- Open terminal in split

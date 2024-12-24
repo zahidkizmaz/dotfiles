@@ -23,12 +23,6 @@ M.SERVER_CONFIGURATIONS = {
   cssls = { pattern = { "*.css", "*.scss" } },
   dockerls = { pattern = { "*Dockerfile*" } },
   docker_compose_language_service = { pattern = { "*docker-compose*" } },
-  efm = {
-    pattern = { "*" },
-    setup_config = function()
-      return { init_options = { documentFormatting = true } }
-    end,
-  },
   htmx = { pattern = { "*.html" } },
   nixd = {
     pattern = { "*.nix" },
@@ -184,28 +178,7 @@ M.setup = function()
   end
 
   lsp_handlers.setup()
-  M.setup_format_on_write()
   M._temporary_rust_error_fix()
-end
-
-M.setup_format_on_write = function()
-  vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspFormattingConfig", {}),
-    callback = function()
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "<buffer>",
-        callback = function()
-          vim.lsp.buf.format({
-            filter = function(client)
-              local disable_formatting = { "ts_ls", "lua_ls", "basedpyright" }
-              return not vim.tbl_contains(disable_formatting, client.name)
-            end,
-            timeout_ms = 3000,
-          })
-        end,
-      })
-    end,
-  })
 end
 
 M._temporary_rust_error_fix = function()

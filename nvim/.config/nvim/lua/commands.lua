@@ -44,34 +44,6 @@ end, {
   end,
 })
 
-function Gitui()
-  local cmd = "gitui"
-  local height = vim.go.lines
-  local width = vim.go.columns
-  local window_options = {
-    style = "minimal",
-    relative = "editor",
-    width = width,
-    height = height,
-    row = 0,
-    col = 0,
-    border = "rounded",
-    noautocmd = true,
-  }
-
-  local bufnr = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_open_win(bufnr, true, window_options)
-
-  vim.api.nvim_del_keymap("t", "<Esc>")
-  vim.fn.termopen(cmd, {
-    on_exit = function()
-      vim.keymap.set("t", "<Esc>", "<c-\\><c-n>", { silent = true })
-      vim.api.nvim_buf_delete(bufnr, { force = true })
-    end,
-  })
-  vim.cmd([[startinsert!]])
-end
-
 function TabnewGitcommit()
   -- A helper function that ties up vim-fugitive and committia.vim together
   -- When called create a new tab with committia's commit setup
@@ -79,3 +51,20 @@ function TabnewGitcommit()
   vim.cmd("tab Git commit")
   vim.g.committia_open_only_vim_starting = 1
 end
+
+-- FormatEnable - FormatDisable commands
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = "Disable autoformat-on-save",
+  bang = true,
+})
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, { desc = "Re-enable autoformat-on-save" })
