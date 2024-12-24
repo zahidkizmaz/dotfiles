@@ -189,6 +189,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local opts = {
+        htmldjango = { "djlint" },
         dockerfile = { "hadolint" },
         gitcommit = { "gitlint" },
         javascript = { "eslint_d", "eslint" },
