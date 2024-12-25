@@ -1,7 +1,29 @@
 { pkgs, lib, system, config, ... }:
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
-  system.stateVersion = 5;
+  system = {
+    stateVersion = 5;
+
+    keyboard = {
+      enableKeyMapping = true;
+      swapLeftCtrlAndFn = true;
+      remapCapsLockToEscape = true;
+    };
+    defaults = {
+      controlcenter = {
+        BatteryShowPercentage = true;
+      };
+      trackpad = {
+        Clicking = true;
+        TrackpadRightClick = true;
+        TrackpadThreeFingerDrag = true;
+      };
+      NSGlobalDomain = {
+        KeyRepeat = 7;
+        InitialKeyRepeat = 5;
+      };
+    };
+  };
 
   # Make nix installed applications appear on Spotlight
   system.activationScripts.postUserActivation.text = ''
