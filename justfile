@@ -6,10 +6,9 @@ default:
   just --list
 
 stow arg:
-  stow -vSt ~ {{arg}}
+  stow --adopt -vSt ~ {{arg}}
 
 _stow-common:
-  just stow alacritty
   just stow atuin
   just stow bat
   just stow ctags
@@ -25,7 +24,6 @@ _stow-common:
   just stow starship
   just stow rustfmt
   just stow tmux
-  just stow wezterm
   just stow zsh
 
 stow-linux: _stow-common
