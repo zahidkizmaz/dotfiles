@@ -5,6 +5,7 @@ in
 inputs.nix-darwin.lib.darwinSystem {
   modules = [
     ./configuration.nix
+    ./homebrew.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
     ../../modules/kitty.nix

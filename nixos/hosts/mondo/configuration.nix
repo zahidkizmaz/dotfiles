@@ -22,6 +22,7 @@
         KeyRepeat = 7;
         InitialKeyRepeat = 5;
       };
+      dock = { autohide = true; };
     };
   };
 

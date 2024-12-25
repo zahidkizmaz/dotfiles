@@ -4,6 +4,8 @@
       nixd
       nixpkgs-fmt
       deadnix
+      stow
+      just
     ];
   };
 }

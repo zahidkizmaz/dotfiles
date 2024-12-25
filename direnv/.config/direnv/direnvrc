@@ -43,6 +43,13 @@ layout_poetry() {
 
   if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
     log_status "No virtual environment exists. Executing 'poetry install' to create one."
+
+    if [ -f ".python-version" ]; then
+      python_version=$(cat .python-version)
+    else
+      python_version=$(python --version 2>&1 | cut -d' ' -f2)
+    fi
+    poetry env use "$python_version"
     poetry install
     VIRTUAL_ENV=$(poetry env info --path)
   fi
