@@ -6,6 +6,7 @@
       deadnix
       stow
       just
+      pre-commit
     ];
   };
 }

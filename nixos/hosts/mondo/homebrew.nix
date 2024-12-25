@@ -2,6 +2,7 @@
 {
   homebrew = {
     enable = true;
-    brews = [ "copyq" "hammerspoon" "awscli" "heroku" "gh" ];
+    brews = [ "awscli" "heroku" "gh" ];
+    casks = [ "copyq" "hammerspoon" ];
   };
 }
