@@ -54,7 +54,7 @@ in
     yamllint
   ];
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     nvim-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat

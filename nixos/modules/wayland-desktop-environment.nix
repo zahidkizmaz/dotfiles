@@ -16,7 +16,7 @@
 
   programs.dconf.enable = true;
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     desktop-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi

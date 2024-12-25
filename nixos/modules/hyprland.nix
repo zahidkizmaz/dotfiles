@@ -9,7 +9,7 @@
       hyprsunset
     ];
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     hyprland-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/hypr/.config/hypr /home/${user}/.config/hypr

@@ -33,7 +33,7 @@ in
     SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_NAME}=="BAT1", ENV{POWER_SUPPLY_STATUS}=="Discharging", ATTR{capacity_level}=="Critical|Low", TAG+="systemd", ENV{SYSTEMD_WANTS}="low-battery-notification.service"
   '';
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     dunst-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/dunst/.config/dunst /home/${user}/.config/dunst

@@ -17,7 +17,7 @@
     zoxide
   ];
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     zsh-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/atuin/.config/atuin /home/${user}/.config/atuin

@@ -5,7 +5,7 @@
     gitMinimal
   ];
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     clone-dotfiles.text /*bash*/ =
       ''
         if [ ! -d "$HOME/dotfiles" ]; then

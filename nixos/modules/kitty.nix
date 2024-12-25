@@ -12,7 +12,7 @@
     noto-fonts-color-emoji
   ];
 
-  system.userActivationScripts = {
+  system.activationScripts = {
     kitty-env.text /*bash*/ =
       ''
         ln -sfn /home/${user}/dotfiles/kitty/.config/kitty /home/${user}/.config/kitty
