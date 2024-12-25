@@ -3,6 +3,7 @@
 
   environment.systemPackages = with pkgs; [
     gitMinimal
+    gh
   ];
 
   system.activationScripts = {
