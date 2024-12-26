@@ -39,7 +39,9 @@ nh os switch
 
 I use symlinks to manage dotfiles. [Stow](https://www.gnu.org/software/stow/) is my go to tool for managing the symlinks.
 
-This helper script is automatically setup by nix.
+This helper script is automatically put in PATH by nix.
+It creates symlinks automatically if the certian app is installed.
+
 ```sh
 link-dotfiles
 ```
@@ -58,12 +60,16 @@ Example for tmux:
 stow -vSt ~ tmux
 ```
 
-This creates symlinks to tmux config files in `~/.config/` folder:
+This creates symlinks to tmux config files in `~/.config/` folder.
 
 ### Current Setup
 
+This setup includes:
+
 - Shell: zsh
 - Shell prompt: starship
+- Shell history: atuim
+- Shell tools: bat, direnv, fzf
 - Terminal emulator: kitty
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
@@ -73,4 +79,6 @@ This creates symlinks to tmux config files in `~/.config/` folder:
 - Window manager: Hyprland
 - Status bar: waybar
 - Notifications manager: dunst
-- Application launcher: anyrun
+- Application launcher: anyrun, tofi
+
+and more...
