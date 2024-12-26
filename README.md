@@ -1,6 +1,6 @@
 # Personal Dotfiles
 
-My dotfiles that used in MacOS and NixOS.
+My opinionated dotfiles that I use in MacOS and NixOS.
 
 ## How to install
 
@@ -19,7 +19,7 @@ Install nix-darwin and run:
 darwin-rebuild switch --flake .name-of-config
 ```
 
-### NixOs
+### NixOS
 
 Managed by flakes.
 
@@ -68,7 +68,7 @@ This creates symlinks to tmux config files in `~/.config/` folder:
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
 
-#### Nix specific
+#### NixOS specific
 
 - Window manager: Hyprland
 - Status bar: waybar
