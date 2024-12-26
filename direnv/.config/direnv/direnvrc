@@ -46,12 +46,9 @@ layout_poetry() {
 
     if [ -f ".python-version" ]; then
       python_version=$(cat .python-version)
-    else
-      python_version=$(python --version 2>&1 | cut -d' ' -f2)
+      log_status "Found .python-version file using python $python_version"
+      poetry env use "$python_version"
     fi
-    poetry env use "$python_version"
-    poetry install
-    VIRTUAL_ENV=$(poetry env info --path)
   fi
 
   PATH_add "$VIRTUAL_ENV/bin"

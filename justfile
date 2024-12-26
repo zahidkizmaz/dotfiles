@@ -15,14 +15,12 @@ _stow-common:
   just stow direnv
   just stow fzf
   just stow git
+  just stow ipython
   just stow kitty
-  just stow git
   just stow nvim
   just stow pgcli
-  just stow git
   just stow rustfmt
   just stow starship
-  just stow rustfmt
   just stow tmux
   just stow zsh
 
