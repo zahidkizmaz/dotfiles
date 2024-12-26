@@ -5,6 +5,7 @@
       nixpkgs-fmt
       deadnix
       stow
+      stylua
       just
       pre-commit
     ];
