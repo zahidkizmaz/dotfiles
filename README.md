@@ -4,6 +4,12 @@ My dotfiles that used in MacOS and NixOS.
 
 ## How to install
 
+Clone this repo:
+
+```sh
+git clone git@github.com:zahidkizmaz/dotfiles.git "$HOME/dotfiles"
+```
+
 ### MacOS
 
 Managed by [nix-darwin](https://github.com/LnL7/nix-darwin) and flakes.
@@ -29,11 +35,24 @@ Using [nh](https://github.com/viperML/nh)
 nh os switch
 ```
 
-### Only dotfiles
+#### Creating symlinks
 
 I use symlinks to manage dotfiles. [Stow](https://www.gnu.org/software/stow/) is my go to tool for managing the symlinks.
 
-Example command:
+This helper script is automatically setup by nix.
+```sh
+link-dotfiles
+```
+
+In case there is no nix:
+
+```sh
+bash nixos/bin/link-dotfiles.sh
+```
+
+### Only certain app dotfiles
+
+Example for tmux:
 
 ```sh
 stow -vSt ~ tmux
