@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
 # app -> callable
 declare -A appMappings=(
   [atuin]="atuin"
