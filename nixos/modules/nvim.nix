@@ -1,4 +1,4 @@
-{ inputs, pkgs, user, ... }:
+{ inputs, pkgs, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
@@ -53,20 +53,4 @@ in
     markdownlint-cli
     yamllint
   ];
-
-  system.activationScripts = {
-    nvim-env.text /*bash*/ =
-      ''
-        ln -sfn /home/${user}/dotfiles/bat/.config/bat /home/${user}/.config/bat
-        ln -sfn /home/${user}/dotfiles/ctags/.ctagsd /home/${user}/.ctagsd
-        ln -sfn /home/${user}/dotfiles/fzf/.fzf.zsh /home/${user}/.fzf.zsh
-        ln -sfn /home/${user}/dotfiles/nvim/.config/nvim /home/${user}/.config/nvim
-
-        ${pkgs-unstable.bat}/bin/bat cache --build
-
-        if [ ! -d "$HOME/.cache/tags" ]; then
-          mkdir -p "$HOME/.cache/tags"
-        fi
-      '';
-  };
 }

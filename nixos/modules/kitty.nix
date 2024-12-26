@@ -1,6 +1,5 @@
-{ pkgs, user, ... }:
+{ pkgs, ... }:
 {
-
   environment.systemPackages = with pkgs; [
     kitty
     starship
@@ -11,13 +10,4 @@
     (nerdfonts.override { fonts = [ "IosevkaTerm" "Noto" ]; })
     noto-fonts-color-emoji
   ];
-
-  system.activationScripts = {
-    kitty-env.text /*bash*/ =
-      ''
-        ln -sfn /home/${user}/dotfiles/kitty/.config/kitty /home/${user}/.config/kitty
-        ln -sfn /home/${user}/dotfiles/starship/.config/starship.toml /home/${user}/.config/starship.toml
-        ln -sfn /home/${user}/dotfiles/tmux/.config/tmux /home/${user}/.config/tmux
-      '';
-  };
 }

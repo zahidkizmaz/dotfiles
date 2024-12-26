@@ -1,5 +1,4 @@
-{ pkgs, user, ... }:
-
+{ pkgs, ... }:
 {
   imports = [ ./dunst.nix ./icons.nix ];
   environment.systemPackages = with pkgs; [
@@ -15,12 +14,4 @@
   ];
 
   programs.dconf.enable = true;
-
-  system.activationScripts = {
-    desktop-env.text /*bash*/ =
-      ''
-        ln -sfn /home/${user}/dotfiles/tofi/.config/tofi /home/${user}/.config/tofi
-        ln -sfn /home/${user}/dotfiles/easyeffects/.config/easyeffects /home/${user}/.config/easyeffects
-      '';
-  };
 }

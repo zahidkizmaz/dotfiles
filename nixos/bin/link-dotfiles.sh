@@ -1,9 +1,11 @@
 # app -> callable
 declare -A appMappings=(
   [atuin]="atuin"
+  [anyrun]="anyrun"
   [bat]="bat"
   [ctags]="ctags"
   [direnv]="direnv"
+  [easyeffects]="easyeffects"
   [dunst]="dunst"
   [fzf]="fzf"
   [git]="git"
@@ -21,7 +23,11 @@ declare -A appMappings=(
   [zsh]="zsh"
 )
 
-cd "$HOME/dotfiles/"
+if [ ! -d "$HOME/dotfiles" ]; then
+  echo "Cloning dotfiles to $HOME/dotfiles..."
+  git clone git@github.com:zahidkizmaz/dotfiles.git "$HOME/dotfiles"
+fi
+cd "$HOME/dotfiles/" || exit
 for app in "${!appMappings[@]}"; do
   cmd="${appMappings[$app]}"
   if command -v "$cmd" >/dev/null 2>&1; then

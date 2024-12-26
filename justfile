@@ -13,6 +13,7 @@ _stow-common:
   just stow bat
   just stow ctags
   just stow direnv
+  just stow easyeffects
   just stow fzf
   just stow git
   just stow ipython

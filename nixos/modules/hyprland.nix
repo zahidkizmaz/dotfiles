@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, ... }:
 {
   programs.hyprland = { enable = true; };
 
@@ -8,11 +8,4 @@
       hyprlock
       hyprsunset
     ];
-
-  system.activationScripts = {
-    hyprland-env.text /*bash*/ =
-      ''
-        ln -sfn /home/${user}/dotfiles/hypr/.config/hypr /home/${user}/.config/hypr
-      '';
-  };
 }

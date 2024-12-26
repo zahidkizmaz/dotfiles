@@ -35,11 +35,4 @@ in
     (nerdfonts.override { fonts = [ "Arimo" "IosevkaTerm" "Noto" "JetBrainsMono" ]; })
     noto-fonts-color-emoji
   ];
-
-  system.activationScripts = {
-    user-env.text /*bash*/ =
-      ''
-        ln -sfn /home/${user}/dotfiles/git/.config/git /home/${user}/.config/git
-      '';
-  };
 }
