@@ -24,7 +24,6 @@ bindkey '^e' edit-command-line
 [ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
 [ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # atuin
 if type "atuin" &>/dev/null; then
@@ -43,9 +42,9 @@ if type "direnv" &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-# direnv
-if type "direnv" &>/dev/null; then
-  eval "$(direnv hook zsh)"
+# fzf
+if type "fzf" &>/dev/null; then
+  source <(fzf --zsh)
 fi
 
 # Zoxide
