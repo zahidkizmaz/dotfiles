@@ -5,7 +5,13 @@ return {
       {
         "ludovicchabant/vim-gutentags",
         config = function()
-          vim.g.gutentags_cache_dir = vim.env.HOME .. "/.cache/tags"
+          local cache_dir = vim.env.HOME .. "/.cache/tags/"
+          if vim.fn.isdirectory(cache_dir) == 0 then
+            print("Creating guten tags cache dir: " .. cache_dir)
+            vim.fn.mkdir(cache_dir, "p")
+          end
+
+          vim.g.gutentags_cache_dir = cache_dir
           vim.g.gutentags_file_list_command = {
             markers = {
               [".git"] = "git ls-files --cached --others --exclude-standard",
