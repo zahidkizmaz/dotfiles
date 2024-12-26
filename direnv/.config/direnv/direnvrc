@@ -49,6 +49,9 @@ layout_poetry() {
       log_status "Found .python-version file using python $python_version"
       poetry env use "$python_version"
     fi
+
+    poetry install
+    VIRTUAL_ENV=$(poetry env info --path)
   fi
 
   PATH_add "$VIRTUAL_ENV/bin"
