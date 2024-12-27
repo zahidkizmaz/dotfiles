@@ -7,5 +7,5 @@
     shell = pkgs.zsh;
     extraGroups = [ "input" "wheel" "video" "audio" "storage" "networkmanager" ];
   };
-  programs.zsh.enable = true;
+  imports = [ ./zsh.nix ];
 }

@@ -3,7 +3,7 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
 {
-  imports = [ ./anyrun.nix ];
+  imports = [ ./anyrun.nix ./zsh.nix ];
   home-manager = {
     users = { "${user}" = import ./home.nix; };
     extraSpecialArgs = { inherit inputs user system stateVersion; };
@@ -24,10 +24,6 @@ in
       unzip
       zip
     ];
-  };
-
-  programs = {
-    zsh.enable = true;
   };
 
   fonts.packages = with pkgs; [
