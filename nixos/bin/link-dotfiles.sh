@@ -1,5 +1,6 @@
 # app -> callable
 declare -A appMappings=(
+  [aichat]="aichat"
   [atuin]="atuin"
   [anyrun]="anyrun"
   [bat]="bat"
