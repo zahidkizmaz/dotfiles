@@ -2,7 +2,6 @@ return {
   {
     "zahidkizmaz/python-docs.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
-    dev = true,
     keys = {
       {
         "<leader>fp",
@@ -116,7 +115,6 @@ return {
   {
     "zahidkizmaz/sf.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    dev = true,
     opts = {},
     keys = {
       { "<leader>sfd", "<cmd>SFDeploy<cr>", desc = "Deploy current buffer to default sf org" },
