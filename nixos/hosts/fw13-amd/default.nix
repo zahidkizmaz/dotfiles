@@ -27,7 +27,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
-    ../../modules/ollama.nix
+    ../../modules/ai.nix
     ../../modules/podman.nix
     ../../modules/ppd.nix
     ../../modules/sound-pipewire.nix

@@ -11,7 +11,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/kitty.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
-    ../../modules/ollama.nix
+    ../../modules/ai.nix
     ../../modules/zsh.nix
   ];
   specialArgs = { inherit inputs system; user = "zahidkizmaz"; };
