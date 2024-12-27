@@ -7,16 +7,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    cmd = { "Mason" },
+    cmd = { "LspInfo" },
     config = require("lsp").setup,
-    dependencies = {
-      {
-        "williamboman/mason-lspconfig.nvim",
-        -- Auto install LSP servers if they have setup
-        opts = { automatic_installation = true },
-      },
-      { "williamboman/mason.nvim", opts = { ui = { border = "rounded" } } },
-    },
   },
   { "folke/neodev.nvim" }, -- Setup called in lsp/init.lua
   { "b0o/schemastore.nvim" }, -- Setup called in lsp/init.lua

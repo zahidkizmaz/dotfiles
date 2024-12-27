@@ -31,12 +31,6 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 #---------
 export BAT_THEME="Catppuccin-mocha"
 
-#----------
-# Pipx Vars
-#----------
-export PIPX_HOME="$HOME/.local/pipx/"
-export PIPX_DEFAULT_PYTHON="$HOME/.local/share/mise/installs/python/3/bin/python"
-
 #------------
 # Pip Setting
 #------------

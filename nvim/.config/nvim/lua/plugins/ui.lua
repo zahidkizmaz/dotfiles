@@ -32,9 +32,9 @@ return {
         integrations = { -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
           blink_cmp = true,
           cmp = false,
-          mason = true,
+          mason = false,
           fidget = true,
-          harpoon = true,
+          harpoon = false,
           gitsigns = true,
           treesitter = true,
           rainbow_delimiters = true,

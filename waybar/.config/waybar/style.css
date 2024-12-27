@@ -1,39 +1,36 @@
 @import "mocha.css";
 
 * {
-  /* reference the color by using @color-name */
-  color: @text;
   min-height: 0;
+  font-size: large;
+  font-family: "Arimo";
 }
 
-window#waybar {
-  /* you can also GTK3 CSS functions! */
-  background-color: shade(@base, 0.9);
-  border: 2px solid alpha(@crust, 0.3);
+#window {
+  border-radius: 1rem;
+  color: @text;
 }
 
 #workspaces {
   border-radius: 1rem;
   background-color: @surface0;
-  margin-right: 3px;
+  color: @text;
 }
 
 #workspaces button {
-  color: @pink;
   border-radius: 1rem;
-  padding-left: 6px;
-  box-shadow: inset 0 -3px transparent;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
-  background-color: transparent;
 }
 
 #workspaces button.active {
   color: @flamingo;
+  font-weight: bold;
+  background-color: @overlay0;
   border-radius: 1rem;
 }
 
 #workspaces button:hover {
-  color: @rosewater;
+  background-color: @overlay1;
+  font-weight: bold;
   border-radius: 1rem;
 }
 
@@ -41,15 +38,20 @@ window#waybar {
 #battery,
 #clock,
 #cpu,
+#keyboard-state,
 #language,
 #memory,
 #network,
+#power-profiles-daemon,
+#privacy,
 #tray,
-#wireplumber,
-#keyboard-state {
+#idle_inhibitor,
+#custom-hyprsunset,
+#wireplumber {
   background-color: @surface0;
-  padding: 0px 8px 0px 8px;
+  padding: 0 0.5rem;
   border-radius: 1rem;
+  color: @text;
 }
 
 #battery.charging {
@@ -57,6 +59,10 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
+  color: @yellow;
+}
+
+#battery.critical:not(.charging) {
   color: @red;
 }
 

@@ -24,7 +24,6 @@ bindkey '^e' edit-command-line
 [ -f "$ZDOTDIR/env_vars" ] && source "$ZDOTDIR/env_vars"
 [ -f "$ZDOTDIR/functionrc" ] && source "$ZDOTDIR/functionrc"
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # atuin
 if type "atuin" &>/dev/null; then
@@ -43,19 +42,14 @@ if type "direnv" &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-# mise
-if type "mise" &>/dev/null; then
-  eval "$(mise activate zsh)"
+# fzf
+if type "fzf" &>/dev/null; then
+  source <(fzf --zsh)
 fi
 
 # Zoxide
 if type "zoxide" &>/dev/null; then
   eval "$(zoxide init zsh)"
-fi
-
-# Pipx
-if type "pipx" &>/dev/null; then
-  eval "$(register-python-argcomplete pipx)"
 fi
 
 # Rust
