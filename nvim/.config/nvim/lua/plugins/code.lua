@@ -169,6 +169,7 @@ return {
         htmldjango = { "html_django" },
         javascript = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
         javascriptreact = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
+        just = { "just", stop_after_first = true },
         lua = { "stylua" },
         markdown = { "prettierd" },
         python = { "ruff_organize_imports", "ruff_format", lsp_format = "never" },
