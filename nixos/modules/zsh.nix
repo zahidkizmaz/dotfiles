@@ -13,6 +13,7 @@
     fzf
     jq
     ripgrep
+    yazi
     zoxide
   ];
 }

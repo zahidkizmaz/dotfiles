@@ -22,7 +22,6 @@ in
       stow
       tree
       unzip
-      yazi
       zip
     ];
   };
