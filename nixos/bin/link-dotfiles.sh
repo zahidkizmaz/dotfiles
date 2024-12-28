@@ -8,7 +8,6 @@ declare -A appMappings=(
   [direnv]="direnv"
   [easyeffects]="easyeffects"
   [dunst]="dunst"
-  [fzf]="fzf"
   [git]="git"
   [ghostty]="ghostty"
   [ipython]="ipython"
