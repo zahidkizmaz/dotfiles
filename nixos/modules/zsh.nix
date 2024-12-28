@@ -1,16 +1,7 @@
-{ pkgs, is_darwin ? false, ... }:
-let
-  shellInit =
-    if is_darwin then /*bash*/''
-      [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
-    '' else "";
-in
+{ pkgs, ... }:
 {
   programs = {
-    zsh = {
-      enable = true;
-      shellInit = shellInit;
-    };
+    zsh.enable = true;
     direnv.enable = true;
   };
 

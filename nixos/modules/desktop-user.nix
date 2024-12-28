@@ -4,10 +4,6 @@ let
 in
 {
   imports = [ ./anyrun.nix ./zsh.nix ];
-  home-manager = {
-    users = { "${user}" = import ./home.nix; };
-    extraSpecialArgs = { inherit inputs user system stateVersion; };
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${user}" = {

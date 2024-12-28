@@ -1,55 +1,5 @@
-{ inputs, pkgs, user, stateVersion, ... }:
+{ inputs, pkgs, ... }:
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "${user}";
-  home.homeDirectory = "/home/${user}";
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.package = pkgs.catppuccin-qt5ct;
-  };
-
-  gtk = {
-    enable = true;
-
-    font = { name = "Arimo"; size = 12; };
-
-    cursorTheme = {
-      size = 32;
-      name = "phinger-cursors-light";
-      package = pkgs.phinger-cursors;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    theme = {
-      name = "Catppuccin-GTK-Pink-Dark";
-      package = pkgs.magnetic-catppuccin-gtk.override {
-        accent = [ "pink" ];
-        shade = "dark";
-        size = "standard";
-        tweaks = [ "macos" ];
-      };
-    };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
-
   programs.firefox = {
     enable = true;
 
@@ -182,20 +132,4 @@
       ];
     };
   };
-
-  services.easyeffects = {
-    enable = true;
-    preset = "fw-13-easyeffecs"; # Comes from easyeffects config dir
-  };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  home.stateVersion = stateVersion;
 }

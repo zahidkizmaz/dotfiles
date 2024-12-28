@@ -26,6 +26,15 @@
     };
   };
 
+  # Make nix daemon work
+  programs = {
+    zsh = {
+      shellInit = ''
+        [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+      '';
+    };
+  };
+
   # Make nix installed applications appear on Spotlight
   system.activationScripts.postUserActivation.text = ''
     apps_source="${config.system.build.applications}/Applications"

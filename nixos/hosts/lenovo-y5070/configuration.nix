@@ -1,9 +1,15 @@
-{ pkgs, stateVersion, ... }:
+{ inputs, pkgs, stateVersion, user, system, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
   ];
+
+  home-manager = {
+    users = { "${user}" = import ./home.nix; };
+    extraSpecialArgs = { inherit inputs user system stateVersion; };
+  };
+
 
   hardware.graphics = {
     enable = true;

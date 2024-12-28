@@ -1,10 +1,15 @@
-{ stateVersion, ... }:
+{ inputs, stateVersion, user, system, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
     ../../modules/latest-kernel.nix
   ];
+
+  home-manager = {
+    users = { "${user}" = import ./home.nix; };
+    extraSpecialArgs = { inherit inputs user system stateVersion; };
+  };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 

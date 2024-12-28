@@ -14,5 +14,5 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/nvim.nix
     ../../modules/zsh.nix
   ];
-  specialArgs = { inherit inputs system; user = "zahidkizmaz"; is_darwin = true; };
+  specialArgs = { inherit inputs system; user = "zahidkizmaz"; };
 }
