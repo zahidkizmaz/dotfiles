@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  programs.nix-ld.dev.enable = true;
+  programs.nix-ld.enable = true;
 }

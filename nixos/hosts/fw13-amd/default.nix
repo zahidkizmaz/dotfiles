@@ -8,7 +8,6 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.disko
-    inputs.nix-ld.nixosModules.nix-ld
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
     ../../modules/agenix.nix
