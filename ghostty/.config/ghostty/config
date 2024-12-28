@@ -1,0 +1,8 @@
+theme = catppuccin-mocha
+window-decoration = false
+
+font-size = 14
+font-family = IosevkaTerm NFM ExtraLight
+font-family-bold = IosevkaTerm NFM
+font-family-italic = IosevkaTerm NFM Italic
+font-family-bold-italic = IosevkaTerm NFM Italic

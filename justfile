@@ -17,6 +17,7 @@ _stow-common:
     just stow easyeffects
     just stow fzf
     just stow git
+    just stow ghostty
     just stow ipython
     just stow kitty
     just stow nvim
