@@ -37,3 +37,10 @@ repos:
         args: [-l, -d, -i=2, -ci, -s, -bn, -w]
         language: system
         files: '(.*\.sh$)|(\.zshrc|functionrc|aliasrc)'
+      - id: fixjson
+        name: fixjson json5
+        entry: fixjson
+        args: ["--write"]
+        language: system
+        types:
+          - json5

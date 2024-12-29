@@ -2,6 +2,7 @@
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
       deadnix
+      fixjson
       just
       nixd
       nixpkgs-fmt
