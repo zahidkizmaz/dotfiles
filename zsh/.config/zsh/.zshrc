@@ -66,7 +66,7 @@ if [[ ! -f $zeesh_dir/zeesh.zsh ]]; then
 fi
 source "$zeesh_dir/zeesh.zsh"
 
-zeesh_get "zsh-users/zsh-syntax-highlighting"
+zeesh_get "zdharma-continuum/fast-syntax-highlighting"
 zeesh_get "zsh-users/zsh-autosuggestions"
 zeesh_get "jeffreytse/zsh-vi-mode"
 zeesh_get "Aloxaf/fzf-tab"
