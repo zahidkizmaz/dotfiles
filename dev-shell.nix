@@ -1,13 +1,14 @@
 { pkgs }: {
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
+      deadnix
+      just
       nixd
       nixpkgs-fmt
-      deadnix
+      pre-commit
       stow
       stylua
-      just
-      pre-commit
+      yamlfmt
     ];
   };
 }
