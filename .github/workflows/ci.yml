@@ -15,5 +15,5 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: nicknovitski/nix-develop@v1
-      - run: pre-commit run --all-files
+      - uses: pre-commit/action@v3.0.1
       - run: nix flake check --all-systems
