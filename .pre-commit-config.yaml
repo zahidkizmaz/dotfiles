@@ -12,6 +12,11 @@ repos:
     rev: v1.3.0
     hooks:
       - id: nixpkgs-fmt
+  - repo: https://github.com/astro/deadnix
+    rev: v1.2.1
+    hooks:
+      - id: deadnix
+        stages: [pre-commit]
   - repo: local
     hooks:
       - id: stylua-check

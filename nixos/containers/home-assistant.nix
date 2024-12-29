@@ -6,7 +6,7 @@
   containers.homeassistant = {
     autoStart = true;
 
-    config = { config, pkgs, lib, ... }: {
+    config = { config, lib, ... }: {
 
       services.home-assistant = {
         enable = true;

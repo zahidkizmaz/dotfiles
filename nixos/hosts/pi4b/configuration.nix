@@ -1,4 +1,4 @@
-{ lib, pkgs, user, stateVersion, ... }:
+{ stateVersion, ... }:
 {
   hardware = {
     bluetooth.enable = true;
@@ -23,6 +23,7 @@
   }];
 
   nixpkgs.overlays = [
+    # deadnix: skip
     (final: super: {
       makeModulesClosure = x:
         super.makeModulesClosure (x // { allowMissing = true; });

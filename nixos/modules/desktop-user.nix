@@ -1,4 +1,4 @@
-{ inputs, pkgs, user, system, stateVersion, ... }:
+{ inputs, pkgs, user, system, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in

@@ -1,6 +1,6 @@
 { pkgs }: {
   default = pkgs.mkShell {
-    packages = with pkgs; [
+    buildInputs = with pkgs; [
       nixd
       nixpkgs-fmt
       deadnix
