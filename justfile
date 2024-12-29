@@ -15,8 +15,8 @@ _stow-common:
     just stow ctags
     just stow direnv
     just stow easyeffects
-    just stow git
     just stow ghostty
+    just stow git
     just stow ipython
     just stow kitty
     just stow nvim
@@ -24,6 +24,7 @@ _stow-common:
     just stow rustfmt
     just stow starship
     just stow tmux
+    just stow yazi
     just stow zsh
 
 stow-linux: _stow-common

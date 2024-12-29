@@ -21,6 +21,7 @@ declare -A appMappings=(
   [tmux]="tmux"
   [tofi]="tofi"
   [waybar]="waybar"
+  [yazi]="yazi"
   [zsh]="zsh"
 )
 
