@@ -1,6 +1,6 @@
-if command -v "zeesh-update" >/dev/null 2>&1; then
+if zsh -c 'source $ZDOTDIR/.zshrc && command -v "zeesh-update"' >/dev/null 2>&1; then
   printf "\nUpdating zeesh plugins\n"
-  zeesh-update
+  zsh -c 'source $ZDOTDIR/.zshrc && command -v "zeesh-update"'
 fi
 
 if command -v "bat" >/dev/null 2>&1; then
