@@ -28,11 +28,3 @@ jobs:
 
       - name: Check all systems
         run: nix flake check --all-systems
-
-      - name: Build NixOS system
-        run: >
-          nix build .#nixosConfigurations.fw13-amd.config.system.build.toplevel
-
-      - name: Build Darwin system
-        run: >
-          nix build .#darwinConfigurations.MONDO-1192.config.system.build.toplevel
