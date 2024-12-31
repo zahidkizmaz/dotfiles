@@ -9,9 +9,9 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/ai.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
-    ../../modules/kitty.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
+    ../../modules/terminal.nix
     ../../modules/zsh.nix
   ];
   specialArgs = { inherit inputs system; user = "zahidkizmaz"; };

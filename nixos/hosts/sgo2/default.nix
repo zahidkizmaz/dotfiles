@@ -17,13 +17,13 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gnome.nix
     ../../modules/gui-applications.nix
-    ../../modules/kitty.nix
     ../../modules/libcamera.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
+    ../../modules/terminal.nix
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
     ../../modules/wlan.nix

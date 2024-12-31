@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
     ../../modules/agenix.nix
+    ../../modules/ai.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/desktop-user.nix
@@ -20,18 +21,17 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
-    ../../modules/kitty.nix
     ../../modules/ld.nix
     ../../modules/login-manager-tuigreet.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
-    ../../modules/ai.nix
     ../../modules/podman.nix
     ../../modules/ppd.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
+    ../../modules/terminal.nix
     ../../modules/virt-manager.nix
     ../../modules/vm-variant.nix
     ../../modules/waybar.nix
