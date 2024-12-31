@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   networking = {
     networkmanager = {

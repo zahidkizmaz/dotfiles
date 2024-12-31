@@ -1,5 +1,4 @@
 { ... }:
-
 {
   # Enable fingerprint scanner
   services.fprintd = {
