@@ -19,7 +19,7 @@
         TrackpadThreeFingerDrag = true;
       };
       NSGlobalDomain = {
-        KeyRepeat = 7;
+        KeyRepeat = 9;
         InitialKeyRepeat = 5;
       };
       dock = { autohide = true; };

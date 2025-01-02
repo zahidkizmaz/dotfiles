@@ -5,6 +5,7 @@ in
 inputs.nix-darwin.lib.darwinSystem {
   modules = [
     ./configuration.nix
+    ./gui-applications.nix
     ./homebrew.nix
     ../../modules/ai.nix
     ../../modules/documentation.nix
