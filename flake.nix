@@ -65,7 +65,7 @@
       packages.aarch64-linux.pi-image = images.pi4b;
 
       templates = {
-        dev-shell = {
+        dev = {
           path = ./nixos/templates/dev;
           description = "Simple, all-rounder template devShell";
         };
