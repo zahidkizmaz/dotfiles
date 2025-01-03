@@ -66,7 +66,7 @@
 
       templates = {
         dev-shell = {
-          path = ./nixos/templates/dev-shell.nix;
+          path = ./nixos/templates/dev;
           description = "Simple, all-rounder template devShell";
         };
       };
