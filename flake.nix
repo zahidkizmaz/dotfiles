@@ -64,6 +64,13 @@
       packages.x86_64-linux.pi-image = images.pi4b;
       packages.aarch64-linux.pi-image = images.pi4b;
 
+      templates = {
+        dev-shell = {
+          path = ./nixos/templates/dev-shell.nix;
+          description = "Simple, all-rounder template devShell";
+        };
+      };
+
       devShells = forDefaultSystems
         (system:
           let
