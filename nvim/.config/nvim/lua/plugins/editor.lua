@@ -28,7 +28,7 @@ return {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
-    version = "v0.8.1",
+    version = "^v0.10",
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       keymap = {
@@ -56,8 +56,7 @@ return {
         window = { border = "rounded" },
       },
       completion = {
-        -- Insert completion item on selection, don't select by default
-        list = { selection = "auto_insert" },
+        list = { selection = { auto_insert = true, preselect = false } },
         menu = {
           draw = {
             columns = {
