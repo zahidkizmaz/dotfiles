@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  imports = [ ./aliases.nix ];
   programs = {
     zsh.enable = true;
     direnv.enable = true;
