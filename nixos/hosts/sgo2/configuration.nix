@@ -9,6 +9,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.graphics = {
     enable = true;
@@ -18,7 +20,9 @@
       libvdpau-va-gl
     ];
   };
-
+  hardware.firmware = [
+    pkgs.ivsc-firmware
+  ];
 
   fileSystems."/" =
     {

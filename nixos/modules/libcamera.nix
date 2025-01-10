@@ -6,10 +6,6 @@ let
 in
 {
   environment.systemPackages = with pkgs-unstable; [
-    libcamera-qcam
+    libcamera
   ];
-
-  systemd.user.services.wireplumber.environment = {
-    LIBCAMERA_IPA_PROXY_PATH = "${pkgs.libcamera}/libexec/libcamera";
-  };
 }
