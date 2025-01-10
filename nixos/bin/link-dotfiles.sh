@@ -13,6 +13,7 @@ declare -A appMappings=(
   [ipython]="ipython"
   [hypr]="hyprctl"
   [kitty]="kitty"
+  [mpv]="mpv"
   [nix]="nix"
   [nvim]="nvim"
   [pgcli]="pgcli"

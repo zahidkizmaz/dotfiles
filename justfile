@@ -26,6 +26,7 @@ _stow-common:
     just stow tmux
     just stow yazi
     just stow zsh
+    just stow mpv
 
 stow-linux: _stow-common
     just stow dunst
