@@ -28,11 +28,13 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    eza
     fd
     gitMinimal
     magic-wormhole
     neovim
     ripgrep
+    sesh
     unzip
     yazi
     zip

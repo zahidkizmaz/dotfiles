@@ -10,6 +10,7 @@
     atuin
     bat
     delta
+    eza
     fd
     fzf
     jq

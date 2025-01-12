@@ -1,0 +1,13 @@
+[default_session]
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "eza"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "Dotfiles"
+path = "~/dotfiles/"
+startup_command = "nvim"
