@@ -8,6 +8,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.blacklistedKernelModules = [ "ipu3_imgu" ]; # block camera because it breaks wireplumber and sound
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;

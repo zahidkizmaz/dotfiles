@@ -17,7 +17,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gnome.nix
     ../../modules/gui-applications.nix
-    ../../modules/libcamera.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
