@@ -11,3 +11,7 @@ preview_command = "eza --all --git --icons --color=always {}"
 name = "Dotfiles"
 path = "~/dotfiles/"
 startup_command = "nvim"
+
+[[session]]
+name = "tmp"
+path = "~/"
