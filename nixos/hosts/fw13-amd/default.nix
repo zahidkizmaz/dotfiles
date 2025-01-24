@@ -9,6 +9,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
+    inputs.nixos-generators.nixosModules.all-formats
     ./configuration.nix
     ../../modules/agenix.nix
     ../../modules/ai.nix

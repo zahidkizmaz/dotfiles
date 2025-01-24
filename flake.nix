@@ -10,6 +10,11 @@
 
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,10 +1,8 @@
 # Raspberry PI 4B Configuration
 
+## Useful commands
 
-
-## Useful commands:
-
-### Build image:
+### Build image
 
 ```shell
 nix build .#images.pi4b -L

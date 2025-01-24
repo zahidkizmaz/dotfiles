@@ -7,6 +7,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" "uas" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "ipu3_imgu" ]; # block camera because it breaks wireplumber and sound
 
