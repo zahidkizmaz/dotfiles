@@ -29,7 +29,7 @@ return {
       { "<leader>ft", "<cmd>FzfLua tags<cr>", desc = "FzfLua Tags" },
       { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "FzfLua Help Tags" },
       { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua Buffers" },
-      { "<leader>fd", "<cmd>FzfLua lsp_definitions<cr>", desc = "FzfLua Definitions" },
+      { "<leader>fd", "<cmd>FzfLua treesitter<cr>", desc = "FzfLua Definitions" },
       { "<leader>rg", "<cmd>FzfLua live_grep_glob<cr>", desc = "Ripgrep Search" },
       { "<leader>fw", "<cmd>FzfLua grep_cword<cr>", desc = "Ripgrep Current Word" },
       { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Ripgrep Current Word" },
@@ -81,6 +81,13 @@ return {
         .. "--max-columns=4096 "
         .. "--hidden "
 
+      local fd_opts = "--color=never "
+        .. "--hidden --no-ignore --follow "
+        .. "--type f --type l "
+        .. "--exclude .git "
+        .. "--exclude node_modules "
+        .. "--exclude .direnv "
+
       require("fzf-lua").setup({
         "max-perf",
         height = 0.95,
@@ -102,6 +109,7 @@ return {
             },
           },
         },
+        files = { fd_opts = fd_opts },
         grep = {
           rg_opts = rg_opts,
           glob_flag = "--hidden --iglob", -- for case sensitive globs use '--glob'
