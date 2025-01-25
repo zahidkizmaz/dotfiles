@@ -45,7 +45,6 @@ return {
           { "gp", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
         },
       },
-      { "nvim-treesitter/nvim-treesitter-context" },
       {
         "HiPhish/rainbow-delimiters.nvim",
         config = function()
@@ -68,6 +67,58 @@ return {
             },
           }
         end,
+      },
+    },
+  },
+  {
+    "Bekaboo/dropbar.nvim",
+    event = { "BufReadPost" },
+    opts = {
+      bar = {
+        sources = function(buf, _)
+          local sources = require("dropbar.sources")
+          local utils = require("dropbar.utils")
+          if vim.bo[buf].ft == "markdown" then
+            return {
+              sources.path,
+              sources.markdown,
+            }
+          end
+          if vim.bo[buf].buftype == "terminal" then
+            return {
+              sources.terminal,
+            }
+          end
+          return {
+            utils.source.fallback({
+              sources.lsp,
+              sources.treesitter,
+            }),
+          }
+        end,
+      },
+    },
+    keys = {
+      {
+        "<leader>;",
+        function()
+          require("dropbar.api").pick()
+        end,
+        "Pick symbols in winbar",
+      },
+      {
+        "[;",
+        function()
+          require("dropbar.api").goto_context_start()
+        end,
+        "Pick symbols in winbar",
+      },
+      {
+        "];",
+        function()
+          require("dropbar.api").select_next_context()
+        end,
+        "Pick symbols in winbar",
       },
     },
   },
