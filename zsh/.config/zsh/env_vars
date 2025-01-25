@@ -16,7 +16,7 @@ export PATH="$HOME/.local/bin:$PATH"
 #--------
 # FD Vars
 #--------
-export FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules"
+export FD_OPTIONS="--hidden -I --follow --exclude .git --exclude node_modules --exclude .direnv"
 
 #---------
 # FZF Vars
