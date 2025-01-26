@@ -15,11 +15,17 @@
   };
 
   environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-connections
     epiphany # web browser
-    geary # email reader
     evince # document viewer
+    geary # email reader
+    gnome-connections
+    gnome-contacts
+    gnome-maps
+    gnome-tour
+    orca
+    seahorse # password manager
+    totem # video player
+    yelp # help viewer
   ];
 
   environment.systemPackages = with pkgs; [
