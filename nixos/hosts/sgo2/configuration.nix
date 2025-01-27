@@ -11,6 +11,13 @@
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "ipu3_imgu" ]; # block camera because it breaks wireplumber and sound
 
+  services = {
+    thermald = {
+      enable = true;
+      configFile = ./thermal-conf.xml;
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
