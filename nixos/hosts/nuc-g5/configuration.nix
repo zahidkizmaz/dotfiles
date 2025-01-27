@@ -1,4 +1,11 @@
-{ config, pkgs, lib, modulesPath, stateVersion, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  modulesPath,
+  stateVersion,
+  ...
+}:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -6,19 +13,24 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm-intel" ];
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 32 * 1024; # 32GB
-  }];
-
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024; # 32GB
+    }
+  ];
 
   hardware.graphics = {
     enable = true;
@@ -29,7 +41,9 @@
     ];
   };
 
-  console = { keyMap = "us"; };
+  console = {
+    keyMap = "us";
+  };
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Europe/Berlin";
   networking = {

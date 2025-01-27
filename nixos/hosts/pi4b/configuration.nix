@@ -10,23 +10,29 @@
     wireless.enable = false;
 
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 22 443 ];
+    firewall.allowedTCPPorts = [
+      22
+      443
+    ];
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = { keyMap = "us"; };
+  console = {
+    keyMap = "us";
+  };
   time.timeZone = "Europe/Berlin";
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16 * 1024; # 16GB
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
 
   nixpkgs.overlays = [
     # deadnix: skip
     (final: super: {
-      makeModulesClosure = x:
-        super.makeModulesClosure (x // { allowMissing = true; });
+      makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
     })
   ];
 

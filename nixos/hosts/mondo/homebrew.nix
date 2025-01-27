@@ -3,6 +3,10 @@
   homebrew = {
     enable = true;
     brews = [ "heroku" ];
-    casks = [ "copyq" "hammerspoon" "ghostty" ];
+    casks = [
+      "copyq"
+      "hammerspoon"
+      "ghostty"
+    ];
   };
 }

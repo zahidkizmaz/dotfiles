@@ -36,7 +36,7 @@
     };
   };
   outputs =
-    { self, nixpkgs-unstable, ... } @ inputs:
+    { self, nixpkgs-unstable, ... }@inputs:
     let
       stateVersion = "24.11";
       forDefaultSystems = nixpkgs-unstable.lib.genAttrs [
@@ -47,24 +47,40 @@
     in
     rec {
       nixosConfigurations = {
-        fw13-amd = import ./nixos/hosts/fw13-amd { stateVersion = stateVersion; inherit inputs; };
-        lenovo-y5070 = import ./nixos/hosts/lenovo-y5070 { stateVersion = stateVersion; inherit inputs; };
-        nuc-g5 = import ./nixos/hosts/nuc-g5 { stateVersion = stateVersion; inherit inputs; };
-        pi4b = import ./nixos/hosts/pi4b { stateVersion = stateVersion; inherit inputs; };
-        sgo2 = import ./nixos/hosts/sgo2 { stateVersion = stateVersion; inherit inputs; };
+        fw13-amd = import ./nixos/hosts/fw13-amd {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
+        lenovo-y5070 = import ./nixos/hosts/lenovo-y5070 {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
+        nuc-g5 = import ./nixos/hosts/nuc-g5 {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
+        pi4b = import ./nixos/hosts/pi4b {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
+        sgo2 = import ./nixos/hosts/sgo2 {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
       };
       darwinConfigurations = {
         MONDO-1192 = import ./nixos/hosts/mondo { inherit inputs; };
       };
       images = {
-        pi4b = (self.nixosConfigurations.pi4b.extendModules {
-          modules = [
-            "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-            {
-              disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
-            }
-          ];
-        }).config.system.build.sdImage;
+        pi4b =
+          (self.nixosConfigurations.pi4b.extendModules {
+            modules = [
+              "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+              {
+                disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
+              }
+            ];
+          }).config.system.build.sdImage;
       };
       packages.x86_64-linux.pi-image = images.pi4b;
       packages.aarch64-linux.pi-image = images.pi4b;
@@ -76,12 +92,12 @@
         };
       };
 
-      devShells = forDefaultSystems
-        (system:
-          let
-            pkgs = import nixpkgs-unstable { inherit system; };
-          in
-          import ./dev-shell.nix { inherit pkgs; }
-        );
+      devShells = forDefaultSystems (
+        system:
+        let
+          pkgs = import nixpkgs-unstable { inherit system; };
+        in
+        import ./dev-shell.nix { inherit pkgs; }
+      );
     };
 }

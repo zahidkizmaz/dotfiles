@@ -9,7 +9,10 @@
   gtk = {
     enable = true;
 
-    font = { name = "Arimo"; size = 12; };
+    font = {
+      name = "Arimo";
+      size = 12;
+    };
 
     cursorTheme = {
       size = 32;

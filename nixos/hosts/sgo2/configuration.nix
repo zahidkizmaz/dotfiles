@@ -1,12 +1,30 @@
-{ config, inputs, pkgs, lib, modulesPath, stateVersion, user, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  modulesPath,
+  stateVersion,
+  user,
+  ...
+}:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" "uas" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+    "uas"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "ipu3_imgu" ]; # block camera because it breaks wireplumber and sound
@@ -33,25 +51,30 @@
     pkgs.ivsc-firmware
   ];
 
-  fileSystems."/" =
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/047c901f-696a-444e-ae42-59f9ba7d42a2";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/D7A0-0D40";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  swapDevices = [
     {
-      device = "/dev/disk/by-uuid/047c901f-696a-444e-ae42-59f9ba7d42a2";
-      fsType = "ext4";
-    };
+      device = "/var/lib/swapfile";
+      size = 10 * 1024; # 10GB
+    }
+  ];
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/D7A0-0D40";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 10 * 1024; # 10GB
-  }];
-
-  console = { keyMap = "us"; };
+  console = {
+    keyMap = "us";
+  };
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Europe/Berlin";
   networking = {
@@ -61,10 +84,16 @@
   };
 
   home-manager = {
-    users = { "${user}" = import ./home.nix; };
+    users = {
+      "${user}" = import ./home.nix;
+    };
     extraSpecialArgs = { inherit inputs user stateVersion; };
   };
-  nix.settings.trusted-users = [ "root" "${user}" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "${user}"
+    "@wheel"
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = stateVersion;

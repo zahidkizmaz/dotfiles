@@ -1,4 +1,10 @@
-{ pkgs, lib, system, config, ... }:
+{
+  pkgs,
+  lib,
+  system,
+  config,
+  ...
+}:
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
@@ -22,7 +28,9 @@
         KeyRepeat = 9;
         InitialKeyRepeat = 5;
       };
-      dock = { autohide = true; };
+      dock = {
+        autohide = true;
+      };
     };
   };
 

@@ -38,4 +38,4 @@
       }
     ];
   };
-}# mode: single
+} # mode: single

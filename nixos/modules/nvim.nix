@@ -41,7 +41,7 @@ in
     # Linters&Formatters
     biome
     gitlint
-    nixpkgs-fmt
+    nixfmt-rfc-style
     prettierd
     shellcheck
     shfmt

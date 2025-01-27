@@ -35,5 +35,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/xdg-mime.nix
     ../../modules/zsh.nix
   ];
-  specialArgs = { inherit inputs system stateVersion; user = "zahid"; };
+  specialArgs = {
+    inherit inputs system stateVersion;
+    user = "zahid";
+  };
 }

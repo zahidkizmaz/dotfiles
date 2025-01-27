@@ -15,5 +15,8 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/terminal.nix
     ../../modules/zsh.nix
   ];
-  specialArgs = { inherit inputs system; user = "zahidkizmaz"; };
+  specialArgs = {
+    inherit inputs system;
+    user = "zahidkizmaz";
+  };
 }

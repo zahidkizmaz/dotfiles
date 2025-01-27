@@ -8,10 +8,11 @@
 
   services.home-assistant = {
     enable = true;
-    extraPackages = python3Packages: with python3Packages; [
-      # postgresql support
-      psycopg2
-    ];
+    extraPackages =
+      python3Packages: with python3Packages; [
+        # postgresql support
+        psycopg2
+      ];
     extraComponents = [
       "default_config"
       "esphome"

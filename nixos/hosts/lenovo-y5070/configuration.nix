@@ -1,4 +1,11 @@
-{ inputs, pkgs, stateVersion, user, system, ... }:
+{
+  inputs,
+  pkgs,
+  stateVersion,
+  user,
+  system,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,10 +13,18 @@
   ];
 
   home-manager = {
-    users = { "${user}" = import ./home.nix; };
-    extraSpecialArgs = { inherit inputs user system stateVersion; };
+    users = {
+      "${user}" = import ./home.nix;
+    };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        user
+        system
+        stateVersion
+        ;
+    };
   };
-
 
   hardware.graphics = {
     enable = true;
@@ -41,7 +56,9 @@
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = { keyMap = "us"; };
+  console = {
+    keyMap = "us";
+  };
 
   time.timeZone = "Europe/Berlin";
 

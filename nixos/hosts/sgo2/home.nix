@@ -1,4 +1,9 @@
-{ pkgs, user, stateVersion, ... }:
+{
+  pkgs,
+  user,
+  stateVersion,
+  ...
+}:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -46,7 +51,7 @@
       };
       "org/gnome/shell" = {
         disable-user-extensions = false; # enables user extensions
-        enabled-extensions = with pkgs.gnomeExtensions;[
+        enabled-extensions = with pkgs.gnomeExtensions; [
           applications-menu.extensionUuid
           removable-drive-menu.extensionUuid
           window-gestures.extensionUuid

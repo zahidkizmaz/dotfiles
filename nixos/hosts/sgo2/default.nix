@@ -29,5 +29,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/wlan.nix
     ../../modules/zsh.nix
   ];
-  specialArgs = { inherit inputs system stateVersion; user = "go2"; };
+  specialArgs = {
+    inherit inputs system stateVersion;
+    user = "go2";
+  };
 }

@@ -2,11 +2,15 @@
 let
   lowBatteryNotification = pkgs.writeShellApplication {
     name = "low-battery-notification";
-    runtimeInputs = with pkgs; [ libnotify dbus ];
-    text /*bash*/ = ''
-      capacity=$(cat /sys/class/power_supply/BAT1/capacity)
-      notify-send -i battery-empty -u critical 'Low Battery!' "Battery level is $capacity%. Plug in your charger!"
-    '';
+    runtimeInputs = with pkgs; [
+      libnotify
+      dbus
+    ];
+    text # bash
+      = ''
+        capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+        notify-send -i battery-empty -u critical 'Low Battery!' "Battery level is $capacity%. Plug in your charger!"
+      '';
   };
 in
 {

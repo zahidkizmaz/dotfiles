@@ -29,7 +29,7 @@ M.SERVER_CONFIGURATIONS = {
     setup_config = function()
       return {
         settings = {
-          nixd = { formatting = { command = { "nixpkgs-fmt" } } },
+          nixd = { formatting = { command = { "nixfmt" } } },
         },
       }
     end,

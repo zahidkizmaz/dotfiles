@@ -9,7 +9,12 @@
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "IosevkaTerm" "Noto" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "IosevkaTerm"
+        "Noto"
+      ];
+    })
     noto-fonts-color-emoji
   ];
 }

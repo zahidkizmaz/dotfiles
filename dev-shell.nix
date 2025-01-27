@@ -1,11 +1,12 @@
-{ pkgs }: {
+{ pkgs }:
+{
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
       deadnix
       fixjson
       just
       nixd
-      nixpkgs-fmt
+      nixfmt-rfc-style
       pre-commit
       stow
       stylua
