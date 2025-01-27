@@ -1,6 +1,5 @@
 { pkgs, user, ... }:
 {
-  security.sudo.wheelNeedsPassword = false;
   users.users.${user} = {
     isNormalUser = true;
     initialPassword = "${user}";
