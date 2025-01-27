@@ -1,6 +1,7 @@
 # ZSH Config
 
-### How to set ssh-agent for each session
+## How to set ssh-agent for each session
+
 ```shell
 # SSH agent setup
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
