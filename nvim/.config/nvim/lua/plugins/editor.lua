@@ -29,7 +29,7 @@ return {
     "saghen/blink.cmp",
     event = "InsertEnter",
     version = "^v0.10",
-    dependencies = { "rafamadriz/friendly-snippets", "mikavilpas/blink-ripgrep.nvim" },
+    dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       keymap = {
         preset = "none",
@@ -50,10 +50,7 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
-      sources = {
-        default = { "lsp", "buffer", "path", "snippets", "ripgrep" },
-        providers = { ripgrep = { module = "blink-ripgrep", name = "Ripgrep" } },
-      },
+      sources = { default = { "lsp", "buffer", "path", "snippets" } },
       signature = {
         enabled = true,
         window = { border = "rounded" },

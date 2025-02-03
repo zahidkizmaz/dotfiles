@@ -71,6 +71,7 @@ return {
         .. "--iglob !*node_modules "
         .. "--iglob !*.pytest_cache "
         .. "--iglob !*.mypy_cache "
+        .. "--iglob !*.ruff_cache "
         .. "--iglob !*target "
         .. "--iglob !tags "
         .. "--column "
@@ -87,25 +88,33 @@ return {
         .. "--exclude .git "
         .. "--exclude node_modules "
         .. "--exclude .direnv "
+        .. "--exclude result "
+        .. "--exclude __pycache__ "
+        .. "--exclude .mypy_cache "
+        .. "--exclude .pytest_cache "
+        .. "--exclude .ruff_cache "
+        .. "--exclude result "
+
+      local img_previewer = { "viu", "-b" }
 
       require("fzf-lua").setup({
         "max-perf",
         height = 0.95,
         fzf_opts = { ["--layout"] = "default" },
         winopts = {
-          preview = { layout = "vertical", vertical = "up:70%" },
+          preview = { layout = "vertical", vertical = "up:70%", default = "bat_native" },
         },
         tags = { ctags_file = tag_file_location },
         btags = { ctags_file = tag_file_location },
         lsp = { async_or_timeout = 10000 },
         previewers = {
           builtin = {
-            -- use `viu` for image previews
             extensions = {
-              -- neovim terminal only supports `viu` block output
-              ["png"] = { "viu", "-b" },
-              ["jpg"] = { "viu", "-b" },
-              ["gif"] = { "viu", "-b" },
+              ["png"] = img_previewer,
+              ["jpg"] = img_previewer,
+              ["jpeg"] = img_previewer,
+              ["gif"] = img_previewer,
+              ["webp"] = img_previewer,
             },
           },
         },

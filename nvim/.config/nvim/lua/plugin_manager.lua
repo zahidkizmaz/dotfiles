@@ -22,6 +22,7 @@ require("lazy").setup({
   checker = { enabled = false },
   change_detection = { enabled = true, notify = false },
   dev = { path = "~/Projects" },
+  rocks = { enabled = false },
   performance = {
     cache = { enabled = true },
     reset_packpath = true,
