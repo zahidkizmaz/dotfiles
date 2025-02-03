@@ -98,12 +98,9 @@ return {
       local img_previewer = { "viu", "-b" }
 
       require("fzf-lua").setup({
-        "max-perf",
         height = 0.95,
         fzf_opts = { ["--layout"] = "default" },
-        winopts = {
-          preview = { layout = "vertical", vertical = "up:70%", default = "bat_native" },
-        },
+        winopts = { preview = { layout = "vertical", vertical = "up:70%" } },
         tags = { ctags_file = tag_file_location },
         btags = { ctags_file = tag_file_location },
         lsp = { async_or_timeout = 10000 },
@@ -118,10 +115,12 @@ return {
             },
           },
         },
-        files = { fd_opts = fd_opts },
+        files = { fd_opts = fd_opts, file_icons = false },
+        git = { files = { file_icons = false } },
         grep = {
           rg_opts = rg_opts,
           glob_flag = "--hidden --iglob", -- for case sensitive globs use '--glob'
+          file_icons = false,
           actions = {
             ["ctrl-q"] = {
               fn = require("fzf-lua.actions").file_edit_or_qf,
