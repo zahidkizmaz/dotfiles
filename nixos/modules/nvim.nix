@@ -13,8 +13,7 @@ in
     fzf
     gcc14
     universal-ctags
-    viu
-    chafa # fzf-lua
+    viu # fzf-lua
     python312Packages.pynvim
     nodePackages_latest.nodejs
 
