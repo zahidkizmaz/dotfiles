@@ -1,6 +1,7 @@
 # NixOS Configuration
 
 Activate nixos configuration via:
+
 ```shell
 sudo nixos-rebuild switch --flake .#fw13-amd
 ```
@@ -10,11 +11,13 @@ sudo nixos-rebuild switch --flake .#fw13-amd
 [More options can be found here.](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md)
 
 ### Testing:
+
 ```shell
 nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd --vm-test
 ```
 
 ### Installation:
+
 ```shell
 nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd
 ```
@@ -23,7 +26,6 @@ nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd
 
 Using [nix-direnv](https://github.com/nix-community/nix-direnv) with flakes.
 
-
 Create a flake for development environment in a project folder.
 
 ```shell
@@ -31,10 +33,10 @@ nix flake new -t github:nix-community/nix-direnv .
 direnv allow
 ```
 
-
 ### Example generic dev environment:
 
 flake.nix file:
+
 ```nix
 {
   description = "Development environment";
@@ -65,10 +67,10 @@ flake.nix file:
 }
 ```
 
-
 ### Example dev environment python poetry:
 
 flake.nix file:
+
 ```nix
 {
   description = "Basic python flake with virtualenv and poetry";
