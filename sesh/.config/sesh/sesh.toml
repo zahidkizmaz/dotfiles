@@ -1,4 +1,5 @@
 [default_session]
+hide-duplicates = true
 preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
