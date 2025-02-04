@@ -111,6 +111,25 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
           };
+          "Nix Package Versions" = {
+            urls = [
+              {
+                template = "https://lazamar.co.uk/nix-versions";
+                params = [
+                  {
+                    name = "channel";
+                    value = "nixos-unstable";
+                  }
+                  {
+                    name = "package";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@nv" ];
+          };
           "Github Search" = {
             urls = [
               {
