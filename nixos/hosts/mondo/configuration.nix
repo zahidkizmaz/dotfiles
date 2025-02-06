@@ -1,15 +1,8 @@
-{
-  pkgs,
-  lib,
-  system,
-  config,
-  ...
-}:
+{ lib, system, ... }:
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
     stateVersion = 5;
-
     keyboard = {
       enableKeyMapping = true;
       swapLeftCtrlAndFn = true;

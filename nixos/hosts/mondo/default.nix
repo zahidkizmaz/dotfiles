@@ -8,6 +8,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ./configuration.nix
     ./gui-applications.nix
     ./homebrew.nix
+    ./packages.nix
     ../../modules/ai.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
