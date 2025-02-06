@@ -4,6 +4,7 @@ let
 in
 inputs.nix-darwin.lib.darwinSystem {
   modules = [
+    inputs.mac-app-util.darwinModules.default
     ./configuration.nix
     ./gui-applications.nix
     ./homebrew.nix
