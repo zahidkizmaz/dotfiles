@@ -3,7 +3,7 @@
 # pretty print the python objects
 # example: echo "{ 'a': 1, 'b': 2,     }" | pretty
 # out: {'a': 1, 'b': 2}
-pretty() {
+function pretty() {
   python -c '__import__("pprint").pprint(eval(__import__("sys").stdin.read()))'
 }
 
@@ -14,7 +14,7 @@ pretty() {
 # Checkout git branch (including remote branches), sorted by most recent commit
 # remote branches are checked out as a new local branch if they don't exist
 #------------------------------
-fco() {
+function fco() {
   local branches branch
   branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") \
     && branch=$(
@@ -29,7 +29,7 @@ fco() {
 #--------------------------------
 # Open a file with default editor
 #--------------------------------
-vv() {
+function vv() {
   local file
   file=$(
     eval "$FZF_DEFAULT_COMMAND" \
@@ -100,3 +100,17 @@ function prc() {
 
   eval "$cmd" && gh pr view --web
 }
+
+#------------------------------
+# Sesh
+#------------------------------
+function sessions() {
+  sesh connect "$(
+    sesh list --icons | fzf-tmux -p 80%,70% \
+      --no-sort --ansi --border-label ' sesh ' --prompt '⚡ ' \
+      --bind 'tab:down,btab:up' \
+      --preview-window 'right:55%' \
+      --preview 'sesh preview {}'
+  )"
+}
+alias sl='sessions'
