@@ -24,7 +24,6 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "ipu3_imgu" ]; # block camera because it breaks wireplumber and sound

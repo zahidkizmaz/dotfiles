@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
+    ../../modules/suspend-then-hibernate.nix
     ../../modules/terminal.nix
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
