@@ -39,6 +39,9 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      { "<leader>do", "<CMD>DiffviewOpen<CR>", desc = "Open diff view", mode = "n" },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",

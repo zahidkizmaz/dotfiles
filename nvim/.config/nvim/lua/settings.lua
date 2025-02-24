@@ -62,25 +62,6 @@ bo.softtabstop = 4
 bo.expandtab = true
 
 cmd([[
-cnoreabbrev E e
-cnoreabbrev W w
-cnoreabbrev WQ wq
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev WA wa
-cnoreabbrev Q q
-cnoreabbrev QA qa
-cnoreabbrev Qa qa
-cnoreabbrev q1 q!
-cnoreabbrev Q1 q!
-cnoreabbrev qa1 qa!
-cnoreabbrev qA! qa!
-cnoreabbrev Qa! qa!
-cnoreabbrev QA! qa!
-cnoreabbrev Qa1 qa!
-cnoreabbrev QA1 qa!
-cnoreabbrev git Git
-
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set foldlevelstart=99

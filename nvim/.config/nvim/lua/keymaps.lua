@@ -1,6 +1,27 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Abbreviations
+-- Simple typo corrections
+keymap("ca", "E", "e", opts)
+keymap("ca", "W", "w", opts)
+keymap("ca", "WQ", "wq", opts)
+keymap("ca", "Wq", "wq", opts)
+keymap("ca", "Wa", "wa", opts)
+keymap("ca", "WA", "wa", opts)
+keymap("ca", "Q", "q", opts)
+keymap("ca", "QA", "qa", opts)
+keymap("ca", "Qa", "qa", opts)
+keymap("ca", "q1", "q!", opts)
+keymap("ca", "Q1", "q!", opts)
+keymap("ca", "qa1", "qa!", opts)
+keymap("ca", "qA!", "qa!", opts)
+keymap("ca", "Qa!", "qa!", opts)
+keymap("ca", "QA!", "qa!", opts)
+keymap("ca", "Qa1", "qa!", opts)
+keymap("ca", "QA1", "qa!", opts)
+keymap("ca", "git", "Git", opts)
+
 -- Plugins
 keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>", opts)
 
