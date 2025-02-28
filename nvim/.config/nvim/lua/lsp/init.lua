@@ -79,6 +79,7 @@ M.SERVER_CONFIGURATIONS = {
       }
     end,
   },
+  nushell = { pattern = { "*.nu" } },
   ruff = {
     pattern = { "*.py" },
     setup_config = function()
