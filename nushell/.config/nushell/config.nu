@@ -9,6 +9,13 @@ $env.config.history = {
   isolation: true
 }
 
+# The prompt indicators are environmental variables that represent
+# the state of the prompt
+$env.PROMPT_INDICATOR = ""
+$env.PROMPT_INDICATOR_VI_INSERT = ""
+$env.PROMPT_INDICATOR_VI_NORMAL = "〉"
+$env.PROMPT_MULTILINE_INDICATOR = ""
+
 
 #------------------------------
 # Env Vars
@@ -26,7 +33,11 @@ $env.FD_OPTIONS = "--hidden -I --follow --exclude .git --exclude node_modules --
 
 # FZF Vars
 $env.FZF_DEFAULT_COMMAND = $"fd --type f --type l ($env.FD_OPTIONS)"
-$env.FZF_DEFAULT_OPTS = "--no-hscroll --height 40% --layout=reverse --margin=0 --info=inline --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD"
+$env.FZF_DEFAULT_OPTS = "--no-hscroll --height 40%
+                        --layout=reverse --margin=0
+                        --info=inline --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD
+                        --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96
+                        --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD"
 $env.FZF_CTRL_T_COMMAND = $env.FZF_DEFAULT_COMMAND
 $env.FZF_CTRL_T_OPTS = "--preview 'bat --color=always --line-range :50 {}'"
 
@@ -139,19 +150,30 @@ def fzf-env-vars [] {
 }
 
 # Kill processes with fzf
-def fzf-kill-processes [signal?: int] {
-    let pids = (ps | fzf -m | get pid)
-    if ($pids | length) > 0 {
-        kill ($signal | default 9) $pids
+def fzf-kill-processes [] {
+    let pid = (^ps -ef | sed 1d | fzf | awk '{print $2}')
+    if ($pid | is-not-empty)  {
+        kill --force ($pid | into int)
     }
 }
 
 # Sesh connect
 def sessions [] {
-    let session = (^sesh list --icons | fzf-tmux -p '80%,70%' --no-sort --ansi --border-label ' sesh ' --prompt '⚡ ' --bind 'tab:down,btab:up' --preview-window 'right:55%' --preview 'sesh preview {}')
-    if $session != "" {
-        ^sesh connect $session
+    let session = (
+        sesh list --icons
+        | fzf-tmux
+        -p '80%,70%'
+        --no-sort
+        --ansi
+        --border-label ' sesh '
+        --prompt '⚡ '
+        --bind 'tab:down,btab:up'
+        --preview-window 'right:55%'
+        --preview 'sesh preview {}'
+    )
+
+    if ($session | is-not-empty) {
+        sesh connect $session
     }
 }
-
 alias sl = sessions
