@@ -42,6 +42,7 @@ desktop.ini
 .zcompdump
 .zsh_history
 .zcompcache
+history.sqlite3*
 
 # Temporary files #
 ###################
