@@ -18,7 +18,10 @@ $env.PROMPT_MULTILINE_INDICATOR = ""
 
 source ./completers.nu
 source ./catppuccin-mocha.nu
-'~/.bash_profile' | path exists | sh ~/.bash_profile
+
+if ('~/.bash_profile' | path exists) {
+   sh ~/.bash_profile
+}
 
 #------------------------------
 # Env Vars
@@ -92,13 +95,29 @@ alias pro = gh pr view --web
 #------------------------------
 # CLI Tools
 #------------------------------
-mkdir ($nu.data-dir | path join "vendor/autoload")
+let autoload_dir = $nu.data-dir | path join "vendor/autoload"
+if not ($autoload_dir | path exists) {
+  mkdir ($nu.data-dir | path join "vendor/autoload")
+}
 
 # Starship
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+let starship_nu_path = $nu.data-dir | path join "vendor/autoload/starship.nu"
+if ((which starship | is-not-empty) and not ($starship_nu_path | path exists)) {
+    starship init nu | save -f $starship_nu_path
+}
 
 # Zoxide
-zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+let zoxide_nu_path = $nu.data-dir | path join "vendor/autoload/zoxide.nu"
+if ((which zoxide | is-not-empty) and not ($zoxide_nu_path | path exists)) {
+    zoxide init nushell | save -f $zoxide_nu_path
+}
+
+# Atuin
+let atuin_nu_path = $nu.data-dir | path join "vendor/autoload/atuin.nu"
+if ((which atuin | is-not-empty) and not ($atuin_nu_path | path exists)) {
+    echo "Creating atuin.nu in $atuin_nu_path"
+    atuin init nu | save -f $atuin_nu_path
+}
 
 # Direnv
 $env.config = ($env.config | upsert hooks {
@@ -115,8 +134,6 @@ $env.config = ($env.config | upsert hooks {
         }
     }
 })
-
-source ./autin.nu
 
 
 #------------------------------
