@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [ ./aliases.nix ];
   programs = {
-    zsh.enable = true;
     direnv.enable = true;
   };
 
@@ -12,6 +10,7 @@
     delta
     eza
     fd
+    fish # used as an external completer for nushell
     fzf
     jq
     ripgrep

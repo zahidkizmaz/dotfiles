@@ -1,20 +1,21 @@
 # app -> callable
 declare -A appMappings=(
   [aichat]="aichat"
-  [atuin]="atuin"
   [anyrun]="anyrun"
+  [atuin]="atuin"
   [bat]="bat"
   [ctags]="ctags"
   [direnv]="direnv"
-  [easyeffects]="easyeffects"
   [dunst]="dunst"
-  [git]="git"
+  [easyeffects]="easyeffects"
   [ghostty]="ghostty"
-  [ipython]="ipython"
+  [git]="git"
   [hypr]="hyprctl"
+  [ipython]="ipython"
   [kitty]="kitty"
   [mpv]="mpv"
   [nix]="nix"
+  [nushell]="nu"
   [nvim]="nvim"
   [pgcli]="pgcli"
   [rustfmt]="rustfmt"
@@ -23,7 +24,6 @@ declare -A appMappings=(
   [tofi]="tofi"
   [waybar]="waybar"
   [yazi]="yazi"
-  [zsh]="zsh"
 )
 
 if [ ! -d "$HOME/dotfiles" ]; then

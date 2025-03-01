@@ -16,6 +16,8 @@ $env.PROMPT_INDICATOR_VI_INSERT = ""
 $env.PROMPT_INDICATOR_VI_NORMAL = "〉"
 $env.PROMPT_MULTILINE_INDICATOR = ""
 
+source ./completers.nu
+source ./catppuccin-mocha.nu
 
 #------------------------------
 # Env Vars
@@ -56,7 +58,6 @@ $env.TERM = "xterm-256color"
 #------------------------------
 alias nu-open = open
 alias open = ^open
-
 alias nv = nvim
 alias mkdir = mkdir -v
 alias pls = sudo (fc -ln -1)
@@ -113,6 +114,8 @@ $env.config = ($env.config | upsert hooks {
         }
     }
 })
+
+source ./autin.nu
 
 
 #------------------------------

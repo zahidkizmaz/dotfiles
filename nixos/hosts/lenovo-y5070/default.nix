@@ -14,6 +14,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/ai.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/cli-tools.nix
     ../../modules/desktop-user.nix
     ../../modules/gc.nix
     ../../modules/gui-applications.nix
@@ -33,7 +34,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix
-    ../../modules/zsh.nix
   ];
   specialArgs = {
     inherit inputs system stateVersion;

@@ -11,7 +11,7 @@ in
 {
   imports = [
     ./anyrun.nix
-    ./zsh.nix
+    ./cli-tools.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -29,7 +29,7 @@ in
       "cups"
       "libvirtd"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     packages = with pkgs-unstable; [
       gitMinimal
       just

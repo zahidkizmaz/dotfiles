@@ -1,4 +1,9 @@
-{ lib, system, ... }:
+{
+  pkgs,
+  lib,
+  system,
+  ...
+}:
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
@@ -26,12 +31,20 @@
     };
   };
 
-  # Make nix daemon work
-  programs = {
-    zsh = {
-      shellInit = ''
-        [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
-      '';
-    };
-  };
+  environment.shells = [ pkgs.nushell ];
+  system.activationScripts.set_sh.text # bash
+    = ''
+      chsh -s /run/current-system/sw/bin/nu
+    '';
+
+  services.nix-daemon.enable = true;
+  # # TODO: convert to nushell?
+  # # Make nix daemon work
+  # programs = {
+  #   zsh = {
+  #     shellInit = ''
+  #       [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+  #     '';
+  #   };
+  # };
 }

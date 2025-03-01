@@ -19,14 +19,14 @@ _stow-common:
     just stow git
     just stow ipython
     just stow kitty
+    just stow mpv
+    just stow nushell
     just stow nvim
     just stow pgcli
     just stow rustfmt
     just stow starship
     just stow tmux
     just stow yazi
-    just stow zsh
-    just stow mpv
 
 stow-linux: _stow-common
     just stow dunst
