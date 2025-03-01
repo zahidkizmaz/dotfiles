@@ -18,6 +18,7 @@ $env.PROMPT_MULTILINE_INDICATOR = ""
 
 source ./completers.nu
 source ./catppuccin-mocha.nu
+'~/.bash_profile' | path exists | sh ~/.bash_profile
 
 #------------------------------
 # Env Vars

@@ -43,6 +43,7 @@ desktop.ini
 .zsh_history
 .zcompcache
 history.sqlite3*
+history.txt
 
 # Temporary files #
 ###################
