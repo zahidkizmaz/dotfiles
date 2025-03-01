@@ -23,6 +23,11 @@ if ('~/.bash_profile' | path exists) {
    sh ~/.bash_profile
 }
 
+if (which nu_plugin_polars | is-not-empty) {
+  plugin add (which nu_plugin_polars | get path | first)
+  plugin use polars
+}
+
 #------------------------------
 # Env Vars
 #------------------------------
@@ -120,20 +125,14 @@ if ((which atuin | is-not-empty) and not ($atuin_nu_path | path exists)) {
 }
 
 # Direnv
-$env.config = ($env.config | upsert hooks {
-    env_change: {
-        PWD: { ||
-          if (which direnv | is-empty) {
-            return
-          }
-
-          direnv export json | from json | default {} | load-env
-          if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
-            $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
-          }
-        }
+$env.config.hooks.env_change.PWD = [
+  { ||
+    if (which direnv | is-empty) {
+        return
     }
-})
+    direnv export json | from json | default {} | load-env
+  }
+]
 
 
 #------------------------------

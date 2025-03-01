@@ -42,8 +42,12 @@ desktop.ini
 .zcompdump
 .zsh_history
 .zcompcache
+
+# Nusehll
+###################
 history.sqlite3*
 history.txt
+plugin.msgpackz
 
 # Temporary files #
 ###################

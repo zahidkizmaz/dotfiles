@@ -29,7 +29,7 @@ in
       "cups"
       "libvirtd"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs-unstable.nushell;
     packages = with pkgs-unstable; [
       gitMinimal
       just
@@ -37,6 +37,8 @@ in
       tree
       unzip
       zip
+      # nushell plugins
+      nushellPlugins.polars
     ];
   };
 
