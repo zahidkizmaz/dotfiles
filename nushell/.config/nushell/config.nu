@@ -24,8 +24,10 @@ if ('~/.bash_profile' | path exists) {
 }
 
 if (which nu_plugin_polars | is-not-empty) {
-  plugin add (which nu_plugin_polars | get path | first)
-  plugin use polars
+ if (plugin list | where name == polars | is-empty) {
+    plugin add (which nu_plugin_polars | get path | first)
+ }
+ plugin use polars
 }
 
 #------------------------------
