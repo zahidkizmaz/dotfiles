@@ -60,9 +60,6 @@ $env.BAT_THEME = "Catppuccin-mocha"
 # Pip Setting
 $env.PIP_REQUIRE_VIRTUALENV = true
 
-# Term Setting Works With Tmux
-$env.TERM = "xterm-256color"
-
 
 #------------------------------
 # Aliases
@@ -162,7 +159,7 @@ def fco [] {
     }
 }
 
-# fzf env vars
+# FZF environment vars
 def fzf-env-vars [] {
     let out = ($env | to text | fzf)
     if $out != "" {
@@ -170,7 +167,7 @@ def fzf-env-vars [] {
     }
 }
 
-# Kill processes with fzf
+# Kill processes with FZF
 def fzf-kill-processes [] {
     let pid = (^ps -ef | sed 1d | fzf | awk '{print $2}')
     if ($pid | is-not-empty)  {

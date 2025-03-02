@@ -164,3 +164,22 @@ $env.config.explore = {
     },
     selected_cell: { bg: $theme.blue fg: $theme.base },
 }
+
+# Custom menu setup
+$env.config.menus = [
+  {
+    name: completion_menu
+    only_buffer_difference: false # Search is done on the text written after activating the menu
+    marker: ""                    # Indicator that appears with the menu is active
+    type: {
+        layout: columnar          # Type of menu
+        columns: 4                # Number of columns where the options are displayed
+        col_padding: 4            # Padding between columns
+    }
+    style: {
+        text: $theme.teal
+        selected_text: $theme.flamingo
+        description_text: $theme.yellow
+    }
+  }
+]
