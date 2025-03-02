@@ -120,7 +120,6 @@ if ((which zoxide | is-not-empty) and not ($zoxide_nu_path | path exists)) {
 # Atuin
 let atuin_nu_path = $nu.data-dir | path join "vendor/autoload/atuin.nu"
 if ((which atuin | is-not-empty) and not ($atuin_nu_path | path exists)) {
-    echo "Creating atuin.nu in $atuin_nu_path"
     atuin init nu | save -f $atuin_nu_path
 }
 
