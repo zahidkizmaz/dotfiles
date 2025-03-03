@@ -1,9 +1,13 @@
 {
+  inputs,
   pkgs,
   lib,
   system,
   ...
 }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
@@ -32,10 +36,7 @@
   };
 
   environment.shells = [ pkgs.nushell ];
-  system.activationScripts.set_sh.text # bash
-    = ''
-      chsh -s /run/current-system/sw/bin/nu
-    '';
+  environment.systemPackages = [ pkgs-unstable.nushell ];
 
   services.nix-daemon.enable = true;
   # # TODO: convert to nushell?
