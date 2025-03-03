@@ -39,13 +39,4 @@ in
   environment.systemPackages = [ pkgs-unstable.nushell ];
 
   services.nix-daemon.enable = true;
-  # # TODO: convert to nushell?
-  # # Make nix daemon work
-  # programs = {
-  #   zsh = {
-  #     shellInit = ''
-  #       [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
-  #     '';
-  #   };
-  # };
 }
