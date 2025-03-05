@@ -28,6 +28,7 @@
         # hardware acceleration
         "gfx.webrender.all" = true;
         "media.ffmpeg.vaapi.enabled" = true;
+        "media.hardware-video-decoding.force-enabled" = true;
 
         # security
         "dom.security.https_only_mode" = true;
