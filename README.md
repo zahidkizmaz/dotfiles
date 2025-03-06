@@ -70,19 +70,19 @@ This creates symlinks to tmux config files in `~/.config/` folder.
 
 This setup includes:
 
--   Shell: zsh
--   Shell prompt: starship
--   Shell history: atuim
--   Shell tools: bat, direnv, fzf
--   Terminal emulator: kitty
--   Terminal multiplexer: tmux
--   Text editor / IDE: Neovim
+- Shell: nushell
+- Shell prompt: starship
+- Shell history: atuim
+- Shell tools: bat, direnv, fzf
+- Terminal emulator: kitty
+- Terminal multiplexer: tmux
+- Text editor / IDE: Neovim
 
 #### NixOS specific
 
--   Window manager: Hyprland
--   Status bar: waybar
--   Notifications manager: dunst
--   Application launcher: anyrun, tofi
+- Window manager: Hyprland
+- Status bar: waybar
+- Notifications manager: dunst
+- Application launcher: anyrun, tofi
 
 and more...

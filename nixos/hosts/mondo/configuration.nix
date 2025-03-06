@@ -1,4 +1,12 @@
-{ lib, system, ... }:
+{
+  inputs,
+  lib,
+  system,
+  ...
+}:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = system; };
+in
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
@@ -26,12 +34,8 @@
     };
   };
 
-  # Make nix daemon work
-  programs = {
-    zsh = {
-      shellInit = ''
-        [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
-      '';
-    };
-  };
+  environment.shells = [ pkgs-unstable.nushell ];
+  environment.systemPackages = [ pkgs-unstable.nushell ];
+
+  services.nix-daemon.enable = true;
 }

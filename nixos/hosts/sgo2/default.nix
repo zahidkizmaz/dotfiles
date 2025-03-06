@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/cli-tools.nix
     ../../modules/default-user.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
@@ -28,7 +29,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
     ../../modules/wlan.nix
-    ../../modules/zsh.nix
   ];
   specialArgs = {
     inherit inputs system stateVersion;

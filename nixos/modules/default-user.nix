@@ -13,5 +13,5 @@
       "networkmanager"
     ];
   };
-  imports = [ ./zsh.nix ];
+  imports = [ ./cli-tools.nix ];
 }

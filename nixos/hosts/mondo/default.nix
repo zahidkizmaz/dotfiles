@@ -10,12 +10,12 @@ inputs.nix-darwin.lib.darwinSystem {
     ./homebrew.nix
     ./packages.nix
     ../../modules/ai.nix
+    ../../modules/cli-tools.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
     ../../modules/terminal.nix
-    ../../modules/zsh.nix
   ];
   specialArgs = {
     inherit inputs system;

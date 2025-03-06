@@ -16,6 +16,19 @@ $env.PROMPT_INDICATOR_VI_INSERT = ""
 $env.PROMPT_INDICATOR_VI_NORMAL = "〉"
 $env.PROMPT_MULTILINE_INDICATOR = ""
 
+source ./completers.nu
+source ./catppuccin-mocha.nu
+
+if ('~/.bash_profile' | path exists) {
+   sh ~/.bash_profile
+}
+
+if (which nu_plugin_polars | is-not-empty) {
+ if (plugin list | where name == polars | is-empty) {
+    plugin add (which nu_plugin_polars | get path | first)
+ }
+ plugin use polars
+}
 
 #------------------------------
 # Env Vars
@@ -47,16 +60,12 @@ $env.BAT_THEME = "Catppuccin-mocha"
 # Pip Setting
 $env.PIP_REQUIRE_VIRTUALENV = true
 
-# Term Setting Works With Tmux
-$env.TERM = "xterm-256color"
-
 
 #------------------------------
 # Aliases
 #------------------------------
 alias nu-open = open
 alias open = ^open
-
 alias nv = nvim
 alias mkdir = mkdir -v
 alias pls = sudo (fc -ln -1)
@@ -90,29 +99,38 @@ alias pro = gh pr view --web
 #------------------------------
 # CLI Tools
 #------------------------------
-mkdir ($nu.data-dir | path join "vendor/autoload")
+let autoload_dir = $nu.data-dir | path join "vendor/autoload"
+if not ($autoload_dir | path exists) {
+  mkdir ($nu.data-dir | path join "vendor/autoload")
+}
 
 # Starship
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+let starship_nu_path = $nu.data-dir | path join "vendor/autoload/starship.nu"
+if ((which starship | is-not-empty) and not ($starship_nu_path | path exists)) {
+    starship init nu | save -f $starship_nu_path
+}
 
 # Zoxide
-zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+let zoxide_nu_path = $nu.data-dir | path join "vendor/autoload/zoxide.nu"
+if ((which zoxide | is-not-empty) and not ($zoxide_nu_path | path exists)) {
+    zoxide init nushell | save -f $zoxide_nu_path
+}
+
+# Atuin
+let atuin_nu_path = $nu.data-dir | path join "vendor/autoload/atuin.nu"
+if ((which atuin | is-not-empty) and not ($atuin_nu_path | path exists)) {
+    atuin init nu | save -f $atuin_nu_path
+}
 
 # Direnv
-$env.config = ($env.config | upsert hooks {
-    env_change: {
-        PWD: { ||
-          if (which direnv | is-empty) {
-            return
-          }
-
-          direnv export json | from json | default {} | load-env
-          if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
-            $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
-          }
-        }
+$env.config.hooks.env_change.PWD = [
+  { ||
+    if (which direnv | is-empty) {
+        return
     }
-})
+    direnv export json | from json | default {} | load-env
+  }
+]
 
 
 #------------------------------
@@ -141,7 +159,7 @@ def fco [] {
     }
 }
 
-# fzf env vars
+# FZF environment vars
 def fzf-env-vars [] {
     let out = ($env | to text | fzf)
     if $out != "" {
@@ -149,7 +167,7 @@ def fzf-env-vars [] {
     }
 }
 
-# Kill processes with fzf
+# Kill processes with FZF
 def fzf-kill-processes [] {
     let pid = (^ps -ef | sed 1d | fzf | awk '{print $2}')
     if ($pid | is-not-empty)  {
