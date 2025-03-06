@@ -1,11 +1,6 @@
-{
-  inputs,
-  pkgs,
-  system,
-  ...
-}:
+{ inputs, pkgs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
   shell_completers = with pkgs-unstable; [
     # These are used as external_completer in nushell
     carapace
