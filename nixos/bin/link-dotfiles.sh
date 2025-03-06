@@ -24,6 +24,7 @@ declare -A appMappings=(
   [tofi]="tofi"
   [waybar]="waybar"
   [yazi]="yazi"
+  [zsh]="zsh"
 )
 
 if [ ! -d "$HOME/dotfiles" ]; then
