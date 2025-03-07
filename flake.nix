@@ -92,6 +92,10 @@
           path = ./nixos/templates/dev;
           description = "Simple, all-rounder template devShell";
         };
+        rust = {
+          path = ./nixos/templates/rust;
+          description = "Rust project starter";
+        };
       };
 
       devShells = forDefaultSystems (
