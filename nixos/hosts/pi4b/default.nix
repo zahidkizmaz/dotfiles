@@ -11,12 +11,9 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     inputs.nixos-generators.nixosModules.all-formats
     ./hardware-configuration.nix
     ./configuration.nix
-    ./caddy.nix
-    ../../containers/adguardhome.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
-    ../../modules/home-assistant
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
     ../../modules/ssh.nix
