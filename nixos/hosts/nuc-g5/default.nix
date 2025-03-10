@@ -10,7 +10,6 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.agenix.nixosModules.default
     ./configuration.nix
     ./disko.nix
-    ../../containers/adguardhome.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/default-user.nix
