@@ -27,6 +27,7 @@ _stow-common:
     just stow starship
     just stow tmux
     just stow yazi
+    just stow zsh
 
 stow-linux: _stow-common
     just stow dunst
