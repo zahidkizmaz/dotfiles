@@ -38,7 +38,7 @@
     };
   };
   outputs =
-    { self, nixpkgs-unstable, ... }@inputs:
+    { nixpkgs-unstable, ... }@inputs:
     let
       stateVersion = "24.11";
       forDefaultSystems = nixpkgs-unstable.lib.genAttrs [
@@ -47,7 +47,7 @@
         "x86_64-linux"
       ];
     in
-    rec {
+    {
       nixosConfigurations = {
         fw13-amd = import ./nixos/hosts/fw13-amd {
           stateVersion = stateVersion;
@@ -73,19 +73,6 @@
       darwinConfigurations = {
         MONDO-1192 = import ./nixos/hosts/mondo { inherit inputs; };
       };
-      images = {
-        pi4b =
-          (self.nixosConfigurations.pi4b.extendModules {
-            modules = [
-              "${nixpkgs-unstable}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-              {
-                disabledModules = [ "hosts/pi4b/hardware-configuration.nix" ];
-              }
-            ];
-          }).config.system.build.sdImage;
-      };
-      packages.x86_64-linux.pi-image = images.pi4b;
-      packages.aarch64-linux.pi-image = images.pi4b;
 
       templates = {
         dev = {
