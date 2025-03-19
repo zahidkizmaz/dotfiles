@@ -27,7 +27,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    event = "InsertEnter",
+    event = "VeryLazy",
     build = "nix run .#build-plugin",
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
