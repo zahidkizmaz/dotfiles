@@ -38,6 +38,7 @@ in
       unzip
       zip
       # nushell plugins
+      pkgs-unstable.nushell
       nushellPlugins.polars
     ];
   };
