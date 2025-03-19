@@ -29,7 +29,7 @@ in
       "cups"
       "libvirtd"
     ];
-    shell = pkgs-unstable.nushell;
+    shell = pkgs-unstable.zsh;
     packages = with pkgs-unstable; [
       gitMinimal
       just

@@ -93,6 +93,20 @@
             icon = "";
             definedAliases = [ "@sp" ];
           };
+          "Searxng" = {
+            urls = [
+              {
+                template = "https://search.quoll-ratio.ts.net/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = [ "@s" ];
+          };
           "Nix Packages" = {
             urls = [
               {
@@ -169,7 +183,7 @@
         {
           name = "Home Manager Search";
           tags = [ ];
-          keyword = "home";
+          keyword = "homeman";
           url = "https://home-manager-options.extranix.com/?query=%s&release=master";
         }
       ];
