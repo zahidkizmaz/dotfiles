@@ -9,8 +9,9 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
     inputs.agenix.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
-    ./hardware-configuration.nix
     ./configuration.nix
+    ./hardware-configuration.nix
+    ./selfhost.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
