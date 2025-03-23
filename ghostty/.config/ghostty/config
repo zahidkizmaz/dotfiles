@@ -1,5 +1,5 @@
 theme = catppuccin-mocha
-window-decoration = false
+window-decoration = true
 macos-option-as-alt = true
 
 font-size = 14
