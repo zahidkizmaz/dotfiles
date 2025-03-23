@@ -19,7 +19,8 @@ alias la='ls --color=auto -h -F -a '
 # Git Aliases
 #------------------------------
 alias gs="git status -sb"
-alias gp="git push"
+alias gp="git pull"
+alias gP="git push"
 alias ga="git add "
 alias gA="git add -A"
 alias gc="git commit "
