@@ -58,6 +58,7 @@
     gitMinimal
     kitty
     librewolf
+    mpv
     neovim
   ];
 
