@@ -10,7 +10,6 @@ return {
     cmd = { "LspInfo" },
     config = require("lsp").setup,
   },
-  { "folke/neodev.nvim" }, -- Setup called in lsp/init.lua
   { "b0o/schemastore.nvim" }, -- Setup called in lsp/init.lua
   {
     "rmagatti/goto-preview",

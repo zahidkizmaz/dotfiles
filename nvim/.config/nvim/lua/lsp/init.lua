@@ -53,11 +53,9 @@ M.SERVER_CONFIGURATIONS = {
   lua_ls = {
     pattern = { "*.lua" },
     setup_config = function()
-      require("neodev").setup({})
       return {
         settings = {
           Lua = {
-            completion = { callSnippet = "Replace" }, -- comes from folke/neodev
             format = { enable = false },
             workspace = { checkThirdParty = false },
             -- Do not send telemetry data containing a randomized but unique identifier

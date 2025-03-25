@@ -50,7 +50,7 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
-      sources = { default = { "lsp", "buffer", "path", "snippets" } },
+      sources = { default = { "lsp", "snippets", "buffer", "path" } },
       signature = {
         enabled = true,
         window = { border = "rounded" },
