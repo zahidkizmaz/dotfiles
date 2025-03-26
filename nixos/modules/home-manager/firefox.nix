@@ -11,17 +11,33 @@
         ublock-origin
       ];
       settings = {
-        "browser.startup.homepage" =
-          "https://www.startpage.com/do/mypage.pl?prfe=2fb91ba78884cffd12306b0ab6163c87719b53a4238821eba5f075668d1a3ced3d3397730521889373e40a0c51fe15f1c81f900111ae63ca76a4ac74f7c0e1b62b071d861f10587a255615fe";
+        "browser.startup.homepage" = "https://search.quoll-ratio.ts.net/";
         "browser.aboutConfig.showWarning" = false;
         "browser.compactmode.show" = true;
         "browser.download.panel.shown" = true;
+        "browser.newtabpage.activity-stream.discoverystream.saveToPocketCard.enabled" = false;
+        "browser.newtabpage.activity-stream.discoverystream.sendToPocket.enabled" = false;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
-        "extensions.pocket.enabled" = false;
+        "browser.urlbar.suggest.pocket" = false;
         "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
+        "extensions.pocket.bffRecentSaves" = false;
+        "extensions.pocket.enabled" = false;
+        "extensions.pocket.showHome" = false;
         "identity.fxaccounts.enabled" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.section.topstories.rows" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.section.highlights.includePocket" =
+          false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.section.highlights.includePocket" =
+          false;
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
@@ -76,7 +92,7 @@
 
       search = {
         force = true;
-        default = "Startpage";
+        default = "Searxng";
         engines = {
           "Startpage" = {
             urls = [
