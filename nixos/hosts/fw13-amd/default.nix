@@ -30,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/nvim.nix
     ../../modules/podman.nix
     ../../modules/ppd.nix
+    ../../modules/printer.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssh.nix
     ../../modules/suspend-then-hibernate.nix
