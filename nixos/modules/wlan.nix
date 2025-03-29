@@ -3,7 +3,7 @@
   networking = {
     networkmanager = {
       enable = true;
-      wifi.powersave = false;
+      wifi.powersave = true;
     };
   };
   hardware.firmware = [ pkgs.wireless-regdb ];

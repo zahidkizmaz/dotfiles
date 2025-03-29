@@ -29,6 +29,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   services.fwupd.enable = true;
+  powerManagement.powertop.enable = true;
 
   swapDevices = [
     {
