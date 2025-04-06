@@ -14,7 +14,7 @@ in
     gcc14
     universal-ctags
     viu # fzf-lua
-    python312Packages.pynvim
+    python313Packages.pynvim
     nodePackages_latest.nodejs
 
     # LSPs
