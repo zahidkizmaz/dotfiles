@@ -29,6 +29,14 @@
     }
   ];
 
+  systemd.extraConfig = ''
+    DefaultCPUAccounting=yes
+    DefaultIOAccounting=yes
+    DefaultBlockIOAccounting=yes
+    DefaultMemoryAccounting=yes
+    DefaultTasksAccounting=yes
+  '';
+
   nixpkgs.overlays = [
     # deadnix: skip
     (final: super: {
