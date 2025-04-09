@@ -12,6 +12,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ./configuration.nix
     ./hardware-configuration.nix
     ./selfhost.nix
+    ./fan-control.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
