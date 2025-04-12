@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     haskellPackages.gpio
+    libgpiod
     libraspberrypi
   ];
 

@@ -1,6 +1,7 @@
-{ stateVersion, ... }:
+{ pkgs, stateVersion, ... }:
 {
   hardware = {
+    enableAllFirmware = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
   };
@@ -15,6 +16,11 @@
       443
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    libraspberrypi
+    raspberrypi-eeprom
+  ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
