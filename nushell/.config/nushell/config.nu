@@ -76,7 +76,8 @@ alias grep = grep --colour=auto
 # Git Aliases
 #------------------------------
 alias gs = git status -sb
-alias gp = git push
+alias gp = git pull origin (git branch --show-current)
+alias gP = git push
 alias ga = git add
 alias gA = git add -A
 alias gc = git commit
@@ -88,7 +89,6 @@ alias gdc = git diff --cached
 alias gsh = git stash
 alias gmno = git commit --amend --no-edit
 alias gmo = git merge origin/master
-alias gpm = git pull origin (git branch --show-current)
 
 #------------------------------
 # GitHub CLI Aliases
