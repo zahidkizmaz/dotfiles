@@ -17,6 +17,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
+    ../../modules/latest-kernel.nix
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
     ../../modules/ssh.nix
