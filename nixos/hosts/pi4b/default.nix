@@ -10,9 +10,10 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     inputs.agenix.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
     ./configuration.nix
+    ./fan-control.nix
+    ./gpio.nix
     ./hardware-configuration.nix
     ./selfhost.nix
-    ./fan-control.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
