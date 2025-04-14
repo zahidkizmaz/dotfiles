@@ -24,16 +24,7 @@ M.SERVER_CONFIGURATIONS = {
   dockerls = { pattern = { "*Dockerfile*" } },
   docker_compose_language_service = { pattern = { "*docker-compose*" } },
   htmx = { pattern = { "*.html" } },
-  nixd = {
-    pattern = { "*.nix" },
-    setup_config = function()
-      return {
-        settings = {
-          nixd = { formatting = { command = { "nixfmt" } } },
-        },
-      }
-    end,
-  },
+  nixd = { pattern = { "*.nix" } },
   hyprls = { pattern = { "hypr*.conf" } },
   jsonls = {
     pattern = { "*.json" },

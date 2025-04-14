@@ -222,6 +222,7 @@ return {
         just = { "just", stop_after_first = true },
         lua = { "stylua" },
         markdown = { "prettierd" },
+        nix = { "nixfmt", stop_after_first = true },
         python = { "ruff_organize_imports", "ruff_format", lsp_format = "never" },
         rust = { "rustfmt" },
         sh = { "shfmt", lsp_format = "never" },
