@@ -1,7 +1,7 @@
 { pkgs, stateVersion, ... }:
 {
   hardware = {
-    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
   };
