@@ -2,11 +2,6 @@ local M = {}
 
 M.capabilities = require("blink.cmp").get_lsp_capabilities()
 
-M.handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-}
-
 M.setup_inlay_hint = function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("InlayHintConfig", {}),

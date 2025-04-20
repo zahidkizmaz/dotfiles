@@ -113,18 +113,6 @@ local function open_url(url)
   vim.fn.jobstart({ open_cmd, url }, { detach = true })
 end
 
-local function open_external_docs()
-  local clients = vim.lsp.get_clients()
-  for _, client in ipairs(clients) do
-    client.request("experimental/externalDocs", vim.lsp.util.make_position_params(), function(_, url)
-      if url then
-        vim.notify("Opening: " .. url, vim.log.levels.INFO)
-        open_url(url)
-      end
-    end, 0)
-  end
-end
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -134,10 +122,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local lsp_keymap_opts = { buffer = ev.buf, noremap = true, silent = true }
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, lsp_keymap_opts)
-    vim.keymap.set("n", "H", vim.lsp.buf.signature_help, lsp_keymap_opts)
+    vim.keymap.set("n", "K", function()
+      vim.lsp.buf.hover({ border = "rounded" })
+    end, lsp_keymap_opts)
+    vim.keymap.set("n", "H", function()
+      vim.lsp.buf.signature_help({ border = "rounded" })
+    end, lsp_keymap_opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_keymap_opts)
     vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, lsp_keymap_opts)
-    vim.keymap.set("n", "<leader>od", open_external_docs, lsp_keymap_opts)
   end,
 })
