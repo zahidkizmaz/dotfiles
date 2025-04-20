@@ -92,7 +92,7 @@
             # Additional dev tools
             packages = with pkgs; [
               rustToolchain
-              cargo-watch
+              bacon
               cargo-audit
               cargo-udeps
               rust-analyzer
