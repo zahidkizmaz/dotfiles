@@ -6,6 +6,11 @@
       wifi.powersave = true;
     };
   };
-  hardware.firmware = [ pkgs.wireless-regdb ];
+  nixpkgs.config.allowUnfree = true;
+  hardware = {
+    enableAllFirmware = true;
+    wirelessRegulatoryDatabase = true;
+    firmware = [ pkgs.wireless-regdb ];
+  };
   environment.systemPackages = [ pkgs.iw ];
 }
