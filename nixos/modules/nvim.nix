@@ -12,10 +12,11 @@ in
     bat
     fzf
     gcc14
+    nodePackages_latest.nodejs
+    python313Packages.pynvim
+    tree-sitter
     universal-ctags
     viu # fzf-lua
-    python313Packages.pynvim
-    nodePackages_latest.nodejs
 
     # LSPs
     ansible-language-server
