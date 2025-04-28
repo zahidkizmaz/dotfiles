@@ -20,6 +20,7 @@ alias la='ls --color=auto -h -F -a '
 #------------------------------
 alias gs="git status -sb"
 alias gp='git pull origin $(git branch --show-current)'
+alias grc='git pull --rebase origin $(git branch --show-current)'
 alias gP="git push"
 alias ga="git add "
 alias gA="git add -A"
