@@ -154,7 +154,7 @@ M.SERVER_CONFIGURATIONS = {
 
 M.setup = function()
   local lsp_handlers = require("lsp.handlers")
-  local default_setup_config = { capabilities = lsp_handlers.capabilities }
+  local default_setup_config = { capabilities = vim.lsp.protocol.make_client_capabilities() }
 
   for name, config in pairs(M.SERVER_CONFIGURATIONS) do
     local group = vim.api.nvim_create_augroup("SETUP_LSP_CONFIG_" .. name, { clear = true })
@@ -171,7 +171,8 @@ M.setup = function()
           custom_setup_config = config.setup_config()
         end
         local setup_config = vim.tbl_extend("force", default_setup_config, custom_setup_config)
-        require("lspconfig")[name].setup(setup_config)
+        vim.lsp.config(name, setup_config)
+        vim.lsp.enable(name)
       end,
     })
   end

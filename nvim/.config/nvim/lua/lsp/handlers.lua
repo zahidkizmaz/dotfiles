@@ -1,16 +1,12 @@
 local M = {}
 
-M.capabilities = require("blink.cmp").get_lsp_capabilities()
-
 M.setup_inlay_hint = function()
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("InlayHintConfig", {}),
     callback = function(ev)
-      if vim.fn.has("nvim-0.10") == 1 then
-        local lsp_client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if lsp_client and lsp_client.server_capabilities.inlayHintProvider then
-          vim.lsp.inlay_hint.enable(true)
-        end
+      local lsp_client = vim.lsp.get_client_by_id(ev.data.client_id)
+      if lsp_client and lsp_client.server_capabilities.inlayHintProvider and not vim.lsp.inlay_hint.is_enabled() then
+        vim.lsp.inlay_hint.enable(true)
       end
     end,
   })
@@ -43,7 +39,6 @@ M.setup = function()
   }
   vim.diagnostic.config(config)
   M.setup_inlay_hint()
-  require("lspconfig.ui.windows").default_options.border = "rounded"
 end
 
 return M
