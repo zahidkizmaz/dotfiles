@@ -70,7 +70,7 @@ This creates symlinks to tmux config files in `~/.config/` folder.
 
 This setup includes:
 
-- Shell: nushell
+- Shell: zsh/nushell
 - Shell prompt: starship
 - Shell history: atuim
 - Shell tools: bat, direnv, fzf

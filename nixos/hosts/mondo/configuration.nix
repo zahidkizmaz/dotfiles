@@ -1,12 +1,4 @@
-{
-  inputs,
-  lib,
-  system,
-  ...
-}:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = system; };
-in
+{ lib, system, ... }:
 {
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
@@ -33,9 +25,6 @@ in
       };
     };
   };
-
-  environment.shells = [ pkgs-unstable.nushell ];
-  environment.systemPackages = [ pkgs-unstable.nushell ];
 
   services.nix-daemon.enable = true;
 }
