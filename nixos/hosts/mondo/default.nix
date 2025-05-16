@@ -15,6 +15,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/dotfiles.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
+    ../../modules/podman.nix
     ../../modules/terminal.nix
   ];
   specialArgs = {
