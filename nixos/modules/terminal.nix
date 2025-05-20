@@ -12,12 +12,8 @@ in
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "IosevkaTerm"
-        "Noto"
-      ];
-    })
+    nerd-fonts.iosevka-term
+    nerd-fonts.noto
     noto-fonts-color-emoji
   ];
 }

@@ -4,7 +4,7 @@
     enable = true;
 
     profiles.zahid = {
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+      extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
         clearurls
         darkreader
         facebook-container
@@ -183,26 +183,29 @@
         };
       };
 
-      bookmarks = [
-        {
-          name = "Arch Linux";
-          tags = [ ];
-          keyword = "arch";
-          url = "https://archlinux.org/";
-        }
-        {
-          name = "Github";
-          tags = [ ];
-          keyword = "gh";
-          url = "https://github.com/";
-        }
-        {
-          name = "Home Manager Search";
-          tags = [ ];
-          keyword = "homeman";
-          url = "https://home-manager-options.extranix.com/?query=%s&release=master";
-        }
-      ];
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "Arch Linux";
+            tags = [ ];
+            keyword = "arch";
+            url = "https://archlinux.org/";
+          }
+          {
+            name = "Github";
+            tags = [ ];
+            keyword = "gh";
+            url = "https://github.com/";
+          }
+          {
+            name = "Home Manager Search";
+            tags = [ ];
+            keyword = "homeman";
+            url = "https://home-manager-options.extranix.com/?query=%s&release=master";
+          }
+        ];
+      };
     };
   };
 }
