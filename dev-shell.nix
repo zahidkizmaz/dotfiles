@@ -13,5 +13,8 @@
       shfmt
       yamlfmt
     ];
+    shellHook = ''
+      pre-commit install
+    '';
   };
 }

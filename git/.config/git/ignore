@@ -104,7 +104,6 @@ dmypy.json
 .zsh_sessions
 
 # nix
-shell.nix
 result
 *.qcow2
 *.qcow3

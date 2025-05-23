@@ -1,8 +1,15 @@
-{ lib, system, ... }:
 {
+  lib,
+  system,
+  user,
+  ...
+}:
+{
+
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
-    stateVersion = 5;
+    primaryUser = "${user}";
+    stateVersion = 6;
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToEscape = true;
@@ -25,6 +32,4 @@
       };
     };
   };
-
-  services.nix-daemon.enable = true;
 }
