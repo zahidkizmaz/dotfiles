@@ -15,6 +15,7 @@
   };
 
   environment.gnome.excludePackages = with pkgs; [
+    decibels # music player
     epiphany # web browser
     evince # document viewer
     geary # email reader
