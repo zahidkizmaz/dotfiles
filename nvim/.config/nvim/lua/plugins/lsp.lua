@@ -6,11 +6,11 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
+    dependencies = { "b0o/schemastore.nvim" }, -- Used in yamlls and jsonls
     cmd = { "LspInfo" },
     config = require("lsp").setup,
   },
-  { "b0o/schemastore.nvim" }, -- Setup called in lsp/init.lua
   {
     "rmagatti/goto-preview",
     opts = {
