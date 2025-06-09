@@ -282,3 +282,7 @@ Thumbs.db
 lazy-lock.json
 
 pi4b.sd
+
+# easyeffects
+easyeffects/*
+!easyeffects/.config/easyeffects/output/*.json
