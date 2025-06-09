@@ -41,11 +41,12 @@ in
     # Linters&Formatters
     biome
     gitlint
+    jq
+    markdownlint-cli
     nixfmt-rfc-style
     prettierd
     shellcheck
     shfmt
-    markdownlint-cli
     yamllint
   ];
 }

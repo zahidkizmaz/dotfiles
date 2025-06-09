@@ -218,6 +218,7 @@ return {
         htmldjango = { "html_django" },
         javascript = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
         javascriptreact = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
+        json = { "jq" },
         json5 = { "fixjson" },
         just = { "just", stop_after_first = true },
         lua = { "stylua" },

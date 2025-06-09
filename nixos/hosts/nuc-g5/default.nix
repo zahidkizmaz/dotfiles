@@ -15,6 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/default-user.nix
     ../../modules/gc.nix
     ../../modules/kde-plasma.nix
+    ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/podman.nix
     ../../modules/sound-pipewire.nix
