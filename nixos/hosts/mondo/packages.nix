@@ -4,6 +4,7 @@ let
 in
 {
   environment.systemPackages = with pkgs-unstable; [
+    bruno
     heroku
     nh
   ];
