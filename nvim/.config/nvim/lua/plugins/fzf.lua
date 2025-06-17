@@ -22,22 +22,27 @@ return {
     },
     keys = {
       { "<leader>fl", "<cmd>FzfLua<cr>", desc = "FzfLua" },
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find File" },
-      { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Find Git File" },
-      { "<leader>fs", "<cmd>FzfLua btags<cr>", desc = "Current File Fuzzy Search" },
-      { "<leader>fr", "<cmd>FzfLua lsp_references<cr>", desc = "Find References" },
-      { "<leader>ft", "<cmd>FzfLua tags<cr>", desc = "FzfLua Tags" },
-      { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "FzfLua Help Tags" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua Buffers" },
-      { "<leader>fd", "<cmd>FzfLua treesitter<cr>", desc = "FzfLua Definitions" },
-      { "<leader>rg", "<cmd>FzfLua live_grep_glob<cr>", desc = "Ripgrep Search" },
-      { "<leader>fw", "<cmd>FzfLua grep_cword<cr>", desc = "Ripgrep Current Word" },
-      { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Ripgrep Current Word" },
-      { "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "LSP Code Actions" },
-      { "<leader>bl", "<cmd>FzfLua blines<cr>", desc = "Buffer Line Search" },
-      { "<leader>ds", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
-      { "<leader>ss", "<cmd>FzfLua spell_suggest<cr>", desc = "Spell Correction Suggestions" },
-      { "<leader>rr", "<cmd>FzfLua resume<cr>", desc = "Resume last search" },
+      { "<leader>ff", require("fzf-lua").files, desc = "Find File" },
+      { "<leader>fg", require("fzf-lua").git_files, desc = "Find Git File" },
+      { "<leader>fs", require("fzf-lua").btags, desc = "Current File Fuzzy Search" },
+      { "<leader>fr", require("fzf-lua").lsp_references, desc = "Find References" },
+      { "<leader>ft", require("fzf-lua").tags, desc = "FzfLua Tags" },
+      { "<leader>fh", require("fzf-lua").help_tags, desc = "FzfLua Help Tags" },
+      { "<leader>fb", require("fzf-lua").buffers, desc = "FzfLua Buffers" },
+      { "<leader>rg", require("fzf-lua").live_grep_glob, desc = "Ripgrep Search" },
+      { "<leader>fw", require("fzf-lua").grep_cword, desc = "Ripgrep Current Word" },
+      { "<leader>bl", require("fzf-lua").blines, desc = "Buffer Line Search" },
+      { "<leader>ds", require("fzf-lua").lsp_document_symbols, desc = "Document Symbols" },
+      { "<leader>ss", require("fzf-lua").spell_suggest, desc = "Spell Correction Suggestions" },
+      { "<leader>rr", require("fzf-lua").resume, desc = "Resume last search" },
+      { "gL", require("fzf-lua").diagnostics_document, desc = "Document Diagnostics" },
+      {
+        "<leader>ca",
+        function()
+          require("fzf-lua").lsp_code_actions({ silent = true })
+        end,
+        desc = "LSP Code Actions",
+      },
       {
         "<leader>fc",
         function()
@@ -58,7 +63,6 @@ return {
         end,
         desc = "Custom git checkout",
       },
-      { "gL", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
     },
     config = function()
       local current_dir_separated_with_dashes = string.gsub(vim.fn.getcwd(), "/", "-"):sub(2)
