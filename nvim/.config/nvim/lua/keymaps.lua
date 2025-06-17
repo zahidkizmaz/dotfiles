@@ -96,23 +96,6 @@ keymap("n", "<leader>vt", ":vsp<CR>:terminal<CR>i<CR>", opts)
 keymap("n", "<c-n>", "<CMD>Explore<CR><CR>", opts)
 
 -- LSP
-local function open_url(url)
-  local open_cmd
-
-  if vim.fn.has("mac") == 1 then
-    open_cmd = "open"
-  elseif vim.fn.has("unix") == 1 then
-    open_cmd = "xdg-open"
-  elseif vim.fn.has("win32") == 1 then
-    open_cmd = "start"
-  else
-    vim.notify("Unsupported operating system, cannot open URL", vim.log.levels.ERROR)
-    return
-  end
-
-  vim.fn.jobstart({ open_cmd, url }, { detach = true })
-end
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
