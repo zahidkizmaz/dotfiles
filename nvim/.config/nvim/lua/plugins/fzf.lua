@@ -21,7 +21,7 @@ return {
       },
     },
     keys = {
-      { "<leader>fl", "<cmd>FzfLua<cr>", desc = "FzfLua" },
+      { "<leader>fl", require("fzf-lua").builtin, desc = "FzfLua" },
       { "<leader>ff", require("fzf-lua").files, desc = "Find File" },
       { "<leader>fg", require("fzf-lua").git_files, desc = "Find Git File" },
       { "<leader>fs", require("fzf-lua").btags, desc = "Current File Fuzzy Search" },
