@@ -39,13 +39,6 @@ return {
     end,
     dependencies = {
       {
-        "RRethy/vim-illuminate",
-        keys = {
-          { "gn", "<cmd>lua require('illuminate').goto_next_reference()<cr>" },
-          { "gp", "<cmd>lua require('illuminate').goto_prev_reference()<cr>" },
-        },
-      },
-      {
         "HiPhish/rainbow-delimiters.nvim",
         config = function()
           local rainbow_delimiters = require("rainbow-delimiters")

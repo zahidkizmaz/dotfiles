@@ -19,12 +19,32 @@ return {
       preview_window_title = { enable = true, position = "right" }, -- Whether to set the preview window title as the filename
     },
     keys = {
-      { "gC", "<CMD>lua require('goto-preview').close_all_win()<CR>", desc = "Close all windows" },
-      { "gD", "<CMD>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Glance Definitions" },
-      { "gM", "<CMD>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Glance implementations" },
+      {
+        "gC",
+        function()
+          require("goto-preview").close_all_win()
+        end,
+        desc = "Close all windows",
+      },
+      {
+        "gD",
+        function()
+          require("goto-preview").goto_preview_definition()
+        end,
+        desc = "Glance Definitions",
+      },
+      {
+        "gM",
+        function()
+          require("goto-preview").goto_preview_implementation()
+        end,
+        desc = "Glance implementations",
+      },
       {
         "gY",
-        "<CMD>lua require('goto-preview').goto_preview_type_definition()<CR>",
+        function()
+          require("goto-preview").goto_preview_type_definition()
+        end,
         desc = "Glance Type Definitions",
       },
     },

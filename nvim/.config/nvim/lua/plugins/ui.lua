@@ -103,19 +103,47 @@ return {
     },
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "VeryLazy",
-    main = "ibl",
-    opts = {},
-  },
-  {
-    "folke/zen-mode.nvim",
+    "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
-      plugins = {
-        tmux = { enabled = true }, -- disables the tmux statusline
-        twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
+      bigfile = { enabled = true },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
+      indent = { enabled = true },
+      input = { enabled = false },
+      picker = { enabled = false },
+      notifier = { enabled = false },
+      quickfile = { enabled = false },
+      scope = { enabled = false },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = false },
+      words = { enabled = true },
+    },
+    keys = {
+      {
+        "<leader>zm",
+        function()
+          require("snacks").zen()
+        end,
+        desc = "Toggle Zen Mode",
+      },
+      {
+        "gn",
+        function()
+          require("snacks").words.jump(vim.v.count1)
+        end,
+        desc = "Next Reference",
+        mode = { "n", "t" },
+      },
+      {
+        "gp",
+        function()
+          require("snacks").words.jump(-vim.v.count1)
+        end,
+        desc = "Prev Reference",
+        mode = { "n", "t" },
       },
     },
-    keys = { { "<leader>zm", "<cmd>ZenMode<cr>", desc = "Toggle Zen Mode" } },
   },
 }
