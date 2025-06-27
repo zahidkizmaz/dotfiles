@@ -19,7 +19,13 @@ return {
     "echasnovski/mini.files",
     opts = {},
     keys = {
-      { "<leader>m", "<CMD>:lua MiniFiles.open()<CR>", desc = "Open mini.files" },
+      {
+        "<leader>m",
+        function()
+          require("mini.files").open()
+        end,
+        desc = "Open mini.files",
+      },
     },
   },
 }
