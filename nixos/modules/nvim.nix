@@ -34,6 +34,7 @@ in
     tailwindcss-language-server
     taplo
     typos-lsp
+    terraform-ls
     vimPlugins.SchemaStore-nvim
     vscode-langservers-extracted
     yaml-language-server

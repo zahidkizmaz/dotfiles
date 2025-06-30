@@ -86,6 +86,7 @@ M.SERVER_CONFIGURATIONS = {
   },
   taplo = {},
   tailwindcss = {},
+  terraformls = {},
   ts_ls = {},
   typos_lsp = {},
   yamlls = function()
