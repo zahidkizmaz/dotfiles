@@ -1,4 +1,14 @@
 { pkgs }:
+let
+  nvimConfigPath = ./nvim/.config/nvim;
+  nvimScripts = [
+    (pkgs.writeShellScriptBin "nv" ''
+      set -x
+      nvim -u ${nvimConfigPath}/init.lua
+      set +x
+    '')
+  ];
+in
 {
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
@@ -19,6 +29,6 @@
   };
 
   nvim = pkgs.mkShell {
-    buildInputs = import ./nixos/common/nvimPackages.nix { inherit pkgs; };
+    buildInputs = nvimScripts ++ import ./nixos/common/nvimPackages.nix { inherit pkgs; };
   };
 }
