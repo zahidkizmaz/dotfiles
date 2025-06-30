@@ -17,4 +17,8 @@
       pre-commit install
     '';
   };
+
+  nvim = pkgs.mkShell {
+    buildInputs = import ./nixos/common/nvimPackages.nix { inherit pkgs; };
+  };
 }
