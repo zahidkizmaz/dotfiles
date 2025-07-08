@@ -109,9 +109,6 @@ M.SERVER_CONFIGURATIONS = {
 }
 
 M.setup = function()
-  local lsp_handlers = require("lsp.handlers")
-  local default_setup_config = { capabilities = vim.lsp.protocol.make_client_capabilities() }
-
   for name, config in pairs(M.SERVER_CONFIGURATIONS) do
     local custom_setup_config = {}
     if type(config) == "function" then
@@ -119,12 +116,11 @@ M.setup = function()
     elseif type(config) == "table" then
       custom_setup_config = config
     end
-    local setup_config = vim.tbl_extend("force", default_setup_config, custom_setup_config)
-    vim.lsp.config(name, setup_config)
+    vim.lsp.config(name, custom_setup_config)
     vim.lsp.enable(name)
   end
 
-  lsp_handlers.setup()
+  require("lsp.handlers").setup()
 end
 
 return M
