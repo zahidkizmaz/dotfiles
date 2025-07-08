@@ -151,11 +151,7 @@ return {
       { "<leader>tr", "<cmd>TestNearest<cr>", desc = "Run the test nearest to the cursor" },
     },
   },
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {},
-    cmd = { "ColorizerToggle" },
-  },
+  { "catgoose/nvim-colorizer.lua", event = "VeryLazy", opts = { lazy_load = true } },
   {
     "zahidkizmaz/sf.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
