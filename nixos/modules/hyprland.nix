@@ -9,5 +9,6 @@
     hypridle
     hyprlock
     hyprsunset
+    lxqt.lxqt-policykit
   ];
 }

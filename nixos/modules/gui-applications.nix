@@ -22,5 +22,9 @@ in
     pkgs.brave
     pkgs.firefox
     pkgs.librewolf
+
+    # Utilities
+    pkgs.kdePackages.partitionmanager
+    pkgs.kdePackages.qt6ct
   ];
 }
