@@ -41,14 +41,13 @@
             nativeBuildInputs = with pkgs; [
               pkg-config
             ];
-            buildInputs =
-              [
-                # Add additional build inputs here
-              ]
-              ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
-                # Additional darwin specific inputs can be set here
-                pkgs.libiconv
-              ];
+            buildInputs = [
+              # Add additional build inputs here
+            ]
+            ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+              # Additional darwin specific inputs can be set here
+              pkgs.libiconv
+            ];
           };
 
           # Build *just* the cargo dependencies, so we can reuse
