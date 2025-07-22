@@ -29,7 +29,7 @@ return {
       { "<leader>ft", require("fzf-lua").tags, desc = "FzfLua Tags" },
       { "<leader>fh", require("fzf-lua").help_tags, desc = "FzfLua Help Tags" },
       { "<leader>fb", require("fzf-lua").buffers, desc = "FzfLua Buffers" },
-      { "<leader>rg", require("fzf-lua").live_grep_glob, desc = "Ripgrep Search" },
+      { "<leader>rg", require("fzf-lua").live_grep, desc = "Ripgrep Search" },
       { "<leader>fw", require("fzf-lua").grep_cword, desc = "Ripgrep Current Word" },
       { "<leader>bl", require("fzf-lua").blines, desc = "Buffer Line Search" },
       { "<leader>ds", require("fzf-lua").lsp_document_symbols, desc = "Document Symbols" },
