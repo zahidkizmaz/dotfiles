@@ -22,6 +22,7 @@ require("lazy").setup({
   checker = { enabled = false },
   change_detection = { enabled = true, notify = false },
   dev = { path = "~/Projects" },
+  git = { timeout = 300 }, -- 5 min
   rocks = { enabled = false },
   performance = {
     cache = { enabled = true },
