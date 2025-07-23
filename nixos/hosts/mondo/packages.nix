@@ -7,5 +7,7 @@ in
     bruno
     nh
     utm
+    podman
+    podman-compose
   ];
 }
