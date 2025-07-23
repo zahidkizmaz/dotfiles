@@ -19,6 +19,7 @@ declare -A appMappings=(
   [nvim]="nvim"
   [pgcli]="pgcli"
   [rustfmt]="rustfmt"
+  [sesh]="sesh"
   [starship]="starship"
   [tmux]="tmux"
   [tofi]="tofi"

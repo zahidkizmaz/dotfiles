@@ -1,5 +1,13 @@
 { pkgs, ... }:
 let
+  download-dotfiles = pkgs.writeShellApplication {
+    name = "download-dotfiles";
+    runtimeInputs = with pkgs; [
+      bash
+      gitMinimal
+    ];
+    text = builtins.readFile ../bin/download-dotfiles.sh;
+  };
   link-dotfiles = pkgs.writeShellApplication {
     name = "link-dotfiles";
     runtimeInputs = with pkgs; [
@@ -19,6 +27,8 @@ in
   environment.systemPackages = with pkgs; [
     gitMinimal
     gh
+
+    download-dotfiles
     link-dotfiles
     daily-update
   ];
