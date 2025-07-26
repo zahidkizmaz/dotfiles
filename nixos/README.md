@@ -10,13 +10,13 @@ sudo nixos-rebuild switch --flake .#fw13-amd
 
 [More options can be found here.](https://github.com/nix-community/nixos-anywhere/blob/main/docs/quickstart.md)
 
-### Testing:
+### Testing
 
 ```shell
 nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd --vm-test
 ```
 
-### Installation:
+### Installation
 
 ```shell
 nix run github:nix-community/nixos-anywhere -- --flake .#fw13-amd
@@ -33,7 +33,7 @@ nix flake new -t github:nix-community/nix-direnv .
 direnv allow
 ```
 
-### Example generic dev environment:
+### Example generic dev environment
 
 flake.nix file:
 
@@ -43,14 +43,16 @@ flake.nix file:
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
         devShells.default = pkgs.mkShell {
-        NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+          NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
             pkgs.stdenv.cc.cc
             pkgs.gcc.cc
             pkgs.glibc
@@ -63,11 +65,12 @@ flake.nix file:
             # add necessary packages here
           ];
         };
-      });
+      }
+    );
 }
 ```
 
-### Example dev environment python poetry:
+### Example dev environment python poetry
 
 flake.nix file:
 
