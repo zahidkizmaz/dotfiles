@@ -15,7 +15,7 @@
     };
 
     cursorTheme = {
-      size = 32;
+      size = 36;
       name = "phinger-cursors-light";
       package = pkgs.phinger-cursors;
     };

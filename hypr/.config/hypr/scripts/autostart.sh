@@ -35,7 +35,6 @@ restart_program() {
 
 start_program "blueman-applet"
 start_program "copyq" "--start-server"
-start_program "hypridle"
 start_program "nm-applet"
 start_program "pcmanfm" "--daemon-mode"
 start_program "dunst"
