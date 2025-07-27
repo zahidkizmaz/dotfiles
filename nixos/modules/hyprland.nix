@@ -2,6 +2,7 @@
 {
   programs = {
     hyprland.enable = true;
+    hyprland.withUWSM = true;
     hyprlock.enable = true;
   };
 
