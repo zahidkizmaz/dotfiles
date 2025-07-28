@@ -14,7 +14,8 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@v3.8.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: nicknovitski/nix-develop@v1
+      - name: use nix-develop
+        run: nix run github:nicknovitski/nix-develop/v1
       - name: set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
       - uses: actions/cache@v4
@@ -25,6 +26,5 @@ jobs:
 
       - name: Run all pre-commit checks
         run: pre-commit run --all-files
-
       - name: Check all systems
         run: nix flake check --all-systems
