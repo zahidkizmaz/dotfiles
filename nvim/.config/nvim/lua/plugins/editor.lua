@@ -29,7 +29,7 @@ return {
   {
     "saghen/blink.cmp",
     event = "VeryLazy",
-    build = "nix run .#build-plugin",
+    version = "1.*",
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       keymap = {
