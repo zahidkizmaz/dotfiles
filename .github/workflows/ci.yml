@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v31
+      - uses: DeterminateSystems/determinate-nix-action@v3.8.2
         with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: nicknovitski/nix-develop@v1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: use nix-develop
+        run: nix run github:nicknovitski/nix-develop/v1
       - name: set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
       - uses: actions/cache@v4
@@ -25,6 +26,5 @@ jobs:
 
       - name: Run all pre-commit checks
         run: pre-commit run --all-files
-
       - name: Check all systems
         run: nix flake check --all-systems
