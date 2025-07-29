@@ -14,6 +14,7 @@ in
 
     # PW manager
     pkgs.bitwarden
+    pkgs.ente-auth
 
     # Note taking
     pkgs-unstable.joplin-desktop

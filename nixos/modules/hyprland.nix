@@ -9,6 +9,7 @@ in
     hyprland.package = pkgs-unstable.hyprland;
     hyprlock.enable = true;
   };
+  services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs-unstable; [
     hypridle
