@@ -8,9 +8,11 @@
       upgrade = true;
     };
     casks = [
+      "camo-studio"
       "copyq"
-      "hammerspoon"
       "ghostty"
+      "hammerspoon"
+      "logi-options+"
     ];
   };
 }
