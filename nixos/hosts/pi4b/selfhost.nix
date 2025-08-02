@@ -5,9 +5,11 @@
     udisks2.enable = true;
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    libsecret
+
     # Cloud
-    pkgs.filen-cli
+    filen-cli
   ];
 
   system.activationScripts.script.text = # bash
