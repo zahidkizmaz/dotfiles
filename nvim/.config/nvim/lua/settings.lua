@@ -11,6 +11,15 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.mapleader = " "
 
+-- neovide
+g.neovide_position_animation_length = 0
+g.neovide_cursor_animation_length = 0.00
+g.neovide_cursor_trail_size = 0
+g.neovide_cursor_animate_in_insert_mode = false
+g.neovide_cursor_animate_command_line = false
+g.neovide_scroll_animation_far_lines = 0
+g.neovide_scroll_animation_length = 0.00
+
 -- netrw settings
 g.netrw_liststyle = 3 -- tree style view in netrw
 g.netrw_altv = 1 -- change from left splitting to right splitting

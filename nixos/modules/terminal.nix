@@ -4,7 +4,6 @@ let
 in
 {
   environment.systemPackages = with pkgs-unstable; [
-    # ghostty
     kitty
     sesh
     starship
