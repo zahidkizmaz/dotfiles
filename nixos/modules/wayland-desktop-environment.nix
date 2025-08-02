@@ -11,6 +11,7 @@
     networkmanagerapplet
     pcmanfm
     playerctl
+    satty
     slurp
     tofi
     udiskie
