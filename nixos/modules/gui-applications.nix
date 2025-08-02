@@ -19,6 +19,10 @@ in
     # Note taking
     pkgs-unstable.joplin-desktop
 
+    # Cloud
+    pkgs.filen-cli
+    pkgs.filen-desktop
+
     # Browsers
     pkgs.brave
     pkgs.firefox
