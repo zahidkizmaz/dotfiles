@@ -1,0 +1,5 @@
+program_options:
+  tray: true # Show tray icon
+  notify: true # Enable notifications
+  automount: true # Enable automatic mounting
+  file_manager: pcmanfm # Program to open mounted directories

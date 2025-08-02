@@ -26,6 +26,7 @@
       "video/*" = "io.mpv.Mpv";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/chrome" = "firefox.desktop";
+      "x-scheme-handler/file" = "pcmanfm.desktop";
       "x-scheme-handler/ftp" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";

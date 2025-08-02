@@ -34,6 +34,7 @@ stow-linux: _stow-common
     just stow hypr
     just stow nix
     just stow tofi
+    just stow udiskie
     just stow waybar
 
 stow-mac: _stow-common

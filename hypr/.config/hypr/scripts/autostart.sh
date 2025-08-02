@@ -38,5 +38,6 @@ start_program "copyq" "--start-server"
 start_program "nm-applet"
 start_program "pcmanfm" "--daemon-mode"
 start_program "dunst"
+start_program "udiskie"
 
 restart_program "waybar"

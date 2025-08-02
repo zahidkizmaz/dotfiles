@@ -23,6 +23,7 @@ declare -A appMappings=(
   [starship]="starship"
   [tmux]="tmux"
   [tofi]="tofi"
+  [udiskie]="udiskie"
   [waybar]="waybar"
   [yazi]="yazi"
   [zsh]="zsh"
