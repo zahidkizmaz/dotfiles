@@ -1,3 +1,11 @@
+remove_dir_if_not_symlink() {
+  local dir="$1"
+  if [ -d "$dir" ] && [ ! -L "$dir" ]; then
+    rm -rf "$dir"
+    echo "Removed directory: $dir. Because it is not a symlink"
+  fi
+}
+
 # app -> callable
 declare -A appMappings=(
   [aichat]="aichat"
@@ -30,6 +38,7 @@ declare -A appMappings=(
   [zsh]="zsh"
 )
 
+# Clone dotfiles from GH
 if [ ! -d "$HOME/dotfiles" ]; then
   echo "Cloning dotfiles to $HOME/dotfiles..."
   clone_cmd="git clone git@github.com:zahidkizmaz/dotfiles.git $HOME/dotfiles"
@@ -38,6 +47,11 @@ if [ ! -d "$HOME/dotfiles" ]; then
     git clone https://github.com/zahidkizmaz/dotfiles.git "$HOME/dotfiles"
   fi
 fi
+
+# Make sure some apps are symlinked
+remove_dir_if_not_symlink "$HOME/.config/hypr/"
+remove_dir_if_not_symlink "$HOME/.config/kitty/"
+
 cd "$HOME/dotfiles/" || exit
 for app in "${!appMappings[@]}"; do
   cmd="${appMappings[$app]}"
