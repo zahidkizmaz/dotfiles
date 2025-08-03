@@ -32,7 +32,11 @@ declare -A appMappings=(
 
 if [ ! -d "$HOME/dotfiles" ]; then
   echo "Cloning dotfiles to $HOME/dotfiles..."
-  git clone git@github.com:zahidkizmaz/dotfiles.git "$HOME/dotfiles"
+  clone_cmd="git clone git@github.com:zahidkizmaz/dotfiles.git $HOME/dotfiles"
+  if ! $clone_cmd; then
+    echo "SSH clone failed, falling back to HTTPS. Remember to set the remote directory to SSH later."
+    git clone https://github.com/zahidkizmaz/dotfiles.git "$HOME/dotfiles"
+  fi
 fi
 cd "$HOME/dotfiles/" || exit
 for app in "${!appMappings[@]}"; do
