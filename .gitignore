@@ -83,6 +83,10 @@ target/
 .ipython/
 !.ipython/profile_default/ipython_config.py
 
+# CopyQ
+copyq/.config/copyq/*
+!copyq/.config/copyq/copyq.conf
+
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:

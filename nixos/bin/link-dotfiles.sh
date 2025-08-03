@@ -4,6 +4,7 @@ declare -A appMappings=(
   [anyrun]="anyrun"
   [atuin]="atuin"
   [bat]="bat"
+  [copyq]="copyq"
   [ctags]="ctags"
   [direnv]="direnv"
   [dunst]="dunst"

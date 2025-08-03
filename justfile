@@ -12,6 +12,7 @@ _stow-common:
     just stow aichat
     just stow atuin
     just stow bat
+    just stow copyq
     just stow ctags
     just stow direnv
     just stow easyeffects
