@@ -20,6 +20,10 @@
       "application/xhtml+xml" = "firefox.desktop";
       "audio/*" = "io.mpv.Mpv";
       "image/*" = "feh.desktop";
+      "image/gif" = "feh.desktop";
+      "image/jpeg" = "feh.desktop";
+      "image/png" = "feh.desktop";
+      "image/webp" = "feh.desktop";
       "inode/directory" = "pcmanfm.desktop";
       "text/html" = "firefox.desktop";
       "text/plain" = "neovide.desktop";
