@@ -13,6 +13,7 @@
       "ghostty"
       "hammerspoon"
       "logi-options+"
+      "orbstack"
     ];
   };
 }

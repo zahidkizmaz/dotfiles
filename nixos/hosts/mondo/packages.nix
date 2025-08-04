@@ -7,7 +7,7 @@ in
     bruno
     nh
     utm
-    podman
-    podman-compose
+    docker
+    docker-compose
   ];
 }
