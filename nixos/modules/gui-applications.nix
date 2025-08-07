@@ -10,7 +10,7 @@ in
 
     # Chat
     pkgs.telegram-desktop
-    pkgs.element-desktop
+    pkgs.fractal
 
     # PW manager
     pkgs.bitwarden
