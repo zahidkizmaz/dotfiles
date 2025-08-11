@@ -10,8 +10,9 @@ M.SERVER_CONFIGURATIONS = {
   },
   bashls = { filetypes = { "sh", "zsh" } },
   cssls = {},
-  dockerls = {},
   docker_compose_language_service = {},
+  dockerls = {},
+  emmylua_ls = {},
   htmx = {},
   nixd = {},
   hyprls = {},
@@ -26,25 +27,6 @@ M.SERVER_CONFIGURATIONS = {
     }
   end,
   lemminx = {},
-  lua_ls = {
-    settings = {
-      Lua = {
-        format = { enable = false },
-        workspace = {
-          checkThirdParty = false,
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = { enable = false },
-      },
-    },
-  },
   basedpyright = { settings = { basedpyright = { typeCheckingMode = "basic" } } },
   nushell = {},
   ruff = {
