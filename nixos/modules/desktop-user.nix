@@ -30,17 +30,6 @@ in
       "libvirtd"
     ];
     shell = pkgs-unstable.zsh;
-    packages = with pkgs-unstable; [
-      gitMinimal
-      just
-      stow
-      tree
-      unzip
-      zip
-      # nushell plugins
-      pkgs-unstable.nushell
-      nushellPlugins.polars
-    ];
   };
   programs.zsh.enable = true;
 

@@ -1,10 +1,12 @@
 { inputs, pkgs, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
-  shell_completers = with pkgs-unstable; [
+  nushell_pkgs = with pkgs-unstable; [
     # These are used as external_completer in nushell
     carapace
     fish
+    nushell
+    nushellPlugins.polars
   ];
 in
 {
@@ -13,17 +15,24 @@ in
   };
 
   environment.systemPackages =
-    shell_completers
-    ++ (with pkgs; [
+    nushell_pkgs
+    ++ (with pkgs-unstable; [
       atuin
       bat
       delta
       eza
       fd
       fzf
+      gitMinimal
       jq
+      just
+      ouch
       ripgrep
+      stow
+      tree
+      unzip
       yazi
+      zip
       zoxide
     ]);
 }
