@@ -31,6 +31,7 @@ in
       stow
       tree
       unzip
+      watchman
       yazi
       zip
       zoxide

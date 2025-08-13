@@ -5,6 +5,12 @@
 
 [core]
     pager = delta
+    fsmonitor = true
+    untrackedcache = true
+    fsmonitor-watchman = .git/hooks/fsmonitor-watchmanv2
+
+[feature]
+    manyFiles = true
 
 [delta]
     dark = true
