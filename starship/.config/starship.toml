@@ -51,6 +51,7 @@ modified = "📝"
 staged = '[++\($count\)](green)'
 renamed = "👅"
 deleted = "🗑️"
+use_git_executable = true
 
 [username]
 style_user = "white bold"
