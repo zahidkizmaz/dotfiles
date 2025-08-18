@@ -33,8 +33,9 @@ in
     rust-analyzer
     tailwindcss-language-server
     taplo
-    typos-lsp
     terraform-ls
+    ty
+    typos-lsp
     vimPlugins.SchemaStore-nvim
     vscode-langservers-extracted
     yaml-language-server
