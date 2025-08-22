@@ -6,9 +6,9 @@ start_program() {
 
   if ! pgrep "$program_name" >/dev/null; then
     if [ -z "$args" ]; then
-      nohup "$program_name" >/dev/null 2>&1 &
+      uwsm app -- "$program_name" >/dev/null 2>&1 &
     else
-      nohup "$program_name" "$args" >/dev/null 2>&1 &
+      uwsm app -- "$program_name" "$args" >/dev/null 2>&1 &
     fi
     echo "Started $program_name $args with PID $!"
   fi
@@ -25,12 +25,7 @@ restart_program() {
     sleep 0.5
   fi
 
-  if [ -z "$args" ]; then
-    nohup "$program_name" >/dev/null 2>&1 &
-  else
-    nohup "$program_name" "$args" >/dev/null 2>&1 &
-  fi
-  echo "Started $program_name $args with PID $!"
+  start_program "$program_name" "$args"
 }
 
 start_program "blueman-applet"
