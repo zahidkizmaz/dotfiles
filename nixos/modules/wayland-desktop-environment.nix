@@ -8,8 +8,8 @@
     brightnessctl
     copyq
     grim
+    kdePackages.dolphin
     networkmanagerapplet
-    pcmanfm
     playerctl
     satty
     slurp

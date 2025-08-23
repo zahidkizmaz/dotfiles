@@ -5,7 +5,7 @@
     firefox
     mpv
     neovide
-    pcmanfm
+    kdePackages.dolphin
     xdg-utils
   ];
 
@@ -24,13 +24,13 @@
       "image/jpeg" = "feh.desktop";
       "image/png" = "feh.desktop";
       "image/webp" = "feh.desktop";
-      "inode/directory" = "pcmanfm.desktop";
+      "inode/directory" = "org.kde.dolphin.desktop";
       "text/html" = "firefox.desktop";
       "text/plain" = "neovide.desktop";
       "video/*" = "io.mpv.Mpv";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/chrome" = "firefox.desktop";
-      "x-scheme-handler/file" = "pcmanfm.desktop";
+      "x-scheme-handler/file" = "org.kde.dolphin.desktop";
       "x-scheme-handler/ftp" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
