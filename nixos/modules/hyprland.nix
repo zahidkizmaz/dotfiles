@@ -10,11 +10,12 @@ in
     hyprlock.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
+  security.polkit.enable = true;
 
   environment.systemPackages = with pkgs-unstable; [
     hypridle
     hyprlock
     hyprsunset
-    lxqt.lxqt-policykit
+    hyprpolkitagent
   ];
 }
