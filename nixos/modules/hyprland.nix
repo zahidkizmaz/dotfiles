@@ -17,5 +17,6 @@ in
     hyprlock
     hyprsunset
     hyprpolkitagent
+    hyprland-qt-support
   ];
 }
