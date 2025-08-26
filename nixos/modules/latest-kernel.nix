@@ -1,7 +1,4 @@
-{ inputs, system, ... }:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
+{ pkgs, ... }:
 {
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
