@@ -29,6 +29,7 @@ in
     path = with pkgs-unstable; [
       bash
       hyprsunset
+      procps
     ];
     script = ''
       START_HOUR=21
@@ -45,7 +46,7 @@ in
           fi
         else
           echo "INFO: Stopping hyprsunset current_hour:$current_hour"
-          pkill -x hyprsunset
+          "${pkgs-unstable.procps}"/bin/pkill -x hyprsunset
         fi
       else
         if ((current_hour >= START_HOUR && current_hour < STOP_HOUR)); then
@@ -55,7 +56,7 @@ in
           fi
         else
           echo "INFO: Stopping hyprsunset current_hour:$current_hour"
-          pkill -x hyprsunset
+          "${pkgs-unstable.procps}"/bin/pkill -x hyprsunset
         fi
       fi
     '';
