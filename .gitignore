@@ -290,3 +290,7 @@ pi4b.sd
 # easyeffects
 easyeffects/*
 !easyeffects/.config/easyeffects/output/*.json
+
+# hyprland
+hypr/.config/hypr/monitors.conf
+hypr/.config/hypr/workspaces.conf

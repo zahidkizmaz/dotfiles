@@ -29,6 +29,7 @@ in
     pkgs.librewolf
 
     # Utilities
+    pkgs.nwg-displays
     pkgs.kdePackages.partitionmanager
     pkgs.kdePackages.qt6ct
   ];
