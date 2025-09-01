@@ -25,3 +25,4 @@ background-color = #1e1e2e
 font = "Arimo"
 hint-font = false
 num-results = 10
+late-keyboard-init = true

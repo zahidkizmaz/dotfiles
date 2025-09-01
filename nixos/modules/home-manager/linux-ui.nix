@@ -11,7 +11,7 @@
 
     font = {
       name = "Arimo";
-      size = 12;
+      size = 14;
     };
 
     cursorTheme = {
