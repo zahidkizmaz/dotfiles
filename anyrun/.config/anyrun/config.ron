@@ -6,7 +6,7 @@ Config(
   y: Fraction(0.2),
 
   // The width of the runner
-  width: Fraction(0.33),
+  width: Fraction(0.4),
 
   // The minimum height of the runner, the runner will expand to fit all the entries
   height: Absolute(0),
@@ -38,5 +38,7 @@ Config(
     "libapplications.so",
     "librink.so",
     "libwebsearch.so",
+    "libnix_run.so",
+    "libsymbols.so",
   ],
 )

@@ -3,5 +3,10 @@ Config(
   desktop_actions: true,
   // The terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
   max_entries: 10,
-  terminal: Some("kitty"),
+  terminal: Some(
+      Terminal(
+          command: "kitty",
+          args: "-e uwsm app -- {}"
+      )
+  ),
 )
