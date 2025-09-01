@@ -3,9 +3,11 @@ anchor = top
 width = 100%
 height = 40
 horizontal = true
-font-size = 16
+font-size = 18
 prompt-text = "Run: "
 outline-width = 0
+outline-color = #f5c2e7
+corner-radius = 10
 border-width = 0
 min-input-width = 120
 result-spacing = 15
@@ -16,13 +18,13 @@ padding-right = 0
 
 # cattpuccin mocha
 text-color = #cdd6f4
-prompt-color = #a6e3a1
+prompt-color = #b4befe
 selection-color = #f5c2e7
-background-color = #1e1e2e
+background-color = #181825
 
 # PERFORMANCE
 # to load font faster using full path
-font = "Arimo"
+font = "/run/current-system/sw/share/X11/fonts/ArimoNerdFont-Regular.ttf"
 hint-font = false
-num-results = 10
+num-results = 15
 late-keyboard-init = true

@@ -33,11 +33,14 @@ in
   };
   programs.zsh.enable = true;
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.arimo
-    nerd-fonts.iosevka-term
-    nerd-fonts.noto
-    nerd-fonts.jetbrains-mono
-    noto-fonts-color-emoji
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.arimo
+      nerd-fonts.iosevka-term
+      nerd-fonts.noto
+      nerd-fonts.jetbrains-mono
+      noto-fonts-color-emoji
+    ];
+    fontDir.enable = true;
+  };
 }
