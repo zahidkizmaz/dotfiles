@@ -18,6 +18,7 @@ in
     hyprsunset
     hyprpolkitagent
     hyprland-qt-support
+    rose-pine-hyprcursor
   ];
 
   systemd.user.services."hyprsunset-automate" = {

@@ -15,9 +15,8 @@
     };
 
     cursorTheme = {
-      size = 36;
-      name = "phinger-cursors-light";
-      package = pkgs.phinger-cursors;
+      size = 40;
+      name = "rose-pine-hyprcursor";
     };
 
     iconTheme = {
