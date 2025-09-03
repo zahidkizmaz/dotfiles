@@ -1,6 +1,9 @@
 { inputs, system, ... }:
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
 {
   environment.systemPackages = [
-    inputs.anyrun.packages.${system}.anyrun-with-all-plugins
+    pkgs-unstable.anyrun
   ];
 }

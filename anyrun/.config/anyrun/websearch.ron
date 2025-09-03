@@ -1,5 +1,5 @@
 Config(
-  prefix: "; ",
+  prefix: ";",
   // Options: Google, Ecosia, Bing, DuckDuckGo, Custom
   //
   // NOTE: `{}` is replaced by the search query and `https://` is automatically added in front.
