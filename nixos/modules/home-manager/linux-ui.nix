@@ -15,7 +15,7 @@
     };
 
     cursorTheme = {
-      size = 40;
+      size = 36;
       name = "rose-pine-hyprcursor";
     };
 
