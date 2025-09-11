@@ -42,3 +42,11 @@ alias 'git wipe'='git reset --hard HEAD '
 # GitHub CLI Aliases
 #------------------------------
 alias pro="gh pr view --web"
+
+#------------------------------
+# Docker Aliases
+#------------------------------
+alias dps='docker ps -a'
+alias dup='docker-compose up -d'
+alias ddown='docker-compose down'
+alias dlogs='docker-compose logs -f'
