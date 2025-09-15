@@ -21,13 +21,10 @@
           ];
         };
 
-        users.mutableUsers = false;
-        users.users.vm = {
-          isNormalUser = true;
-          initialPassword = "password";
-          extraGroups = [ "wheel" ];
-        };
-        security.sudo.enable = true;
+        imports = [
+          ./vm-user.nix
+          ../modules/bootloader-systemd.nix
+        ];
 
         networking.useNetworkd = true;
         services = {
