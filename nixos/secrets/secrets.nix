@@ -15,4 +15,7 @@ in
     lab
     pi4b
   ];
+  "tailscale-lab.age".publicKeys = [
+    lab
+  ];
 }
