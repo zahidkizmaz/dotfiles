@@ -36,6 +36,7 @@ in
     terraform-ls
     ty
     typos-lsp
+    vacuum-go
     vimPlugins.SchemaStore-nvim
     vscode-langservers-extracted
     yaml-language-server
@@ -49,6 +50,7 @@ in
     prettierd
     shellcheck
     shfmt
+    yamlfmt
     yamllint
   ];
 }

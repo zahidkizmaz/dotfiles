@@ -133,3 +133,10 @@ vim.filetype.add({
   filename = { justfile = "just" },
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+
+vim.filetype.add({
+  pattern = {
+    ["openapi.*%.ya?ml"] = "yaml.openapi",
+    ["openapi.*%.json"] = "json.openapi",
+  },
+})

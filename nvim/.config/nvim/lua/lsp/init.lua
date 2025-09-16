@@ -99,6 +99,7 @@ M.SERVER_CONFIGURATIONS = {
       },
     },
   },
+  vacuum = {},
   tailwindcss = {},
   taplo = {},
   terraformls = {},
