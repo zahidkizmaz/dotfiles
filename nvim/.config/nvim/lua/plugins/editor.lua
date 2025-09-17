@@ -24,6 +24,17 @@ return {
           dismiss = "<C-]>",
         },
       },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+        help = true,
+        gitcommit = true,
+        gitrebase = true,
+        hgcommit = true,
+        svn = true,
+        cvs = false,
+        ["."] = true,
+      },
     },
   },
   {
