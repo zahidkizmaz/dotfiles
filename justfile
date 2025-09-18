@@ -23,6 +23,7 @@ _stow-common:
     just stow mpv
     just stow nushell
     just stow nvim
+    just stow opencode
     just stow pgcli
     just stow rustfmt
     just stow starship

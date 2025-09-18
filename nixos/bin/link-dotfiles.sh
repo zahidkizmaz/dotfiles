@@ -26,6 +26,7 @@ declare -A appMappings=(
   [nix]="nix"
   [nushell]="nu"
   [nvim]="nvim"
+  [opencode]="opencode"
   ["nwg-displays"]="nwg-displays"
   [pgcli]="pgcli"
   [rustfmt]="rustfmt"
