@@ -5,8 +5,8 @@ in
 {
   environment = {
     systemPackages = with pkgs-unstable; [
-      aichat
       ollama
+      opencode
     ];
   };
 }
