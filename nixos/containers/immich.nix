@@ -3,6 +3,8 @@
   localAddress,
   hostAddress,
   port,
+  inputs,
+  user,
   ...
 }:
 {
@@ -11,6 +13,12 @@
     privateNetwork = true;
     hostAddress = "${hostAddress}";
     localAddress = "${localAddress}";
+    bindMounts = {
+      "/etc/ssh/lab" = {
+        hostPath = "/home/${user}/.ssh/lab";
+        isReadOnly = true;
+      };
+    };
     forwardPorts = [
       {
         hostPort = port;
@@ -26,6 +34,10 @@
         ...
       }:
       {
+        imports = [
+          (import ./container-tailscale.nix { inherit config inputs; })
+        ];
+
         services.immich = {
           enable = true;
           port = 8080;

@@ -1,4 +1,9 @@
-{ stateVersion, ... }:
+{
+  stateVersion,
+  user,
+  inputs,
+  ...
+}:
 {
   networking.nat = {
     enable = true;
@@ -12,13 +17,13 @@
       hostAddress = "192.168.100.1";
       localAddress = "192.168.100.2";
       port = 8080;
-      inherit stateVersion;
+      inherit stateVersion inputs user;
     })
     (import ./paperless-ngx.nix {
       hostAddress = "192.168.100.3";
       localAddress = "192.168.100.4";
       port = 8080;
-      inherit stateVersion;
+      inherit stateVersion inputs user;
     })
   ];
 }
