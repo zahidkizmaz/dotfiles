@@ -13,6 +13,7 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
+    enableTun = true;
     hostAddress = "${hostAddress}";
     localAddress = "${localAddress}";
     forwardPorts = [
