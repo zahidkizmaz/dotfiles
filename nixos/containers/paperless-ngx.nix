@@ -3,10 +3,14 @@
   localAddress,
   hostAddress,
   port,
+  inputs,
   ...
 }:
+let
+  containerName = "paperless";
+in
 {
-  containers.paperless-ngx = {
+  containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
     hostAddress = "${hostAddress}";
@@ -26,6 +30,16 @@
         ...
       }:
       {
+        imports = [
+          (import ./container-tailscale.nix {
+            inherit
+              config
+              inputs
+              lib
+              pkgs
+              ;
+          })
+        ];
         services.paperless = {
           enable = true;
           port = 8080;
@@ -34,8 +48,9 @@
 
         system.stateVersion = stateVersion;
         networking = {
+          hostName = containerName;
           firewall = {
-            enable = true;
+            enable = false;
             allowedTCPPorts = [ port ];
           };
           # Use systemd-resolved inside the container

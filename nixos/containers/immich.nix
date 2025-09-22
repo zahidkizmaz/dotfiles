@@ -7,8 +7,11 @@
   user,
   ...
 }:
+let
+  containerName = "immich";
+in
 {
-  containers.immich = {
+  containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
     hostAddress = "${hostAddress}";
@@ -35,7 +38,14 @@
       }:
       {
         imports = [
-          (import ./container-tailscale.nix { inherit config inputs; })
+          (import ./container-tailscale.nix {
+            inherit
+              config
+              inputs
+              lib
+              pkgs
+              ;
+          })
         ];
 
         services.immich = {
@@ -46,8 +56,9 @@
 
         system.stateVersion = stateVersion;
         networking = {
+          hostName = containerName;
           firewall = {
-            enable = true;
+            enable = false;
             allowedTCPPorts = [ port ];
           };
           # Use systemd-resolved inside the container
