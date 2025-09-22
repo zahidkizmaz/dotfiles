@@ -5,6 +5,7 @@
   ...
 }:
 {
+  virtualisation.containerd.enable = true;
   networking.nat = {
     enable = true;
     # Use "ve-*" when using nftables instead of iptables

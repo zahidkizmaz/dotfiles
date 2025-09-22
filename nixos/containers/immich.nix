@@ -17,6 +17,12 @@ in
     enableTun = true;
     hostAddress = "${hostAddress}";
     localAddress = "${localAddress}";
+    allowedDevices = [
+      {
+        modifier = "rwm";
+        node = "/dev/net/tun";
+      }
+    ];
     bindMounts = {
       "/etc/ssh/lab" = {
         hostPath = "/home/${user}/.ssh/lab";

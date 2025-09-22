@@ -16,6 +16,12 @@ in
     enableTun = true;
     hostAddress = "${hostAddress}";
     localAddress = "${localAddress}";
+    allowedDevices = [
+      {
+        modifier = "rwm";
+        node = "/dev/net/tun";
+      }
+    ];
     forwardPorts = [
       {
         hostPort = port;
