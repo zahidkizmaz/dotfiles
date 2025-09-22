@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   config,
+  port,
   ...
 }:
 {
@@ -36,5 +37,11 @@
         '';
       };
     };
+  };
+  system.activationScripts.tailscale-serve = {
+    text = ''
+      tailscale up
+      tailscale serve --http=80 localhost:${toString port}
+    '';
   };
 }

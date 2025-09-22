@@ -45,6 +45,7 @@ in
               inputs
               lib
               pkgs
+              port
               ;
           })
         ];
