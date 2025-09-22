@@ -23,7 +23,9 @@
   services = {
     tailscale = {
       enable = true;
+      openFirewall = true;
       authKeyFile = config.age.secrets.tailscale-lab.path;
+      authKeyParameters.ephemeral = true;
     };
     networkd-dispatcher = {
       enable = true;
