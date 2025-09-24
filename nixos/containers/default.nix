@@ -1,4 +1,5 @@
 {
+  config,
   stateVersion,
   user,
   inputs,
@@ -6,11 +7,19 @@
 }:
 {
   virtualisation.containerd.enable = true;
-  networking.nat = {
-    enable = true;
-    # Use "ve-*" when using nftables instead of iptables
-    internalInterfaces = [ "ve-+" ];
-    externalInterface = "ens3";
+  # networking.nat = {
+  #   enable = true;
+  #   # Use "ve-*" when using nftables instead of iptables
+  #   internalInterfaces = [ "ve-+" ];
+  #   externalInterface = "ens3";
+  # };
+
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      authKeyFile = config.age.secrets.tailscale-lab.path;
+    };
   };
 
   imports = [
