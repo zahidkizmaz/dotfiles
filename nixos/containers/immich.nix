@@ -14,6 +14,8 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
+    hostAddress = "${hostAddress}";
+    localAddress = "${localAddress}";
     bindMounts = {
       "/etc/ssh/lab" = {
         hostPath = "/home/${user}/.ssh/lab";
