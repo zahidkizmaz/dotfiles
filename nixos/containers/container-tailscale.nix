@@ -39,10 +39,14 @@
       };
     };
   };
-  system.activationScripts.tailscale-serve = {
-    text = ''
-      tailscale up
-      tailscale serve --http=80 localhost:${toString port}
-    '';
+  systemd.services.tailscale-serve = {
+    description = "Tailscale Serve HTTP Proxy";
+    wants = [ "tailscale.service" ];
+    after = [ "tailscale.service" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --http=80 localhost:${toString port}";
+      Restart = "always";
+    };
+    wantedBy = [ "multi-user.target" ];
   };
 }

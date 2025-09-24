@@ -55,6 +55,7 @@ in
             enable = true;
             trustedInterfaces = [ "ve-*" ];
             allowedTCPPorts = [ port ];
+            allowedUDPPorts = [ 41641 ]; # Tailscale default port
           };
           # Use systemd-resolved inside the container
           # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
