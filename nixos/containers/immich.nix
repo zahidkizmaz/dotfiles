@@ -14,8 +14,8 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "${hostAddress}";
-    localAddress = "${localAddress}";
+    hostBridge = "br0"; # Specify the bridge name
+    localAddress = "${localAddress}/24";
     bindMounts = {
       "/etc/ssh/lab" = {
         hostPath = "/home/${user}/.ssh/lab";
