@@ -10,7 +10,7 @@
   networking.nat = {
     enable = true;
     # Use "ve-*" when using nftables instead of iptables
-    internalInterfaces = [ "ve-+" ];
+    internalInterfaces = [ "ve-*" ];
     externalInterface = "enp2s0";
     enableIPv6 = true;
   };

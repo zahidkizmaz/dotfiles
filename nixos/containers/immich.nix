@@ -52,7 +52,6 @@ in
         networking = {
           hostName = containerName;
           firewall = {
-            enable = true;
             allowedTCPPorts = [ port ];
           };
           # Use systemd-resolved inside the container
