@@ -7,12 +7,12 @@
 }:
 {
   virtualisation.containerd.enable = true;
-  # networking.nat = {
-  #   enable = true;
-  #   # Use "ve-*" when using nftables instead of iptables
-  #   internalInterfaces = [ "ve-+" ];
-  #   externalInterface = "ens3";
-  # };
+  networking.nat = {
+    enable = true;
+    # Use "ve-*" when using nftables instead of iptables
+    internalInterfaces = [ "ve-+" ];
+    externalInterface = "enp2s0";
+  };
 
   services = {
     tailscale = {
