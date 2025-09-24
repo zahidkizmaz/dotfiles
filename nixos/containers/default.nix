@@ -12,6 +12,7 @@
     # Use "ve-*" when using nftables instead of iptables
     internalInterfaces = [ "ve-+" ];
     externalInterface = "enp2s0";
+    enableIPv6 = true;
   };
 
   services = {
