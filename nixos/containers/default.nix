@@ -20,11 +20,11 @@
       port = 8080;
       inherit stateVersion inputs user;
     })
-    (import ./paperless-ngx.nix {
-      hostAddress = "192.168.100.3";
-      localAddress = "192.168.100.4";
-      port = 8080;
-      inherit stateVersion inputs user;
-    })
+    # (import ./paperless-ngx.nix {
+    #   hostAddress = "192.168.100.3";
+    #   localAddress = "192.168.100.4";
+    #   port = 8080;
+    #   inherit stateVersion inputs user;
+    # })
   ];
 }

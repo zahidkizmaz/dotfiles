@@ -25,6 +25,7 @@
     tailscale = {
       enable = true;
       openFirewall = true;
+      interfaceName = "userspace-networking";
       authKeyFile = config.age.secrets.tailscale-lab.path;
       authKeyParameters.ephemeral = true;
     };

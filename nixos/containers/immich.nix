@@ -14,28 +14,12 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
-    enableTun = true;
-    hostAddress = "${hostAddress}";
-    localAddress = "${localAddress}";
-    allowedDevices = [
-      {
-        modifier = "rwm";
-        node = "/dev/net/tun";
-      }
-    ];
     bindMounts = {
       "/etc/ssh/lab" = {
         hostPath = "/home/${user}/.ssh/lab";
         isReadOnly = true;
       };
     };
-    forwardPorts = [
-      {
-        hostPort = port;
-        containerPort = port;
-        protocol = "tcp";
-      }
-    ];
     config =
       {
         config,
