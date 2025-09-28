@@ -25,6 +25,20 @@ in
         isReadOnly = true;
       };
     };
+    allowedDevices = [
+      {
+        node = "/dev/net/tun";
+        modifier = "rwm";
+      }
+    ];
+    # https://man7.org/linux/man-pages/man7/capabilities.7.html
+    additionalCapabilities = [
+      # Needed for tailscale
+      "CAP_NET_ADMIN"
+      "CAP_NET_RAW"
+      # Not specifically needed for anything, but useful in a container setting
+      "CAP_MKNOD"
+    ];
     config =
       {
         config,

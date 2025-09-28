@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   pkgs,
   config,
@@ -36,5 +37,8 @@
     };
 
     wantedBy = [ "multi-user.target" ];
+  };
+  systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
+    Type = lib.mkForce "exec";
   };
 }
