@@ -12,8 +12,8 @@ in
   virtualisation.containerd.enable = true;
   networking.nat = {
     enable = true;
-    internalInterfaces = [ "ve-*" ];
-    externalInterface = bridgeInterface;
+    internalInterfaces = [ "ve-+" ];
+    externalInterface = "enp2s0";
   };
 
   services = {
@@ -26,8 +26,8 @@ in
 
   imports = [
     (import ./immich.nix {
-      hostAddress = "192.168.100.1";
-      localAddress = "192.168.100.5";
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.11";
       port = 8080;
       inherit
         stateVersion

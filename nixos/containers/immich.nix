@@ -16,8 +16,8 @@ in
     autoStart = true;
     privateNetwork = true;
     ephemeral = false;
-    hostBridge = bridgeInterface;
-    localAddress = "${localAddress}/24";
+    hostAddress = hostAddress;
+    localAddress = localAddress;
     bindMounts = {
       "/etc/ssh/lab" = {
         hostPath = "/home/${user}/.ssh/lab";
@@ -51,15 +51,6 @@ in
         };
 
         system.stateVersion = stateVersion;
-        networking = {
-          hostName = containerName;
-          interfaces."eth0".useDHCP = true;
-
-          # Use systemd-resolved inside the container
-          # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-          useHostResolvConf = lib.mkForce false;
-        };
-        services.resolved.enable = true;
       };
   };
 }
