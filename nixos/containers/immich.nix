@@ -15,6 +15,7 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
+    enableTun = true;
     ephemeral = false;
     hostAddress = hostAddress;
     localAddress = localAddress;
@@ -32,22 +33,21 @@ in
         ...
       }:
       {
-        # imports = [
-        #   (import ./container-tailscale.nix {
-        #     inherit
-        #       config
-        #       inputs
-        #       lib
-        #       pkgs
-        #       port
-        #       ;
-        #   })
-        # ];
+        imports = [
+          (import ./container-tailscale.nix {
+            inherit
+              config
+              inputs
+              lib
+              pkgs
+              port
+              ;
+          })
+        ];
 
         services.immich = {
           enable = true;
           port = port;
-          host = "${localAddress}";
         };
 
         system.stateVersion = stateVersion;
