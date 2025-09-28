@@ -46,7 +46,7 @@ in
 
         services.immich = {
           enable = true;
-          port = 8080;
+          port = port;
           host = "${localAddress}";
         };
 

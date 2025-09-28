@@ -1,5 +1,4 @@
 {
-  lib,
   inputs,
   pkgs,
   config,
@@ -17,26 +16,12 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    ethtool
-    networkd-dispatcher
-  ];
   services = {
     tailscale = {
       enable = true;
       openFirewall = true;
-      interfaceName = "userspace-networking";
       authKeyFile = config.age.secrets.tailscale-lab.path;
       authKeyParameters.ephemeral = true;
-    };
-    networkd-dispatcher = {
-      enable = true;
-      rules."50-tailscale" = {
-        onState = [ "routable" ];
-        script = ''
-          ${lib.getExe pkgs.ethtool} -K eth0 rx-udp-gro-forwarding on rx-gro-list off
-        '';
-      };
     };
   };
   systemd.services.tailscale-serve = {
