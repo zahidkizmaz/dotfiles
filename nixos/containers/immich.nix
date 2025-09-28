@@ -5,6 +5,7 @@
   port,
   inputs,
   user,
+  bridgeInterface,
   ...
 }:
 let
@@ -14,7 +15,8 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br0"; # Specify the bridge name
+    ephemeral = false;
+    hostBridge = bridgeInterface;
     localAddress = "${localAddress}/24";
     bindMounts = {
       "/etc/ssh/lab" = {
@@ -30,17 +32,17 @@ in
         ...
       }:
       {
-        imports = [
-          (import ./container-tailscale.nix {
-            inherit
-              config
-              inputs
-              lib
-              pkgs
-              port
-              ;
-          })
-        ];
+        # imports = [
+        #   (import ./container-tailscale.nix {
+        #     inherit
+        #       config
+        #       inputs
+        #       lib
+        #       pkgs
+        #       port
+        #       ;
+        #   })
+        # ];
 
         services.immich = {
           enable = true;
@@ -51,12 +53,8 @@ in
         system.stateVersion = stateVersion;
         networking = {
           hostName = containerName;
-          firewall = {
-            enable = true;
-            trustedInterfaces = [ "ve-*" ];
-            allowedTCPPorts = [ port ];
-            allowedUDPPorts = [ 41641 ]; # Tailscale default port
-          };
+          interfaces."eth0".useDHCP = true;
+
           # Use systemd-resolved inside the container
           # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
           useHostResolvConf = lib.mkForce false;
