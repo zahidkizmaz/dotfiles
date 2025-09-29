@@ -32,7 +32,7 @@
 
     serviceConfig = {
       ExecStartPre = "${pkgs.bash}/bin/bash -c 'until ${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState | grep -q Running; do sleep 5; done'";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --http=80 localhost:${toString port}";
+      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --https=443 localhost:${toString port}";
       Restart = "always";
     };
 

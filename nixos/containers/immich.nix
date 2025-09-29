@@ -47,6 +47,7 @@ in
         services.immich = {
           enable = true;
           port = port;
+          host = "0.0.0.0";
         };
 
         system.stateVersion = stateVersion;
