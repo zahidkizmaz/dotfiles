@@ -6,6 +6,15 @@
   port,
   ...
 }:
+let
+  checkTailscaleScript = pkgs.writeShellScript "check-tailscale" ''
+    state=$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState)
+    if [ "$state" != "Running" ]; then
+      echo "Tailscale backend not running, aborting start."
+      exit 1
+    fi
+  '';
+in
 {
   imports = [ inputs.agenix.nixosModules.default ];
   age = {
@@ -29,23 +38,12 @@
     description = "Tailscale Serve HTTP Proxy";
     wants = [ "tailscaled.service" ];
     after = [ "tailscaled.service" ];
-    path = with pkgs; [
-      jq
-      tailscale
-    ];
 
     serviceConfig = {
       RestartSec = 5;
       Restart = "on-failure";
-      ExecStartPre = ''
-        state=$(tailscale status --json | jq -r .BackendState)
-        if [ "$state" != "Running" ]; then
-          echo "Tailscale backend not running, aborting start."
-          sleep 3
-          exit 1
-        fi
-      '';
-      ExecStart = "tailscale serve --https=443 localhost:${toString port}";
+      ExecStartPre = "${checkTailscaleScript}";
+      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --https=443 localhost:${toString port}";
     };
     wantedBy = [ "multi-user.target" ];
   };
