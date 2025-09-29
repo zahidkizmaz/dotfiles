@@ -29,24 +29,24 @@
     description = "Tailscale Serve HTTP Proxy";
     wants = [ "tailscaled.service" ];
     after = [ "tailscaled.service" ];
+    path = with pkgs; [
+      jq
+      tailscale
+    ];
 
     serviceConfig = {
-      ExecStartPre = "${pkgs.bash}/bin/bash -c '
-        for i in {1..12}; do
-          state=$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState)
-          echo \"Tailscale backend state: $state\"
-          if [ \"$state\" = \"Running\" ]; then
-            exit 0
-          fi
-          sleep 5
-        done
-        echo \"Timed out waiting for Tailscale to be ready\" >&2
-        exit 1
-      '";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --https=443 localhost:${toString port}";
-      Restart = "always";
+      RestartSec = 5;
+      Restart = "on-failure";
+      ExecStartPre = ''
+        state=$(tailscale status --json | jq -r .BackendState)
+        if [ "$state" != "Running" ]; then
+          echo "Tailscale backend not running, aborting start."
+          sleep 3
+          exit 1
+        fi
+      '';
+      ExecStart = "tailscale serve --https=443 localhost:${toString port}";
     };
-
     wantedBy = [ "multi-user.target" ];
   };
   systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
