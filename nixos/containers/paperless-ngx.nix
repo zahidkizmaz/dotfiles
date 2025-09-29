@@ -46,7 +46,6 @@ in
         services.paperless = {
           enable = true;
           port = 8080;
-          address = "0.0.0.0";
         };
 
         system.stateVersion = stateVersion;
