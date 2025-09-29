@@ -31,7 +31,18 @@
     after = [ "tailscaled.service" ];
 
     serviceConfig = {
-      ExecStartPre = "${pkgs.bash}/bin/bash -c 'until ${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState | grep -q Running; do sleep 5; done'";
+      ExecStartPre = "${pkgs.bash}/bin/bash -c '
+        for i in {1..12}; do
+          state=$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState)
+          echo \"Tailscale backend state: $state\"
+          if [ \"$state\" = \"Running\" ]; then
+            exit 0
+          fi
+          sleep 5
+        done
+        echo \"Timed out waiting for Tailscale to be ready\" >&2
+        exit 1
+      '";
       ExecStart = "${pkgs.tailscale}/bin/tailscale serve --https=443 localhost:${toString port}";
       Restart = "always";
     };
