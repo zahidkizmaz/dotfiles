@@ -5,9 +5,6 @@
   inputs,
   ...
 }:
-let
-  bridgeInterface = "br0";
-in
 {
   virtualisation.containerd.enable = true;
   networking.nat = {
@@ -33,7 +30,6 @@ in
         stateVersion
         inputs
         user
-        bridgeInterface
         ;
     })
     # (import ./paperless-ngx.nix {
