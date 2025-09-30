@@ -14,6 +14,7 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
+    privateUsers = "pick";
     enableTun = true;
     ephemeral = false;
     hostAddress = hostAddress;
@@ -23,7 +24,8 @@ in
         hostPath = "/home/${user}/.ssh/lab";
         isReadOnly = true;
       };
-      "/var/lib/immich" = {
+      immichData = {
+        mountPoint = "/var/lib/immich:idmap";
         hostPath = "/home/${user}/backup/immich";
         isReadOnly = false;
       };
