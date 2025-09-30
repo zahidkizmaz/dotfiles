@@ -23,6 +23,10 @@ in
         hostPath = "/home/${user}/.ssh/lab";
         isReadOnly = true;
       };
+      "/var/lib/immich" = {
+        hostPath = "/home/${user}/backup/immich";
+        isReadOnly = false;
+      };
     };
     config =
       {
