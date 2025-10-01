@@ -1,4 +1,9 @@
-{ pkgs, user, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 let
   backupScript = pkgs.writeShellApplication {
     name = "backup";
@@ -24,4 +29,22 @@ in
   environment.systemPackages = [
     backupScript
   ];
+
+  services = {
+    restic.backups = {
+      localbackup = {
+        initialize = true;
+        passwordFile = config.age.secrets.restic-password.path;
+        paths = [
+          "/home/${user}/backups"
+        ];
+        repository = "/home/${user}/restic/";
+        timerConfig = {
+          OnCalendar = "01:05";
+          Persistent = true;
+        };
+        backupPrepareCommand = "backup";
+      };
+    };
+  };
 }

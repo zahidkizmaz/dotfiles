@@ -8,6 +8,7 @@
     identityPaths = [ "/home/${user}/.ssh/lab" ];
     secrets = {
       tailscale-lab.file = ../secrets/tailscale-lab.age;
+      restic-password.file = ../secrets/restic-password.age;
     };
   };
 }

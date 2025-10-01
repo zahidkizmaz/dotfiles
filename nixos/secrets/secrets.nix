@@ -18,4 +18,7 @@ in
   "tailscale-lab.age".publicKeys = [
     lab
   ];
+  "restic-password.age".publicKeys = [
+    lab
+  ];
 }
