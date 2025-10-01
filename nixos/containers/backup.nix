@@ -12,11 +12,11 @@ let
           mkdir -p "$HOST_DEST"
         fi
 
-        echo "Copying files using machinectl form $CONTAINER_NAME"
+        echo "Copying files using machinectl from $CONTAINER_NAME: $CONTAINER_PATH -> $HOST_DEST"
         machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
       }
 
-      copyFromContainer "immich" "/va/lib/immich" "/home/${user}/backup/immich/"
+      copyFromContainer "immich" "/var/lib/immich" "/home/${user}/backup/immich/"
     '';
   };
 in
