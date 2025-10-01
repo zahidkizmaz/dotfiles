@@ -13,6 +13,7 @@ in
 {
   imports = [
     (import ./backup.nix {
+      dataFolder = "/var/lib/immich";
       backupFolder = containerName;
       inherit user;
     })
