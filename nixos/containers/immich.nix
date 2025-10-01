@@ -24,11 +24,6 @@ in
         hostPath = "/home/${user}/.ssh/lab";
         isReadOnly = true;
       };
-      immichData = {
-        mountPoint = "/var/lib/immich:idmap";
-        hostPath = "/home/${user}/backup/immich";
-        isReadOnly = false;
-      };
     };
     config =
       {
