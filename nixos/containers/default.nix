@@ -6,7 +6,6 @@
   ...
 }:
 {
-  virtualisation.containerd.enable = true;
   networking.nat = {
     enable = true;
     internalInterfaces = [ "ve-+" ];

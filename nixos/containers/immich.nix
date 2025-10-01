@@ -11,13 +11,6 @@ let
   containerName = "immich";
 in
 {
-  imports = [
-    (import ./backup.nix {
-      dataFolder = "/var/lib/immich";
-      backupFolder = containerName;
-      inherit user;
-    })
-  ];
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
