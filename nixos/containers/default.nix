@@ -21,6 +21,7 @@
   };
 
   imports = [
+    ./backup.nix
     (import ./immich.nix {
       hostAddress = "192.168.100.10";
       localAddress = "192.168.100.11";
