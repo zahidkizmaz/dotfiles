@@ -5,10 +5,8 @@
   ...
 }:
 let
-  backupScript = pkgs.writeShellApplication {
-    name = "backup";
-    runtimeInputs = with pkgs; [ bash ];
-    text = ''
+  backupText = # bash
+    ''
       copyFromContainer() {
         CONTAINER_NAME=$1
         CONTAINER_PATH=$2
@@ -23,6 +21,11 @@ let
 
       copyFromContainer "immich" "/var/lib/immich" "/home/${user}/backup/immich/"
     '';
+
+  backupScript = pkgs.writeShellApplication {
+    name = "backup";
+    runtimeInputs = with pkgs; [ bash ];
+    text = backupText;
   };
 in
 {
@@ -40,10 +43,10 @@ in
         ];
         repository = "/home/${user}/restic/";
         timerConfig = {
-          OnCalendar = "01:05";
+          OnCalendar = "00:35";
           Persistent = true;
         };
-        backupPrepareCommand = "backup";
+        backupPrepareCommand = backupText;
       };
     };
   };
