@@ -10,6 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.agenix.nixosModules.default
     ./configuration.nix
     ./disko.nix
+    ../../modules/agenix.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/default-user.nix
@@ -22,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
     ../../modules/vm-variant.nix
+    ../../containers
   ];
   specialArgs = {
     inherit inputs system stateVersion;

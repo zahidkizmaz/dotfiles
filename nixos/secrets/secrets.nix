@@ -15,4 +15,13 @@ in
     lab
     pi4b
   ];
+  "tailscale-lab.age".publicKeys = [
+    lab
+  ];
+  "restic-password.age".publicKeys = [
+    lab
+  ];
+  "searx-secret.age".publicKeys = [
+    lab
+  ];
 }
