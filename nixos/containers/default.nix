@@ -28,12 +28,13 @@
       port = 8080;
       inherit stateVersion inputs user;
     })
-    (import ./paperless-ngx.nix {
-      hostAddress = "192.168.100.10";
-      localAddress = "192.168.100.12";
-      port = 8080;
-      inherit stateVersion inputs user;
-    })
+    # TODO: fix - csrf token error
+    # (import ./paperless-ngx.nix {
+    #   hostAddress = "192.168.100.10";
+    #   localAddress = "192.168.100.12";
+    #   port = 8080;
+    #   inherit stateVersion inputs user;
+    # })
     (import ./searx.nix {
       hostAddress = "192.168.100.10";
       localAddress = "192.168.100.13";
@@ -49,6 +50,12 @@
     (import ./stirling-pdf.nix {
       hostAddress = "192.168.100.10";
       localAddress = "192.168.100.15";
+      port = 3000;
+      inherit stateVersion inputs user;
+    })
+    (import ./navidrome.nix {
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.16";
       port = 3000;
       inherit stateVersion inputs user;
     })
