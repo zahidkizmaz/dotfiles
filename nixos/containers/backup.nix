@@ -44,7 +44,7 @@ in
         ];
         repository = "/home/${user}/restic/";
         timerConfig = {
-          OnCalendar = "00:35";
+          OnCalendar = "04:00";
           Persistent = true;
         };
         backupPrepareCommand = backupText;

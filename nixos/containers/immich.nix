@@ -14,7 +14,7 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
-    privateUsers = "pick";
+    privateUsers = "identity";
     enableTun = true;
     ephemeral = false;
     hostAddress = hostAddress;
