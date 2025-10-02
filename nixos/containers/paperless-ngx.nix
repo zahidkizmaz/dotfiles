@@ -49,6 +49,10 @@ in
           enable = true;
           port = port;
           address = "0.0.0.0";
+          settings = {
+            PAPERLESS_ALLOWED_HOSTS = "${containerName}.quoll-ratio.ts.net";
+            PAPERLESS_CORS_ALLOWED_HOSTS = "${containerName}.quoll-ratio.ts.net";
+          };
         };
 
         system.stateVersion = stateVersion;
