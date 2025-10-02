@@ -19,7 +19,6 @@ in
     viu # fzf-lua
 
     # LSPs
-    ansible-language-server
     basedpyright
     docker-compose-language-service
     dockerfile-language-server

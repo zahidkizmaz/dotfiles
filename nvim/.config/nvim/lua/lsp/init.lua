@@ -1,7 +1,6 @@
 local M = {}
 
 M.SERVER_CONFIGURATIONS = {
-  ansiblels = {},
   apex_ls = {
     apex_enable_semantic_errors = true, -- Whether to allow Apex Language Server to surface semantic errors
     apex_enable_completion_statistics = false, -- Whether to allow Apex Language Server to collect telemetry on code completion usage
