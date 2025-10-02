@@ -40,5 +40,11 @@
       port = 8080;
       inherit stateVersion inputs user;
     })
+    (import ./adguard.nix {
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.14";
+      port = 8080;
+      inherit stateVersion inputs user;
+    })
   ];
 }
