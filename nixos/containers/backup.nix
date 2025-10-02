@@ -41,6 +41,7 @@ in
         passwordFile = config.age.secrets.restic-password.path;
         paths = [
           "/home/${user}/backups"
+          "/home/${user}/music"
         ];
         repository = "/home/${user}/restic/";
         timerConfig = {
