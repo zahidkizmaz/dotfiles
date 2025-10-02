@@ -46,5 +46,11 @@
       port = 3000;
       inherit stateVersion inputs user;
     })
+    (import ./stirling-pdf.nix {
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.15";
+      port = 3000;
+      inherit stateVersion inputs user;
+    })
   ];
 }
