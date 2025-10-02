@@ -49,8 +49,11 @@ in
           enable = true;
           redisCreateLocally = true;
           settings = {
-            server.port = port;
-            server.bind_address = "0.0.0.0";
+            use_default_settings = true;
+            server = {
+              port = port;
+              bind_address = "0.0.0.0";
+            };
           };
         };
 
