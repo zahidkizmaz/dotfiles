@@ -14,6 +14,7 @@ in
   containers.${containerName} = {
     autoStart = true;
     privateNetwork = true;
+    privateUsers = "pick";
     enableTun = true;
     ephemeral = false;
     hostAddress = hostAddress;
@@ -43,9 +44,10 @@ in
               ;
           })
         ];
+
         services.paperless = {
           enable = true;
-          port = 8080;
+          port = port;
         };
 
         system.stateVersion = stateVersion;
