@@ -34,5 +34,11 @@
       port = 8080;
       inherit stateVersion inputs user;
     })
+    (import ./searx.nix {
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.13";
+      port = 8080;
+      inherit stateVersion inputs user;
+    })
   ];
 }
