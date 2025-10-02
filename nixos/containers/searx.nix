@@ -66,6 +66,11 @@ in
             };
             environmentFile = config.age.secrets.searx-secret.path;
           };
+          limiterSettings = {
+            botdetection.ip_limit = {
+              link_token = true;
+            };
+          };
         };
 
         system.stateVersion = stateVersion;
