@@ -45,6 +45,15 @@ in
           })
         ];
 
+        age = {
+          identityPaths = [ "/etc/ssh/lab" ];
+          secrets = {
+            searx-secret = {
+              file = ../secrets/searx-secret.age;
+            };
+          };
+        };
+
         services.searx = {
           enable = true;
           redisCreateLocally = true;
@@ -53,7 +62,9 @@ in
             server = {
               port = port;
               bind_address = "0.0.0.0";
+              secret_key = "@SEARX_SECRET_KEY@";
             };
+            environmentFile = config.age.secrets.searx-secret.path;
           };
         };
 
