@@ -38,6 +38,7 @@ in
       }:
       {
         imports = [
+          ./container-common.nix
           (import ./container-tailscale.nix {
             inherit
               config
