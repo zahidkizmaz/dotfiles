@@ -310,9 +310,8 @@ in
               schema_version = 29;
             };
           };
-
-          system.stateVersion = stateVersion;
         };
+        system.stateVersion = stateVersion;
       };
   };
 }
