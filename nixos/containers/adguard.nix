@@ -2,13 +2,13 @@
   stateVersion,
   localAddress,
   hostAddress,
-  port,
   inputs,
   user,
   ...
 }:
 let
   containerName = "ad";
+  port = 3000;
 in
 {
   containers.${containerName} = {
