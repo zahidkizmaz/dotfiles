@@ -65,6 +65,13 @@ in
               address = "0.0.0.0:80";
               session_ttl = "720h";
 
+              users = [
+                {
+                  name = "zahid";
+                  password = "$2a$10$p/rG.jVCSuFpe9a8KieV2e6Fi3fqEcF.JelI5FhjN88EiNPFNLRrm";
+                }
+              ];
+
               auth_attempts = 5;
               block_auth_min = 15;
               http_proxy = "";
