@@ -44,6 +44,7 @@ in
               port
               ;
           })
+          (import ./monitoring/alloy-log-report.nix { serviceName = "immich-server"; })
         ];
 
         services.immich = {
