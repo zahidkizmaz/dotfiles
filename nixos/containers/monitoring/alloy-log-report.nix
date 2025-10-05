@@ -1,5 +1,4 @@
 {
-  serviceName,
   lokiUrl ? "https://monitoring.quoll-ratio.ts.net:3100",
   prometheusUrl ? "https://monitoring.quoll-ratio.ts.net:9090",
   ...
