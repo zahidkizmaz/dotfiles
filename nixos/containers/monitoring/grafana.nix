@@ -133,7 +133,7 @@ in
                   name = "Prometheus";
                   type = "prometheus";
                   basicAuth = false;
-                  isDefault = true;
+                  isDefault = false;
                   orgId = 1;
                   version = 1;
                   url = "http://127.0.0.1:${toString prometheusPort}";

@@ -140,8 +140,6 @@ let
       relabel_rules = discovery.relabel.dockerlogs.rules
       forward_to = [loki.write.default.receiver]
     }
-
-    // !SECTION
   '';
 in
 {
