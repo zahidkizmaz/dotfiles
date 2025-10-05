@@ -25,6 +25,7 @@ in
 
   imports = [
     ./backup.nix
+    (import ./monitoring/alloy-log-report.nix { })
     (import ./immich.nix {
       localAddress = "192.168.100.11";
       inherit

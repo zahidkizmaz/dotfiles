@@ -44,7 +44,6 @@ in
               port
               ;
           })
-          (import ./monitoring/alloy-log-report.nix { })
         ];
 
         services.immich = {
