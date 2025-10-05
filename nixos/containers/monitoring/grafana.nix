@@ -10,6 +10,7 @@ let
   containerName = "monitoring";
   port = 3000;
   lokiPort = 3100;
+  prometheusPort = 9090;
   domain = "${containerName}.quoll-ratio.ts.net";
 in
 {
@@ -51,9 +52,18 @@ in
             tailscalePort = lokiPort;
             localPort = lokiPort;
           })
+          (import ../tailscale-serve.nix {
+            inherit pkgs;
+            tailscalePort = prometheusPort;
+            localPort = prometheusPort;
+          })
         ];
 
         services = {
+          prometheus = {
+            enable = true;
+            port = prometheusPort;
+          };
           loki = {
             enable = true;
             configuration = {
@@ -118,6 +128,15 @@ in
                   orgId = 1;
                   version = 1;
                   url = "http://127.0.0.1:${toString lokiPort}";
+                }
+                {
+                  name = "Prometheus";
+                  type = "prometheus";
+                  basicAuth = false;
+                  isDefault = true;
+                  orgId = 1;
+                  version = 1;
+                  url = "http://127.0.0.1:${toString prometheusPort}";
                 }
               ];
             };
