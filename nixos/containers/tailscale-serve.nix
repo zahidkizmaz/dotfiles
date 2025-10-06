@@ -14,6 +14,9 @@ let
   '';
 in
 {
+  networking.firewall = {
+    allowedTCPPorts = [ localPort ];
+  };
   systemd.services."tailscale-serve-port-${toString localPort}" = {
     description = "Tailscale Serve HTTP Proxy";
     wants = [ "tailscaled.service" ];
