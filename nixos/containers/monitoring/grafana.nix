@@ -72,6 +72,7 @@ in
                 http_listen_port = lokiPort;
               };
               common = {
+                replication_factor = 1;
                 ring = {
                   instance_addr = "127.0.0.1";
                   kvstore = {
