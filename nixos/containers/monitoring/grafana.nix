@@ -63,6 +63,7 @@ in
           prometheus = {
             enable = true;
             port = prometheusPort;
+            extraFlags = [ "--web.enable-remote-write-receiver" ];
           };
           loki = {
             enable = true;
@@ -81,6 +82,9 @@ in
                   replication_factor = 1;
                 };
                 path_prefix = "/tmp/loki";
+              };
+              analytics = {
+                reporting_enabled = false;
               };
               schema_config = {
                 configs = [
