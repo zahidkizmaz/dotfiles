@@ -37,6 +37,10 @@
   networking = {
     search = [ "quoll-ratio.ts.net" ];
     nameservers = [ "100.100.100.100" ];
+    firewall = {
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
   };
 
   systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
