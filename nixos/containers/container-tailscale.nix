@@ -6,17 +6,15 @@
   port,
   ...
 }:
-let
-  checkTailscaleScript = pkgs.writeShellScript "check-tailscale" ''
-    state=$(${pkgs.tailscale}/bin/tailscale status --json | ${pkgs.jq}/bin/jq -r .BackendState)
-    if [ "$state" != "Running" ]; then
-      echo "Tailscale backend not running, aborting start."
-      exit 1
-    fi
-  '';
-in
 {
-  imports = [ inputs.agenix.nixosModules.default ];
+  imports = [
+    inputs.agenix.nixosModules.default
+    (import ./tailscale-serve.nix {
+      inherit pkgs;
+      tailscalePort = 443;
+      localPort = port;
+    })
+  ];
   age = {
     identityPaths = [ "/etc/ssh/lab" ];
     secrets = {
@@ -31,22 +29,20 @@ in
       enable = true;
       openFirewall = true;
       interfaceName = "userspace-networking";
+      useRoutingFeatures = "client";
       authKeyFile = config.age.secrets.tailscale-lab.path;
     };
   };
-  systemd.services.tailscale-serve = {
-    description = "Tailscale Serve HTTP Proxy";
-    wants = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
 
-    serviceConfig = {
-      RestartSec = 5;
-      Restart = "on-failure";
-      ExecStartPre = "${checkTailscaleScript}";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale serve --https=443 localhost:${toString port}";
+  networking = {
+    search = [ "quoll-ratio.ts.net" ];
+    nameservers = [ "100.100.100.100" ];
+    firewall = {
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
     };
-    wantedBy = [ "multi-user.target" ];
   };
+
   systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
     Type = lib.mkForce "exec";
   };

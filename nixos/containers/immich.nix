@@ -2,13 +2,13 @@
   stateVersion,
   localAddress,
   hostAddress,
-  port,
   inputs,
   user,
   ...
 }:
 let
   containerName = "immich";
+  port = 8080;
 in
 {
   containers.${containerName} = {

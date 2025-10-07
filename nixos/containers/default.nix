@@ -5,6 +5,9 @@
   inputs,
   ...
 }:
+let
+  hostAddress = "192.168.100.10";
+in
 {
   networking.nat = {
     enable = true;
@@ -22,41 +25,55 @@
 
   imports = [
     ./backup.nix
+    (import ./monitoring/alloy-log-report.nix { })
     (import ./immich.nix {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.11";
-      port = 8080;
-      inherit stateVersion inputs user;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
     })
-    # TODO: fix - csrf token error
-    # (import ./paperless-ngx.nix {
-    #   hostAddress = "192.168.100.10";
-    #   localAddress = "192.168.100.12";
-    #   port = 8080;
-    #   inherit stateVersion inputs user;
-    # })
     (import ./searx.nix {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.13";
-      port = 8080;
-      inherit stateVersion inputs user;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
     })
     (import ./adguard.nix {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.14";
-      port = 3000;
-      inherit stateVersion inputs user;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
     })
     (import ./stirling-pdf.nix {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.15";
-      port = 3000;
-      inherit stateVersion inputs user;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
     })
     (import ./navidrome.nix {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.16";
-      port = 3000;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
+    (import ./monitoring {
+      hostAddress = "192.168.100.10";
+      localAddress = "192.168.100.17";
       inherit stateVersion inputs user;
     })
   ];

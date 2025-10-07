@@ -20,7 +20,6 @@ let
       }
 
       copyFromContainer "immich" "/var/lib/immich" "/home/${user}/backup/immich/"
-      copyFromContainer "paperless" "/var/lib/paperless" "/home/${user}/backup/paperless/"
     '';
 
   backupScript = pkgs.writeShellApplication {
@@ -49,6 +48,9 @@ in
           Persistent = true;
         };
         backupPrepareCommand = backupText;
+        pruneOpts = [
+          "--keep-daily 3"
+        ];
       };
     };
   };
