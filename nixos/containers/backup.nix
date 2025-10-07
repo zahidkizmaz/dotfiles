@@ -49,6 +49,9 @@ in
           Persistent = true;
         };
         backupPrepareCommand = backupText;
+        pruneOpts = [
+          "--keep-daily 3"
+        ];
       };
     };
   };
