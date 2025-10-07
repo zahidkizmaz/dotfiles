@@ -34,6 +34,11 @@
     };
   };
 
+  networking = {
+    search = [ "quoll-ratio.ts.net" ];
+    nameservers = [ "100.100.100.100" ];
+  };
+
   systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
     Type = lib.mkForce "exec";
   };
