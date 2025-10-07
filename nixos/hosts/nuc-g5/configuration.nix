@@ -54,12 +54,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    brave
     gitMinimal
     kitty
-    librewolf
-    mpv
     neovim
+    sesh
   ];
 
   system.stateVersion = stateVersion;
