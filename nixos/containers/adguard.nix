@@ -46,6 +46,13 @@ in
           })
         ];
 
+        networking = {
+          firewall = {
+            allowedTCPPorts = [ 443 ];
+            allowedUDPPorts = [ 53 ];
+          };
+        };
+
         services = {
           resolved = {
             extraConfig = ''
