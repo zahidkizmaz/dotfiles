@@ -84,7 +84,7 @@ in
         ];
         extraOptions = [
           "-o"
-          "rclone.program=${pkgs.myCustomRclone}/bin/rclone"
+          "rclone.program=${rcloneWithFilen}/bin/rclone"
         ];
       };
     };
