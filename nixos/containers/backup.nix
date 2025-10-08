@@ -41,6 +41,7 @@ let
 in
 {
   environment.systemPackages = [
+    pkgs.restic
     backupScript
     rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
