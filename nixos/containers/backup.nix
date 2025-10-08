@@ -82,6 +82,10 @@ in
         pruneOpts = [
           "--keep-weekly 3"
         ];
+        extraOptions = [
+          "-o"
+          "rclone.program=${pkgs.myCustomRclone}/bin/rclone"
+        ];
       };
     };
   };
