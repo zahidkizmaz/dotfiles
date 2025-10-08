@@ -9,6 +9,7 @@
     secrets = {
       tailscale-lab.file = ../secrets/tailscale-lab.age;
       restic-password.file = ../secrets/restic-password.age;
+      rclone-config-filen.file = ../secrets/rclone-config-filen.age;
     };
   };
 }

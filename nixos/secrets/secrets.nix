@@ -24,4 +24,7 @@ in
   "searx-secret.age".publicKeys = [
     lab
   ];
+  "rclone-config-filen.age".publicKeys = [
+    lab
+  ];
 }

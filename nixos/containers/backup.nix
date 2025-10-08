@@ -48,7 +48,7 @@ in
 
   services = {
     restic.backups = {
-      localbackup = {
+      localBackup = {
         initialize = true;
         passwordFile = config.age.secrets.restic-password.path;
         paths = [
@@ -63,6 +63,24 @@ in
         backupPrepareCommand = backupText;
         pruneOpts = [
           "--keep-daily 3"
+        ];
+      };
+      remoteBackup = {
+        initialize = true;
+        repository = "rclone:filen-backend:backups/";
+        passwordFile = config.age.secrets.restic-password.path;
+        rcloneConfigFile = config.age.secrets.rclone-config-filen.path;
+        paths = [
+          "/home/${user}/backups"
+          "/home/${user}/music"
+        ];
+        timerConfig = {
+          OnCalendar = "weekly Fri 04:30";
+          Persistent = true;
+        };
+        backupPrepareCommand = backupText;
+        pruneOpts = [
+          "--keep-weekly 3"
         ];
       };
     };
