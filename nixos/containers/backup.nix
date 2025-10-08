@@ -27,10 +27,22 @@ let
     runtimeInputs = with pkgs; [ bash ];
     text = backupText;
   };
+
+  rcloneWithFilen = pkgs.rclone.overrideAttrs {
+    version = "1.71.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "FilenCloudDienste";
+      repo = "filen-rclone";
+      rev = "upstream-pr";
+      hash = "sha256-b+8v4hflmU024qtrBRPP+gZuThOaoeR5KXhkFy+eW2o=";
+    };
+    vendorHash = "sha256-JT/XrjkeAFkFwzjYc5rCIVn0A86vXDuCzPqEw1dEeOY=";
+  };
 in
 {
   environment.systemPackages = [
     backupScript
+    rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
 
   services = {
