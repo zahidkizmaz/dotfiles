@@ -29,11 +29,11 @@ let
   };
 
   rcloneWithFilen = pkgs.rclone.overrideAttrs {
-    version = "1.71.0";
+    version = "1.69.1";
     src = pkgs.fetchFromGitHub {
-      owner = "FilenCloudDienste";
-      repo = "filen-rclone";
-      rev = "upstream-pr";
+      owner = "rclone";
+      repo = "rclone";
+      rev = "52018b0114a5591268512227dc6b0d378824d0da";
       hash = "sha256-b+8v4hflmU024qtrBRPP+gZuThOaoeR5KXhkFy+eW2o=";
     };
     vendorHash = "sha256-JT/XrjkeAFkFwzjYc5rCIVn0A86vXDuCzPqEw1dEeOY=";
