@@ -76,7 +76,7 @@ in
           "/home/${user}/music"
         ];
         timerConfig = {
-          OnCalendar = "weekly Fri 04:30";
+          OnCalendar = "Fri *-*-* 04:30:00";
           Persistent = true;
         };
         backupPrepareCommand = backupText;
