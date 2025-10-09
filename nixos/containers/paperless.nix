@@ -8,6 +8,7 @@
 }:
 let
   containerName = "paperless";
+  tsUrl = "https://${containerName}.quoll-ratio.ts.net";
   port = 8080;
 in
 {
@@ -50,6 +51,11 @@ in
           enable = true;
           port = port;
           database.createLocally = true;
+          settings = {
+            PAPERLESS_URL = tsUrl;
+            PAPERLESS_ALLOWED_HOSTS = tsUrl;
+            PAPERLESS_CSRF_TRUSTED_ORIGINS = tsUrl;
+          };
         };
 
         system.stateVersion = stateVersion;
