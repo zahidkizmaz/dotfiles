@@ -144,6 +144,7 @@ in
 {
   services.alloy = {
     enable = true;
+    extraFlags = [ "--disable-reporting" ];
   };
   environment.etc."alloy/config.alloy".text = configText;
 }
