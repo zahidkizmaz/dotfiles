@@ -89,5 +89,14 @@ in
         hostAddress
         ;
     })
+    (import ./mealie.nix {
+      localAddress = "192.168.100.19";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
   ];
 }
