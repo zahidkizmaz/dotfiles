@@ -72,9 +72,22 @@ in
         ;
     })
     (import ./monitoring {
-      hostAddress = "192.168.100.10";
       localAddress = "192.168.100.17";
-      inherit stateVersion inputs user;
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
+    (import ./paperless.nix {
+      localAddress = "192.168.100.18";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
     })
   ];
 }
