@@ -21,7 +21,7 @@ let
 
       copyFromContainer "immich" "/var/lib/immich" "/home/${user}/backup/immich/"
       copyFromContainer "paperless" "/var/lib/paperless" "/home/${user}/backup/paperless/"
-      copyFromContainer "meal" "/var/lib/mealie" "/home/${user}/backup/paperless/mealie"
+      copyFromContainer "meal" "/var/lib/mealie" "/home/${user}/backup/mealie"
     '';
 
   backupScript = pkgs.writeShellApplication {
