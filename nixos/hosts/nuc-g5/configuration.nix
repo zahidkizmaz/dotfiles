@@ -52,6 +52,7 @@
     wireless.enable = false;
     firewall.enable = true;
   };
+  services.resolved.enable = true;
 
   environment.systemPackages = with pkgs; [
     gitMinimal
