@@ -33,7 +33,7 @@ let
 
   afterBackupText = # bash
     ''
-      if [ ! -d ${hostBackupFolder} ]; then
+      if [ -d ${hostBackupFolder} ]; then
         echo "Cleaning ${hostBackupFolder} ..."
         rm -rf ${hostBackupFolder}
       fi
