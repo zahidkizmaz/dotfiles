@@ -6,6 +6,9 @@
 }:
 let
   hostBackupFolder = "/home/${user}/backups";
+  externalDriveMountPath = "/backup";
+  externalDriveLabel = "backup-drive";
+  externalDriveBackupFolder = "${externalDriveMountPath}/backups/";
   prepareBackupText = # bash
     ''
       copyFromContainer() {
@@ -63,6 +66,16 @@ in
     rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
 
+  fileSystems."${externalDriveMountPath}" = {
+    device = "/dev/disk/by-label/${externalDriveLabel}";
+    fsType = "btrfs";
+    options = [
+      "defaults"
+      "noatime"
+      "compress=zstd"
+    ];
+  };
+
   services = {
     restic.backups = {
       localBackup = {
@@ -72,7 +85,7 @@ in
           hostBackupFolder
           "/home/${user}/music"
         ];
-        repository = "/home/${user}/restic/";
+        repository = externalDriveBackupFolder;
         timerConfig = {
           OnCalendar = "03:00";
           Persistent = true;
