@@ -69,7 +69,7 @@ in
         initialize = true;
         passwordFile = config.age.secrets.restic-password.path;
         paths = [
-          "/home/${user}/backup"
+          hostBackupFolder
           "/home/${user}/music"
         ];
         repository = "/home/${user}/restic/";
@@ -89,7 +89,7 @@ in
         passwordFile = config.age.secrets.restic-password.path;
         rcloneConfigFile = config.age.secrets.rclone-config-filen.path;
         paths = [
-          "/home/${user}/backup"
+          hostBackupFolder
           "/home/${user}/music"
         ];
         timerConfig = {
