@@ -5,7 +5,8 @@
   ...
 }:
 let
-  backupText = # bash
+  hostBackupFolder = "/home/${user}/backups";
+  prepareBackupText = # bash
     ''
       copyFromContainer() {
         CONTAINER_NAME=$1
@@ -19,15 +20,28 @@ let
         machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
       }
 
-      copyFromContainer "immich" "/var/lib/immich" "/home/${user}/backup/immich/"
-      copyFromContainer "paperless" "/var/lib/paperless" "/home/${user}/backup/paperless/"
-      copyFromContainer "meal" "/var/lib/mealie" "/home/${user}/backup/mealie"
+      copyFromContainer "immich" "/var/lib/immich" "${hostBackupFolder}/immich/"
+      copyFromContainer "paperless" "/var/lib/paperless" "${hostBackupFolder}/paperless/"
+      copyFromContainer "meal" "/var/lib/private/mealie" "${hostBackupFolder}/mealie"
     '';
 
-  backupScript = pkgs.writeShellApplication {
-    name = "backup";
+  prepareBackupScript = pkgs.writeShellApplication {
+    name = "prepareBackup";
     runtimeInputs = with pkgs; [ bash ];
-    text = backupText;
+    text = prepareBackupText;
+  };
+
+  afterBackupText = # bash
+    ''
+      if [ ! -d ${hostBackupFolder} ]; then
+        echo "Cleaning ${hostBackupFolder} ..."
+        rm -rf ${hostBackupFolder}
+      fi
+    '';
+  afterBackupScript = pkgs.writeShellApplication {
+    name = "afterBackup";
+    runtimeInputs = with pkgs; [ bash ];
+    text = afterBackupText;
   };
 
   rcloneWithFilen = pkgs.rclone.overrideAttrs {
@@ -44,7 +58,8 @@ in
 {
   environment.systemPackages = [
     pkgs.restic
-    backupScript
+    prepareBackupScript
+    afterBackupScript
     rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
 
@@ -59,10 +74,11 @@ in
         ];
         repository = "/home/${user}/restic/";
         timerConfig = {
-          OnCalendar = "04:00";
+          OnCalendar = "03:00";
           Persistent = true;
         };
-        backupPrepareCommand = backupText;
+        backupPrepareCommand = prepareBackupText;
+        backupCleanupCommand = afterBackupText;
         pruneOpts = [
           "--keep-daily 3"
         ];
@@ -80,7 +96,8 @@ in
           OnCalendar = "Fri *-*-* 04:30:00";
           Persistent = true;
         };
-        backupPrepareCommand = backupText;
+        backupPrepareCommand = prepareBackupText;
+        backupCleanupCommand = afterBackupText;
         pruneOpts = [
           "--keep-weekly 3"
         ];
