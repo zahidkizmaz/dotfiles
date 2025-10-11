@@ -23,7 +23,7 @@ let
       }
 
       copyFromContainer "immich" "/var/lib/immich" "${hostBackupFolder}/immich/"
-      copyFromContainer "paperless" "/var/lib/paperless" "${hostBackupFolder}/paperless/"
+      copyFromContainer "paperless" "/var/lib/paperless/export" "${hostBackupFolder}/paperless/"
       copyFromContainer "meal" "/var/lib/private/mealie" "${hostBackupFolder}/mealie"
     '';
 
