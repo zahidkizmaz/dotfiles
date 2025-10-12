@@ -6,6 +6,7 @@
 }:
 let
   hostBackupFolder = "/home/${user}/backups";
+  externalDriveLabel = "backup-drive";
   externalDriveMountPath = "/backup";
   externalDriveBackupFolder = "${externalDriveMountPath}/backups/";
   prepareBackupText = # bash
@@ -64,6 +65,17 @@ in
     afterBackupScript
     rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
+
+  fileSystems."${externalDriveMountPath}" = {
+    device = "/dev/disk/by-label/${externalDriveLabel}";
+    fsType = "btrfs";
+    options = [
+      "defaults"
+      "noatime"
+      "nofail"
+      "compress=zstd"
+    ];
+  };
 
   services = {
     restic.backups = {
