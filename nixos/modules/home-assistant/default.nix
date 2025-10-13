@@ -35,7 +35,7 @@ in
 
     config = {
       http = {
-        server_host = [ "0.0.0.0" ];
+        server_host = [ "127.0.0.1" ];
         server_port = port;
       };
       homeassistant = {
