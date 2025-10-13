@@ -13,10 +13,7 @@ in
   "home_latitude.age".publicKeys = everyone;
   "home_longitude.age".publicKeys = everyone;
   "home_elevation.age".publicKeys = everyone;
-  "tailscale-lab.age".publicKeys = [
-    lab
-    fw13
-  ];
+  "tailscale-lab.age".publicKeys = everyone;
   "restic-password.age".publicKeys = [
     lab
     fw13
