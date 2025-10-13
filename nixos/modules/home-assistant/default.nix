@@ -35,6 +35,7 @@ in
 
     config = {
       http = {
+        use_x_forwarded_for = true;
         server_host = [ "127.0.0.1" ];
         server_port = port;
       };
