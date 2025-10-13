@@ -15,9 +15,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_unprivileged_port_start" = 53;
-  };
   boot.kernelParams = [
     "cgroup_enable=cpuset"
     "cgroup_enable=memory"

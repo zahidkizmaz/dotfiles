@@ -1,10 +1,23 @@
-{ ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./postgres.nix
+    (import ../../containers/container-tailscale.nix {
+      port = 8123;
+      inherit
+        config
+        inputs
+        lib
+        pkgs
+        ;
+    })
   ];
-
-  networking.firewall.allowedTCPPorts = [ 8123 ];
 
   services.home-assistant = {
     enable = true;
@@ -23,7 +36,6 @@
       "philips_js"
       "raspberry_pi"
       "recorder"
-      "shopping_list"
       "usb"
       "zha"
     ];
