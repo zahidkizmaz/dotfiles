@@ -17,7 +17,6 @@ in
   "restic-password.age".publicKeys = [
     lab
     fw13
-
   ];
   "searx-secret.age".publicKeys = [
     lab

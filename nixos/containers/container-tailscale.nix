@@ -16,10 +16,7 @@
     })
   ];
   age = {
-    identityPaths = [
-      "/etc/ssh/lab"
-      "/etc/ssh/ssh_host_ed25519_key"
-    ];
+    identityPaths = [ "/etc/ssh/lab" ];
     secrets = {
       tailscale-lab = {
         file = ../secrets/tailscale-lab.age;

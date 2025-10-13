@@ -9,6 +9,7 @@
       home_elevation.file = ../../secrets/home_elevation.age;
       home_latitude.file = ../../secrets/home_latitude.age;
       home_longitude.file = ../../secrets/home_longitude.age;
+      tailscale-lab.file = ../../secrets/tailscale-lab.age;
     };
   };
 }

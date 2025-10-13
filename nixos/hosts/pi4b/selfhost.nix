@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services = {
     devmon.enable = true;
@@ -11,6 +11,15 @@
     # Cloud
     filen-cli
   ];
+
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      useRoutingFeatures = "client";
+      authKeyFile = config.age.secrets.tailscale-lab.path;
+    };
+  };
 
   system.activationScripts.script.text = # bash
     ''
