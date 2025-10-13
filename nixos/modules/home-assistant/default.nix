@@ -1,9 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     (import ../../containers/tailscale-serve.nix {
       tailscalePort = 443;
-      locatlPort = 8123;
+      localPort = 8123;
+      inherit pkgs;
     })
     ./postgres.nix
   ];
