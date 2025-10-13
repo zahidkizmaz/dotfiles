@@ -1,22 +1,11 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ ... }:
 {
   imports = [
-    ./postgres.nix
-    (import ../../containers/container-tailscale.nix {
-      port = 8123;
-      inherit
-        config
-        inputs
-        lib
-        pkgs
-        ;
+    (import ../../containers/tailscale-serve.nix {
+      tailscalePort = 443;
+      locatlPort = 8123;
     })
+    ./postgres.nix
   ];
 
   services.home-assistant = {
