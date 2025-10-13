@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{ inputs, system, ... }:
 {
   environment.systemPackages = [
-    inputs.agenix.packages.x86_64-linux.default
+    inputs.agenix.packages."${system}".default
   ];
 
   age = {
