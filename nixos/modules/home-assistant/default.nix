@@ -1,9 +1,12 @@
 { pkgs, ... }:
+let
+  port = 8123;
+in
 {
   imports = [
     (import ../../containers/tailscale-serve.nix {
       tailscalePort = 443;
-      localPort = 8123;
+      localPort = port;
       inherit pkgs;
     })
     ./postgres.nix
@@ -31,6 +34,10 @@
     ];
 
     config = {
+      http = {
+        server_host = [ "0.0.0.0" ];
+        server_port = port;
+      };
       homeassistant = {
         name = "Home";
         country = "DE";
