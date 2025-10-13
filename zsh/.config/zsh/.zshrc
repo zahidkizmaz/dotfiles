@@ -47,6 +47,11 @@ if type "fzf" &>/dev/null; then
   source <(fzf --zsh)
 fi
 
+# Just
+if type "just" &>/dev/null; then
+  eval "$(just --completions zsh)"
+fi
+
 # Zoxide
 if type "zoxide" &>/dev/null; then
   eval "$(zoxide init zsh)"
