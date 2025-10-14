@@ -48,8 +48,7 @@ in
         unit_system = "metric";
         time_zone = "Europe/Berlin";
       };
-      mobile_app = { };
-      homekit = { };
+      default_config = { };
     };
 
   };
