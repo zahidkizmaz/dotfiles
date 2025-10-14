@@ -25,6 +25,7 @@ in
       "file"
       "homekit"
       "hue"
+      "isal" # Intelligent Storage Acceleration
       "met"
       "mobile_app"
       "my"
@@ -49,6 +50,9 @@ in
         time_zone = "Europe/Berlin";
       };
       default_config = { };
+      system_health = { };
+      system_log = { };
+      zeroconf = { };
     };
 
   };
