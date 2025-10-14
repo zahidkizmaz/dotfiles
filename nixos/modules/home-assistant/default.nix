@@ -32,6 +32,7 @@ in
       "philips_js"
       "raspberry_pi"
       "recorder"
+      "roborock"
       "usb"
       "zha"
     ];
