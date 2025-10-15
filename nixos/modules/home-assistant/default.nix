@@ -54,6 +54,7 @@ in
         time_zone = "Europe/Berlin";
       };
       default_config = { };
+      lovelaceConfig = { };
       system_health = { };
       system_log = { };
       zeroconf = { };
