@@ -40,6 +40,7 @@ in
       bubble-card
       clock-weather-card
       hourly-weather
+      mushroom
     ];
 
     config = {
