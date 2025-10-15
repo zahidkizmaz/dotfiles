@@ -14,7 +14,6 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ./gpio.nix
     ./hardware-configuration.nix
     ./selfhost.nix
-    ../../containers/monitoring/alloy-log-report.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
@@ -24,6 +23,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix
     ../../modules/vm-variant.nix
+    (import ./monitoring/alloy-log-report.nix { })
   ];
   specialArgs = {
     inherit inputs system stateVersion;
