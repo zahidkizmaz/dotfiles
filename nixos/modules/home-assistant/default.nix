@@ -56,6 +56,9 @@ in
         unit_system = "metric";
         time_zone = "Europe/Berlin";
       };
+      frontend = {
+        themes = "!include_dir_merge_named themes/";
+      };
       default_config = { };
       system_health = { };
       system_log = { };
