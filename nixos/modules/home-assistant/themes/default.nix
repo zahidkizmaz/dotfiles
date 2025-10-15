@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   themesDir = ../themes;
 in
@@ -9,10 +9,10 @@ in
     after = [ "network.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = ''
+      ExecStart = "${pkgs.writeShellScript "copy-themes" ''
         mkdir -p /var/lib/hass/themes
         cp -r ${themesDir} /var/lib/hass/themes/
-      '';
+      ''}";
       RemainAfterExit = true;
     };
     wantedBy = [ "multi-user.target" ];
