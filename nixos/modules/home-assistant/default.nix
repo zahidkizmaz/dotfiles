@@ -10,6 +10,7 @@ in
       inherit pkgs;
     })
     ./postgres.nix
+    ./themes/default.nix
   ];
 
   services.home-assistant = {
