@@ -37,6 +37,8 @@ in
       "zha"
     ];
     customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      bubble-card
+      clock-weather-card
       hourly-weather
     ];
 
@@ -54,7 +56,6 @@ in
         time_zone = "Europe/Berlin";
       };
       default_config = { };
-      lovelaceConfig = { };
       system_health = { };
       system_log = { };
       zeroconf = { };
