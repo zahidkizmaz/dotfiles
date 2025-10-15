@@ -36,6 +36,9 @@ in
       "usb"
       "zha"
     ];
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      hourly-weather
+    ];
 
     config = {
       http = {
