@@ -14,6 +14,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ./gpio.nix
     ./hardware-configuration.nix
     ./selfhost.nix
+    ../../containers/monitoring/alloy-log-report.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
@@ -22,7 +23,6 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix
-    ../../modules/tailscale.nix
     ../../modules/vm-variant.nix
   ];
   specialArgs = {
