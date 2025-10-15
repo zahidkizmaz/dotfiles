@@ -11,7 +11,7 @@ in
       Type = "oneshot";
       ExecStart = "${pkgs.writeShellScript "copy-themes" ''
         mkdir -p /var/lib/hass/themes
-        cp -r ${themesDir} /var/lib/hass/themes/
+        cp -r ${themesDir}/* /var/lib/hass/themes/
       ''}";
       RemainAfterExit = true;
     };
