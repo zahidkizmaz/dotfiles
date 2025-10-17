@@ -16,6 +16,7 @@ _stow-common:
     just stow ctags
     just stow direnv
     just stow easyeffects
+    just stow gh-dash
     just stow ghostty
     just stow git
     just stow ipython

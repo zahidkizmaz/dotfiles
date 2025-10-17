@@ -27,6 +27,7 @@ in
   environment.systemPackages = with pkgs; [
     gitMinimal
     gh
+    gh-dash
 
     download-dotfiles
     link-dotfiles

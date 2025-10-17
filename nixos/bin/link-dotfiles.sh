@@ -17,6 +17,7 @@ declare -A appMappings=(
   [direnv]="direnv"
   [dunst]="dunst"
   [easyeffects]="easyeffects"
+  ["gh-dash"]="gh-dash"
   [ghostty]="ghostty"
   [git]="git"
   [hypr]="hyprctl"

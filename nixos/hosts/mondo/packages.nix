@@ -14,9 +14,9 @@ in
   ]
   ++ (with pkgs-unstable; [
     bruno
-    nh
-    utm
     docker
     docker-compose
+    nh
+    utm
   ]);
 }
