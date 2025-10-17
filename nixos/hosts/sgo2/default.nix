@@ -30,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
     ../../modules/wlan.nix
+    ../../modules/home-assistant/home_assistant_desktop_entry.nix
   ];
   specialArgs = {
     inherit inputs system stateVersion;

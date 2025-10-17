@@ -13,7 +13,6 @@
   imports = [
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/dconf-virt-manager-qemu.nix
-    ../../modules/home-assistant/home_assistant_desktop_entry.nix
   ];
 
   dconf = {
