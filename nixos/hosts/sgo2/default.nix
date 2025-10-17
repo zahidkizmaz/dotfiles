@@ -18,6 +18,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gnome.nix
     ../../modules/gui-applications.nix
+    ../../modules/home-assistant/home_assistan_desktop_entry.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
