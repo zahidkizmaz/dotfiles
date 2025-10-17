@@ -1,13 +1,13 @@
 { pkgs, ... }:
 let
-  firefox = pkgs.firefox;
+  librewolf = pkgs.librewolf;
   url = "https://home.quoll-ratio.ts.net";
   homeAssistantDashboardDesktop = pkgs.makeDesktopItem {
     name = "home-assistant-dashboard";
     desktopName = "Home Assistant Dashboard";
-    comment = "Open Home Assistant dashboard in Firefox fullscreen kiosk mode";
-    icon = "${firefox}/share/icons/hicolor/48x48/apps/firefox.png";
-    exec = "${firefox}/bin/firefox --kiosk --no-remote --new-window ${url}";
+    comment = "Open Home Assistant dashboard in Librewolf fullscreen kiosk mode";
+    icon = ./home-assistant.svg;
+    exec = "${librewolf}/bin/librewolf --kiosk --no-remote --new-window ${url}";
     categories = [
       "Utility"
       "Network"
