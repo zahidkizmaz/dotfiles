@@ -41,7 +41,8 @@ in
       bubble-card
       clock-weather-card
       hourly-weather
-      vacuum-card
+      mini-graph-card
+      universal-remote-card
     ];
 
     config = {
