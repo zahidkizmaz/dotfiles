@@ -61,5 +61,7 @@
     sesh
   ];
 
+  nix.settings.trusted-users = [ "@wheel" ];
+
   system.stateVersion = stateVersion;
 }
