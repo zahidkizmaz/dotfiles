@@ -1,5 +1,5 @@
 name: "Flake Check"
-on: # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - main
@@ -25,6 +25,5 @@ jobs:
 
       - name: Run all pre-commit checks
         run: pre-commit run --all-files
-
       - name: Check all systems
         run: nix flake check --all-systems

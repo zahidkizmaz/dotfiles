@@ -1,0 +1,28 @@
+name: "Flake Check"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-configs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host:
+          - fw13-amd
+          - nuc-g5
+          - pi4b
+          - sgo2
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            lazy-trees = true
+      - uses: DeterminateSystems/magic-nix-cache-action@v13
+      - name: Nix build ${{ matrix.host }}
+        run: |
+          nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel -L
