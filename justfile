@@ -27,6 +27,7 @@ _stow-common:
     just stow opencode
     just stow pgcli
     just stow rustfmt
+    just stow sesh
     just stow starship
     just stow tmux
     just stow yazi
