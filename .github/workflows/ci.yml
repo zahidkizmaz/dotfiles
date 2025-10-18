@@ -1,5 +1,5 @@
 name: "Flake Check"
-on: # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - main
@@ -14,7 +14,11 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: nicknovitski/nix-develop@v1
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            lazy-trees = true
+      - uses: DeterminateSystems/magic-nix-cache-action@v13
       - name: set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
       - uses: actions/cache@v4
@@ -24,7 +28,8 @@ jobs:
             pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: Run all pre-commit checks
-        run: pre-commit run --all-files
-
+        run: |
+          nix develop --command \
+          pre-commit run --all-files
       - name: Check all systems
         run: nix flake check --all-systems
