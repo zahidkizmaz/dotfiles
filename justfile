@@ -45,3 +45,6 @@ stow-mac: _stow-common
 
 gen-pi4b-sd-image:
     nix build .#nixosConfigurations.pi4b.config.formats.sd-aarch64 -o ./pi4b.sd
+
+deploy host:
+    nixos-rebuild --flake ~/dotfiles#{{ host }}  --target-host {{ host }} --use-remote-sudo switch

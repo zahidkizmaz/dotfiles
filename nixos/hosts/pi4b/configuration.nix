@@ -1,4 +1,4 @@
-{ pkgs, stateVersion, ... }:
+{ stateVersion, ... }:
 {
   hardware = {
     enableRedistributableFirmware = true;
@@ -6,21 +6,11 @@
     bluetooth.powerOnBoot = true;
   };
   networking = {
-    hostName = "pi4b";
+    hostName = "home";
     interfaces.eth0.useDHCP = true;
     wireless.enable = false;
-
     firewall.enable = true;
-    firewall.allowedTCPPorts = [
-      22
-      443
-    ];
   };
-
-  environment.systemPackages = with pkgs; [
-    libraspberrypi
-    raspberrypi-eeprom
-  ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -49,6 +39,8 @@
       makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
     })
   ];
+
+  nix.settings.trusted-users = [ "@wheel" ];
 
   system.stateVersion = stateVersion;
 }

@@ -232,8 +232,17 @@ in
                 }
               ];
 
-              whitelist_filters = [ ];
-              user_rules = [ ];
+              whitelist_filters = [
+                {
+                  id = 1001;
+                  enabled = true;
+                  name = "HaGeZi's Allowlist Referral";
+                  url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt";
+                }
+              ];
+              user_rules = [
+                "@@||sentry.io"
+              ];
 
               dhcp = {
                 enabled = false;

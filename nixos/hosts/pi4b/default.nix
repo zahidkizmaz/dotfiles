@@ -9,6 +9,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
     inputs.agenix.nixosModules.default
     inputs.nixos-generators.nixosModules.all-formats
+    ./agenix.nix
     ./configuration.nix
     ./gpio.nix
     ./hardware-configuration.nix
@@ -16,11 +17,13 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
+    ../../modules/home-assistant/default.nix
     ../../modules/latest-kernel.nix
+    ../../modules/nh.nix
     ../../modules/nix-settings.nix
-    ../../modules/podman.nix
     ../../modules/ssh.nix
-    ../../modules/tailscale.nix
+    ../../modules/vm-variant.nix
+    (import ../../containers/monitoring/alloy-log-report.nix { })
   ];
   specialArgs = {
     inherit inputs system stateVersion;
