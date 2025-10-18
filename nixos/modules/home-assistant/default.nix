@@ -44,7 +44,6 @@ in
       mini-graph-card
       universal-remote-card
     ];
-
     config = {
       http = {
         use_x_forwarded_for = true;
@@ -66,6 +65,5 @@ in
       system_log = { };
       zeroconf = { };
     };
-
   };
 }
