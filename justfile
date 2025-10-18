@@ -47,4 +47,4 @@ gen-pi4b-sd-image:
     nix build .#nixosConfigurations.pi4b.config.formats.sd-aarch64 -o ./pi4b.sd
 
 deploy host:
-    nixos-rebuild --flake ~/dotfiles#{{ host }}  --target-host {{ host }} --use-remote-sudo switch
+    nixos-rebuild-ng --flake ~/dotfiles#{{ host }} --target-host {{ host }} switch --sudo --ask-sudo-password

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   nix = {
     settings = {
@@ -16,4 +16,7 @@
     };
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   };
+  environment.systemPackages = with pkgs; [
+    nixos-rebuild-ng
+  ];
 }
