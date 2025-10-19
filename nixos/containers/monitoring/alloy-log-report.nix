@@ -100,45 +100,6 @@ let
       targets    = discovery.relabel.metrics.output
       forward_to = [prometheus.remote_write.default.receiver]
     }
-
-    // SECTION: DOCKER METRICS
-
-    prometheus.exporter.cadvisor "dockermetrics" {
-      docker_host = "unix:///var/run/docker.sock"
-      storage_duration = "5m"
-    }
-
-    prometheus.scrape "dockermetrics" {
-      targets    = prometheus.exporter.cadvisor.dockermetrics.targets
-      forward_to = [ prometheus.remote_write.default.receiver ]
-      scrape_interval = "10s"
-    }
-
-
-    // SECTION: DOCKER LOGS
-
-    discovery.docker "dockerlogs" {
-      host = "unix:///var/run/docker.sock"
-    }
-
-    discovery.relabel "dockerlogs" {
-          targets = []
-
-          rule {
-              source_labels = ["__meta_docker_container_name"]
-              regex = "/(.*)"
-              target_label = "service_name"
-          }
-
-      }
-
-    loki.source.docker "default" {
-      host       = "unix:///var/run/docker.sock"
-      targets    = discovery.docker.dockerlogs.targets
-      labels     = {"platform" = "docker"}
-      relabel_rules = discovery.relabel.dockerlogs.rules
-      forward_to = [loki.write.default.receiver]
-    }
   '';
 in
 {
