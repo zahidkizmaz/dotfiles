@@ -105,6 +105,16 @@ in
                   directory = "/tmp/loki/chunks";
                 };
               };
+              compactor = {
+                working_directory = "/var/lib/loki/compactor";
+                retention_enabled = true;
+                retention_delete_delay = "2h"; # Delay before deletion
+                retention_delete_worker_count = 100; # Number of concurrent deletes
+                delete_request_store = "filesystem";
+              };
+              limits_config = {
+                retention_period = "7d"; # Retain logs for 7 days
+              };
             };
           };
           grafana = {
