@@ -7,7 +7,6 @@
   };
   networking = {
     hostName = "home";
-    interfaces.eth0.useDHCP = true;
     wireless.enable = false;
     firewall.enable = true;
   };
