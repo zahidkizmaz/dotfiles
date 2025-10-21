@@ -9,6 +9,10 @@ let
   hostAddress = "192.168.100.10";
 in
 {
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv4.conf.all.forwarding" = 1;
+  };
   networking.nat = {
     enable = true;
     internalInterfaces = [ "ve-+" ];
@@ -91,6 +95,15 @@ in
     })
     (import ./mealie.nix {
       localAddress = "192.168.100.19";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
+    (import ./ntfy.nix {
+      localAddress = "192.168.100.20";
       inherit
         stateVersion
         inputs
