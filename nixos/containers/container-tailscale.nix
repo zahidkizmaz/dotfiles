@@ -47,11 +47,11 @@
 
   networking = {
     firewall = {
+      enable = true;
       checkReversePath = "loose";
       trustedInterfaces = [ "tailscale0" ];
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
-    nameservers = [ "100.100.100.100" ]; # Tailsclae dns
   };
 
   systemd.services.tailscaled-autoconnect.serviceConfig = lib.mkIf config.boot.isContainer {
