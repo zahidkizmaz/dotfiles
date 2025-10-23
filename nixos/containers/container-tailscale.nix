@@ -28,7 +28,6 @@
     tailscale = {
       enable = true;
       openFirewall = true;
-      interfaceName = "userspace-networking";
       useRoutingFeatures = "client";
       authKeyFile = config.age.secrets.tailscale-lab.path;
       extraUpFlags = [
