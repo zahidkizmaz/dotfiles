@@ -30,6 +30,7 @@ in
       "met"
       "mobile_app"
       "my"
+      "ntfy"
       "philips_js"
       "raspberry_pi"
       "recorder"
@@ -64,6 +65,8 @@ in
       system_health = { };
       system_log = { };
       zeroconf = { };
+      automation = "!include automations.yaml";
+      script = "!include scripts.yaml";
     };
   };
 }
