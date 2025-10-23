@@ -156,12 +156,6 @@ in
               ];
             };
           };
-          # grafana-to-ntfy = {
-          #   enable = true;
-          #   settings = {
-          #     ntfyUrl = "https://ntfy.quoll-ratio.ts.net/grafana";
-          #   };
-          # };
         };
 
         system.stateVersion = stateVersion;
