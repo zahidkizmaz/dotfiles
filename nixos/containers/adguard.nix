@@ -83,7 +83,7 @@ in
               block_auth_min = 15;
               http_proxy = "";
               language = "";
-              theme = "auto";
+              theme = "dark";
 
               dns = {
                 bind_hosts = [ "0.0.0.0" ];
