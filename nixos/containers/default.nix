@@ -111,5 +111,14 @@ in
         hostAddress
         ;
     })
+    (import ./uptime-kuma.nix {
+      localAddress = "192.168.100.21";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
   ];
 }

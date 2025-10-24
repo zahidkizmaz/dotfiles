@@ -61,6 +61,7 @@ in
       frontend = {
         themes = "!include_dir_merge_named themes/";
       };
+      api = { }; # enables REST API
       default_config = { };
       system_health = { };
       system_log = { };
