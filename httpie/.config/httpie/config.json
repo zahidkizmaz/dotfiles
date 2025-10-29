@@ -1,0 +1,7 @@
+{
+  "default_options": [
+    "-vv",
+    "--style=auto",
+    "--pretty=all"
+  ]
+}

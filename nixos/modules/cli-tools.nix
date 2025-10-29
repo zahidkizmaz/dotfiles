@@ -24,6 +24,7 @@ in
       fd
       fzf
       gitMinimal
+      httpie
       jq
       just
       ouch

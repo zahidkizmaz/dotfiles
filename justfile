@@ -19,6 +19,7 @@ _stow-common:
     just stow gh-dash
     just stow ghostty
     just stow git
+    just stow httpie
     just stow ipython
     just stow kitty
     just stow mpv

@@ -20,6 +20,7 @@ declare -A appMappings=(
   ["gh-dash"]="gh-dash"
   [ghostty]="ghostty"
   [git]="git"
+  [httpie]="http"
   [hypr]="hyprctl"
   [ipython]="ipython"
   [kitty]="kitty"
