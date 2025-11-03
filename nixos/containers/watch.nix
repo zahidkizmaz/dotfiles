@@ -1,0 +1,109 @@
+{
+  stateVersion,
+  localAddress,
+  hostAddress,
+  inputs,
+  user,
+  ...
+}:
+let
+  containerName = "watch";
+  port = 3000;
+in
+{
+  containers.${containerName} = {
+    autoStart = true;
+    privateNetwork = true;
+    privateUsers = "identity";
+    enableTun = true;
+    ephemeral = false;
+    hostAddress = hostAddress;
+    localAddress = localAddress;
+    bindMounts = {
+      "/etc/ssh/lab" = {
+        hostPath = "/home/${user}/.ssh/lab";
+        isReadOnly = true;
+      };
+    };
+    extraFlags = [
+      "--capability=CAP_NET_ADMIN"
+      "--capability=CAP_SYS_ADMIN"
+    ];
+    config =
+      {
+        config,
+        pkgs,
+        lib,
+        ...
+      }:
+      {
+        imports = [
+          ./container-common.nix
+          (import ./container-tailscale.nix {
+            inherit
+              config
+              inputs
+              lib
+              pkgs
+              port
+              ;
+          })
+        ];
+
+        age = {
+          identityPaths = [ "/etc/ssh/lab" ];
+          secrets = {
+            companion_env = {
+              file = ../secrets/companion_env.age;
+            };
+            invidious_extra_conf = {
+              file = ../secrets/invidious_extra_conf.age;
+              mode = "0444";
+            };
+          };
+        };
+
+        services.invidious = {
+          enable = true;
+          port = port;
+          address = "0.0.0.0";
+          settings = {
+            invidious_companion = [
+              {
+                private_url = "http://localhost:8282/companion";
+              }
+            ];
+          };
+          extraSettingsFile = config.age.secrets.invidious_extra_conf.path;
+        };
+
+        virtualisation.podman = {
+          enable = true;
+          defaultNetwork.settings.dns_enabled = true;
+        };
+        virtualisation.oci-containers = {
+          backend = "podman";
+          containers = {
+            invidious-companion = {
+              autoStart = true;
+              image = "quay.io/invidious/invidious-companion@sha256:4320469a01fd3e7f554c8a7ad8d0fd388f325b27cc39a760c64edb36914f06ea";
+              ports = [ "127.0.0.1:8282:8282" ];
+              volumes = [
+                "companioncache:/var/tmp/youtubei.js:rw"
+              ];
+              environmentFiles = [ config.age.secrets.companion_env.path ];
+            };
+          };
+        };
+
+        environment.etc."containers/containers.conf".text = lib.mkForce ''
+          [engine]
+
+          [containers]
+          keyring = false
+        '';
+
+        system.stateVersion = stateVersion;
+      };
+  };
+}

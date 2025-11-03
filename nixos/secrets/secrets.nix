@@ -26,4 +26,13 @@ in
     lab
     fw13
   ];
+  "companion_env.age".publicKeys = [
+    lab
+    fw13
+  ];
+  "invidious_extra_conf.age".publicKeys = [
+    lab
+    fw13
+  ];
+
 }

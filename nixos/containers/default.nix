@@ -129,5 +129,14 @@ in
         hostAddress
         ;
     })
+    (import ./watch.nix {
+      localAddress = "192.168.100.23";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
   ];
 }

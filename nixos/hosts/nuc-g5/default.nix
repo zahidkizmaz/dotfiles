@@ -14,10 +14,10 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/default-user.nix
-    ../../modules/docker.nix
     ../../modules/gc.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
+    ../../modules/podman.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
