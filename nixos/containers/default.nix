@@ -120,5 +120,14 @@ in
         hostAddress
         ;
     })
+    (import ./dns {
+      localAddress = "192.168.100.22";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
   ];
 }

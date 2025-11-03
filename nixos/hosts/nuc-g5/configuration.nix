@@ -21,6 +21,10 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl = {
+    "net.core.wmem_max" = 16777216; # needed for unbound
+    "net.core.rmem_max" = 16777216; # needed for unbound
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
