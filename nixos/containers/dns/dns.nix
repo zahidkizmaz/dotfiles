@@ -7,7 +7,7 @@
   ...
 }:
 let
-  containerName = "ad";
+  containerName = "dns";
   port = 3000;
 in
 {
@@ -34,8 +34,8 @@ in
       }:
       {
         imports = [
-          ./container-common.nix
-          (import ./container-tailscale.nix {
+          ../container-common.nix
+          (import ../container-tailscale.nix {
             inherit
               config
               inputs
@@ -44,6 +44,8 @@ in
               port
               ;
           })
+          ./unbound.nix
+          ./redis.nix
         ];
 
         networking = {
@@ -94,7 +96,7 @@ in
                 ratelimit_subnet_len_ipv6 = 56;
                 ratelimit_whitelist = [ ];
                 refuse_any = true;
-                upstream_dns = [ "https://dns10.quad9.net/dns-query" ];
+                upstream_dns = [ "127.0.0.1:5335" ];
                 upstream_dns_file = "";
                 bootstrap_dns = [
                   "9.9.9.10"
@@ -103,8 +105,8 @@ in
                   "2620:fe::fe:10"
                 ];
                 fallback_dns = [ ];
-                upstream_mode = "load_balance";
-                fastest_timeout = "1s";
+                upstream_mode = "parallel";
+                fastest_timeout = "500ms";
                 allowed_clients = [ ];
                 disallowed_clients = [ ];
                 blocked_hosts = [
@@ -116,10 +118,10 @@ in
                   "127.0.0.0/8"
                   "::1/128"
                 ];
-                cache_size = 4194304;
-                cache_ttl_min = 0;
-                cache_ttl_max = 0;
-                cache_optimistic = false;
+                cache_size = 67108864;
+                cache_ttl_min = 60;
+                cache_ttl_max = 86400;
+                cache_optimistic = true;
                 bogus_nxdomain = [ ];
                 aaaa_disabled = false;
                 enable_dnssec = false;
@@ -133,7 +135,7 @@ in
                 ipset = [ ];
                 ipset_file = "";
                 bootstrap_prefer_ipv6 = false;
-                upstream_timeout = "10s";
+                upstream_timeout = "2s";
                 private_networks = [ ];
                 use_private_ptr_resolvers = true;
                 local_ptr_upstreams = [ ];
@@ -285,7 +287,7 @@ in
                   yandex = true;
                   youtube = true;
                 };
-                blocking_mode = "default";
+                blocking_mode = "null_ip";
                 parental_block_host = "family-block.dns.adguard.com";
                 safebrowsing_block_host = "standard-block.dns.adguard.com";
                 rewrites = [
@@ -295,12 +297,12 @@ in
                   }
                 ];
                 safe_fs_patterns = [ "/var/lib/private/AdGuardHome/userfilters/*" ];
-                safebrowsing_cache_size = 1048576;
-                safesearch_cache_size = 1048576;
-                parental_cache_size = 1048576;
+                safebrowsing_cache_size = 10485760;
+                safesearch_cache_size = 10485760;
+                parental_cache_size = 10485760;
                 cache_time = 30;
                 filters_update_interval = 24;
-                blocked_response_ttl = 10;
+                blocked_response_ttl = 300;
                 filtering_enabled = true;
                 parental_enabled = false;
                 safebrowsing_enabled = false;

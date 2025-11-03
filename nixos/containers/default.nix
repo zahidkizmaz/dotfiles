@@ -48,7 +48,7 @@ in
         hostAddress
         ;
     })
-    (import ./adguard.nix {
+    (import ./karakeep.nix {
       localAddress = "192.168.100.14";
       inherit
         stateVersion
@@ -113,6 +113,15 @@ in
     })
     (import ./uptime-kuma.nix {
       localAddress = "192.168.100.21";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
+    (import ./dns {
+      localAddress = "192.168.100.22";
       inherit
         stateVersion
         inputs
