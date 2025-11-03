@@ -48,7 +48,7 @@ in
         hostAddress
         ;
     })
-    (import ./adguard.nix {
+    (import ./karakeep.nix {
       localAddress = "192.168.100.14";
       inherit
         stateVersion
