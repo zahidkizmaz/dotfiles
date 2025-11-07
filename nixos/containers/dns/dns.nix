@@ -244,6 +244,7 @@ in
               ];
               user_rules = [
                 "@@||sentry.io"
+                "@@||analytex-us.userpilot.io"
               ];
 
               dhcp = {
