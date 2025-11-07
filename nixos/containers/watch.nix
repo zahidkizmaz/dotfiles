@@ -7,8 +7,9 @@
   ...
 }:
 let
-  containerName = "watch";
   port = 3000;
+  containerName = "watch";
+  domain = "${containerName}.quoll-ratio.ts.net";
 in
 {
   containers.${containerName} = {
@@ -68,6 +69,9 @@ in
           port = port;
           address = "0.0.0.0";
           settings = {
+            domain = domain;
+            https_only = true;
+            external_port = 443;
             invidious_companion = [
               {
                 private_url = "http://localhost:8282/companion";
