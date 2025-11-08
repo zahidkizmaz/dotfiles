@@ -43,6 +43,9 @@
 
         # hardware acceleration
         "gfx.webrender.all" = true;
+        "gfx.wayland.hdr" = true;
+        "gfx.webrender.overlay-vp-auto-hdr" = true;
+        "gfx.color_management.native_srgb" = true;
         "media.ffmpeg.vaapi.enabled" = true;
         "media.hardware-video-decoding.force-enabled" = true;
 
