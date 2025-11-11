@@ -26,7 +26,9 @@ let
       copyFromContainer "immich" "/var/lib/immich" "${hostBackupFolder}/immich/"
       copyFromContainer "paperless" "/var/lib/paperless/export" "${hostBackupFolder}/paperless/"
       copyFromContainer "meal" "/var/lib/private/mealie" "${hostBackupFolder}/mealie/"
-      copyFromContainer "status" "/var/lib/uptime-kuma" "${hostBackupFolder}/uptime-kuma/"
+      copyFromContainer "status" "/var/lib/private/uptime-kuma" "${hostBackupFolder}/uptime-kuma/"
+      copyFromContainer "keep" "/var/lib/karakeep" "${hostBackupFolder}/karakeep/"
+      copyFromContainer "monitoring" "/var/lib/grafana/data" "${hostBackupFolder}/grafana/"
     '';
 
   prepareBackupScript = pkgs.writeShellApplication {
