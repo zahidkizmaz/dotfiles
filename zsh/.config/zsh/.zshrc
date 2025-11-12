@@ -57,6 +57,11 @@ if type "zoxide" &>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
+# Zoxide
+if type "jwt" &>/dev/null; then
+  eval "$(jwt completion zsh)"
+fi
+
 # Rust
 if type "cargo" &>/dev/null; then
   export PATH="$HOME/.cargo/bin:$PATH"

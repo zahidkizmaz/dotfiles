@@ -27,6 +27,7 @@ in
       httpie
       jq
       just
+      jwt-cli
       ouch
       ripgrep
       stow
