@@ -294,3 +294,6 @@ easyeffects/*
 # hyprland
 hypr/.config/hypr/monitors.conf
 hypr/.config/hypr/workspaces.conf
+
+# httpie
+httpie/.config/httpie/version_info.json
