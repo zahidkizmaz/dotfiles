@@ -124,6 +124,7 @@ in
                 enabled = false;
                 reporting_enabled = false;
                 check_for_updates = false;
+                check_for_plugin_updates = false;
                 feedback_links_enabled = false;
               };
               server = {
