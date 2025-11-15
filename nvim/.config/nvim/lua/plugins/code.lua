@@ -1,26 +1,5 @@
 return {
   {
-    "zahidkizmaz/python-docs.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
-    keys = {
-      {
-        "<leader>fp",
-        function()
-          return require("python-docs").fzf_lua()
-        end,
-        desc = "Search for installed python library docs.",
-      },
-      {
-        "<leader>fp",
-        function()
-          return require("python-docs").fzf_lua({ search = true })
-        end,
-        mode = "v",
-        desc = "Search for selection in installed python library docs.",
-      },
-    },
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufRead", "BufNewFile" },

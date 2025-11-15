@@ -21,22 +21,118 @@ return {
       },
     },
     keys = {
-      { "<leader>fl", require("fzf-lua").builtin, desc = "FzfLua" },
-      { "<leader>ff", require("fzf-lua").files, desc = "Find File" },
-      { "<leader>fg", require("fzf-lua").git_files, desc = "Find Git File" },
-      { "<leader>fs", require("fzf-lua").btags, desc = "Current File Fuzzy Search" },
-      { "<leader>fr", require("fzf-lua").lsp_references, desc = "Find References" },
-      { "<leader>ft", require("fzf-lua").tags, desc = "FzfLua Tags" },
-      { "<leader>fh", require("fzf-lua").help_tags, desc = "FzfLua Help Tags" },
-      { "<leader>fb", require("fzf-lua").buffers, desc = "FzfLua Buffers" },
-      { "<leader>rg", require("fzf-lua").live_grep, desc = "Ripgrep Search" },
-      { "<leader>fw", require("fzf-lua").grep_cword, desc = "Ripgrep Current Word" },
-      { "<leader>bl", require("fzf-lua").blines, desc = "Buffer Line Search" },
-      { "<leader>ds", require("fzf-lua").lsp_document_symbols, desc = "Document Symbols" },
-      { "<leader>fi", require("fzf-lua").lsp_implementations, desc = "Find LSP Implementations" },
-      { "<leader>ss", require("fzf-lua").spell_suggest, desc = "Spell Correction Suggestions" },
-      { "<leader>rr", require("fzf-lua").resume, desc = "Resume last search" },
-      { "gL", require("fzf-lua").diagnostics_document, desc = "Document Diagnostics" },
+      {
+        "<leader>fl",
+        function()
+          require("fzf-lua").builtin()
+        end,
+        desc = "FzfLua",
+      },
+      {
+        "<leader>ff",
+        function()
+          require("fzf-lua").files()
+        end,
+        desc = "Find File",
+      },
+      {
+        "<leader>fg",
+        function()
+          require("fzf-lua").git_files()
+        end,
+        desc = "Find Git File",
+      },
+      {
+        "<leader>fs",
+        function()
+          require("fzf-lua").btags()
+        end,
+        desc = "Current File Fuzzy Search",
+      },
+      {
+        "<leader>fr",
+        function()
+          require("fzf-lua").lsp_references()
+        end,
+        desc = "Find References",
+      },
+      {
+        "<leader>ft",
+        function()
+          require("fzf-lua").tags()
+        end,
+        desc = "FzfLua Tags",
+      },
+      {
+        "<leader>fh",
+        function()
+          require("fzf-lua").help_tags()
+        end,
+        desc = "FzfLua Help Tags",
+      },
+      {
+        "<leader>fb",
+        function()
+          require("fzf-lua").buffers()
+        end,
+        desc = "FzfLua Buffers",
+      },
+      {
+        "<leader>rg",
+        function()
+          require("fzf-lua").live_grep()
+        end,
+        desc = "Ripgrep Search",
+      },
+      {
+        "<leader>fw",
+        function()
+          require("fzf-lua").grep_cword()
+        end,
+        desc = "Ripgrep Current Word",
+      },
+      {
+        "<leader>bl",
+        function()
+          require("fzf-lua").blines()
+        end,
+        desc = "Buffer Line Search",
+      },
+      {
+        "<leader>ds",
+        function()
+          require("fzf-lua").lsp_document_symbols()
+        end,
+        desc = "Document Symbols",
+      },
+      {
+        "<leader>fi",
+        function()
+          require("fzf-lua").lsp_implementations()
+        end,
+        desc = "Find LSP Implementations",
+      },
+      {
+        "<leader>ss",
+        function()
+          require("fzf-lua").spell_suggest()
+        end,
+        desc = "Spell Correction Suggestions",
+      },
+      {
+        "<leader>rr",
+        function()
+          require("fzf-lua").resume()
+        end,
+        desc = "Resume last search",
+      },
+      {
+        "gL",
+        function()
+          require("fzf-lua").diagnostics_document()
+        end,
+        desc = "Document Diagnostics",
+      },
       {
         "<leader>ca",
         function()
