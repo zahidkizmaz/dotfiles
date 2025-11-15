@@ -2,7 +2,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
+    package = pkgs.firefox;
 
     profiles.zahid = {
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
@@ -54,6 +54,7 @@
         "dom.security.https_only_mode_ever_enabled" = true;
 
         # privacy
+        "browser.newtabpage.activity-stream.weather.locationSearchEnabled" = false;
         "browser.send_pings" = false;
         "dom.battery.enabled" = false;
         "dom.event.clipboardevents.enabled" = false;
@@ -66,12 +67,18 @@
         # telemetry
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.newtabpage.activity-stream.telemetry" = false;
+        "browser.newtabpage.activity-stream.telemetry.structuredIngestion.endpoint" = "";
         "browser.ping-centre.telemetry" = false;
+        "browser.search.serpEventTelemetryCategorization.enabled" = false;
         "datareporting.healthreport.service.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
         "datareporting.sessions.current.clean" = true;
         "devtools.onboarding.telemetry.logged" = false;
+        "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = false;
+        "network.trr.confirmation_telemetry_enabled" = false;
+        "nimbus.telemetry.targetingContextEnabled" = false;
+        "telemetry.fog.init_on_shutdown" = false;
         "toolkit.telemetry.archive.enabled" = false;
         "toolkit.telemetry.bhrPing.enabled" = false;
         "toolkit.telemetry.enabled" = false;
@@ -143,7 +150,7 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+            definedAliases = [ "@nix" ];
           };
           "Nix Package Versions" = {
             urls = [
@@ -162,7 +169,7 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@nv" ];
+            definedAliases = [ "@nixv" ];
           };
           "Github Search" = {
             urls = [
@@ -206,6 +213,84 @@
             tags = [ ];
             keyword = "homeman";
             url = "https://home-manager-options.extranix.com/?query=%s&release=master";
+          }
+          {
+            name = "AdGuard";
+            tags = [ "selfhosted" ];
+            keyword = "dns";
+            url = "https://dns.quoll-ratio.ts.net";
+          }
+          {
+            name = "Home Assistant";
+            tags = [ "selfhosted" ];
+            keyword = "";
+            url = "https://home.quoll-ratio.ts.net";
+          }
+          {
+            name = "Immich";
+            tags = [ "selfhosted" ];
+            keyword = "immich";
+            url = "https://immich.quoll-ratio.ts.net";
+          }
+          {
+            name = "KaraKeep";
+            tags = [ "selfhosted" ];
+            keyword = "keep";
+            url = "https://keep.quoll-ratio.ts.net";
+          }
+          {
+            name = "Mealie";
+            tags = [ "selfhosted" ];
+            keyword = "meal";
+            url = "https://meal.quoll-ratio.ts.net";
+          }
+          {
+            name = "Monitoring";
+            tags = [ "selfhosted" ];
+            keyword = "logs";
+            url = "https://monitoring.quoll-ratio.ts.net";
+          }
+          {
+            name = "Music - Navidrome";
+            tags = [ "selfhosted" ];
+            keyword = "music";
+            url = "https://music.quoll-ratio.ts.net";
+          }
+          {
+            name = "Ntfy";
+            tags = [ "selfhosted" ];
+            keyword = "ntfy";
+            url = "https://ntfy.quoll-ratio.ts.net";
+          }
+          {
+            name = "Paperless";
+            tags = [ "selfhosted" ];
+            keyword = "paper";
+            url = "https://paperless.quoll-ratio.ts.net";
+          }
+          {
+            name = "StirlingPDF";
+            tags = [ "selfhosted" ];
+            keyword = "pdf";
+            url = "https://pdf.quoll-ratio.ts.net";
+          }
+          {
+            name = "Searxng";
+            tags = [ "selfhosted" ];
+            keyword = "";
+            url = "https://search.quoll-ratio.ts.net";
+          }
+          {
+            name = "Uptime Kuma";
+            tags = [ "selfhosted" ];
+            keyword = "uptime";
+            url = "https://status.quoll-ratio.ts.net";
+          }
+          {
+            name = "Watch";
+            tags = [ "selfhosted" ];
+            keyword = "watch";
+            url = "https://watch.quoll-ratio.ts.net";
           }
         ];
       };
