@@ -25,8 +25,8 @@ in
 
     # Browsers
     pkgs.brave
-    pkgs.firefox
-    pkgs.librewolf
+    pkgs.firefox-bin
+    pkgs.librewolf-bin
 
     # Utilities
     pkgs.nwg-displays
