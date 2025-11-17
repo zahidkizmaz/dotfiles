@@ -1,26 +1,9 @@
 return {
   { "rhysd/committia.vim", ft = "gitcommit" }, -- nice commit setup
   {
-    "ruifm/gitlinker.nvim",
-    opts = { mappings = nil },
-    keys = {
-      {
-        "<leader>hh",
-        function()
-          require("gitlinker").get_buf_range_url("n")
-        end,
-        desc = "Create VCS remote link for line and copy to clipboard",
-        mode = "n",
-      },
-      {
-        "<leader>hh",
-        function()
-          require("gitlinker").get_buf_range_url("v")
-        end,
-        desc = "Create VCS remote link for line and copy to clipboard",
-        mode = "v",
-      },
-    },
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    keys = { { "<leader>hh", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" } },
   },
   {
     "tpope/vim-fugitive",
