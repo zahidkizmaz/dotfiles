@@ -34,7 +34,7 @@ in
     ];
     script = ''
       START_HOUR=21
-      STOP_HOUR=9
+      STOP_HOUR=8
 
       declare -i current_hour
       current_hour=$(date +%k)

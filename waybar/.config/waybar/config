@@ -1,23 +1,67 @@
 // # vi: ft=json
 [
     {
-        "output": ["DP-1", "DP-2", "DP-3", "DP-4", "HDMI-1", "HDMI-A-1"],
+        "output": [
+            "DP-1",
+            "DP-2",
+            "DP-3",
+            "DP-4",
+            "HDMI-1",
+            "HDMI-A-1"
+        ],
         "layer": "top",
         "position": "top",
-        "include": [ "~/.config/waybar/default-modules.json" ],
-        "modules-left": ["hyprland/workspaces", "hyprland/window"],
-        "modules-center": ["tray"],
-        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "power-profiles-daemon", "custom/hyprsunset", "clock"],
-        "spacing": 8,
+        "include": [
+            "~/.config/waybar/default-modules.json"
+        ],
+        "modules-left": [
+            "hyprland/workspaces",
+            "hyprland/window"
+        ],
+        "modules-center": [
+            "tray"
+        ],
+        "modules-right": [
+            "privacy",
+            "idle_inhibitor",
+            "hyprland/language",
+            "battery",
+            "wireplumber",
+            "power-profiles-daemon",
+            "custom/hyprsunset",
+            "clock",
+            "custom/power"
+        ],
+        "spacing": 8
     },
     {
-        "output": ["eDP-1"],
+        "output": [
+            "eDP-1"
+        ],
         "layer": "top",
         "position": "top",
-        "include": [ "~/.config/waybar/default-modules.json" ],
-        "modules-left": ["hyprland/workspaces", "hyprland/window"],
-        "modules-center": ["tray"],
-        "modules-right": ["privacy", "idle_inhibitor", "hyprland/language", "battery", "wireplumber", "backlight", "power-profiles-daemon", "custom/hyprsunset", "clock"],
-        "spacing": 8,
+        "include": [
+            "~/.config/waybar/default-modules.json"
+        ],
+        "modules-left": [
+            "hyprland/workspaces",
+            "hyprland/window"
+        ],
+        "modules-center": [
+            "tray"
+        ],
+        "modules-right": [
+            "privacy",
+            "idle_inhibitor",
+            "hyprland/language",
+            "battery",
+            "wireplumber",
+            "backlight",
+            "power-profiles-daemon",
+            "custom/hyprsunset",
+            "clock",
+            "custom/power"
+        ],
+        "spacing": 8
     }
 ]

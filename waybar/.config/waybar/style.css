@@ -40,6 +40,7 @@
 #keyboard-state,
 #language,
 #memory,
+#custom-power,
 #network,
 #power-profiles-daemon,
 #privacy,
@@ -74,6 +75,12 @@
   border-radius: 1rem;
 }
 
+#power-profiles-daemon,
+#custom-hyprsunset,
+#custom-power {
+  /* padding-left: 0.63rem; */
+}
+
 tooltip {
   background: @base;
   border: 1px solid @pink;
@@ -81,4 +88,13 @@ tooltip {
 
 tooltip label {
   color: @text;
+}
+
+menu {
+    border-radius: 1rem;
+}
+
+menuitem {
+    padding-bottom: 0.3rem;
+    border-radius: 1rem;
 }
