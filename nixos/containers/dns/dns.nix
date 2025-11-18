@@ -246,6 +246,8 @@ in
                 "@@||sentry.io"
                 "@@||analytex-us.userpilot.io"
                 "@@||rules.aatkit.com"
+                "@@||spc.n26.com"
+                "@@||sdk.fra-02.braze.eu"
               ];
 
               dhcp = {
