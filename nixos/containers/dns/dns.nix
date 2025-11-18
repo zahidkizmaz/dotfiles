@@ -106,7 +106,7 @@ in
                 ];
                 fallback_dns = [ ];
                 upstream_mode = "parallel";
-                fastest_timeout = "500ms";
+                fastest_timeout = "900ms";
                 allowed_clients = [ ];
                 disallowed_clients = [ ];
                 blocked_hosts = [
@@ -135,7 +135,7 @@ in
                 ipset = [ ];
                 ipset_file = "";
                 bootstrap_prefer_ipv6 = false;
-                upstream_timeout = "2s";
+                upstream_timeout = "5s";
                 private_networks = [ ];
                 use_private_ptr_resolvers = true;
                 local_ptr_upstreams = [ ];
