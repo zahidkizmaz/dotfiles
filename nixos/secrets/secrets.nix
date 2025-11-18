@@ -26,6 +26,10 @@ in
     lab
     fw13
   ];
+  "rclone-config-pcloud.age".publicKeys = [
+    lab
+    fw13
+  ];
   "companion_env.age".publicKeys = [
     lab
     fw13

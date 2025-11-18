@@ -20,6 +20,7 @@ in
     pkgs-unstable.joplin-desktop
 
     # Cloud
+    pkgs.pcloud
     pkgs.filen-cli
     pkgs.filen-desktop
 
