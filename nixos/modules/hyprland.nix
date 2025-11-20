@@ -20,46 +20,4 @@ in
     hyprland-qt-support
     rose-pine-hyprcursor
   ];
-
-  systemd.user.services."hyprsunset-automate" = {
-    serviceConfig = {
-      Type = "simple";
-    };
-    enable = true;
-    startAt = "*:0/1";
-    path = with pkgs-unstable; [
-      bash
-      hyprsunset
-      procps
-    ];
-    script = ''
-      START_HOUR=21
-      STOP_HOUR=8
-
-      declare -i current_hour
-      current_hour=$(date +%k)
-
-      if ((START_HOUR > STOP_HOUR)); then
-        if ((current_hour >= START_HOUR || current_hour < STOP_HOUR)); then
-          if ! pgrep -x hyprsunset >/dev/null; then
-            echo "INFO: Starting hyprsunset current_hour:$current_hour"
-            "${pkgs-unstable.hyprsunset}/bin/hyprsunset" -t 3500
-          fi
-        else
-          echo "INFO: Stopping hyprsunset current_hour:$current_hour"
-          "${pkgs-unstable.procps}"/bin/pkill -x hyprsunset
-        fi
-      else
-        if ((current_hour >= START_HOUR && current_hour < STOP_HOUR)); then
-          if ! pgrep -x hyprsunset >/dev/null; then
-            echo "INFO: Starting hyprsunset current_hour:$current_hour"
-            "${pkgs-unstable.hyprsunset}/bin/hyprsunset" -t 3500
-          fi
-        else
-          echo "INFO: Stopping hyprsunset current_hour:$current_hour"
-          "${pkgs-unstable.procps}"/bin/pkill -x hyprsunset
-        fi
-      fi
-    '';
-  };
 }
