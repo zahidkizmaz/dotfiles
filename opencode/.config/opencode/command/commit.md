@@ -29,8 +29,4 @@ Rules to follow:
 
     Do not include any text outside the commit message itself (no commentary, no code fences, no prefixes like “Here is your commit message”).
 
-You are given a git diff as input.
-First, infer the intent of the change (bug fix, new feature, docs update, refactor, etc.),
-then pick the most appropriate <type> and an optional scope derived from the changed files or modules.
-
-Output only the final commit message.
+Make sure to include your commit messages body as well for readers help understand why these changes were made, or what these changes bring.
