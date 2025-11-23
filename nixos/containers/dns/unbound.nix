@@ -60,7 +60,7 @@ in
         # OPTIMIZED: Reduce latency
         infra-host-ttl = 900; # 15 minutes
         infra-cache-numhosts = 10000;
-        jostle-timeout = 200; # Drop slow queries faster
+        jostle-timeout = 1000; # Drop slow queries faster
         target-fetch-policy = "\"3 2 1 0 0\""; # More aggressive fetching
 
         verbosity = 1;
@@ -108,7 +108,7 @@ in
       cachedb = {
         backend = "redis";
         "redis-server-path" = "/var/run/redis-unbound/redis.sock";
-        "redis-timeout" = 10;
+        "redis-timeout" = 100;
         "redis-expire-records" = true;
       };
       "remote-control" = {

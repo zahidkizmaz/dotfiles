@@ -118,7 +118,7 @@ in
                   "127.0.0.0/8"
                   "::1/128"
                 ];
-                cache_size = 67108864;
+                cache_size = 0; # disable cache in favor of unbound-redis
                 cache_ttl_min = 60;
                 cache_ttl_max = 86400;
                 cache_optimistic = true;
