@@ -47,6 +47,6 @@ alias pro="gh pr view --web"
 # Docker Aliases
 #------------------------------
 alias dps='docker ps -a'
-alias dup='docker-compose up -d'
-alias ddown='docker-compose down'
+alias dup='docker-compose up -d --wait --remove-orphans'
+alias ddown='docker-compose down --remove-orphans'
 alias dlogs='docker-compose logs -f'

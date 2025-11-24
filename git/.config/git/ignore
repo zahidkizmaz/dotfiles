@@ -107,3 +107,6 @@ dmypy.json
 result
 *.qcow2
 *.qcow3
+
+# LLMs
+AGENTS.md
