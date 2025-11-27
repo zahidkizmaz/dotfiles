@@ -9,7 +9,6 @@ remove_dir_if_not_symlink() {
 # app -> callable
 declare -A appMappings=(
   [aichat]="aichat"
-  [anyrun]="anyrun"
   [atuin]="atuin"
   [bat]="bat"
   [copyq]="copyq"
@@ -37,6 +36,7 @@ declare -A appMappings=(
   [tmux]="tmux"
   [tofi]="tofi"
   [udiskie]="udiskie"
+  [vicinae]="vicinae"
   [waybar]="waybar"
   [yazi]="yazi"
   [zsh]="zsh"
