@@ -10,7 +10,6 @@ let
 in
 {
   imports = [
-    ./anyrun.nix
     ./cli-tools.nix
   ];
 

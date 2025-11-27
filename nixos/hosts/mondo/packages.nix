@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
 
   copyq-fix = pkgs.writeShellApplication {
     name = "copyq-fix";

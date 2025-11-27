@@ -15,6 +15,7 @@
     slurp
     tofi
     udiskie
+    vicinae
     wl-clipboard
   ];
 

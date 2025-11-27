@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
   nushell_pkgs = with pkgs-unstable; [
     # These are used as external_completer in nushell
     carapace

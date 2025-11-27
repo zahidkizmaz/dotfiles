@@ -5,7 +5,6 @@
     # Start a systemd service for each incoming SSH connection
     startWhenNeeded = true;
   };
-  programs.ssh.startAgent = true;
 
   users.users.${user}.openssh.authorizedKeys.keys = [
     # lab

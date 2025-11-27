@@ -5,7 +5,7 @@
     package = pkgs.firefox;
 
     profiles.zahid = {
-      extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+      extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         clearurls
         darkreader
         facebook-container

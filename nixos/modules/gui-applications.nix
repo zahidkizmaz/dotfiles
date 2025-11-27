@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
 in
 {
   environment.systemPackages = [
@@ -13,7 +13,7 @@ in
     pkgs.fractal
 
     # PW manager
-    pkgs.bitwarden
+    pkgs.bitwarden-desktop
     pkgs.ente-auth
 
     # Note taking
