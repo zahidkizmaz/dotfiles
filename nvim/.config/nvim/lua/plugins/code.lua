@@ -200,6 +200,7 @@ return {
         rust = { "rustfmt" },
         sh = { "shfmt", lsp_format = "never" },
         sql = { "sqlfluff", stop_after_first = true },
+        terraform = { "terraform_fmt" },
         toml = { "taplo", lsp_format = "never" },
         typescript = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
         typescriptreact = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
