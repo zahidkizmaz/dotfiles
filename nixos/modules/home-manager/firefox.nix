@@ -42,6 +42,15 @@
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
+        # performance
+        "browser.tabs.unloadOnLowMemory" = true;
+        "browser.low_commit_space_threshold_percent" = 100;
+        "min_inactive_duration_before_unload" = 3600000; # 1 hour
+
+        "browser.cache.disk.enable" = false;
+        "browser.cache.memory.enable" = true;
+        "browser.cache.memory.capacity" = -1; # automatic memory management
+
         # hardware acceleration
         "gfx.webrender.all" = true;
         "gfx.webrender.overlay-vp-auto-hdr" = true;
