@@ -16,7 +16,9 @@ in
     bruno
     docker
     docker-compose
+    gemini-cli
     nh
+    unixtools.watch
     utm
   ]);
 }
