@@ -63,3 +63,19 @@ keybindings:
         fi) > /dev/null &
 pager:
   diff: ""
+theme:
+  colors:
+    text:
+      primary: "#cdd6f4"
+      secondary: "#f5c2e7"
+      inverted: "#11111b"
+      faint: "#bac2de"
+      warning: "#f9e2af"
+      success: "#a6e3a1"
+      error: "#f38ba8"
+    background:
+      selected: "#313244"
+    border:
+      primary: "#f5c2e7"
+      secondary: "#45475a"
+      faint: "#313244"
