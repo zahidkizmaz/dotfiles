@@ -19,6 +19,7 @@ alias la='ls --color=auto -h -F -a '
 # Git Aliases
 #------------------------------
 alias gs="git status -sb"
+alias gsm="git switch main"
 alias gp='git pull origin $(git branch --show-current)'
 alias grc='git pull --rebase origin $(git branch --show-current)'
 alias gP="git push"
