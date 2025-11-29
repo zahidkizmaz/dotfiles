@@ -51,14 +51,14 @@ let
   };
 
   rcloneWithFilen = pkgs.rclone.overrideAttrs {
-    version = "1.69.1";
+    version = "1.72.0";
     src = pkgs.fetchFromGitHub {
       owner = "rclone";
       repo = "rclone";
-      rev = "52018b0114a5591268512227dc6b0d378824d0da";
-      hash = "sha256-b+8v4hflmU024qtrBRPP+gZuThOaoeR5KXhkFy+eW2o=";
+      rev = "be07d75e1bb2662655e32c6cdc8f65861ef6ebbf";
+      hash = "sha256-aCklWfQg3MYHnzJIbZSUbT2gZmCLAdRAqyk9ou9YTzo=";
     };
-    vendorHash = "sha256-JT/XrjkeAFkFwzjYc5rCIVn0A86vXDuCzPqEw1dEeOY=";
+    vendorHash = "sha256-JXavjdcDE6L+6db5zQtIiS0KxY6wtaZyyvuN+UmCU+A=";
   };
 in
 {
