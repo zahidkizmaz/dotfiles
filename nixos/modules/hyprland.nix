@@ -5,9 +5,13 @@ in
 {
   programs = {
     hyprland.enable = true;
-    hyprland.withUWSM = true;
     hyprland.package = pkgs-unstable.hyprland;
     hyprlock.enable = true;
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
   services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
