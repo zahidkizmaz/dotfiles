@@ -83,6 +83,6 @@ This setup includes:
 - Window manager: Hyprland
 - Status bar: waybar
 - Notifications manager: dunst
-- Application launcher: anyrun, tofi
+- Application launcher: tofi
 
 and more...

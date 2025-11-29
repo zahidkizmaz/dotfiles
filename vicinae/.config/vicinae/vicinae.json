@@ -3,7 +3,8 @@
     "considerPreedit": false,
     "faviconService": "twenty",
     "font": {
-        "size": 14
+        "normal": "Arimo Nerd Font",
+        "size": 16
     },
     "keybinding": "default",
     "keybinds": {
@@ -13,7 +14,7 @@
         "searchFiles": false
     },
     "theme": {
-        "name": "vicinae-dark"
+        "name": "catppuccin-mocha"
     },
     "window": {
         "csd": true,
