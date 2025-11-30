@@ -6,6 +6,7 @@
   modulesPath,
   stateVersion,
   user,
+  system,
   ...
 }:
 {
@@ -86,7 +87,14 @@
     users = {
       "${user}" = import ./home.nix;
     };
-    extraSpecialArgs = { inherit inputs user stateVersion; };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        user
+        stateVersion
+        system
+        ;
+    };
   };
   nix.settings.trusted-users = [
     "root"
