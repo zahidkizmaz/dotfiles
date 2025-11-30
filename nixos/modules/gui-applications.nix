@@ -1,6 +1,11 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
 {
   environment.systemPackages = [
@@ -13,14 +18,13 @@ in
     pkgs.fractal
 
     # PW manager
-    pkgs.bitwarden
+    pkgs.bitwarden-desktop
     pkgs.ente-auth
 
     # Note taking
     pkgs-unstable.joplin-desktop
 
     # Cloud
-    pkgs.pcloud
     pkgs.filen-cli
     pkgs.filen-desktop
 

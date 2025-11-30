@@ -1,11 +1,16 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
 
     profiles.zahid = {
-      extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+      extensions.packages = with inputs.firefox-addons.packages.${system}; [
         clearurls
         darkreader
         facebook-container

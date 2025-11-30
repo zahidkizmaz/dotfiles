@@ -18,7 +18,6 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/default-user.nix
     ../../modules/gc.nix
     ../../modules/home-assistant/default.nix
-    ../../modules/latest-kernel.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix

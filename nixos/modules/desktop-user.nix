@@ -1,19 +1,5 @@
+{ pkgs, user, ... }:
 {
-  inputs,
-  pkgs,
-  user,
-  system,
-  ...
-}:
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
-{
-  imports = [
-    ./anyrun.nix
-    ./cli-tools.nix
-  ];
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${user}" = {
     isNormalUser = true;
@@ -29,7 +15,7 @@ in
       "cups"
       "libvirtd"
     ];
-    shell = pkgs-unstable.zsh;
+    shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
 

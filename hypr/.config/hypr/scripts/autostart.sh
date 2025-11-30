@@ -6,9 +6,9 @@ start_program() {
 
   if ! pgrep "$program_name" >/dev/null; then
     if [ -z "$args" ]; then
-      uwsm app -- "$program_name" >/dev/null 2>&1 &
+      nohup "$program_name" >/dev/null 2>&1 &
     else
-      uwsm app -- "$program_name" "$args" >/dev/null 2>&1 &
+      nohup "$program_name" "$args" >/dev/null 2>&1 &
     fi
     echo "Started $program_name $args with PID $!"
   fi

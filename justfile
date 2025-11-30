@@ -41,6 +41,7 @@ stow-linux: _stow-common
     just stow nwg-displays
     just stow tofi
     just stow udiskie
+    just stow vicinae
     just stow waybar
 
 stow-mac: _stow-common
