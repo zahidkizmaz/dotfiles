@@ -7,13 +7,11 @@ in
     hyprland.enable = true;
     hyprland.package = pkgs-unstable.hyprland;
     hyprlock.enable = true;
-
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
   };
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome = {
+    gnome-keyring.enable = true;
+    gcr-ssh-agent.enable = false;
+  };
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs-unstable; [
