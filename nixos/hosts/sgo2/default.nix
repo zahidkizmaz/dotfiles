@@ -1,6 +1,6 @@
 { inputs, stateVersion, ... }:
 let
-  system = "x86_64_linux";
+  system = "x86_64-linux";
 in
 inputs.nixpkgs.lib.nixosSystem {
   system = "${system}";
