@@ -55,6 +55,11 @@ in
           };
         };
 
+        environment.systemPackages = with pkgs; [
+          dig
+          neovim
+        ];
+
         services = {
           resolved = {
             extraConfig = ''
@@ -105,8 +110,8 @@ in
                   "2620:fe::fe:10"
                 ];
                 fallback_dns = [ ];
-                upstream_mode = "parallel";
-                fastest_timeout = "900ms";
+                upstream_mode = "load_balance";
+                fastest_timeout = "2s";
                 allowed_clients = [ ];
                 disallowed_clients = [ ];
                 blocked_hosts = [
@@ -135,7 +140,7 @@ in
                 ipset = [ ];
                 ipset_file = "";
                 bootstrap_prefer_ipv6 = false;
-                upstream_timeout = "5s";
+                upstream_timeout = "10s";
                 private_networks = [ ];
                 use_private_ptr_resolvers = true;
                 local_ptr_upstreams = [ ];
