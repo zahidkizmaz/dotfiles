@@ -59,10 +59,13 @@
   services.resolved.enable = true;
 
   environment.systemPackages = with pkgs; [
+    atuin
+    bat
+    fzf
     gitMinimal
-    kitty
     neovim
     sesh
+    zoxide
   ];
 
   nix.settings.trusted-users = [ "@wheel" ];

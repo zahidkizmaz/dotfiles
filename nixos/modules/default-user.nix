@@ -14,5 +14,4 @@
       "networkmanager"
     ];
   };
-  imports = [ ./cli-tools.nix ];
 }

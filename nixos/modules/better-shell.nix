@@ -1,11 +1,7 @@
 { pkgs, ... }:
 {
   programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-    };
+    direnv.enable = true;
     starship.enable = true;
     tmux = {
       enable = true;
@@ -23,6 +19,12 @@
         bind -r C-k select-pane -U  # move up
         bind -r C-l select-pane -R  # move right
       '';
+    };
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+      enableBashCompletion = true;
     };
   };
 }
