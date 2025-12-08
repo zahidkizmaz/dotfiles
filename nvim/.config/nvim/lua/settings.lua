@@ -24,6 +24,7 @@ g.neovide_scroll_animation_length = 0.00
 g.netrw_liststyle = 3 -- tree style view in netrw
 g.netrw_altv = 1 -- change from left splitting to right splitting
 
+o.autoread = true
 o.mouse = "a"
 o.hlsearch = false
 o.incsearch = true

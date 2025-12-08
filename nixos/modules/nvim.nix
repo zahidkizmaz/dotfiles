@@ -17,7 +17,6 @@ in
     viu # fzf-lua
 
     # LSPs
-    basedpyright
     docker-compose-language-service
     dockerfile-language-server
     emmylua-ls
