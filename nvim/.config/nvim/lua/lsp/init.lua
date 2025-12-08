@@ -69,7 +69,16 @@ M.SERVER_CONFIGURATIONS = {
   taplo = {},
   terraformls = {},
   ts_ls = {},
-  ty = {},
+  ty = {
+    settings = {
+      ty = {
+        experimental = {
+          autoImport = true,
+          rename = true,
+        },
+      },
+    },
+  },
   typos_lsp = {},
   yamlls = function()
     return {
