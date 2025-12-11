@@ -28,6 +28,7 @@ in
       jq
       just
       jwt-cli
+      lnav
       ouch
       ripgrep
       stow
