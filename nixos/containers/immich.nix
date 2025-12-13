@@ -50,6 +50,11 @@ in
           enable = true;
           port = port;
           host = "0.0.0.0";
+          database = {
+            enable = true;
+            enableVectors = false;
+            enableVectorChord = true;
+          };
         };
 
         system.stateVersion = stateVersion;
