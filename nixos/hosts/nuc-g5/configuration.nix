@@ -58,16 +58,6 @@
   };
   services.resolved.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    atuin
-    bat
-    fzf
-    gitMinimal
-    neovim
-    sesh
-    zoxide
-  ];
-
   nix.settings.trusted-users = [ "@wheel" ];
 
   system.stateVersion = stateVersion;
