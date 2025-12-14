@@ -46,14 +46,20 @@ in
           })
         ];
 
-        services.immich = {
-          enable = true;
-          port = port;
-          host = "0.0.0.0";
-          database = {
+        services = {
+          immich = {
             enable = true;
-            enableVectors = false;
-            enableVectorChord = true;
+            port = port;
+            host = "0.0.0.0";
+            database = {
+              enable = true;
+              enableVectors = false;
+              enableVectorChord = true;
+            };
+          };
+          postgresql = {
+            enable = true;
+            package = pkgs.postgresql_16;
           };
         };
 

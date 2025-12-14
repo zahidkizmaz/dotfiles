@@ -6,12 +6,13 @@
     initialPassword = "${user}";
     shell = pkgs.zsh;
     extraGroups = [
-      "input"
-      "wheel"
-      "video"
       "audio"
-      "storage"
+      "input"
       "networkmanager"
+      "storage"
+      "systemd-journal"
+      "video"
+      "wheel"
     ];
   };
 }

@@ -23,12 +23,10 @@ let
     // SECTION: SYSTEM LOGS & JOURNAL
 
     loki.source.journal "journal" {
-      max_age       = "24h0m0s"
+      max_age       = "720h0m0s"
       relabel_rules = discovery.relabel.journal.rules
       forward_to    = [loki.write.default.receiver]
       labels        = {component = string.format("%s-journal", constants.hostname)}
-      // NOTE: This is important to fix https://github.com/grafana/alloy/issues/924
-      path          = "/var/log/journal"
     }
 
     local.file_match "system" {
@@ -57,6 +55,14 @@ let
       rule {
         source_labels = ["__journal_priority_keyword"]
         target_label  = "level"
+      }
+      rule {
+        source_labels = ["__journal__machine_id"]
+        target_label  = "machine_id"
+      }
+      rule {
+        source_labels = ["__journal_container_name"]
+        target_label  = "container"
       }
     }
 
