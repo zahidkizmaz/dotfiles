@@ -9,7 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
-    ../../modules/latest-kernel.nix
+    ./suspend_tricks.nix
   ];
 
   home-manager = {

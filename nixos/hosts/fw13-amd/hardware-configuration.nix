@@ -20,11 +20,35 @@
     "usbhid"
     "xhci_pci"
   ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "amd-pstate"
+  ];
   boot.kernelParams = [
     "rcu_nocbs=all"
     "rcutree.enable_rcu_lazy=1"
+
+    "amd_pstate=active"
+    "mem_sleep_default=s2idle"
+    "amdgpu.dcdebugmask=0x10"
+
+    # USB autosuspend
+    "usbcore.autosuspend=1"
+    "usbcore.autosuspend_delay_ms=100"
+
+    # Thunderbolt - allow D3
+    "thunderbolt.dyndbg=+p"
+
+    # remove the line below in case usb4 issues
+    # should help with the system sleep
+    "acpi_mask_gpe=0x10"
   ];
+
+  # WiFi power saving (for Intel WiFi cards)
+  boot.extraModprobeConfig = ''
+    options iwlwifi power_save=1 power_level=5 uapsd_disable=0
+    options iwlmvm power_scheme=3
+  '';
 
   hardware.enableRedistributableFirmware = true;
 
