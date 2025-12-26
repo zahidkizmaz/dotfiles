@@ -47,18 +47,24 @@ in
           })
         ];
 
-        services.paperless = {
-          enable = true;
-          port = port;
-          database.createLocally = true;
-          settings = {
-            PAPERLESS_URL = tsUrl;
-            PAPERLESS_ALLOWED_HOSTS = tsUrl;
-            PAPERLESS_CSRF_TRUSTED_ORIGINS = tsUrl;
-          };
-          exporter = {
+        services = {
+          paperless = {
             enable = true;
-            onCalendar = "01:30:00";
+            port = port;
+            database.createLocally = true;
+            settings = {
+              PAPERLESS_URL = tsUrl;
+              PAPERLESS_ALLOWED_HOSTS = tsUrl;
+              PAPERLESS_CSRF_TRUSTED_ORIGINS = tsUrl;
+            };
+            exporter = {
+              enable = true;
+              onCalendar = "01:30:00";
+            };
+          };
+          postgresql = {
+            enable = true;
+            package = pkgs.postgresql_18;
           };
         };
 

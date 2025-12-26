@@ -46,10 +46,16 @@ in
           })
         ];
 
-        services.mealie = {
-          enable = true;
-          port = port;
-          database.createLocally = true;
+        services = {
+          mealie = {
+            enable = true;
+            port = port;
+            database.createLocally = true;
+          };
+          postgresql = {
+            enable = true;
+            package = pkgs.postgresql_18;
+          };
         };
 
         system.stateVersion = stateVersion;

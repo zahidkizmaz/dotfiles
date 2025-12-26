@@ -69,12 +69,6 @@
           echo "Disabled ACPI wakeup sources"
         fi
 
-        # Internal keyboard (serio0/PS2) - re-enable if it exists
-        if [ -e /sys/devices/platform/i8042/serio0/power/wakeup ]; then
-          echo "enabled" > /sys/devices/platform/i8042/serio0/power/wakeup
-          echo "Enabled keyboard wake for: serio0 (internal)"
-        fi
-
         # Verify what's still enabled
         echo "Remaining enabled wakeup sources:"
         cat /proc/acpi/wakeup | grep enabled || echo "None (good!)"

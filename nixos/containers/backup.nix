@@ -51,7 +51,7 @@ let
   };
 
   rcloneWithFilen = pkgs.rclone.overrideAttrs {
-    version = "1.72.0";
+    version = "1.72.1";
     src = pkgs.fetchFromGitHub {
       owner = "rclone";
       repo = "rclone";
