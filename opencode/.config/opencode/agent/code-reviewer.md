@@ -45,3 +45,4 @@ you have to check the documentation with context7. Otherwise focus on:
 - Resource cleanup (files, connections, memory)
 - Thread safety in concurrent code
 - Backward compatibility considerations
+- Run all pre-commit hooks if .pre-commit-config.yaml is present

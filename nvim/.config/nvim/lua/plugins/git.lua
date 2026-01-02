@@ -17,6 +17,12 @@ return {
         desc = "Open a new tab and run git commit",
         mode = "n",
       },
+      {
+        "<leader>hl",
+        "<CMD>Git log<CR>",
+        desc = "Open git log",
+        mode = "n",
+      },
     },
   },
   {

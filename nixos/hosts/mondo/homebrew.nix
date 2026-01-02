@@ -14,6 +14,7 @@
       "hammerspoon"
       "logi-options+"
       "orbstack"
+      "raycast"
     ];
   };
 }
