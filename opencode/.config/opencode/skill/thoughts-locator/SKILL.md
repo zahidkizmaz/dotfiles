@@ -1,14 +1,9 @@
 ---
-description: Locates relevant thought documents without deep analysis
-mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
+name: thoughts-locator
+description: Find relevant research documents
 ---
 
-# Thoughts Locator Agent
+# Thoughts Locator
 
 Discover relevant documents within the `thoughts/` directory—a metadata storage system used during research tasks.
 

@@ -1,14 +1,9 @@
 ---
-description: Documents existing code patterns and implementations without suggesting improvements
-mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
+name: codebase-pattern-finder
+description: Document existing code patterns
 ---
 
-# Codebase Pattern Finder Agent
+# Codebase Pattern Finder
 
 ## Overview
 

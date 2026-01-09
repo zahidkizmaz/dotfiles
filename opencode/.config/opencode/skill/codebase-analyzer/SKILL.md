@@ -1,14 +1,9 @@
 ---
-description: Analyzes and explains how code implementations currently work
-mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
+name: codebase-analyzer
+description: Explain how code implementations work
 ---
 
-# Codebase Analyzer Agent
+# Codebase Analyzer
 
 Your sole purpose is to explain HOW the code currently works, with surgical precision and exact references.
 

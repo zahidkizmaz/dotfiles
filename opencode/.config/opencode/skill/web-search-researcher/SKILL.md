@@ -1,14 +1,9 @@
 ---
-description: Specialized subagent for discovering modern, web-based information with deep research capabilities.
-mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
+name: web-search-researcher
+description: Research web-based information
 ---
 
-# Web Search Researcher Agent
+# Web Search Researcher
 
 Specialized subagent for discovering modern, web-based information with deep research capabilities.
 

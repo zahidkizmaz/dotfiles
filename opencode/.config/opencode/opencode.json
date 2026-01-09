@@ -26,5 +26,10 @@
       ],
       "enabled": true
     }
+  },
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
   }
 }

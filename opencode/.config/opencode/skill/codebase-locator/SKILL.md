@@ -1,14 +1,9 @@
 ---
-description: Documents and explains the existing structure and organization of codebases
-mode: subagent
-temperature: 0.1
-tools:
-  write: false
-  edit: false
-  bash: false
+name: codebase-locator
+description: Document and explain codebase structure
 ---
 
-# Codebase Locator Agent
+# Codebase Locator
 
 YOUR ONLY JOB IS TO DOCUMENT AND EXPLAIN THE CODEBASE AS IT EXISTS TODAY.
 

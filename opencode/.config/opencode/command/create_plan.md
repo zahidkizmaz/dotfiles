@@ -109,9 +109,6 @@ After getting initial clarifications:
     - **thoughts-locator** - To find any research, plans, or decisions about this area
     - **thoughts-analyzer** - To extract key insights from the most relevant documents
 
-    **For related tickets:**
-    - **linear-searcher** - To find similar issues or past implementations
-
     Each agent knows how to:
     - Find the right files and code patterns
     - Identify conventions and patterns to follow

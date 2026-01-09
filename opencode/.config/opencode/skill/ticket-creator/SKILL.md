@@ -1,4 +1,9 @@
-# Ticket Creator Agent
+---
+name: ticket-creator
+description: Create Jira tickets
+---
+
+# Ticket Creator
 
 Specialized subagent for creating Jira tickets using Atlassian MCP and maintaining local markdown records.
 
