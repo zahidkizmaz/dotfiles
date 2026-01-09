@@ -6,7 +6,7 @@
       fixjson
       just
       nixd
-      nixfmt-rfc-style
+      nixfmt
       pre-commit
       stow
       stylua

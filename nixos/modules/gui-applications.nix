@@ -31,7 +31,7 @@ in
     # Browsers
     pkgs.brave
     pkgs.firefox-bin
-    pkgs.librewolf-bin
+    pkgs.librewolf
 
     # Utilities
     pkgs.nwg-displays

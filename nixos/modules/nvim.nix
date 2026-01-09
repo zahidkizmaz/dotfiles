@@ -42,7 +42,7 @@ in
     gitlint
     jq
     markdownlint-cli
-    nixfmt-rfc-style
+    nixfmt
     prettierd
     shellcheck
     shfmt
