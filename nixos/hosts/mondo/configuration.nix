@@ -27,8 +27,11 @@
         ;
     };
   };
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true; # This fixes Touch ID for sudo not working inside tmux and screen.
+  };
 
-  nixpkgs.hostPlatform = lib.mkDefault system;
   system = {
     primaryUser = "${user}";
     stateVersion = 6;
@@ -54,4 +57,6 @@
       };
     };
   };
+
+  nixpkgs.hostPlatform = lib.mkDefault system;
 }
