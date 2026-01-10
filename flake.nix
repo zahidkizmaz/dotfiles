@@ -10,8 +10,6 @@
 
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
 
-    mac-app-util.url = "github:hraban/mac-app-util";
-
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +64,7 @@
         };
       };
       darwinConfigurations = {
-        MONDO-1192 = import ./nixos/hosts/mondo { inherit inputs; };
+        MONDO-1192 = import ./nixos/hosts/mondo { inherit inputs stateVersion; };
       };
 
       templates = {

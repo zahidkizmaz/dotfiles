@@ -1,10 +1,10 @@
-{ inputs, ... }:
+{ inputs, stateVersion, ... }:
 let
   system = "aarch64-darwin";
 in
 inputs.nix-darwin.lib.darwinSystem {
   modules = [
-    inputs.mac-app-util.darwinModules.default
+    inputs.home-manager.darwinModules.home-manager
     ./configuration.nix
     ./gui-applications.nix
     ./homebrew.nix
@@ -18,7 +18,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ../../modules/terminal.nix
   ];
   specialArgs = {
-    inherit inputs system;
+    inherit inputs system stateVersion;
     user = "zahidkizmaz";
   };
 }

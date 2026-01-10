@@ -1,10 +1,32 @@
 {
+  inputs,
   lib,
   system,
   user,
+  stateVersion,
+  pkgs,
   ...
 }:
 {
+  users.users.${user} = {
+    home = "/Users/${user}";
+    shell = pkgs.zsh;
+  };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users = {
+      "${user}" = import ./home.nix;
+    };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        user
+        system
+        stateVersion
+        ;
+    };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault system;
   system = {

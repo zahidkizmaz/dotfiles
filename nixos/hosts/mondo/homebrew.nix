@@ -12,7 +12,6 @@
       "copyq"
       "ghostty"
       "hammerspoon"
-      "logi-options+"
       "orbstack"
       "raycast"
     ];
