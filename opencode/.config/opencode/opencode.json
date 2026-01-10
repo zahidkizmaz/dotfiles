@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin-frappe",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
