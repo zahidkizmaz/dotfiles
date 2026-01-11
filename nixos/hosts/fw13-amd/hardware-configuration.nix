@@ -42,6 +42,13 @@
     # remove the line below in case usb4 issues
     # should help with the system sleep
     "acpi_mask_gpe=0x10"
+
+    # Force deeper display sleep
+    "amdgpu.runpm=1" # Enable runtime PM for GPU
+    "amdgpu.deep_color=1"
+
+    # nvme
+    "nvme_core.default_ps_max_latency_us=5500" # Enable APST with 5.5ms max latency
   ];
 
   # WiFi power saving (for Intel WiFi cards)
