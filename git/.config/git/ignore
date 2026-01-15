@@ -110,3 +110,5 @@ result
 
 # LLMs
 AGENTS.md
+
+**/.claude/settings.local.json
