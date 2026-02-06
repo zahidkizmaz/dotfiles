@@ -18,6 +18,23 @@
         "default.clock.max-quantum" = 1024;
       };
     };
+    wireplumber.extraConfig = {
+      "99-suspend-audio" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              { "node.name" = "~alsa_output.*"; }
+              { "node.name" = "~alsa_input.*"; }
+            ];
+            actions = {
+              "update-props" = {
+                "session.suspend-timeout-seconds" = 5;
+              };
+            };
+          }
+        ];
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [

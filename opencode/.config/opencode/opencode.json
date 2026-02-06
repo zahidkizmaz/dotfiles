@@ -11,6 +11,9 @@
       "models": {
         "coder": {
           "name": "coder"
+        },
+        "glm-47": {
+          "name": "glm-47"
         }
       }
     }

@@ -142,6 +142,140 @@
     };
   };
 
+  # Suspend libvirt before sleep
+  systemd.services.suspend-libvirt = {
+    description = "Stop libvirt before suspend";
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "suspend-libvirt" ''
+        # Destroy ALL virtual networks
+        for net in $(${pkgs.libvirt}/bin/virsh net-list --name --all); do
+          [ -n "$net" ] && ${pkgs.libvirt}/bin/virsh net-destroy "$net" 2>/dev/null || true
+          [ -n "$net" ] && echo "Destroyed $net"
+        done
+
+        # Stop all VMs
+        for vm in $(${pkgs.libvirt}/bin/virsh list --name); do
+          [ -n "$vm" ] && ${pkgs.libvirt}/bin/virsh suspend "$vm" 2>/dev/null || true
+        done
+
+        # Stop libvirt services
+        ${pkgs.systemd}/bin/systemctl stop libvirtd.service 2>/dev/null || true
+        ${pkgs.systemd}/bin/systemctl stop libvirt-guests.service 2>/dev/null || true
+
+        # Stop libvirt sockets (they keep network active!)
+        ${pkgs.systemd}/bin/systemctl stop libvirtd.socket 2>/dev/null || true
+        ${pkgs.systemd}/bin/systemctl stop libvirtd-ro.socket 2>/dev/null || true
+        ${pkgs.systemd}/bin/systemctl stop libvirtd-admin.socket 2>/dev/null || true
+
+        echo "Libvirt suspended"
+      '';
+    };
+  };
+
+  # Resume libvirt after wake
+  systemd.services.resume-libvirt = {
+    description = "Restart libvirt after wake";
+    after = [ "suspend.target" ];
+    wantedBy = [ "suspend.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "resume-libvirt" ''
+        # Restart sockets (they auto-start the service)
+        ${pkgs.systemd}/bin/systemctl start libvirtd.socket 2>/dev/null || true
+        ${pkgs.systemd}/bin/systemctl start libvirtd-ro.socket 2>/dev/null || true
+        ${pkgs.systemd}/bin/systemctl start libvirtd-admin.socket 2>/dev/null || true
+
+        # Wait for service to start
+        sleep 2
+
+        # Restart network
+        ${pkgs.libvirt}/bin/virsh net-start default 2>/dev/null || true
+
+        # Resume VMs
+        for vm in $(${pkgs.libvirt}/bin/virsh list --all --name); do
+          state=$(${pkgs.libvirt}/bin/virsh domstate "$vm" 2>/dev/null)
+          [ "$state" = "paused" ] && ${pkgs.libvirt}/bin/virsh resume "$vm" 2>/dev/null || true
+        done
+
+        echo "Libvirt resumed"
+      '';
+    };
+  };
+
+  # Suspend podman before sleep
+  systemd.services.suspend-podman = {
+    description = "Stop podman before suspend";
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "suspend-podman" ''
+        # Stop podman socket (keeps networking active)
+        ${pkgs.systemd}/bin/systemctl stop podman.socket 2>/dev/null || true
+
+        echo "Podman suspended"
+      '';
+    };
+  };
+
+  # Resume podman after wake
+  systemd.services.resume-podman = {
+    description = "Restart podman after wake";
+    after = [ "suspend.target" ];
+    wantedBy = [ "suspend.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "resume-podman" ''
+        # Restart podman socket
+        ${pkgs.systemd}/bin/systemctl start podman.socket 2>/dev/null || true
+
+        echo "Podman resumed"
+      '';
+    };
+  };
+
+  # Disable WiFi during suspend (saves ~0.1-0.2W)
+  systemd.services.suspend-wifi = {
+    description = "Disable WiFi before suspend";
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "suspend-wifi" ''
+        # Check if WiFi is enabled
+        if ${pkgs.util-linux}/bin/rfkill list wifi | grep -q "Soft blocked: no"; then
+          echo "enabled" > /tmp/wifi-was-enabled
+          ${pkgs.util-linux}/bin/rfkill block wifi
+          echo "WiFi blocked for suspend"
+        else
+          echo "disabled" > /tmp/wifi-was-enabled
+        fi
+      '';
+    };
+  };
+
+  systemd.services.resume-wifi = {
+    description = "Re-enable WiFi after wake";
+    after = [ "suspend.target" ];
+    wantedBy = [ "suspend.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "resume-wifi" ''
+        if [ -f /tmp/wifi-was-enabled ]; then
+          STATE=$(cat /tmp/wifi-was-enabled)
+          if [ "$STATE" = "enabled" ]; then
+            ${pkgs.util-linux}/bin/rfkill unblock wifi
+            echo "WiFi unblocked after wake"
+          fi
+          rm /tmp/wifi-was-enabled
+        fi
+      '';
+    };
+  };
+
   # ===== Monitor Improvements =====
   systemd.services.wakeup-monitor = {
     description = "Monitor wakeup improvements";
