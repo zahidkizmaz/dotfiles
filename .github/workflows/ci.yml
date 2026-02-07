@@ -15,16 +15,6 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: nicknovitski/nix-develop@v1
-      - name: set PY
-        run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/pre-commit
-          key: >
-            pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
-
-      - name: Run all pre-commit checks
-        run: pre-commit run --all-files
-
+      - uses: j178/prek-action@v1
       - name: Check all systems
         run: nix flake check --all-systems
