@@ -24,24 +24,34 @@ repos:
         language: system
         types:
           - nix
+
       - id: stylua-check
         name: stylua
         entry: stylua
         language: system
         types:
           - lua
+
       - id: check-yaml
         name: yamllint
         entry: yamllint
         args: ["--strict"]
         language: system
         files: \.(yml|yaml)$
+
+      - id: format-yaml
+        name: yamlfmt
+        entry: yamlfmt
+        language: system
+        files: \.(yml|yaml)$
+
       - id: shfmt
         name: shfmt
         entry: shfmt
         args: [-l, -d, -i=2, -ci, -s, -bn, -w]
         language: system
         files: '(.*\.sh$)|(\.zshrc|functionrc|aliasrc)'
+
       - id: fixjson
         name: fixjson json5
         entry: fixjson
