@@ -7,14 +7,14 @@
       just
       nixd
       nixfmt
-      pre-commit
+      prek
+      shfmt
       stow
       stylua
-      shfmt
       yamlfmt
     ];
     shellHook = ''
-      pre-commit install
+      prek install
     '';
   };
 }
