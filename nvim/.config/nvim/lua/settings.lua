@@ -130,8 +130,9 @@ vim.filetype.add({
 
     typ = "typst",
     edi = "edi",
+    caddy = "caddy",
   },
-  filename = { justfile = "just" },
+  filename = { justfile = "just", Caddyfile = "caddy" },
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 
