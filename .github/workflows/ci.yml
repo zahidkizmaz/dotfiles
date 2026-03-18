@@ -18,7 +18,7 @@ jobs:
 
       - uses: nicknovitski/nix-develop@v1
 
-      - uses: j178/prek-action@v1
+      - uses: j178/prek-action@v2
 
       - name: Check all systems
         run: nix flake check --all-systems
