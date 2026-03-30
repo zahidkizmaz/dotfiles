@@ -12,8 +12,9 @@
   home.homeDirectory = "/home/${user}";
 
   imports = [
-    ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/dconf-virt-manager-qemu.nix
+    ../../modules/home-manager/firefox.nix
+    ../../modules/home-manager/nix-index-database.nix
   ];
 
   dconf = {

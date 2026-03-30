@@ -9,6 +9,10 @@
   home.username = "${user}";
   home.homeDirectory = "/Users/${user}";
 
+  imports = [
+    ../../modules/home-manager/nix-index-database.nix
+  ];
+
   targets.darwin.copyApps.enable = true;
 
   # Let Home Manager install and manage itself.

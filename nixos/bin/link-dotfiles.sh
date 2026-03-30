@@ -6,7 +6,7 @@ remove_dir_if_not_symlink() {
   fi
 }
 
-# app -> callable
+# app-conf-dir -> callable
 declare -A appMappings=(
   [aichat]="aichat"
   [atuin]="atuin"
