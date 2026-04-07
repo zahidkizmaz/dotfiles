@@ -10,13 +10,14 @@ in
     bat
     fzf
     gcc14
-    nodePackages_latest.nodejs
+    nodejs-slim_25
     python313Packages.pynvim
     tree-sitter
     universal-ctags
     viu # fzf-lua
 
     # LSPs
+    bash-language-server
     docker-compose-language-service
     dockerfile-language-server
     emmylua-ls
@@ -24,13 +25,12 @@ in
     hyprls
     lemminx
     nixd
-    nodePackages_latest.bash-language-server
-    nodePackages_latest.typescript-language-server
     rust-analyzer
     tailwindcss-language-server
     taplo
     terraform-ls
     ty
+    typescript-language-server
     typos-lsp
     vacuum-go
     vimPlugins.SchemaStore-nvim
