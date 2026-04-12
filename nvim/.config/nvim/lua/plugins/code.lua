@@ -5,15 +5,9 @@ return {
     event = { "BufRead", "BufNewFile" },
     cmd = { "TSUpdate", "TSUpdateSync" }, -- Needed for headless runs such as: nvim --headless -c "TSUpdateSync" +qa
     config = function()
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         auto_install = true,
-        sync_install = false,
-        ignore_install = {},
         ensure_installed = {},
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
       })
     end,
     dependencies = {
@@ -188,8 +182,8 @@ return {
         edi = { "edi_format" },
         html = { "prettierd" },
         htmldjango = { "html_django" },
-        javascript = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
-        javascriptreact = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
+        javascript = { "prettierd", stop_after_first = true, lsp_format = "never" },
+        javascriptreact = { "prettierd", stop_after_first = true, lsp_format = "never" },
         json = { "jq" },
         json5 = { "fixjson" },
         just = { "just", stop_after_first = true },
@@ -203,8 +197,8 @@ return {
         terraform = { "terraform_fmt" },
         ["terraform-vars"] = { "terraform_fmt" },
         toml = { "taplo", lsp_format = "never" },
-        typescript = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
-        typescriptreact = { "biome", "prettierd", stop_after_first = true, lsp_format = "never" },
+        typescript = { "prettierd", stop_after_first = true, lsp_format = "never" },
+        typescriptreact = { "prettierd", stop_after_first = true, lsp_format = "never" },
         yaml = { "yamlfmt", stop_after_first = true },
         zsh = { "shfmt", lsp_format = "never" },
         ["*"] = { "trim_newlines", "trim_whitespace", "injected" },

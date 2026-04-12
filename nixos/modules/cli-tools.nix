@@ -11,7 +11,14 @@ let
 in
 {
   programs = {
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      package = pkgs-unstable.direnv;
+      nix-direnv = {
+        enable = true;
+        package = pkgs-unstable.nix-direnv;
+      };
+    };
   };
 
   environment.systemPackages =
