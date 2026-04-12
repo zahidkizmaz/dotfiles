@@ -21,7 +21,6 @@ in
     docker-compose-language-service
     dockerfile-language-server
     emmylua-ls
-    htmx-lsp
     hyprls
     lemminx
     nixd

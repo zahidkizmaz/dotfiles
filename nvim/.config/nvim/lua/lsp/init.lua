@@ -12,7 +12,6 @@ M.SERVER_CONFIGURATIONS = {
   docker_compose_language_service = {},
   dockerls = {},
   emmylua_ls = {},
-  htmx = {},
   nixd = {},
   hyprls = {},
   jsonls = function()
