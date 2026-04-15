@@ -24,6 +24,7 @@ let
       }
 
       copyFromContainer "immich" "/var/lib/immich" "${hostBackupFolder}/immich/"
+      copyFromContainer "notes" "/var/lib/trilium" "${hostBackupFolder}/trilium/"
       copyFromContainer "paperless" "/var/lib/paperless/export" "${hostBackupFolder}/paperless/"
       copyFromContainer "meal" "/var/lib/private/mealie" "${hostBackupFolder}/mealie/"
       copyFromContainer "status" "/var/lib/private/uptime-kuma" "${hostBackupFolder}/uptime-kuma/"
@@ -55,10 +56,10 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "rclone";
       repo = "rclone";
-      rev = "be07d75e1bb2662655e32c6cdc8f65861ef6ebbf";
-      hash = "sha256-aCklWfQg3MYHnzJIbZSUbT2gZmCLAdRAqyk9ou9YTzo=";
+      rev = "984d07c9c3f71f0a65d44064c2e4cda7c1878a0f";
+      hash = "sha256-A97O2N21MdGDdDXa8TLCVlKy9TIRPrEQ43mzQOtfBO8=";
     };
-    vendorHash = "sha256-JXavjdcDE6L+6db5zQtIiS0KxY6wtaZyyvuN+UmCU+A=";
+    vendorHash = "sha256-ZEkZbP2r9PFAURkJNR1829VgaL1GXq72mt5Hnz5++kY=";
   };
 in
 {

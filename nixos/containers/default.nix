@@ -138,5 +138,14 @@ in
         hostAddress
         ;
     })
+    (import ./trilium.nix {
+      localAddress = "192.168.100.24";
+      inherit
+        stateVersion
+        inputs
+        user
+        hostAddress
+        ;
+    })
   ];
 }

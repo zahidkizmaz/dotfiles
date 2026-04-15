@@ -7,8 +7,7 @@
   ...
 }:
 let
-  containerName = "claw";
-  url = "https://${containerName}.quoll-ratio.ts.net";
+  containerName = "notes";
   port = 8080;
 in
 {
@@ -47,15 +46,13 @@ in
           })
         ];
 
-        services.ntfy-sh = {
-          enable = true;
-          settings = {
-            listen-http = ":${toString port}";
-            base-url = url;
-            upstream-base-url = "https://ntfy.sh"; # Needed for IOS setup see: https://docs.ntfy.sh/config/#ios-instant-notifications
+        services = {
+          trilium-server = {
+            enable = true;
+            host = "localhost";
+            port = port;
           };
         };
-
         system.stateVersion = stateVersion;
       };
   };
