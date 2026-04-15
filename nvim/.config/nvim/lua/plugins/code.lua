@@ -1,13 +1,17 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     event = { "BufRead", "BufNewFile" },
     cmd = { "TSUpdate", "TSUpdateSync" }, -- Needed for headless runs such as: nvim --headless -c "TSUpdateSync" +qa
     config = function()
-      require("nvim-treesitter").setup({
+      require("nvim-treesitter.configs").setup({
         auto_install = true,
+        sync_install = false,
         ensure_installed = {},
+        ignore_install = {},
+        highlight = { enable = true, additional_vim_regex_highlighting = { "python" } },
       })
     end,
     dependencies = {
