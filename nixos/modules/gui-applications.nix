@@ -23,6 +23,7 @@ in
 
     # Note taking
     pkgs-unstable.joplin-desktop
+    pkgs.trilium-desktop
 
     # Cloud
     pkgs.filen-cli
