@@ -8,6 +8,7 @@
       upgrade = true;
     };
     casks = [
+      "android-studio"
       "camo-studio"
       "copyq"
       "ghostty"

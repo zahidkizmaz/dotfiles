@@ -11,6 +11,7 @@ let
       pkg:
       builtins.elem (inputs.nixpkgs-unstable.lib.getName pkg) [
         "claude-code"
+        "android-studio"
       ];
   };
 
@@ -33,5 +34,7 @@ in
     nh
     unixtools.watch
     utm
+    python314
+    python314Packages.uv
   ]);
 }

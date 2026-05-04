@@ -64,6 +64,7 @@ M.SERVER_CONFIGURATIONS = {
     },
   },
   vacuum = {},
+  kotlin_language_server = {},
   tailwindcss = {},
   taplo = {},
   terraformls = {},

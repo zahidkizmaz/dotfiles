@@ -22,6 +22,7 @@ in
     dockerfile-language-server
     emmylua-ls
     hyprls
+    kotlin-language-server
     lemminx
     nixd
     rust-analyzer
