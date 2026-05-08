@@ -49,8 +49,8 @@
 
         # performance
         "browser.tabs.unloadOnLowMemory" = true;
-        "browser.low_commit_space_threshold_percent" = 100;
-        "min_inactive_duration_before_unload" = 3600000; # 1 hour
+        "browser.low_commit_space_threshold_percent" = 10;
+        "browser.tabs.min_inactive_duration_before_unload" = 3600000 * 2; # 2 hour
 
         "browser.cache.disk.enable" = false;
         "browser.cache.memory.enable" = true;
