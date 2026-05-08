@@ -1,17 +1,16 @@
 [default_session]
-hide-duplicates = true
 preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
 name = "Dotfiles"
-path = "~/dotfiles/"
-windows = ["nvim", "shell"]
+path = "~/dotfiles"
+startup_command = "nvim"
+windows = ["shell"]
 
 [[session]]
 name = "Downloads 📥"
 path = "~/Downloads"
 startup_command = "eza"
-preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
 name = "tmp"
@@ -23,4 +22,4 @@ startup_script = "nvim"
 
 [[window]]
 name = "shell"
-startup_script = "eza"
+startup_script = "eza --all --git --icons --color=always"
