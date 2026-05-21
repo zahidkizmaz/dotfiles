@@ -7,11 +7,6 @@
   ...
 }:
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./disko.nix
-  ];
-
   home-manager = {
     users = {
       "${user}" = import ./home.nix;
