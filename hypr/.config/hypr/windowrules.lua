@@ -110,7 +110,9 @@ hl.window_rule({ name = "workspace special:magic", match = { class = "org.kde.fi
 hl.window_rule({ name = "workspace special silent", match = { title = ".*is sharing.*" } })
 
 -- Smart gaps: no border/rounding on non-floating windows in single-tiled workspaces
-hl.window_rule({ name = "border_size 0", match = { float = false, workspace = "w[tv1]" } })
-hl.window_rule({ name = "rounding 0", match = { float = false, workspace = "w[tv1]" } })
-hl.window_rule({ name = "border_size 0", match = { float = false, workspace = "f[1]" } })
-hl.window_rule({ name = "rounding 0", match = { float = false, workspace = "f[1]" } })
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = 0 })
+hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, border_size = 0 })
+hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, rounding = 0 })
+hl.window_rule({ match = { float = false, workspace = "f[1]" }, border_size = 0 })
+hl.window_rule({ match = { float = false, workspace = "f[1]" }, rounding = 0 })

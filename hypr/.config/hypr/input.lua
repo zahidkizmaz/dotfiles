@@ -21,5 +21,5 @@ hl.config({
 })
 
 hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 4, direction = "down", action = "special magic" })
-hl.gesture({ fingers = 4, direction = "up", action = "dispatcher workspace previous" })
+hl.gesture({ fingers = 4, direction = "down", action = "special", workspace_name = "magic" })
+-- 4-finger up for previous workspace: not supportable via Lua gesture API (needs dispatcher action)

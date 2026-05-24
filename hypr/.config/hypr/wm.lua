@@ -1,11 +1,13 @@
+local colors = require("colors")
+
 hl.config({
   general = {
     gaps_in = 2,
     gaps_out = 4,
     border_size = 2,
     col = {
-      active_border = "$pink",
-      inactive_border = "$surface0",
+      active_border = colors.pink,
+      inactive_border = colors.surface0,
     },
     layout = "dwindle",
     allow_tearing = false,
