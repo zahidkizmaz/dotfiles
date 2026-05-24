@@ -32,7 +32,11 @@
             "clock",
             "custom/power"
         ],
-        "spacing": 8
+        "spacing": 8,
+        "hyprland/language": {
+            "format-us": "US",
+            "format-de": "DE"
+        }
     },
     {
         "output": [
@@ -62,6 +66,10 @@
             "clock",
             "custom/power"
         ],
-        "spacing": 8
+        "spacing": 8,
+        "hyprland/language": {
+            "format-us": "US",
+            "format-de": "DE"
+        }
     }
 ]
