@@ -10,7 +10,7 @@ in
     bat
     fzf
     gcc14
-    nodejs-slim_25
+    nodejs-slim
     python313Packages.pynvim
     tree-sitter
     universal-ctags
