@@ -289,7 +289,12 @@ pi4b.sd
 
 # easyeffects
 easyeffects/*
-!easyeffects/.config/easyeffects/output/*.json
+!easyeffects/.config/easyeffects/README.md
+!easyeffects/.local/
+!easyeffects/.local/share/
+!easyeffects/.local/share/easyeffects/
+!easyeffects/.local/share/easyeffects/output/
+!easyeffects/.local/share/easyeffects/output/*.json
 
 # hyprland
 hypr/.config/hypr/monitors.conf
