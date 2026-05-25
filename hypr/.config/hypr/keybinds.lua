@@ -1,5 +1,5 @@
 -- Reload config
-hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && notify-send -a Hyprland 'Hyprland' 'Config reloaded'"))
 
 -- Basic keybinds
 hl.bind("SUPER + Return", hl.dsp.exec_cmd("kitty"))

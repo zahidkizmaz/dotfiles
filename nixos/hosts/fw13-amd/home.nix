@@ -31,5 +31,8 @@ in
   home.stateVersion = stateVersion;
 
   # Hyprland Lua API stubs for lua-language-server
-  home.file.".local/share/hyprland/stubs".source = "${pkgs-unstable.hyprland}/share/hypr/stubs";
+  home.file.".local/share/hyprland/stubs" = {
+    source = "${pkgs-unstable.hyprland}/share/hypr/stubs";
+    force = true;
+  };
 }

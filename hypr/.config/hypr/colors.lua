@@ -1,36 +1,81 @@
--- Catppuccin Mocha palette
--- Matches mocha.conf variables; use via require("colors")
 local M = {}
 
-M.rosewater = "0xfff5e0dc"
-M.flamingo = "0xfff2cdcd"
-M.pink = "0xfff5c2e7"
-M.mauve = "0xffcba6f7"
-M.red = "0xfff38ba8"
-M.maroon = "0xffeba0ac"
-M.peach = "0xfffab387"
-M.yellow = "0xfff9e2af"
-M.green = "0xffa6e3a1"
-M.teal = "0xff94e2d5"
-M.sky = "0xff89dceb"
-M.sapphire = "0xff74c7ec"
-M.blue = "0xff89b4fa"
-M.lavender = "0xffb4befe"
+M.rosewater = "rgb(f5e0dc)"
+M.rosewaterAlpha = "f5e0dc"
 
-M.text = "0xffcdd6f4"
-M.subtext1 = "0xffbac2de"
-M.subtext0 = "0xffa6adc8"
+M.flamingo = "rgb(f2cdcd)"
+M.flamingoAlpha = "f2cdcd"
 
-M.overlay2 = "0xff9399b2"
-M.overlay1 = "0xff7f849c"
-M.overlay0 = "0xff6c7086"
+M.pink = "rgb(f5c2e7)"
+M.pinkAlpha = "f5c2e7"
 
-M.surface2 = "0xff585b70"
-M.surface1 = "0xff45475a"
-M.surface0 = "0xff313244"
+M.mauve = "rgb(cba6f7)"
+M.mauveAlpha = "cba6f7"
 
-M.base = "0xff1e1e2e"
-M.mantle = "0xff181825"
-M.crust = "0xff11111b"
+M.red = "rgb(f38ba8)"
+M.redAlpha = "f38ba8"
+
+M.maroon = "rgb(eba0ac)"
+M.maroonAlpha = "eba0ac"
+
+M.peach = "rgb(fab387)"
+M.peachAlpha = "fab387"
+
+M.yellow = "rgb(f9e2af)"
+M.yellowAlpha = "f9e2af"
+
+M.green = "rgb(a6e3a1)"
+M.greenAlpha = "a6e3a1"
+
+M.teal = "rgb(94e2d5)"
+M.tealAlpha = "94e2d5"
+
+M.sky = "rgb(89dceb)"
+M.skyAlpha = "89dceb"
+
+M.sapphire = "rgb(74c7ec)"
+M.sapphireAlpha = "74c7ec"
+
+M.blue = "rgb(89b4fa)"
+M.blueAlpha = "89b4fa"
+
+M.lavender = "rgb(b4befe)"
+M.lavenderAlpha = "b4befe"
+
+M.text = "rgb(cdd6f4)"
+M.textAlpha = "cdd6f4"
+
+M.subtext1 = "rgb(bac2de)"
+M.subtext1Alpha = "bac2de"
+
+M.subtext0 = "rgb(a6adc8)"
+M.subtext0Alpha = "a6adc8"
+
+M.overlay2 = "rgb(9399b2)"
+M.overlay2Alpha = "9399b2"
+
+M.overlay1 = "rgb(7f849c)"
+M.overlay1Alpha = "7f849c"
+
+M.overlay0 = "rgb(6c7086)"
+M.overlay0Alpha = "6c7086"
+
+M.surface2 = "rgb(585b70)"
+M.surface2Alpha = "585b70"
+
+M.surface1 = "rgb(45475a)"
+M.surface1Alpha = "45475a"
+
+M.surface0 = "rgb(313244)"
+M.surface0Alpha = "313244"
+
+M.base = "rgb(1e1e2e)"
+M.baseAlpha = "1e1e2e"
+
+M.mantle = "rgb(181825)"
+M.mantleAlpha = "181825"
+
+M.crust = "rgb(11111b)"
+M.crustAlpha = "11111b"
 
 return M
