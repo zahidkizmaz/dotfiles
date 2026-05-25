@@ -7,6 +7,7 @@ in
     systemPackages = with pkgs-unstable; [
       ollama
       opencode
+      rtk
     ];
   };
 }
