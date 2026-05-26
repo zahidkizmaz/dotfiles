@@ -63,16 +63,28 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
 hl.bind("SUPER + SHIFT + mouse:272", hl.dsp.window.resize())
 
 -- Media keys
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-volume.sh 1%+"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-volume.sh 1%-"))
+hl.bind(
+  "XF86AudioRaiseVolume",
+  hl.dsp.exec_cmd("~/.config/hypr/scripts/change-volume.sh 1%+"),
+  { locked = true, repeating = true }
+)
+hl.bind(
+  "XF86AudioLowerVolume",
+  hl.dsp.exec_cmd("~/.config/hypr/scripts/change-volume.sh 1%-"),
+  { locked = true, repeating = true }
+)
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-volume.sh toggle"))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 
 -- Brightness control
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-brigtness.sh 1%+"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-brigtness.sh 1%-"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/change-brigtness.sh 1%+"), { repeating = true })
+hl.bind(
+  "XF86MonBrightnessDown",
+  hl.dsp.exec_cmd("~/.config/hypr/scripts/change-brigtness.sh 1%-"),
+  { repeating = true }
+)
 
 -- Application shortcuts
 hl.bind("SUPER + SHIFT + x", hl.dsp.exec_cmd("copyq toggle"))
