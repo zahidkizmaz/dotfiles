@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
+    "zahidkizmaz/nvim-treesitter",
     branch = "master",
     build = ":TSUpdate",
     event = { "BufRead", "BufNewFile" },
