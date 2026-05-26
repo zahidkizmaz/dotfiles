@@ -11,7 +11,6 @@ in
   environment.systemPackages = [
     # Media players
     pkgs.mpv
-    pkgs.freetube
 
     # Chat
     pkgs.telegram-desktop

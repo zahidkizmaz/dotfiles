@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 check_hyprsunset() {
-  if pgrep -x "hyprsunset" >/dev/null; then
+  if /run/current-system/sw/bin/pgrep -x "hyprsunset" >/dev/null; then
     echo '{"text": "on", "alt": "on", "class": "on", "tooltip": "Hyprsunset on"}'
   else
     echo '{"text": "off", "alt": "off", "class": "off", "tooltip": "Hyprsunset off"}'
@@ -9,10 +9,10 @@ check_hyprsunset() {
 }
 
 if [ "$1" = "toggle" ]; then
-  if pgrep -x "hyprsunset" >/dev/null; then
-    pkill hyprsunset
+  if /run/current-system/sw/bin/pgrep -x "hyprsunset" >/dev/null; then
+    /run/current-system/sw/bin/pkill hyprsunset
   else
-    hyprsunset &
+    /run/current-system/sw/bin/hyprsunset &
   fi
 fi
 

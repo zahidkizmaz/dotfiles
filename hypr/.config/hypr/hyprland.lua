@@ -1,0 +1,11 @@
+-- Load Lua configurations in order
+require("env")
+require("input")
+require("ui")
+require("wm")
+require("workspaces")
+require("default_monitors")
+require("monitors")
+require("keybinds")
+require("windowrules")
+require("startup")

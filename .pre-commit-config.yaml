@@ -10,12 +10,6 @@ repos:
       - id: check-vcs-permalinks
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/astro/deadnix
-    rev: v1.3.1
-    hooks:
-      - id: deadnix
-        args: ["-L"]
-        stages: [pre-commit]
   - repo: local
     hooks:
       - id: nixfmt

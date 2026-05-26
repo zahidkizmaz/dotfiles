@@ -12,7 +12,8 @@
     "library": [
       "$VIMRUNTIME",
       "$LLS_Addons/luvit",
-      "$HOME/.local/share/nvim/lazy"
+      "$HOME/.local/share/nvim/lazy",
+      "$HOME/.local/share/hyprland/stubs"
     ],
     "ignoreGlobs": [
       "**/*_spec.lua"
