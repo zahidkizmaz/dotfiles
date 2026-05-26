@@ -8,7 +8,7 @@ hl.exec_cmd("systemctl --user enable --now hyprsunset.service")
 -- Started here (not in monitor.added) to avoid race when multiple
 -- monitors fire the event simultaneously.
 hl.timer(function()
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh waybar")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start waybar")
 end, { timeout = 1500, type = "oneshot" })
 
 -- hyprland.start: documented startup pattern (dbus, workspace apps)
@@ -22,17 +22,17 @@ end)
 -- monitor.added fires right when the display initializes (seconds, not ~52s like
 -- hyprland.start). Start GUI apps here since they all need the Wayland socket.
 hl.on("monitor.added", function()
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh blueman-applet")
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh copyq --start-server")
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh dunst")
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh nm-applet")
-  hl.exec_cmd("~/.config/hypr/scripts/start.sh udiskie")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start blueman-applet")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start copyq --start-server")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start dunst")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start nm-applet")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh start udiskie")
 end)
 
 -- config.reloaded: restart services that read config files (waybar reads
 -- hyprland styles, hypridle and hyprsunset read their own .conf files).
 hl.on("config.reloaded", function()
-  hl.exec_cmd("~/.config/hypr/scripts/restart.sh waybar")
+  hl.exec_cmd("~/.config/hypr/scripts/run.sh restart waybar")
   hl.exec_cmd("systemctl --user restart hypridle.service")
   hl.exec_cmd("systemctl --user restart hyprsunset.service")
   hl.exec_cmd("systemctl --user start easyeffects.service")
