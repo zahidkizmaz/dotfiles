@@ -1,6 +1,7 @@
 # EasyEffects Config (Framework 13 Laptop)
 
 Presets sourced from: https://github.com/ceiphr/ee-framework-presets
+IR file from Framework official docs: https://github.com/FrameworkComputer/linux-docs/tree/main/easy-effects
 
 ## Layout (EasyEffects 8.0+)
 
