@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./dunst.nix
     ./icons.nix
   ];
   environment.systemPackages = with pkgs; [
@@ -9,7 +8,6 @@
     copyq
     grim
     kdePackages.dolphin
-    networkmanagerapplet
     playerctl
     satty
     slurp
@@ -24,5 +22,6 @@
   };
   services = {
     udisks2.enable = true;
+    upower.enable = true;
   };
 }

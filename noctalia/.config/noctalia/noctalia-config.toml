@@ -1,0 +1,65 @@
+[bar.default]
+capsule = true
+end = [
+  "tray",
+  "keyboard_layout",
+  "network",
+  "bluetooth",
+  "volume",
+  "brightness",
+  "power_profile",
+  "battery",
+  "session",
+]
+font_weight = 600
+margin_edge = 2.0
+margin_ends = 0.0
+padding = 0
+scale = 1.5
+shadow = false
+start = ["workspaces", "active_window"]
+widget_spacing = 12
+
+[idle]
+behavior_order = ["lock", "screen-off", "suspend"]
+pre_action_fade_seconds = 5.0
+
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 600
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 660
+
+[idle.behavior.suspend]
+action = "suspend"
+enabled = true
+lock_before_suspend = true
+timeout = 900
+
+[nightlight]
+enabled = true
+
+[notification]
+offset_y = 2.0
+
+[shell]
+clipboard_enabled = false
+font_family = "Arimo Nerd Font Propo"
+telemetry_enabled = false
+
+[shell.animation]
+enabled = false
+
+[shell.shadow]
+blur = 0
+
+[theme]
+builtin = "Catppuccin"
+source = "builtin"
+
+[widget.network]
+show_label = false

@@ -6,7 +6,6 @@ in
   programs = {
     hyprland.enable = true;
     hyprland.package = pkgs-unstable.hyprland;
-    hyprlock.enable = true;
   };
   services.gnome = {
     gnome-keyring.enable = true;
@@ -15,12 +14,11 @@ in
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs-unstable; [
-    hypridle
     hyprlock
-    hyprsunset
     hyprpolkitagent
     hyprland-qt-support
     rose-pine-hyprcursor
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   systemd.user.services.custom-hyprpolkitagent = {
