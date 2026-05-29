@@ -94,7 +94,6 @@ hl.bind(
     [[grim -g "$(slurp)" - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y%m%d_%H%M%S.png"]]
   )
 )
-hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd("hyprlock"))
 
 -- Resize submap
 hl.define_submap("resize", "escape", function()
@@ -106,3 +105,7 @@ end)
 
 -- Activate resize submap
 hl.bind("ALT + R", hl.dsp.submap("resize"))
+
+-- Lid Switch Handlers
+hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd("noctalia msg screen-lock"))
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("noctalia msg screen-lock"), { locked = true })
