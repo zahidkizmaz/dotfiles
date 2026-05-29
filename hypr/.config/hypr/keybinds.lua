@@ -107,5 +107,5 @@ end)
 hl.bind("ALT + R", hl.dsp.submap("resize"))
 
 -- Lid Switch Handlers
-hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd("noctalia msg screen-lock"))
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("noctalia msg screen-lock"), { locked = true })
+hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"), { locked = true })
