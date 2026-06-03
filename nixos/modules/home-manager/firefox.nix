@@ -9,6 +9,11 @@
     enable = true;
     package = pkgs.firefox;
 
+    # HM's profile management works with MOZ_LEGACY_PROFILES=1 (legacy profile
+    # system). The nixpkgs firefox wrapper sets this automatically, so Firefox
+    # reads profiles.ini from ~/.mozilla/firefox/ — match that path.
+    configPath = ".mozilla/firefox";
+
     profiles.zahid = {
       extensions.packages = with inputs.firefox-addons.packages.${system}; [
         clearurls
