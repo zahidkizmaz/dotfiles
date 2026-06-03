@@ -8,6 +8,11 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
 {
+  # bitwarden depends on electron-39 which is EOL. Track upstream fix:
+  # https://github.com/bitwarden/clients/pull/20448
+  # Remove this override once nixpkgs bumps the electron dep.
+  nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+
   environment.systemPackages = [
     # Media players
     pkgs.mpv

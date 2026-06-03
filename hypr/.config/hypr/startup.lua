@@ -5,6 +5,7 @@ hl.on("hyprland.start", function()
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
   )
   hl.exec_cmd("~/.config/hypr/scripts/run.sh start noctalia")
+  hl.exec_cmd("systemctl --user start hypridle.service")
   hl.exec_cmd("firefox", { workspace = "1 silent" })
   hl.exec_cmd("kitty", { workspace = "2 silent" })
   hl.exec_cmd("kitty", { workspace = "special:magic silent" })
