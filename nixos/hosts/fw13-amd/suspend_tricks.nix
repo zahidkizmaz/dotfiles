@@ -14,8 +14,6 @@ let
     } > "$LOG"
 
     # === Unbind UCSI ===
-    # The UCSI driver doesn't support runtime PM, which can cause high power
-    # draw during s2idle. Unbind before suspend to save ~0.3-0.5W.
     if [ -e /sys/bus/platform/drivers/ucsi_acpi/USBC000:00 ]; then
       echo "USBC000:00" > /sys/bus/platform/drivers/ucsi_acpi/unbind
       echo "pre: UCSI unbound"
@@ -36,12 +34,14 @@ let
   '';
 
   postScript = pkgs.writeShellScript "post-resume" ''
-    set -e
+    # NOTE: no set -e — individual steps may fail without aborting the whole
+    # script (e.g. UCSI rebind when device is already bound).
 
     # === Rebind UCSI ===
     if [ -e /sys/bus/platform/drivers/ucsi_acpi/bind ]; then
-      echo "USBC000:00" > /sys/bus/platform/drivers/ucsi_acpi/bind
-      echo "post: UCSI rebound"
+      echo "USBC000:00" > /sys/bus/platform/drivers/ucsi_acpi/bind 2>/dev/null && \
+        echo "post: UCSI rebound" || \
+        echo "post: UCSI already bound"
     fi
     sleep 1
 
@@ -56,7 +56,7 @@ let
         ${pkgs.util-linux}/bin/rfkill unblock wifi
         echo "post: WiFi unblocked"
       fi
-      rm /tmp/wifi-was-enabled
+      rm -f /tmp/wifi-was-enabled
     fi
 
     # === Log wakeup sources ===
@@ -91,7 +91,6 @@ let
       echo ""
     } >> "$LOG"
   '';
-
 in
 {
   # =========================================================================
@@ -140,7 +139,7 @@ in
   };
 
   # =========================================================================
-  # Pre-suspend: Before=sleep.target runs before the system enters suspend
+  # Pre-suspend: runs before sleep.target (i.e. before the system suspends).
   # =========================================================================
   systemd.services.pre-suspend = {
     description = "Prepare system for suspend (UCSI, NVMe, WiFi)";
@@ -153,18 +152,12 @@ in
   };
 
   # =========================================================================
-  # Post-resume: After=systemd-suspend.service runs after the system resumes.
-  # The WantedBy=sleep.target queues this service when sleep.target starts,
-  # but After=systemd-suspend.service makes it wait until the actual
-  # suspend/resume cycle is complete.
+  # Post-resume: uses powerManagement.resumeCommands which NixOS guarantees
+  # to run after ANY sleep type (suspend, hibernate, suspend-then-hibernate,
+  # hybrid-sleep). This is more reliable than After=systemd-suspend.service
+  # which doesn't fire for suspend-then-hibernate.
   # =========================================================================
-  systemd.services.post-resume = {
-    description = "Restore system after resume (UCSI, NVMe, WiFi, log)";
-    after = [ "systemd-suspend.service" ];
-    wantedBy = [ "sleep.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = postScript;
-    };
-  };
+  # Run the post-resume script after ANY sleep type. The derivation path
+  # is baked into the systemd-sleep hook at build time.
+  powerManagement.resumeCommands = "${postScript}";
 }
