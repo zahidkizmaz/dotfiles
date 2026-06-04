@@ -14,10 +14,10 @@ in
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs-unstable; [
-    hyprlock
-    hyprland-qt-support
-    rose-pine-hyprcursor
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    hyprland-qt-support
+    hyprlock
+    libnotify
+    rose-pine-hyprcursor
   ];
-
 }
