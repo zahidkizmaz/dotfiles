@@ -110,10 +110,9 @@
             },
         },
         {
-            "type": "disk",
+            "type": "command",
             "key": "{$10}└ 󰋊  SSD       ",
-            "folders": ["/"],
-            "format": "{name}",
+            "text": "cat /sys/class/nvme/nvme0/model",
         },
         {
             "type": "custom",
