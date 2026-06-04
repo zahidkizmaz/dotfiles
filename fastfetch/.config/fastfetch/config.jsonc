@@ -112,7 +112,7 @@
         {
             "type": "command",
             "key": "{$10}└ 󰋊  SSD       ",
-            "text": "cat /sys/class/nvme/nvme0/model",
+            "text": "lsblk -ndo MODEL /dev/$(lsblk -ndo PKNAME $(findmnt -no SOURCE /)) 2>/dev/null | head -1",
         },
         {
             "type": "custom",
