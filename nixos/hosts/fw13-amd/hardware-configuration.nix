@@ -30,7 +30,6 @@
 
     "amd_pstate=active"
     "mem_sleep_default=s2idle"
-    "amdgpu.dcdebugmask=0x10"
 
     # USB autosuspend
     "usbcore.autosuspend=1"
