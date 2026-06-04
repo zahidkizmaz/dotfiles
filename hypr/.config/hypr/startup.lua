@@ -15,7 +15,6 @@ end)
 -- hyprland.start). Start GUI apps here since they all need the Wayland socket.
 hl.on("monitor.added", function()
   hl.exec_cmd("~/.config/hypr/scripts/run.sh start copyq --start-server")
-  hl.exec_cmd("~/.config/hypr/scripts/run.sh start dunst")
   hl.exec_cmd("~/.config/hypr/scripts/run.sh start udiskie")
 end)
 
