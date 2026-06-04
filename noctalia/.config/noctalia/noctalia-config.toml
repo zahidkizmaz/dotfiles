@@ -1,17 +1,7 @@
 [bar.default]
 capsule = true
-end = [
-    "keyboard_layout",
-    "tray",
-    "network",
-    "bluetooth",
-    "volume",
-    "brightness",
-    "caffeine",
-    "power_profile",
-    "battery",
-    "session"
-]
+center = [ "group:g1" ]
+end = [ "group:g2", "volume", "brightness", "caffeine", "power_profile", "battery", "session" ]
 font_weight = 600
 margin_edge = 2.0
 margin_ends = 0.0
@@ -20,6 +10,23 @@ scale = 1.5
 shadow = false
 start = [ "workspaces", "active_window" ]
 widget_spacing = 12
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "control-center", "clock" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "keyboard_layout", "tray", "network", "bluetooth" ]
+    opacity = 1.0
+    padding = 6.0
+
+[desktop_widgets]
+enabled = false
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -51,6 +58,7 @@ clipboard_enabled = false
 font_family = "Arimo Nerd Font Propo"
 polkit_agent = true
 telemetry_enabled = false
+ui_scale = 1.5
 
     [shell.animation]
     enabled = false
@@ -62,11 +70,25 @@ telemetry_enabled = false
 builtin = "Catppuccin"
 source = "builtin"
 
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+enabled = false
+
 [weather]
 auto_locate = true
 
 [widget.brightness]
 scroll_step = 1
+
+[widget.clock]
+format = "{:%a %d %b %H:%M}"
+tooltip_format = "{:%A %x}"
+
+[widget.control-center]
+glyph = "home"
 
 [widget.network]
 show_label = false
