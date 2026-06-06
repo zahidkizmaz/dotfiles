@@ -4,6 +4,7 @@ hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && notify-send -a H
 -- Basic keybinds
 hl.bind("SUPER + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + Q", hl.dsp.window.kill())
+hl.bind("SUPER + W", hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + M", hl.dsp.exit())
 hl.bind("SUPER + E", hl.dsp.exec_cmd("dolphin"))
 hl.bind("SUPER + R", hl.dsp.exec_cmd("~/.config/hypr/scripts/vicinae-toggle.sh"))
