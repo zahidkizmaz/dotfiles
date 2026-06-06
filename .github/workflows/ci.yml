@@ -40,11 +40,10 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: nicknovitski/nix-develop@v1
-
       - name: Build x86_64-linux outputs
         run: |
-          nix-fast-build \
+          nix run nixpkgs#nix-fast-build -- \
+            --flake . \
             --skip-cached \
             --no-nom \
             --systems x86_64-linux \
