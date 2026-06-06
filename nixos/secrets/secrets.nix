@@ -38,5 +38,9 @@ in
     lab
     fw13
   ];
+  "grafana-secret-key.age".publicKeys = [
+    lab
+    fw13
+  ];
 
 }

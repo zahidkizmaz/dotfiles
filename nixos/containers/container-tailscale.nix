@@ -38,7 +38,7 @@
     resolved = {
       enable = true;
       # Allow Tailscale to manage DNS
-      settings.DNSStubListener = false;
+      settings.Resolve.DNSStubListener = false;
     };
   };
 

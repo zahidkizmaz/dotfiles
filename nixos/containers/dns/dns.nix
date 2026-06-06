@@ -62,7 +62,7 @@ in
 
         services = {
           resolved.settings = {
-            DNSStubListener = false;
+            Resolve.DNSStubListener = false;
           };
           adguardhome = {
             enable = true;
