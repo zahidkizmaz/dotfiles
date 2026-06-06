@@ -1,54 +1,99 @@
 [bar.default]
 capsule = true
-center = [ "group:g1" ]
-end = [ "group:g2", "volume", "brightness", "caffeine", "power_profile", "battery", "session" ]
+center = ["group:g1"]
+end = [
+  "media",
+  "keyboard_layout",
+  "group:g3",
+  "volume",
+  "brightness",
+  "battery",
+  "session",
+]
 font_weight = 600
 margin_edge = 2.0
 margin_ends = 0.0
 padding = 0
 scale = 1.5
 shadow = false
-start = [ "workspaces", "active_window" ]
+start = ["workspaces", "active_window"]
 widget_spacing = 12
 
-    [[bar.default.capsule_group]]
-    fill = "surface_variant"
-    id = "g1"
-    members = [ "control-center", "clock" ]
-    opacity = 1.0
-    padding = 6.0
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g1"
+members = ["control-center", "clock"]
+opacity = 1.0
+padding = 6.0
 
-    [[bar.default.capsule_group]]
-    fill = "surface_variant"
-    id = "g2"
-    members = [ "keyboard_layout", "tray", "network", "bluetooth" ]
-    opacity = 1.0
-    padding = 6.0
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g2"
+members = ["keyboard_layout", "tray", "network", "bluetooth"]
+opacity = 1.0
+padding = 6.0
+
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g3"
+members = ["tray", "network", "bluetooth"]
+opacity = 1.0
+padding = 6.0
 
 [desktop_widgets]
-enabled = false
+schema_version = 1
+widget_order = []
+
+[desktop_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[desktop_widgets.widget]
+
+[hooks]
+battery_charging = "powerprofilesctl set performance"
+battery_discharging = "powerprofilesctl set power-saver"
 
 [idle]
-behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+behavior_order = ["lock", "screen-off", "lock-and-suspend"]
 pre_action_fade_seconds = 5.0
 
-    [idle.behavior.lock]
-    action = "lock"
-    enabled = false
-    timeout = 600
+[idle.behavior.lock]
+action = "lock"
+enabled = false
+timeout = 600
 
-    [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    enabled = false
-    timeout = 900
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = false
+timeout = 900
 
-    [idle.behavior.screen-off]
-    action = "screen_off"
-    enabled = false
-    timeout = 660
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = false
+timeout = 660
 
 [location]
-auto_locate = true
+address = "Berlin, DE"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 1
+widget_order = ["lockscreen-login-box@eDP-1"]
+
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+cx = 1128.0
+cy = 1381.0
+output = "eDP-1"
+rotation = 0.0
+scale = 1.0
+type = "login_box"
 
 [nightlight]
 enabled = true
@@ -60,19 +105,15 @@ polkit_agent = true
 telemetry_enabled = false
 ui_scale = 1.5
 
-    [shell.animation]
-    enabled = false
+[shell.animation]
+enabled = false
 
-    [shell.shadow]
-    blur = 0
+[shell.shadow]
+blur = 0
 
 [theme]
 builtin = "Catppuccin"
 source = "builtin"
-
-    [theme.templates]
-    enable_builtin_templates = false
-    enable_community_templates = false
 
 [wallpaper]
 enabled = false

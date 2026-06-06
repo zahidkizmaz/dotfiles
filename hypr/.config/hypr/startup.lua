@@ -1,5 +1,7 @@
 -- hyprland.start: documented startup pattern (recommended for autostart,
 -- fires ~52s after Hyprland initializes — display is fully ready).
+-- Events:
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Expanding-functionality/#events
 hl.on("hyprland.start", function()
   hl.exec_cmd(
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
