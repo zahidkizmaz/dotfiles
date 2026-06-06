@@ -51,23 +51,13 @@ let
     text = afterBackupText;
   };
 
-  rcloneWithFilen = pkgs.rclone.overrideAttrs {
-    version = "1.72.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "rclone";
-      repo = "rclone";
-      rev = "984d07c9c3f71f0a65d44064c2e4cda7c1878a0f";
-      hash = "sha256-A97O2N21MdGDdDXa8TLCVlKy9TIRPrEQ43mzQOtfBO8=";
-    };
-    vendorHash = "sha256-ZEkZbP2r9PFAURkJNR1829VgaL1GXq72mt5Hnz5++kY=";
-  };
 in
 {
   environment.systemPackages = [
+    pkgs.rclone
     pkgs.restic
     prepareBackupScript
     afterBackupScript
-    rcloneWithFilen # Not needed when https://github.com/rclone/rclone/pull/8537 is released
   ];
 
   fileSystems."${externalDriveMountPath}" = {
@@ -120,8 +110,7 @@ in
           "--keep-weekly 3"
         ];
         extraOptions = [
-          "-o"
-          "rclone.program=${rcloneWithFilen}/bin/rclone"
+          "rclone.program=${pkgs.rclone}/bin/rclone"
         ];
       };
     };

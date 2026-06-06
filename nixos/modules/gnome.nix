@@ -6,10 +6,7 @@
       gnome.enable = true;
     };
     displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
+      gdm.enable = true;
     };
     gnome = {
       gnome-keyring.enable = true;
