@@ -1,4 +1,4 @@
-name: "Flake Check"
+name: "Flake Check & Build"
 on: # yamllint disable-line rule:truthy
   push:
     branches:
@@ -7,7 +7,8 @@ on: # yamllint disable-line rule:truthy
     branches:
       - main
 jobs:
-  tests:
+  check:
+    name: Flake check (all systems)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -22,3 +23,33 @@ jobs:
 
       - name: Check all systems
         run: nix flake check --all-systems
+
+  build-x86_64-linux:
+    name: Build x86_64-linux
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: nicknovitski/nix-develop@v1
+
+      - name: Build x86_64-linux outputs
+        run: |
+          nix-fast-build \
+            --skip-cached \
+            --no-nom \
+            --systems x86_64-linux \
+            --eval-workers 2 \
+            --result-format junit \
+            --result-file /tmp/nix-results.xml
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nix-results-x86_64-linux
+          path: /tmp/nix-results.xml

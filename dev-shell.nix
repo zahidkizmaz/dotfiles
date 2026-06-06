@@ -5,6 +5,7 @@
       deadnix
       fixjson
       just
+      nix-fast-build
       nixd
       nixfmt
       prek
