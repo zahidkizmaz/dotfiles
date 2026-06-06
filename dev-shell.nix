@@ -12,6 +12,7 @@
       shfmt
       stow
       stylua
+      taplo
       yamlfmt
     ];
     shellHook = ''
