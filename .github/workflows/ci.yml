@@ -47,7 +47,15 @@ jobs:
             --result-format junit \
             --result-file /tmp/nix-results.xml
 
-      - name: Upload test results
+      - name: Publish build results to PR
+        if: failure()
+        uses: dorny/test-reporter@v2
+        with:
+          name: Build results
+          path: /tmp/nix-results.xml
+          reporter: java-junit
+
+      - name: Upload test results artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
