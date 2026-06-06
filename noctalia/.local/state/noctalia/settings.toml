@@ -2,11 +2,12 @@
 capsule = true
 center = ["group:g1"]
 end = [
-  "media",
   "keyboard_layout",
   "group:g3",
   "volume",
   "brightness",
+  "caffeine",
+  "power_profile",
   "battery",
   "session",
 ]
@@ -16,7 +17,7 @@ margin_ends = 0.0
 padding = 0
 scale = 1.5
 shadow = false
-start = ["workspaces", "active_window"]
+start = ["workspaces", "active_window", "media"]
 widget_spacing = 12
 
 [[bar.default.capsule_group]]
