@@ -61,11 +61,8 @@ in
         ];
 
         services = {
-          resolved = {
-            extraConfig = ''
-              [Resolve]
-              DNSStubListener=no
-            '';
+          resolved.settings = {
+            DNSStubListener = false;
           };
           adguardhome = {
             enable = true;
