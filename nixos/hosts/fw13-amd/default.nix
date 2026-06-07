@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
+    ../../modules/latest-kernel.nix
     ../../modules/ld.nix
     ../../modules/ledger.nix
     ../../modules/login-manager-tuigreet.nix
