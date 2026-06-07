@@ -25,13 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: nicknovitski/nix-develop@v1
+      - uses: DeterminateSystems/nix-installer-action@v16
 
       - uses: DeterminateSystems/flakehub-cache-action@v3
+
+      - uses: nicknovitski/nix-develop@v1
 
       - name: Check all systems
         run: nix flake check --all-systems
@@ -52,9 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: DeterminateSystems/nix-installer-action@v16
 
       - uses: DeterminateSystems/flakehub-cache-action@v3
 
