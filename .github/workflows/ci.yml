@@ -19,15 +19,12 @@ jobs:
   check:
     name: Flake check (all systems)
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v6
 
-      - uses: DeterminateSystems/nix-installer-action@v16
-
-      - uses: DeterminateSystems/flakehub-cache-action@v3
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: nicknovitski/nix-develop@v1
 
@@ -38,9 +35,6 @@ jobs:
     name: Build ${{ matrix.system }}
     needs: check
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     strategy:
       matrix:
         system:
@@ -50,9 +44,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: DeterminateSystems/nix-installer-action@v16
-
-      - uses: DeterminateSystems/flakehub-cache-action@v3
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build ${{ matrix.system }}
         run: nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
