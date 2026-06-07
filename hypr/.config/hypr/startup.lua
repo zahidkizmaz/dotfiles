@@ -22,6 +22,7 @@ end)
 
 hl.on("config.reloaded", function()
   hl.exec_cmd("systemctl --user start easyeffects.service")
+  hl.exec_cmd("systemctl --user restart hypridle.service")
   hl.exec_cmd("~/.config/hypr/scripts/run.sh start noctalia")
   hl.exec_cmd("noctalia msg config-reload")
 end)
