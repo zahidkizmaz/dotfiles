@@ -6,14 +6,14 @@ on: # yamllint disable-line rule:truthy
     paths:
       - "**.nix"
       - "flake.lock"
-      - ".github/workflows/**"
+      - ".github/workflows/ci.yml"
   pull_request:
     branches:
       - main
     paths:
       - "**.nix"
       - "flake.lock"
-      - ".github/workflows/**"
+      - ".github/workflows/ci.yml"
 
 jobs:
   check:
@@ -28,7 +28,7 @@ jobs:
 
       - uses: nicknovitski/nix-develop@v1
 
-      - uses: j178/prek-action@v2
+      - uses: DeterminateSystems/magic-nix-cache-action@v9
 
       - name: Check all systems
         run: nix flake check --all-systems
@@ -49,6 +49,8 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v9
 
       - name: Build ${{ matrix.system }}
         run: nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
