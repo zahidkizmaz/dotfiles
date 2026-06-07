@@ -46,6 +46,13 @@ repos:
         language: system
         files: '(.*\.sh$)|(\.zshrc|functionrc|aliasrc)'
 
+      - id: taplo
+        name: taplo
+        entry: taplo format
+        language: system
+        types:
+          - toml
+
       - id: fixjson
         name: fixjson json5
         entry: fixjson

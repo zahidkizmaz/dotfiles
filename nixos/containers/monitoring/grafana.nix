@@ -59,6 +59,10 @@ in
           })
         ];
 
+        age.secrets.grafana-secret-key = {
+          file = ../../secrets/grafana-secret-key.age;
+        };
+
         services = {
           prometheus = {
             enable = true;
@@ -120,6 +124,9 @@ in
           grafana = {
             enable = true;
             settings = {
+              security = {
+                secret_key = "\${__file{${config.age.secrets.grafana-secret-key.path}}}";
+              };
               analytics = {
                 enabled = false;
                 reporting_enabled = false;

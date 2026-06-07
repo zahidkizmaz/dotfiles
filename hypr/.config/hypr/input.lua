@@ -22,3 +22,10 @@ hl.config({
 
 hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 4, direction = "down", action = "special", workspace_name = "magic" })
+hl.gesture({
+  fingers = 4,
+  direction = "up",
+  action = function()
+    hl.dispatch(hl.dsp.focus({ workspace = "previous" }))
+  end,
+})

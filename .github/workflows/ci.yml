@@ -1,13 +1,23 @@
-name: "Flake Check"
+name: "Flake Check & Build"
 on: # yamllint disable-line rule:truthy
   push:
     branches:
       - main
+    paths:
+      - "**.nix"
+      - "flake.lock"
+      - ".github/workflows/ci.yml"
   pull_request:
     branches:
       - main
+    paths:
+      - "**.nix"
+      - "flake.lock"
+      - ".github/workflows/ci.yml"
+
 jobs:
-  tests:
+  check:
+    name: Flake check (all systems)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -18,7 +28,25 @@ jobs:
 
       - uses: nicknovitski/nix-develop@v1
 
-      - uses: j178/prek-action@v2
-
       - name: Check all systems
         run: nix flake check --all-systems
+
+  build:
+    name: Build ${{ matrix.system }}
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        system:
+          - fw13-amd
+          - lenovo-y5070
+          - nuc-g5
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build ${{ matrix.system }}
+        run: nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel

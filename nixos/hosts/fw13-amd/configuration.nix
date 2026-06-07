@@ -49,4 +49,9 @@
   time.timeZone = "Europe/Berlin";
 
   system.stateVersion = stateVersion;
+
+  # Increase the dbus-broker reload timeout. It defaults to 90s, which is
+  # too short when dbus clients (e.g. shell, portal) take long to acknowledge
+  # the reconfiguration during nixos-rebuild switch.
+  systemd.user.services.dbus-broker.serviceConfig.TimeoutReloadSec = 300;
 }

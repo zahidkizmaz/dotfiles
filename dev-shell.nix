@@ -11,10 +11,11 @@
       shfmt
       stow
       stylua
+      taplo
       yamlfmt
     ];
     shellHook = ''
-      prek install
+      prek install -f --hook-type pre-commit
     '';
   };
 }

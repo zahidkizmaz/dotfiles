@@ -36,6 +36,7 @@ in
       just
       jwt-cli
       lnav
+      nix-fast-build
       ouch
       ripgrep
       stow

@@ -1,11 +1,11 @@
 { ... }:
 {
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "2h";
+  };
   services.logind = {
     settings.Login = {
-      HandleLidSwitch = "suspend";
+      HandleLidSwitch = "suspend-then-hibernate";
       HandlePowerKey = "suspend-then-hibernate";
       HandlePowerKeyLongPress = "poweroff";
     };

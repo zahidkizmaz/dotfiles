@@ -81,8 +81,7 @@ This setup includes:
 #### NixOS specific
 
 - Window manager: Hyprland
-- Status bar: waybar
-- Notifications manager: dunst
+- Status bar / shell: noctalia
 - Application launcher: tofi
 
 and more...

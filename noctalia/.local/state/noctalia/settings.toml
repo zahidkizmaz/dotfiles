@@ -1,0 +1,139 @@
+[bar.default]
+capsule = true
+center = ["group:g1"]
+end = [
+  "keyboard_layout",
+  "group:g3",
+  "volume",
+  "brightness",
+  "caffeine",
+  "power_profile",
+  "battery",
+  "session",
+]
+font_weight = 600
+margin_edge = 2.0
+margin_ends = 0.0
+padding = 0
+scale = 1.5
+shadow = false
+start = ["workspaces", "active_window", "media"]
+widget_spacing = 12
+
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g1"
+members = ["control-center", "clock"]
+opacity = 1.0
+padding = 6.0
+
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g2"
+members = ["keyboard_layout", "tray", "network", "bluetooth"]
+opacity = 1.0
+padding = 6.0
+
+[[bar.default.capsule_group]]
+fill = "surface_variant"
+id = "g3"
+members = ["tray", "network", "bluetooth"]
+opacity = 1.0
+padding = 6.0
+
+[desktop_widgets]
+schema_version = 1
+widget_order = []
+
+[desktop_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[desktop_widgets.widget]
+
+[hooks]
+battery_charging = "powerprofilesctl set performance"
+battery_discharging = "powerprofilesctl set power-saver"
+
+[idle]
+behavior_order = ["lock", "screen-off", "lock-and-suspend"]
+pre_action_fade_seconds = 5.0
+
+[idle.behavior.lock]
+action = "lock"
+enabled = false
+timeout = 600
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = false
+timeout = 900
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = false
+timeout = 660
+
+[location]
+address = "Berlin, DE"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 1
+widget_order = ["lockscreen-login-box@eDP-1"]
+
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+cx = 1128.0
+cy = 1381.0
+output = "eDP-1"
+rotation = 0.0
+scale = 1.0
+type = "login_box"
+
+[nightlight]
+enabled = true
+
+[shell]
+clipboard_enabled = false
+font_family = "Arimo Nerd Font Propo"
+polkit_agent = true
+telemetry_enabled = false
+ui_scale = 1.5
+
+[shell.animation]
+enabled = false
+
+[shell.shadow]
+blur = 0
+
+[theme]
+builtin = "Catppuccin"
+source = "builtin"
+
+[wallpaper]
+enabled = false
+
+[weather]
+auto_locate = true
+
+[widget.brightness]
+scroll_step = 1
+
+[widget.clock]
+format = "{:%a %d %b %H:%M}"
+tooltip_format = "{:%A %x}"
+
+[widget.control-center]
+glyph = "home"
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+scroll_step = 1

@@ -40,7 +40,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/terminal.nix
     ../../modules/virt-manager.nix
     ../../modules/vm-variant.nix
-    ../../modules/waybar.nix
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix

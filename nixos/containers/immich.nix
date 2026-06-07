@@ -53,8 +53,6 @@ in
             host = "0.0.0.0";
             database = {
               enable = true;
-              enableVectors = false;
-              enableVectorChord = true;
             };
           };
           postgresql = {
