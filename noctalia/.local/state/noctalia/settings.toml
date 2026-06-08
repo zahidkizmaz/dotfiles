@@ -132,6 +132,9 @@ tooltip_format = "{:%A %x}"
 [widget.control-center]
 glyph = "home"
 
+[widget.media]
+hide_when_no_media = true
+
 [widget.network]
 show_label = false
 
