@@ -25,7 +25,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/sound-pipewire.nix
     ../../modules/ssd.nix
     ../../modules/ssh.nix
-    ../../modules/tailscale.nix
+    ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
     ../../modules/wlan.nix
   ];

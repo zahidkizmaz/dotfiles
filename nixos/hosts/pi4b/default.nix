@@ -21,6 +21,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix
+    ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
     (import ../../containers/monitoring/alloy-log-report.nix { })
   ];
