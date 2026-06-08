@@ -6,6 +6,9 @@
       autoUpdate = true;
       cleanup = "uninstall";
       upgrade = true;
+      extraFlags = [
+        "--force-cleanup"
+      ];
     };
     casks = [
       "android-studio"
@@ -15,6 +18,7 @@
       "hammerspoon"
       "orbstack"
       "raycast"
+      "sf"
     ];
   };
 }

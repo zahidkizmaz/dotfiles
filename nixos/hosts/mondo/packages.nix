@@ -32,9 +32,10 @@ in
     docker-compose
     gemini-cli
     nh
-    unixtools.watch
-    utm
+    nodejs_24
     python314
     python314Packages.uv
+    unixtools.watch
+    utm
   ]);
 }
