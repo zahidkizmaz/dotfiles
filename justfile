@@ -2,6 +2,8 @@ alias s := stow
 alias sl := stow-linux
 alias sm := stow-mac
 
+set unstable
+
 default:
     just --list
 
