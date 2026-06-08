@@ -8,15 +8,14 @@ remove_dir_if_not_symlink() {
 
 # app-conf-dir -> callable
 declare -A appMappings=(
-  [aichat]="aichat"
+  ["gh-dash"]="gh-dash"
+  ["nwg-displays"]="nwg-displays"
   [atuin]="atuin"
   [bat]="bat"
   [copyq]="copyq"
   [ctags]="ctags"
   [direnv]="direnv"
-  [dunst]="dunst"
   [easyeffects]="easyeffects"
-  ["gh-dash"]="gh-dash"
   [ghostty]="ghostty"
   [git]="git"
   [httpie]="http"
@@ -25,10 +24,10 @@ declare -A appMappings=(
   [kitty]="kitty"
   [mpv]="mpv"
   [nix]="nix"
+  [noctalia]="noctalia"
   [nushell]="nu"
   [nvim]="nvim"
   [opencode]="opencode"
-  ["nwg-displays"]="nwg-displays"
   [pgcli]="pgcli"
   [rustfmt]="rustfmt"
   [sesh]="sesh"
@@ -37,7 +36,6 @@ declare -A appMappings=(
   [tofi]="tofi"
   [udiskie]="udiskie"
   [vicinae]="vicinae"
-  [waybar]="waybar"
   [yazi]="yazi"
   [zsh]="zsh"
 )

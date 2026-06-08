@@ -11,7 +11,6 @@ stow arg:
     stow --adopt -vSt ~ {{ arg }}
 
 _stow-common:
-    just stow aichat
     just stow atuin
     just stow bat
     just stow copyq
