@@ -1,9 +1,27 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+  imports = [ inputs.catppuccin.homeModules.catppuccin ];
+
+  catppuccin = {
+    flavor = "mocha";
+    accent = "pink";
+
+    # Don't override all app settings automatically
+    # Enable one by one
+    enable = false;
+    kvantum.enable = true;
+    btop.enable = true;
+    eza.enable = true;
+    qt5ct.enable = true;
+    brave.enable = true;
+  };
+
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
-    style.package = pkgs.catppuccin-qt5ct;
+    platformTheme.name = "qtct";
+    style = {
+      name = "kvantum";
+    };
   };
 
   gtk = {
@@ -12,11 +30,6 @@
     font = {
       name = "Arimo";
       size = 14;
-    };
-
-    cursorTheme = {
-      size = 36;
-      name = "rose-pine-hyprcursor";
     };
 
     iconTheme = {
@@ -41,6 +54,14 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "rose-pine-hyprcursor";
+    size = 36;
+    package = pkgs.rose-pine-hyprcursor;
   };
 
   dconf = {

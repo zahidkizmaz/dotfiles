@@ -18,6 +18,5 @@ in
     hyprland-qt-support
     hyprlock
     libnotify
-    rose-pine-hyprcursor
   ];
 }

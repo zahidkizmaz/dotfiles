@@ -4,7 +4,7 @@
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Expanding-functionality/#events
 hl.on("hyprland.start", function()
   hl.exec_cmd(
-    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE QT_STYLE_OVERRIDE QT_QPA_PLATFORMTHEME QT_QPA_PLATFORM QT_SCALE_FACTOR"
   )
   hl.exec_cmd("~/.config/hypr/scripts/run.sh start noctalia")
   hl.exec_cmd("systemctl --user start hypridle.service")

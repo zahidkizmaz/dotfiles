@@ -7,7 +7,6 @@
     brightnessctl
     copyq
     grim
-    kdePackages.dolphin
     playerctl
     satty
     slurp

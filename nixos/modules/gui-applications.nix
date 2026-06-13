@@ -13,6 +13,10 @@ in
   # Remove this override once nixpkgs bumps the electron dep.
   nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
+  programs = {
+    localsend.enable = true;
+  };
+
   environment.systemPackages = [
     # Media players
     pkgs.mpv
@@ -40,6 +44,8 @@ in
 
     # Utilities
     pkgs-unstable.nwg-displays
+    pkgs.kdePackages.dolphin
+    pkgs.kdePackages.gwenview
     pkgs.kdePackages.partitionmanager
     pkgs.kdePackages.qt6ct
   ];

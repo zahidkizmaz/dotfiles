@@ -10,6 +10,8 @@
 
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
 
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -5,11 +5,11 @@ in
 inputs.nixpkgs.lib.nixosSystem {
   system = "${system}";
   modules = [
-    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.nixos-generators.nixosModules.all-formats
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./configuration.nix
     ../../modules/agenix.nix
     ../../modules/ai.nix
