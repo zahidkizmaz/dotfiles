@@ -23,6 +23,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/ssh.nix
     ../../modules/tailscale.nix
     ../../modules/vm-variant.nix
+    ../../modules/host-networking.nix
     ../../containers
   ];
   specialArgs = {

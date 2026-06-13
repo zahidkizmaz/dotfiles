@@ -1,8 +1,5 @@
 { lib, ... }:
 {
-  imports = [
-    (import ./monitoring/alloy-log-report.nix { })
-  ];
   networking = {
     firewall = {
       enable = true;

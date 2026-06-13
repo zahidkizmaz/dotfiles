@@ -28,6 +28,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
     ../../modules/wlan.nix
+    ../../modules/host-networking.nix
+    ../../containers
   ];
   specialArgs = {
     inherit

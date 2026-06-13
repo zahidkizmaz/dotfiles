@@ -1,36 +1,32 @@
 {
   config,
   pkgs,
+  lib,
   user,
   ...
 }:
 let
-  hostBackupFolder = "/home/${user}/backups";
-  externalDriveLabel = "backup-drive";
-  externalDriveMountPath = "/backup";
-  externalDriveBackupFolder = "${externalDriveMountPath}/backups/";
-  prepareBackupText = # bash
-    ''
-      copyFromContainer() {
-        CONTAINER_NAME=$1
-        CONTAINER_PATH=$2
-        HOST_DEST=$3
-        if [ ! -d "$HOST_DEST" ]; then
-          mkdir -p "$HOST_DEST"
-        fi
+  cfg = config.appContainers.backup;
 
-        echo "Copying files using machinectl from $CONTAINER_NAME: $CONTAINER_PATH -> $HOST_DEST"
-        machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
-      }
+  copyCommands = lib.concatStringsSep "\n" (
+    lib.map (c: ''
+      copyFromContainer "${c.name}" "${c.containerPath}" "${cfg.hostBackupFolder}/${c.backupFolderName}/"
+    '') cfg.containers
+  );
 
-      copyFromContainer "immich" "/var/lib/immich" "${hostBackupFolder}/immich/"
-      copyFromContainer "notes" "/var/lib/trilium" "${hostBackupFolder}/trilium/"
-      copyFromContainer "paperless" "/var/lib/paperless/export" "${hostBackupFolder}/paperless/"
-      copyFromContainer "meal" "/var/lib/private/mealie" "${hostBackupFolder}/mealie/"
-      copyFromContainer "status" "/var/lib/private/uptime-kuma" "${hostBackupFolder}/uptime-kuma/"
-      copyFromContainer "keep" "/var/lib/karakeep" "${hostBackupFolder}/karakeep/"
-      copyFromContainer "monitoring" "/var/lib/grafana/data" "${hostBackupFolder}/grafana/"
-    '';
+  prepareBackupText = ''
+    copyFromContainer() {
+      CONTAINER_NAME=$1
+      CONTAINER_PATH=$2
+      HOST_DEST=$3
+      if [ ! -d "$HOST_DEST" ]; then
+        mkdir -p "$HOST_DEST"
+      fi
+      echo "Copying files using machinectl from $CONTAINER_NAME: $CONTAINER_PATH -> $HOST_DEST"
+      machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
+    }
+    ${copyCommands}
+  '';
 
   prepareBackupScript = pkgs.writeShellApplication {
     name = "prepareBackup";
@@ -38,81 +34,66 @@ let
     text = prepareBackupText;
   };
 
-  afterBackupText = # bash
-    ''
-      if [ -d ${hostBackupFolder} ]; then
-        echo "Cleaning ${hostBackupFolder} ..."
-        rm -rf ${hostBackupFolder}
-      fi
-    '';
   afterBackupScript = pkgs.writeShellApplication {
     name = "afterBackup";
     runtimeInputs = with pkgs; [ bash ];
-    text = afterBackupText;
+    text = ''
+      if [ -d ${cfg.hostBackupFolder} ]; then
+        echo "Cleaning ${cfg.hostBackupFolder} ..."
+        rm -rf ${cfg.hostBackupFolder}
+      fi
+    '';
   };
 
+  localTargets = lib.filter (t: t.enabled && t.type == "local") cfg.targets;
+  rcloneTargets = lib.filter (t: t.enabled && t.type == "rclone") cfg.targets;
+
+  localMounts = lib.optionalAttrs (localTargets != [ ]) (
+    lib.listToAttrs (
+      lib.map (t: {
+        name = "${t.mountPath}";
+        value = {
+          device = t.device;
+          fsType = t.fsType;
+          options = t.mountOptions;
+        };
+      }) localTargets
+    )
+  );
 in
 {
-  environment.systemPackages = [
-    pkgs.rclone
-    pkgs.restic
-    prepareBackupScript
-    afterBackupScript
-  ];
-
-  fileSystems."${externalDriveMountPath}" = {
-    device = "/dev/disk/by-label/${externalDriveLabel}";
-    fsType = "btrfs";
-    options = [
-      "defaults"
-      "noatime"
-      "nofail"
-      "compress=zstd"
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.rclone
+      pkgs.restic
+      prepareBackupScript
+      afterBackupScript
     ];
-  };
-
-  services = {
-    restic.backups = {
-      localBackup = {
-        initialize = true;
-        passwordFile = config.age.secrets.restic-password.path;
-        paths = [
-          hostBackupFolder
-          "/home/${user}/music"
-        ];
-        repository = externalDriveBackupFolder;
-        timerConfig = {
-          OnCalendar = "03:00";
-          Persistent = true;
+    fileSystems = localMounts;
+    services.restic.backups = lib.listToAttrs (
+      lib.map (t: {
+        name = "backup-${t.name}";
+        value = {
+          initialize = true;
+          passwordFile = cfg.resticPassword;
+          paths = [
+            cfg.hostBackupFolder
+            "/home/${user}/music"
+          ];
+          repository = if t.type == "local" then "${t.mountPath}/backups/" else t.remotePath;
+          timerConfig = {
+            OnCalendar = t.schedule;
+            Persistent = true;
+          };
+          backupPrepareCommand = prepareBackupText;
+          backupCleanupCommand = afterBackupScript.text;
+          pruneOpts = t.prune;
+          extraOptions = lib.optional (t.type == "rclone") "rclone.program=${pkgs.rclone}/bin/rclone";
+        }
+        // lib.optionalAttrs (t.type == "rclone") {
+          rcloneConfigFile = t.rcloneConfig;
         };
-        backupPrepareCommand = prepareBackupText;
-        backupCleanupCommand = afterBackupText;
-        pruneOpts = [
-          "--keep-daily 3"
-        ];
-      };
-      remoteBackup = {
-        initialize = true;
-        repository = "rclone:filen-backend:backups/";
-        passwordFile = config.age.secrets.restic-password.path;
-        rcloneConfigFile = config.age.secrets.rclone-config-filen.path;
-        paths = [
-          hostBackupFolder
-          "/home/${user}/music"
-        ];
-        timerConfig = {
-          OnCalendar = "Fri *-*-* 04:30:00";
-          Persistent = true;
-        };
-        backupPrepareCommand = prepareBackupText;
-        backupCleanupCommand = afterBackupText;
-        pruneOpts = [
-          "--keep-weekly 3"
-        ];
-        extraOptions = [
-          "rclone.program=${pkgs.rclone}/bin/rclone"
-        ];
-      };
-    };
+      }) (localTargets ++ rcloneTargets)
+    );
   };
 }
