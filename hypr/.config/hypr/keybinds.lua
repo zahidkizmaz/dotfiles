@@ -100,5 +100,6 @@ end)
 hl.bind("ALT + M", hl.dsp.submap("move"))
 
 -- Lid Switch Handlers
-hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"), { locked = true })
+lock_cmd = "loginctl lock-session"
+hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd(lock_cmd))
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd(lock_cmd), { locked = true })

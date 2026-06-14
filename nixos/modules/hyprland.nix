@@ -16,7 +16,6 @@ in
   environment.systemPackages = with pkgs-unstable; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprland-qt-support
-    hyprlock
     libnotify
   ];
 }

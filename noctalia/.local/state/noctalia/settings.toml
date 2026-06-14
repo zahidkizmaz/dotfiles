@@ -57,31 +57,46 @@ battery_charging = "powerprofilesctl set performance"
 battery_discharging = "powerprofilesctl set power-saver"
 
 [idle]
-behavior_order = ["lock", "screen-off", "lock-and-suspend"]
-pre_action_fade_seconds = 5.0
+behavior_order = ["Dim Screen", "lock", "screen-off", "Suspend & Hibernate"]
+
+[idle.behavior."Dim Screen"]
+action = "command"
+command = "brightnessctl -s set 5"
+enabled = true
+resume_command = "brightnessctl -r"
+timeout = 120
+
+[idle.behavior."Suspend & Hibernate"]
+action = "command"
+command = "systemctl suspend-then-hibernate"
+enabled = true
+timeout = 600
 
 [idle.behavior.lock]
 action = "lock"
-enabled = false
-timeout = 600
-
-[idle.behavior.lock-and-suspend]
-action = "lock_and_suspend"
-enabled = false
-timeout = 900
+enabled = true
+timeout = 300
 
 [idle.behavior.screen-off]
 action = "screen_off"
-enabled = false
-timeout = 660
+enabled = true
+timeout = 380
 
 [location]
 address = "Berlin, DE"
 
+[lockscreen]
+wallpaper = "/home/zahid/dotfiles/noctalia/.local/state/noctalia/lock-screen-bg.png"
+
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 1
-widget_order = ["lockscreen-login-box@eDP-1"]
+widget_order = [
+  "lockscreen-login-box@eDP-1",
+  "lockscreen-widget-0000000000000001",
+  "lockscreen-widget-0000000000000002",
+  "lockscreen-widget-0000000000000003",
+]
 
 [lockscreen_widgets.grid]
 cell_size = 16
@@ -89,12 +104,56 @@ major_interval = 4
 visible = true
 
 [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 0.0
+box_width = 0.0
 cx = 1128.0
-cy = 1381.0
+cy = 1216.0
 output = "eDP-1"
 rotation = 0.0
-scale = 1.0
 type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+show_login_button = true
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+box_height = 208.0
+box_width = 416.0
+cx = 1128.0
+cy = 248.0
+output = "eDP-1"
+rotation = -0.0
+type = "clock"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+background = false
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+box_height = 64.0
+box_width = 816.0
+cx = 1128.0
+cy = 384.0
+output = "eDP-1"
+rotation = 0.0
+type = "clock"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+background = false
+format = "%A %d %B %Y"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+box_height = 384.0
+box_width = 320.0
+cx = 2072.0
+cy = 0.0
+output = "eDP-1"
+rotation = 0.0
+type = "media_player"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+background = false
+background_padding = 11.0
+hide_when_no_media = true
+layout = "vertical"
 
 [nightlight]
 enabled = true
