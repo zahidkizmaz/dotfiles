@@ -61,7 +61,7 @@ behavior_order = ["Dim Screen", "lock", "screen-off", "Suspend & Hibernate"]
 
 [idle.behavior."Dim Screen"]
 action = "command"
-command = "ibrightnessctl -s set 5"
+command = "ibrightnessctl -s set 5%"
 enabled = true
 resume_command = "brightnessctl -r"
 timeout = 120
