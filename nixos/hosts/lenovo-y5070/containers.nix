@@ -12,9 +12,14 @@
     tailscaleAuthKey = config.age.secrets.tailscale-lab.path;
   };
 
-  # NO containers enabled yet
   appContainers = {
-    enable = false;
+    enable = true;
+    containers = {
+      ollama = {
+        enable = true;
+        models = [ "qwen3:27b" ];
+      };
+    };
     backup.enable = false;
   };
 }

@@ -14,7 +14,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/agenix.nix
-    ../../modules/ai.nix
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
