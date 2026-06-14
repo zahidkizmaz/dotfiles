@@ -38,9 +38,11 @@
   networking.hostName = "y5070";
 
   services.logind.settings = {
-    Login.HandleLidSwitch = "ignore";
-    Login.HandleLidSwitchExternalPower = "ignore";
-    Login.HandleLidSwitchDocked = "ignore";
+    Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+    };
   };
   services.thermald.enable = true;
 

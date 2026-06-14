@@ -14,19 +14,20 @@ let
     '') cfg.containers
   );
 
-  prepareBackupText = ''
-    copyFromContainer() {
-      CONTAINER_NAME=$1
-      CONTAINER_PATH=$2
-      HOST_DEST=$3
-      if [ ! -d "$HOST_DEST" ]; then
-        mkdir -p "$HOST_DEST"
-      fi
-      echo "Copying files using machinectl from $CONTAINER_NAME: $CONTAINER_PATH -> $HOST_DEST"
-      machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
-    }
-    ${copyCommands}
-  '';
+  prepareBackupText = # bash
+    ''
+      copyFromContainer() {
+        CONTAINER_NAME=$1
+        CONTAINER_PATH=$2
+        HOST_DEST=$3
+        if [ ! -d "$HOST_DEST" ]; then
+          mkdir -p "$HOST_DEST"
+        fi
+        echo "Copying files using machinectl from $CONTAINER_NAME: $CONTAINER_PATH -> $HOST_DEST"
+        machinectl copy-from "$CONTAINER_NAME" "$CONTAINER_PATH" "$HOST_DEST"
+      }
+      ${copyCommands}
+    '';
 
   prepareBackupScript = pkgs.writeShellApplication {
     name = "prepareBackup";
