@@ -20,6 +20,11 @@ in
               default = true;
               description = "Whether this specific container is enabled";
             };
+            models = mkOption {
+              type = types.listOf types.str;
+              default = [ ];
+              description = "List of models to preload (e.g. ollama model tags)";
+            };
           };
         }
       );
