@@ -1,11 +1,9 @@
 {
   config,
   lib,
-  pkgs,
   inputs,
   user,
   stateVersion,
-  system,
   ...
 }:
 
@@ -97,17 +95,11 @@
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
       in
-      lib.mapAttrs (
-        name: containerCfg:
+      lib.mapAttrs (name: _:
         let
           meta = containerMeta.${name} or (throw "Unknown container: ${name}");
           mod = import meta.path {
-            inherit
-              stateVersion
-              inputs
-              user
-              hostAddress
-              ;
+            inherit stateVersion inputs user hostAddress;
             localAddress = meta.ip;
           };
         in
