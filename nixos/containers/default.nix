@@ -91,16 +91,28 @@
             cname = "monitoring";
             ip = "192.168.100.17";
           };
+          ollama = {
+            path = ./ollama.nix;
+            cname = "ollama";
+            ip = "192.168.100.25";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
       in
-      lib.mapAttrs (name: _:
+      lib.mapAttrs (
+        name: _:
         let
           meta = containerMeta.${name} or (throw "Unknown container: ${name}");
           mod = import meta.path {
-            inherit stateVersion inputs user hostAddress;
+            inherit
+              stateVersion
+              inputs
+              user
+              hostAddress
+              ;
             localAddress = meta.ip;
+            models = config.appContainers.containers.${name}.models;
           };
         in
         mod.containers.${meta.cname}
