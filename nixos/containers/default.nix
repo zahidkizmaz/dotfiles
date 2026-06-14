@@ -20,7 +20,7 @@
     (import ./monitoring/alloy-log-report.nix { })
   ];
 
-  config = lib.mkIf (config.appContainers.enable != [ ]) {
+  config = lib.mkIf config.appContainers.enable {
     # Build container definitions dynamically from appContainers config
     containers =
       let
@@ -82,9 +82,7 @@
           };
         };
 
-        enabledContainers = lib.filterAttrs (
-          n: _: lib.elem n config.appContainers.enable
-        ) config.appContainers.containers;
+        enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
       in
       lib.mapAttrs (
         name: containerCfg:

@@ -5,9 +5,9 @@ in
 {
   options.appContainers = {
     enable = mkOption {
-      type = types.listOf types.str;
-      default = [ ];
-      description = "List of container names to enable";
+      type = types.bool;
+      default = false;
+      description = "Whether to enable containers on this host";
     };
 
     # Per-host container config with hardcoded IPs
@@ -15,6 +15,11 @@ in
       type = types.attrsOf (
         types.submodule {
           options = {
+            enable = mkOption {
+              type = types.bool;
+              default = true;
+              description = "Whether this specific container is enabled";
+            };
             localAddress = mkOption {
               type = types.str;
               description = "Container's local IP address (e.g. 192.168.100.11)";

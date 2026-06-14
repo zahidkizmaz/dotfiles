@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   user,
   inputs,
   system,
@@ -49,19 +47,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
   time.timeZone = "Europe/Berlin";
-
-  # Host networking (NAT + host tailscale) - ready for future containers
-  hostNetworking = {
-    enable = true;
-    externalInterface = "enp2s0"; # TODO: verify with `ip link`
-    tailscaleAuthKey = config.age.secrets.tailscale-lab.path;
-  };
-
-  # NO containers enabled yet
-  appContainers.enable = [ ];
-
-  # Backup disabled (no containers to backup)
-  appContainers.backup.enable = false;
 
   system.stateVersion = stateVersion;
 }

@@ -1,12 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  user,
-  stateVersion,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.hostNetworking = {
     enable = lib.mkOption {

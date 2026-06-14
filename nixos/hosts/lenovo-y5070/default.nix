@@ -10,6 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
+    ./containers.nix
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/agenix.nix
@@ -28,8 +29,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
     ../../modules/wlan.nix
-    ../../modules/host-networking.nix
-    ../../containers
   ];
   specialArgs = {
     inherit
