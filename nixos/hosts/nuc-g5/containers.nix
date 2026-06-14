@@ -13,49 +13,23 @@
     tailscaleAuthKey = config.age.secrets.tailscale-lab.path;
   };
 
-  # EXACT same containers with EXACT same IPs
+  # Containers enabled on this host (IPs are centrally defined in containers/default.nix)
   appContainers = {
     enable = true;
     containers = {
-      immich = {
-        localAddress = "192.168.100.11";
-      };
-      searx = {
-        localAddress = "192.168.100.13";
-      };
-      karakeep = {
-        localAddress = "192.168.100.14";
-      };
-      stirling-pdf = {
-        localAddress = "192.168.100.15";
-      };
-      navidrome = {
-        localAddress = "192.168.100.16";
-      };
-      monitoring = {
-        localAddress = "192.168.100.17";
-      };
-      paperless = {
-        localAddress = "192.168.100.18";
-      };
-      mealie = {
-        localAddress = "192.168.100.19";
-      };
-      ntfy = {
-        localAddress = "192.168.100.20";
-      };
-      uptime-kuma = {
-        localAddress = "192.168.100.21";
-      };
-      dns = {
-        localAddress = "192.168.100.22";
-      };
-      watch = {
-        localAddress = "192.168.100.23";
-      };
-      trilium = {
-        localAddress = "192.168.100.24";
-      };
+      immich.enable       = true;
+      searx.enable        = true;
+      karakeep.enable     = true;
+      stirling-pdf.enable = true;
+      navidrome.enable    = true;
+      monitoring.enable   = true;
+      paperless.enable    = true;
+      mealie.enable       = true;
+      ntfy.enable         = true;
+      uptime-kuma.enable  = true;
+      dns.enable          = true;
+      watch.enable        = true;
+      trilium.enable      = true;
     };
 
     # Backup with multiple targets (local drive + filen remote)

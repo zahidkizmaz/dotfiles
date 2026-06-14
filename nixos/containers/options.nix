@@ -10,7 +10,7 @@ in
       description = "Whether to enable containers on this host";
     };
 
-    # Per-host container config with hardcoded IPs
+    # Per-host container config — just enable/disable (IPs are central in containerMeta)
     containers = mkOption {
       type = types.attrsOf (
         types.submodule {
@@ -19,10 +19,6 @@ in
               type = types.bool;
               default = true;
               description = "Whether this specific container is enabled";
-            };
-            localAddress = mkOption {
-              type = types.str;
-              description = "Container's local IP address (e.g. 192.168.100.11)";
             };
           };
         }
