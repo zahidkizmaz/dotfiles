@@ -145,12 +145,41 @@ backup_label="${NEW_VER}.bak-$(date +%Y%m%d-%H%M%S)"
 $NIXOS_CONTAINER run "$CONTAINER" -- \
   cp -a "$DATA_DIR/$NEW_VER" "$DATA_DIR/$backup_label" 2>&1 | sed 's/^/  /' || true
 
-echo "Step 3: Running pg_upgrade..."
-echo "  (this may take a while for large databases)"
-echo ""
-
+echo "Step 3: Checking checksum alignment..."
 old_bindir="$OLD_BIN/bin"
 new_bindir="$NEW_BIN/bin"
+
+# PG 18 enables data checksums by default on initdb, but pg_upgrade requires
+# matching settings. If the old cluster doesn't have checksums, re-init the
+# new data dir to match before proceeding.
+old_checksum_ver=$($NIXOS_CONTAINER run "$CONTAINER" -- \
+  su -s /bin/sh postgres -c \
+  "'$new_bindir/pg_controldata' '$DATA_DIR/$OLD_VER'" 2>/dev/null \
+  | grep "Data page checksum version" | awk '{print $NF}')
+new_checksum_ver=$($NIXOS_CONTAINER run "$CONTAINER" -- \
+  su -s /bin/sh postgres -c \
+  "'$new_bindir/pg_controldata' '$DATA_DIR/$NEW_VER'" 2>/dev/null \
+  | grep "Data page checksum version" | awk '{print $NF}')
+
+echo "  Old cluster checksum version: ${old_checksum_ver:-unknown}"
+echo "  New cluster checksum version: ${new_checksum_ver:-unknown}"
+
+if [ "$old_checksum_ver" != "$new_checksum_ver" ]; then
+  echo "  Mismatch detected. Re-initializing new data directory without checksums..."
+
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    rm -rf "$DATA_DIR/$NEW_VER"
+
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    su -s /bin/sh postgres -c \
+    "'$new_bindir/initdb' --no-data-checksums -D '$DATA_DIR/$NEW_VER'" 2>&1 | sed 's/^/  /'
+
+  echo "  Re-initialization complete."
+fi
+
+echo "Step 4: Running pg_upgrade..."
+echo "  (this may take a while for large databases)"
+echo ""
 
 # pg_upgrade must run as the postgres user. Use /tmp as working dir for log output.
 if $NIXOS_CONTAINER run "$CONTAINER" -- \
@@ -163,7 +192,7 @@ if $NIXOS_CONTAINER run "$CONTAINER" -- \
   echo ""
   echo "=== Migration complete! ==="
   echo ""
-  echo "Step 4: Starting services..."
+  echo "Step 5: Starting services..."
   if [ -n "$SERVICE" ]; then
     $NIXOS_CONTAINER run "$CONTAINER" -- \
       systemctl start postgresql "$SERVICE" 2>&1 | sed 's/^/  /'
