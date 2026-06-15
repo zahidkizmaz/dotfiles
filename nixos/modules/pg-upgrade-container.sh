@@ -57,12 +57,13 @@ find_pg_bin() {
   local bin
 
   # First check if already in the store
-  bin=$(find /nix/store -maxdepth 1 -type d -name "postgresql-${ver}*" \
-    ! -name "*-man" ! -name "*-lib" ! -name "*-dev" 2>/dev/null | head -1)
+  bin=$(find /nix/store -maxdepth 1 -type d -name "postgresql-${ver}*" 2>/dev/null \
+    | grep -vE '\-(man|lib|dev)$' \
+    | head -1)
 
   if [ -z "$bin" ] && command -v nix &>/dev/null; then
     echo "  -> PostgreSQL $ver not in /nix/store; downloading with nix..." >&2
-    bin=$(nix build "nixpkgs#postgresql_${ver}" --no-link --print-out-paths 2>/dev/null || true)
+    bin=$(nix build "nixpkgs#postgresql_${ver}^out" --no-link --print-out-paths 2>/dev/null || true)
   fi
 
   if [ -n "$bin" ]; then
