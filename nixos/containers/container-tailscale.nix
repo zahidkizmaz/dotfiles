@@ -35,11 +35,7 @@
         "--accept-routes"
       ];
     };
-    resolved = {
-      enable = true;
-      # Allow Tailscale to manage DNS
-      settings.Resolve.DNSStubListener = false;
-    };
+    resolved.enable = true;
   };
 
   networking = {

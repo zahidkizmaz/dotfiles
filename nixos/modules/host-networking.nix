@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.hostNetworking = {
     enable = lib.mkOption {
@@ -32,5 +37,33 @@
       openFirewall = true;
       authKeyFile = config.hostNetworking.tailscaleAuthKey;
     };
+
+    # Helper script: restart tailscale inside all containers to refresh hostnames & serve config
+    environment.systemPackages = [
+      (pkgs.writeShellScriptBin "refresh-container-tailscale" ''
+        set -euo pipefail
+
+        if [ "$(id -u)" -ne 0 ]; then
+          echo "error: this script must be run as root (use sudo)" >&2
+          exit 1
+        fi
+
+        containers=$(${pkgs.nixos-container}/bin/nixos-container list 2>/dev/null || true)
+        if [ -z "$containers" ]; then
+          echo "No containers found."
+          exit 0
+        fi
+
+        for c in $containers; do
+          echo "=== Restarting tailscale in container: $c ==="
+          ${pkgs.nixos-container}/bin/nixos-container run "$c" -- \
+            systemctl restart tailscaled 2>&1 | sed 's/^/  /' || true
+          echo ""
+        done
+
+        echo "Done. To verify serve endpoints:"
+        echo "  tailscale serve status"
+      '')
+    ];
   };
 }

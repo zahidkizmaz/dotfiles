@@ -61,9 +61,6 @@ in
         ];
 
         services = {
-          resolved.settings = {
-            Resolve.DNSStubListener = false;
-          };
           adguardhome = {
             enable = true;
             mutableSettings = false;
