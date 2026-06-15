@@ -177,7 +177,25 @@ if [ "$old_checksum_ver" != "$new_checksum_ver" ]; then
   echo "  Re-initialization complete."
 fi
 
-echo "Step 4: Running pg_upgrade..."
+echo "Step 4: Checking old cluster configuration..."
+
+# The old cluster's postgresql.conf may be a symlink to a Nix store path
+# that was garbage collected. If it's missing or broken, generate a minimal
+# config from the PG sample so the server can start.
+$NIXOS_CONTAINER run "$CONTAINER" -- \
+  su -s /bin/sh postgres -c \
+  "config='$DATA_DIR/$OLD_VER/postgresql.conf'; \
+   if [ -L \"\$config\" ] && [ ! -e \"\$config\" ]; then \
+     echo '  -> Broken symlink detected, generating config from sample...'; \
+     cp '$old_bindir/../share/postgresql/postgresql.conf.sample' \"\$config\"; \
+   elif [ ! -f \"\$config\" ]; then \
+     echo '  -> Config file missing, generating from sample...'; \
+     cp '$old_bindir/../share/postgresql/postgresql.conf.sample' \"\$config\"; \
+   else \
+     echo '  -> Config file OK'; \
+   fi" 2>&1 | sed 's/^/  /'
+
+echo "Step 5: Running pg_upgrade..."
 echo "  (this may take a while for large databases)"
 echo ""
 
@@ -192,7 +210,7 @@ if $NIXOS_CONTAINER run "$CONTAINER" -- \
   echo ""
   echo "=== Migration complete! ==="
   echo ""
-  echo "Step 5: Starting services..."
+  echo "Step 6: Starting services..."
   if [ -n "$SERVICE" ]; then
     $NIXOS_CONTAINER run "$CONTAINER" -- \
       systemctl start postgresql "$SERVICE" 2>&1 | sed 's/^/  /'
