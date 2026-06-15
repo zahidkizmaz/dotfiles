@@ -1,0 +1,191 @@
+set -euo pipefail
+
+usage() {
+  cat <<'USAGE'
+Usage: pg-upgrade-container <container> <from_version> <to_version> [service]
+
+Migrate PostgreSQL data in a NixOS container from one PG major version to another.
+
+Arguments:
+  container     Container name (e.g., paperless, mealie)
+  from_version  Old PostgreSQL major version (e.g., 16, 17)
+  to_version    New PostgreSQL major version (e.g., 18)
+  service       Optional: systemd service to stop/start.
+                Defaults to container name. Use empty string "" to only manage postgresql.
+
+Examples:
+  sudo pg-upgrade-container paperless 17 18
+  sudo pg-upgrade-container mealie 16 18
+  sudo pg-upgrade-container paperless 16 17 paperless
+USAGE
+}
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "error: this script must be run as root (use sudo)" >&2
+  exit 1
+fi
+
+if [ $# -lt 3 ]; then
+  usage
+  exit 1
+fi
+
+CONTAINER="$1"
+OLD_VER="$2"
+NEW_VER="$3"
+SERVICE="${4:-$CONTAINER}"
+DATA_DIR="/var/lib/postgresql"
+
+# Validate numeric versions
+if ! [[ $OLD_VER =~ ^[0-9]+$ ]] || ! [[ $NEW_VER =~ ^[0-9]+$ ]]; then
+  echo "error: versions must be numbers (e.g., 16, 17, 18)" >&2
+  exit 1
+fi
+
+if [ "$OLD_VER" -ge "$NEW_VER" ]; then
+  echo "error: old version must be less than new version" >&2
+  exit 1
+fi
+
+NIXOS_CONTAINER="@nixos_container@/bin/nixos-container"
+
+# Find PG binaries in nix store (exclude -man, -lib, -dev variants)
+find_pg_bin() {
+  local ver="$1"
+  find /nix/store -maxdepth 1 -type d -name "postgresql-${ver}*" \
+    ! -name "*-man" ! -name "*-lib" ! -name "*-dev" 2>/dev/null | head -1
+}
+
+OLD_BIN=$(find_pg_bin "$OLD_VER")
+NEW_BIN=$(find_pg_bin "$NEW_VER")
+
+if [ -z "$OLD_BIN" ]; then
+  echo "error: PostgreSQL $OLD_VER binary not found in /nix/store" >&2
+  echo "" >&2
+  echo "It may have been garbage collected. Re-add to a container or host config:" >&2
+  echo "  services.postgresql.package = pkgs.postgresql_$OLD_VER;" >&2
+  echo "" >&2
+  echo "Then rebuild to pull it back into the store." >&2
+  exit 1
+fi
+
+if [ -z "$NEW_BIN" ]; then
+  echo "error: PostgreSQL $NEW_VER binary not found in /nix/store" >&2
+  echo "Add it to your config and rebuild first:" >&2
+  echo "  services.postgresql.package = pkgs.postgresql_$NEW_VER;" >&2
+  exit 1
+fi
+
+echo "=== PostgreSQL Upgrade: $CONTAINER ($OLD_VER => $NEW_VER) ==="
+echo "  Container: $CONTAINER"
+echo "  Service:   $SERVICE"
+echo "  Old PG:    $OLD_BIN"
+echo "  New PG:    $NEW_BIN"
+echo ""
+
+# Check container exists and is running
+if ! $NIXOS_CONTAINER status "$CONTAINER" >/dev/null 2>&1; then
+  echo "error: container '$CONTAINER' is not running" >&2
+  echo "Start it with: nixos-container start $CONTAINER" >&2
+  exit 1
+fi
+
+# Check old data directory exists
+if ! $NIXOS_CONTAINER run "$CONTAINER" -- \
+  test -d "$DATA_DIR/$OLD_VER" 2>/dev/null; then
+  echo "error: data directory $DATA_DIR/$OLD_VER not found in container" >&2
+  echo "Checked inside container '$CONTAINER'." >&2
+  exit 1
+fi
+
+# Check old data has actual content
+old_files=$($NIXOS_CONTAINER run "$CONTAINER" -- \
+  ls -1 "$DATA_DIR/$OLD_VER" 2>/dev/null | wc -l)
+if [ "$old_files" -le 3 ]; then
+  echo "error: old data directory $DATA_DIR/$OLD_VER appears empty" >&2
+  echo "Found only $old_files entries. Nothing to migrate." >&2
+  exit 1
+fi
+
+# Ensure new data directory exists
+if ! $NIXOS_CONTAINER run "$CONTAINER" -- \
+  test -d "$DATA_DIR/$NEW_VER" 2>/dev/null; then
+  echo "Creating new PG data directory $DATA_DIR/$NEW_VER..."
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    mkdir -p "$DATA_DIR/$NEW_VER"
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    chown postgres:postgres "$DATA_DIR/$NEW_VER"
+fi
+
+echo "Step 1: Stopping services..."
+if [ -n "$SERVICE" ]; then
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    systemctl stop "$SERVICE" postgresql 2>&1 | sed 's/^/  /' || true
+else
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    systemctl stop postgresql 2>&1 | sed 's/^/  /' || true
+fi
+sleep 2
+
+echo "Step 2: Backing up current $NEW_VER data directory..."
+backup_label="${NEW_VER}.bak-$(date +%Y%m%d-%H%M%S)"
+$NIXOS_CONTAINER run "$CONTAINER" -- \
+  cp -a "$DATA_DIR/$NEW_VER" "$DATA_DIR/$backup_label" 2>&1 | sed 's/^/  /' || true
+
+echo "Step 3: Running pg_upgrade..."
+echo "  (this may take a while for large databases)"
+echo ""
+
+old_bindir="$OLD_BIN/bin"
+new_bindir="$NEW_BIN/bin"
+
+# pg_upgrade must run as the postgres user. Use /tmp as working dir for log output.
+if $NIXOS_CONTAINER run "$CONTAINER" -- \
+  su -s /bin/sh postgres -c \
+  "cd /tmp && '$new_bindir/pg_upgrade' \
+    -b '$old_bindir' \
+    -B '$new_bindir' \
+    -d '$DATA_DIR/$OLD_VER' \
+    -D '$DATA_DIR/$NEW_VER'"; then
+  echo ""
+  echo "=== Migration complete! ==="
+  echo ""
+  echo "Step 4: Starting services..."
+  if [ -n "$SERVICE" ]; then
+    $NIXOS_CONTAINER run "$CONTAINER" -- \
+      systemctl start postgresql "$SERVICE" 2>&1 | sed 's/^/  /'
+  else
+    $NIXOS_CONTAINER run "$CONTAINER" -- \
+      systemctl start postgresql 2>&1 | sed 's/^/  /'
+  fi
+  echo ""
+  echo "PostgreSQL $OLD_VER => $NEW_VER migration successful for container '$CONTAINER'"
+  echo ""
+  echo "To clean up:"
+  echo "  Old data: sudo nixos-container run $CONTAINER -- rm -rf $DATA_DIR/$OLD_VER"
+  echo "  Backup:   sudo nixos-container run $CONTAINER -- rm -rf $DATA_DIR/$backup_label"
+  echo ""
+  echo "Run 'analyze_new_cluster.sh' to update planner statistics:"
+  echo "  sudo nixos-container run $CONTAINER -- \\"
+  echo "    su -s /bin/sh postgres -c 'cd /tmp && sh analyze_new_cluster.sh'"
+else
+  pg_status=$?
+  echo ""
+  echo "=== Migration FAILED (exit code $pg_status) ==="
+  echo "Check upgrade logs in the container:"
+  echo "  sudo nixos-container run $CONTAINER -- ls -la /tmp/pg_upgrade*.log"
+  echo ""
+  echo "Restoring original $NEW_VER directory from backup..."
+  if $NIXOS_CONTAINER run "$CONTAINER" -- \
+    test -d "$DATA_DIR/$backup_label" 2>/dev/null; then
+    $NIXOS_CONTAINER run "$CONTAINER" -- \
+      rm -rf "$DATA_DIR/$NEW_VER" 2>/dev/null || true
+    $NIXOS_CONTAINER run "$CONTAINER" -- \
+      mv "$DATA_DIR/$backup_label" "$DATA_DIR/$NEW_VER" 2>/dev/null || true
+    echo "Restored original $NEW_VER data from backup."
+  fi
+  echo "Starting PostgreSQL with original data..."
+  $NIXOS_CONTAINER run "$CONTAINER" -- \
+    systemctl start postgresql 2>&1 | sed 's/^/  /' || true
+  exit $pg_status
+fi

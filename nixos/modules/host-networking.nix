@@ -38,7 +38,7 @@
       authKeyFile = config.hostNetworking.tailscaleAuthKey;
     };
 
-    # Helper script: restart tailscale inside all containers to refresh hostnames & serve config
+    # Helper scripts for container management
     environment.systemPackages = [
       (pkgs.writeShellScriptBin "refresh-container-tailscale" ''
         set -euo pipefail
@@ -64,6 +64,12 @@
         echo "Done. To verify serve endpoints:"
         echo "  tailscale serve status"
       '')
+
+      (pkgs.writeShellScriptBin "pg-upgrade-container" (
+        builtins.replaceStrings [ "@nixos_container@" ] [ "${pkgs.nixos-container}" ] (
+          builtins.readFile ./pg-upgrade-container.sh
+        )
+      ))
     ];
   };
 }
