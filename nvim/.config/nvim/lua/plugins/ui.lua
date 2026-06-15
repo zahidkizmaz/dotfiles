@@ -36,7 +36,6 @@ return {
           fidget = true,
           harpoon = false,
           gitsigns = true,
-          treesitter = true,
           rainbow_delimiters = true,
           indent_blankline = {
             enabled = true,

@@ -20,5 +20,5 @@ fi
 
 if command -v "nvim" >/dev/null 2>&1; then
   printf "\nUpdating nvim packages\n"
-  nvim --headless -c "Lazy! sync" -c "TSUpdateSync all" +qa
+  nvim --headless -c "Lazy! sync" +qa
 fi

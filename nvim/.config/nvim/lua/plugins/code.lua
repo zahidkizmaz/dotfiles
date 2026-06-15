@@ -1,46 +1,5 @@
 return {
   {
-    "zahidkizmaz/nvim-treesitter",
-    branch = "master",
-    build = ":TSUpdate",
-    event = { "BufRead", "BufNewFile" },
-    cmd = { "TSUpdate", "TSUpdateSync" }, -- Needed for headless runs such as: nvim --headless -c "TSUpdateSync" +qa
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        auto_install = true,
-        sync_install = false,
-        ensure_installed = {},
-        ignore_install = {},
-        highlight = { enable = true, additional_vim_regex_highlighting = { "python" } },
-      })
-    end,
-    dependencies = {
-      {
-        "HiPhish/rainbow-delimiters.nvim",
-        config = function()
-          local rainbow_delimiters = require("rainbow-delimiters")
-
-          vim.g.rainbow_delimiters = {
-            strategy = {
-              [""] = rainbow_delimiters.strategy["global"],
-              vim = rainbow_delimiters.strategy["local"],
-            },
-            query = { [""] = "rainbow-delimiters" },
-            highlight = {
-              "RainbowDelimiterRed",
-              "RainbowDelimiterYellow",
-              "RainbowDelimiterBlue",
-              "RainbowDelimiterOrange",
-              "RainbowDelimiterGreen",
-              "RainbowDelimiterViolet",
-              "RainbowDelimiterCyan",
-            },
-          }
-        end,
-      },
-    },
-  },
-  {
     "Bekaboo/dropbar.nvim",
     event = { "BufReadPost" },
     opts = {
@@ -62,7 +21,6 @@ return {
           return {
             utils.source.fallback({
               sources.lsp,
-              sources.treesitter,
             }),
           }
         end,
@@ -98,20 +56,6 @@ return {
     keys = {
       { "gcc", mode = "n" },
       { "gcc", mode = "x" },
-    },
-  },
-  {
-    "danymat/neogen",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    cmd = { "Neogen" },
-    opts = {
-      languages = {
-        python = {
-          template = {
-            annotation_convention = "google_docstrings",
-          },
-        },
-      },
     },
   },
   {
