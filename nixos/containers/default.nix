@@ -101,7 +101,7 @@
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
       in
       lib.mapAttrs (
-        name: _:
+        name: containerCfg:
         let
           meta = containerMeta.${name} or (throw "Unknown container: ${name}");
           mod = import meta.path {
@@ -112,10 +112,18 @@
               hostAddress
               ;
             localAddress = meta.ip;
-            models = config.appContainers.containers.${name}.models;
+            models = containerCfg.models;
           };
         in
         mod.containers.${meta.cname}
+        // lib.optionalAttrs (containerCfg.hostname != "") {
+          config = {
+            imports = [
+              mod.containers.${meta.cname}.config
+              { networking.hostName = lib.mkForce containerCfg.hostname; }
+            ];
+          };
+        }
       ) enabledContainers;
   };
 }

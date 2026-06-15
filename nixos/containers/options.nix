@@ -20,6 +20,11 @@ in
               default = true;
               description = "Whether this specific container is enabled";
             };
+            hostname = mkOption {
+              type = types.str;
+              default = "";
+              description = "Explicit hostname for the container (shown in tailscale)";
+            };
             models = mkOption {
               type = types.listOf types.str;
               default = [ ];

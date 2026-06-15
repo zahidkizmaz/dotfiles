@@ -17,19 +17,58 @@
   appContainers = {
     enable = true;
     containers = {
-      immich.enable = true;
-      searx.enable = true;
-      karakeep.enable = true;
-      stirling-pdf.enable = true;
-      navidrome.enable = true;
-      monitoring.enable = true;
-      paperless.enable = true;
-      mealie.enable = true;
-      ntfy.enable = true;
-      uptime-kuma.enable = true;
-      dns.enable = true;
-      watch.enable = true;
-      trilium.enable = true;
+      immich = {
+        enable = true;
+        hostname = "immich";
+      };
+      searx = {
+        enable = true;
+        hostname = "search";
+      };
+      karakeep = {
+        enable = true;
+        hostname = "keep";
+      };
+      stirling-pdf = {
+        enable = true;
+        hostname = "pdf";
+      };
+      navidrome = {
+        enable = true;
+        hostname = "music";
+      };
+      monitoring = {
+        enable = true;
+        hostname = "monitoring";
+      };
+      paperless = {
+        enable = true;
+        hostname = "paperless";
+      };
+      mealie = {
+        enable = true;
+        hostname = "meal";
+      };
+      ntfy = {
+        enable = true;
+        hostname = "ntfy";
+      };
+      uptime-kuma = {
+        enable = true;
+        hostname = "status";
+      };
+      dns = {
+        enable = true;
+        hostname = "dns";
+      };
+      watch = {
+        enable = true;
+        hostname = "watch";
+      };
+      trilium = {
+        enable = true;
+        hostname = "notes";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)
@@ -70,7 +109,7 @@
           backupFolderName = "immich";
         }
         {
-          name = "notes";
+          name = "trilium";
           containerPath = "/var/lib/trilium";
           backupFolderName = "trilium";
         }
@@ -80,17 +119,17 @@
           backupFolderName = "paperless";
         }
         {
-          name = "meal";
+          name = "mealie";
           containerPath = "/var/lib/private/mealie";
           backupFolderName = "mealie";
         }
         {
-          name = "status";
+          name = "uptime-kuma";
           containerPath = "/var/lib/private/uptime-kuma";
           backupFolderName = "uptime-kuma";
         }
         {
-          name = "keep";
+          name = "karakeep";
           containerPath = "/var/lib/karakeep";
           backupFolderName = "karakeep";
         }
