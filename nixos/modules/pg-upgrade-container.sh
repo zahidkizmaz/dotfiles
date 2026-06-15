@@ -49,32 +49,44 @@ fi
 
 NIXOS_CONTAINER="@nixos_container@/bin/nixos-container"
 
-# Find PG binaries in nix store (exclude -man, -lib, -dev variants)
+# Resolve a PG major version to a /nix/store path with its bin/ directory.
+# Tries /nix/store first, then falls back to nix build if the binary is
+# not cached locally (e.g. garbage collected).
 find_pg_bin() {
   local ver="$1"
-  find /nix/store -maxdepth 1 -type d -name "postgresql-${ver}*" \
-    ! -name "*-man" ! -name "*-lib" ! -name "*-dev" 2>/dev/null | head -1
+  local bin
+
+  # First check if already in the store
+  bin=$(find /nix/store -maxdepth 1 -type d -name "postgresql-${ver}*" \
+    ! -name "*-man" ! -name "*-lib" ! -name "*-dev" 2>/dev/null | head -1)
+
+  if [ -z "$bin" ] && command -v nix &>/dev/null; then
+    echo "  -> PostgreSQL $ver not in /nix/store; downloading with nix..." >&2
+    bin=$(nix build "nixpkgs#postgresql_${ver}" --no-link --print-out-paths 2>/dev/null || true)
+  fi
+
+  if [ -n "$bin" ]; then
+    echo "$bin"
+    return 0
+  fi
+  return 1
 }
 
-OLD_BIN=$(find_pg_bin "$OLD_VER")
-NEW_BIN=$(find_pg_bin "$NEW_VER")
-
-if [ -z "$OLD_BIN" ]; then
-  echo "error: PostgreSQL $OLD_VER binary not found in /nix/store" >&2
+OLD_BIN=$(find_pg_bin "$OLD_VER") || {
+  echo "error: could not find PostgreSQL $OLD_VER anywhere" >&2
   echo "" >&2
-  echo "It may have been garbage collected. Re-add to a container or host config:" >&2
-  echo "  services.postgresql.package = pkgs.postgresql_$OLD_VER;" >&2
-  echo "" >&2
-  echo "Then rebuild to pull it back into the store." >&2
+  echo "Tried /nix/store and 'nix build nixpkgs#postgresql_$OLD_VER'." >&2
+  echo "Make sure you have a network connection and nixpkgs in your flake registry." >&2
   exit 1
-fi
+}
 
-if [ -z "$NEW_BIN" ]; then
-  echo "error: PostgreSQL $NEW_VER binary not found in /nix/store" >&2
-  echo "Add it to your config and rebuild first:" >&2
-  echo "  services.postgresql.package = pkgs.postgresql_$NEW_VER;" >&2
+NEW_BIN=$(find_pg_bin "$NEW_VER") || {
+  echo "error: could not find PostgreSQL $NEW_VER anywhere" >&2
+  echo "" >&2
+  echo "Tried /nix/store and 'nix build nixpkgs#postgresql_$NEW_VER'." >&2
+  echo "Make sure you have a network connection and nixpkgs in your flake registry." >&2
   exit 1
-fi
+}
 
 echo "=== PostgreSQL Upgrade: $CONTAINER ($OLD_VER => $NEW_VER) ==="
 echo "  Container: $CONTAINER"
