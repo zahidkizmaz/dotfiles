@@ -17,19 +17,19 @@
   appContainers = {
     enable = true;
     containers = {
-      immich.enable       = true;
-      searx.enable        = true;
-      karakeep.enable     = true;
+      immich.enable = true;
+      searx.enable = true;
+      karakeep.enable = true;
       stirling-pdf.enable = true;
-      navidrome.enable    = true;
-      monitoring.enable   = true;
-      paperless.enable    = true;
-      mealie.enable       = true;
-      ntfy.enable         = true;
-      uptime-kuma.enable  = true;
-      dns.enable          = true;
-      watch.enable        = true;
-      trilium.enable      = true;
+      navidrome.enable = true;
+      monitoring.enable = true;
+      paperless.enable = true;
+      mealie.enable = true;
+      ntfy.enable = true;
+      uptime-kuma.enable = true;
+      dns.enable = true;
+      watch.enable = true;
+      trilium.enable = true;
     };
 
     # Backup with multiple targets (local drive + filen remote)
