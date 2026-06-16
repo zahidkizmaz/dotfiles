@@ -54,6 +54,7 @@ in
           openFirewall = true;
           package = pkgs.ollama-cpu;
           loadModels = models;
+          syncModels = true;
         };
 
         system.stateVersion = stateVersion;
