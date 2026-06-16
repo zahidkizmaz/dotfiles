@@ -17,7 +17,7 @@
     containers = {
       ollama = {
         enable = true;
-        models = [ "qwen3:27b" ];
+        models = [ "qwen3.6:27b" ];
       };
     };
     backup.enable = false;
