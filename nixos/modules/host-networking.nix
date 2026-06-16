@@ -70,6 +70,12 @@
           builtins.readFile ./pg-upgrade-container.sh
         )
       ))
+
+      (pkgs.writeShellScriptBin "restore-container" (
+        builtins.replaceStrings [ "@nixos_container@" ] [ "${pkgs.nixos-container}" ] (
+          builtins.readFile ./restore-container.sh
+        )
+      ))
     ];
   };
 }

@@ -1,5 +1,11 @@
 { lib, ... }:
 {
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   networking = {
     firewall = {
       enable = true;
