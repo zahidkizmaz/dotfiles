@@ -8,7 +8,7 @@
 
   hostNetworking = {
     enable = true;
-    externalInterface = "enp2s0"; # TODO: verify with `ip link`
+    externalInterface = "enp9s0";
     tailscaleAuthKey = config.age.secrets.tailscale-lab.path;
   };
 
