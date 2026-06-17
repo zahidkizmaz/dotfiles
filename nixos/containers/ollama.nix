@@ -55,6 +55,9 @@ in
           package = pkgs.ollama-cpu;
           loadModels = models;
           syncModels = true;
+          environmentVariables = {
+            OLLAMA_KEEP_ALIVE = "-1";
+          };
         };
 
         system.stateVersion = stateVersion;
