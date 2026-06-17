@@ -67,13 +67,13 @@
 
       (pkgs.writeShellScriptBin "pg-upgrade-container" (
         builtins.replaceStrings [ "@nixos_container@" ] [ "${pkgs.nixos-container}" ] (
-          builtins.readFile ./pg-upgrade-container.sh
+          builtins.readFile ../containers/scripts/pg-upgrade-container.sh
         )
       ))
 
       (pkgs.writeShellScriptBin "restore-container" (
         builtins.replaceStrings [ "@nixos_container@" ] [ "${pkgs.nixos-container}" ] (
-          builtins.readFile ./restore-container.sh
+          builtins.readFile ../containers/scripts/restore-container.sh
         )
       ))
     ];
