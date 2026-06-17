@@ -10,10 +10,10 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     ./configuration.nix
+    ./containers.nix
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/agenix.nix
-    ../../modules/ai.nix
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix

@@ -3,6 +3,7 @@
   stateVersion,
   user,
   system,
+  config,
   ...
 }:
 {
@@ -30,6 +31,8 @@
 
   services.fwupd.enable = true;
   powerManagement.powertop.enable = true;
+
+  nix.settings.secret-key-files = [ config.age.secrets.fw13-nix-signing.path ];
 
   swapDevices = [
     {

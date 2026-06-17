@@ -31,6 +31,15 @@
         "context7-mcp"
       ],
       "enabled": true
+    },
+    "nixos": {
+      "type": "local",
+      "command": [
+        "nix",
+        "run",
+        "github:utensils/mcp-nixos",
+        "--"
+      ]
     }
   },
   "permission": {

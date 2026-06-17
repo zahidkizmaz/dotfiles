@@ -11,19 +11,23 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "usbhid"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
-  boot.kernel.sysctl = {
-    "net.core.wmem_max" = 16777216; # needed for unbound
-    "net.core.rmem_max" = 16777216; # needed for unbound
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "kvm-intel" ];
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
+    extraModulePackages = [ ];
+    kernel.sysctl = {
+      "net.core.wmem_max" = 16777216; # needed for unbound
+      "net.core.rmem_max" = 16777216; # needed for unbound
+    };
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

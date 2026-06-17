@@ -60,10 +60,13 @@ in
           neovim
         ];
 
+        # The dns container runs its own DNS (AdGuardHome on port 53), so
+        # disable systemd-resolved's stub listener to avoid port conflicts.
+        services.resolved.settings.Resolve.DNSStubListener = lib.mkForce "no";
+
+        networking.nameservers = [ "127.0.0.1" ];
+
         services = {
-          resolved.settings = {
-            Resolve.DNSStubListener = false;
-          };
           adguardhome = {
             enable = true;
             mutableSettings = false;

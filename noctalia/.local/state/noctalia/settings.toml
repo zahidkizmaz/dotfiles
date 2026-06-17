@@ -61,7 +61,7 @@ behavior_order = ["Dim Screen", "lock", "screen-off", "Suspend & Hibernate"]
 
 [idle.behavior."Dim Screen"]
 action = "command"
-command = "brightnessctl -s set 5"
+command = "brightnessctl -s set 5%"
 enabled = true
 resume_command = "brightnessctl -r"
 timeout = 120
@@ -86,6 +86,7 @@ timeout = 380
 address = "Berlin, DE"
 
 [lockscreen]
+allow_empty_password = true
 wallpaper = "/home/zahid/dotfiles/noctalia/.local/state/noctalia/lock-screen-bg.png"
 
 [lockscreen_widgets]
