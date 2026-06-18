@@ -19,7 +19,32 @@
         enable = true;
         models = [ "gemma4:e4b" ];
       };
+      hermes-agent = {
+        enable = true;
+      };
     };
-    backup.enable = false;
+
+    # Remote backup to Filen (no local backup drive on this host)
+    backup = {
+      enable = true;
+      resticPassword = config.age.secrets.restic-password.path;
+      targets = [
+        {
+          name = "filen";
+          type = "rclone";
+          rcloneConfig = config.age.secrets.rclone-config-filen.path;
+          remotePath = "filen-backend:backup-y5070/";
+          schedule = "Fri *-*-* 04:30:00";
+          prune = [ "--keep-weekly 3" ];
+        }
+      ];
+      containers = [
+        {
+          name = "hermes";
+          containerPath = "/var/lib/containers/storage/volumes/hermes-data/_data";
+          backupFolderName = "hermes";
+        }
+      ];
+    };
   };
 }

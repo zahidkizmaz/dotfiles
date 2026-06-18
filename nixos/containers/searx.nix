@@ -58,14 +58,26 @@ in
         services.searx = {
           enable = true;
           redisCreateLocally = true;
+          environmentFile = config.age.secrets.searx-secret.path;
           settings = {
             use_default_settings = true;
             server = {
               port = port;
               bind_address = "0.0.0.0";
-              secret_key = "@SEARX_SECRET_KEY@";
+              secret_key = "$SEARX_SECRET_KEY";
             };
-            environmentFile = config.age.secrets.searx-secret.path;
+            search = {
+              formats = [
+                "html"
+                "json"
+              ];
+            };
+            engines = [
+              {
+                name = "wolframalpha";
+                disabled = false;
+              }
+            ];
           };
           limiterSettings = {
             botdetection.ip_limit = {
