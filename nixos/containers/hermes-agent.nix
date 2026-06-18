@@ -85,14 +85,16 @@ in
               # ollama at 192.168.100.25:11434 and tailscale DNS names.
               "--network=host"
             ];
-            # Dashboard binds to 127.0.0.1:8080 (localhost) — with host
-            # networking, this IS the NixOS container's localhost, so
-            # tailscale-serve can reach it directly. No port publishing,
-            # no --insecure needed.
+            # --host 0.0.0.0 accepts any Host header (needed behind
+            # tailscale-serve). --insecure disables OAuth gate (no provider
+            # configured). Safe — only reachable via tailscale-serve.
             cmd = [
               "dashboard"
               "--port"
               "8080"
+              "--host"
+              "0.0.0.0"
+              "--insecure"
               "--skip-build"
             ];
             autoRemoveOnStop = false;
