@@ -96,6 +96,16 @@
             cname = "ollama";
             ip = "192.168.100.25";
           };
+          hermes-agent = {
+            path = ./hermes-agent.nix;
+            cname = "hermes";
+            ip = "192.168.100.26";
+          };
+          onecli = {
+            path = ./onecli.nix;
+            cname = "onecli";
+            ip = "192.168.100.27";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;

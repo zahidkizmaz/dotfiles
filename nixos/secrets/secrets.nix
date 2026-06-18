@@ -45,4 +45,8 @@ in
     fw13
     lab
   ];
+  "hermes-config.age".publicKeys = [
+    fw13
+    lab
+  ];
 }
