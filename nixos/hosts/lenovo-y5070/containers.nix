@@ -22,9 +22,6 @@
       hermes-agent = {
         enable = true;
       };
-      onecli = {
-        enable = true;
-      };
     };
 
     # Remote backup to Filen (no local backup drive on this host)
@@ -46,16 +43,6 @@
           name = "hermes";
           containerPath = "/var/lib/containers/storage/volumes/hermes-data/_data";
           backupFolderName = "hermes";
-        }
-        {
-          name = "onecli";
-          containerPath = "/var/backup/postgresql/onecli";
-          backupFolderName = "onecli-pg";
-        }
-        {
-          name = "onecli";
-          containerPath = "/var/lib/containers/storage/volumes/onecli-app/_data";
-          backupFolderName = "onecli-app";
         }
       ];
     };

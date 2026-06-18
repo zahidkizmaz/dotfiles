@@ -59,12 +59,12 @@ in
           containers.hermes-agent = {
             autoStart = true;
             image = "docker.io/nousresearch/hermes-agent@sha256:46a555b8461fc43829fb591799231adf8d5fde971c1466fd172f335cfc014137";
-            volumes = [
-              "hermes-data:/opt/data:rw"
-            ];
             environment = {
               HERMES_HOME = "/opt/data";
             };
+            volumes = [
+              "hermes-data:/opt/data:rw"
+            ];
             # s6-overlay needs these capabilities for process supervision:
             #   SETUID/SETGID/CHOWN: privilege dropping
             #   DAC_OVERRIDE/FOWNER: create supervision lock files in /run/service

@@ -101,11 +101,6 @@
             cname = "hermes";
             ip = "192.168.100.26";
           };
-          onecli = {
-            path = ./onecli.nix;
-            cname = "onecli";
-            ip = "192.168.100.27";
-          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
