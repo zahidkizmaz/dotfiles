@@ -17,7 +17,10 @@
     containers = {
       ollama = {
         enable = true;
-        models = [ "gemma4:e4b" ];
+        models = [
+          "gemma4:e4b"
+          "gemma4:e2b"
+        ];
       };
       hermes-agent = {
         enable = true;

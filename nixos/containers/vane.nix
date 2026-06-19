@@ -61,7 +61,11 @@ in
             autoStart = true;
             image = "docker.io/itzcrazykns1337/vane@sha256:aaf9da6bf76f01480c3e755388421029982e819773cbcecdcf0e9621a10e0690";
             environment = {
-              SEARXNG_API_URL = "http://search.quoll-ratio.ts.net:8080";
+              # Make Vane listen on all interfaces, not just the hostname
+              # address (127.0.0.2), so tailscale-serve can reach it via
+              # localhost:3000.
+              HOSTNAME = "0.0.0.0";
+              SEARXNG_API_URL = "https://search.quoll-ratio.ts.net/";
             };
             volumes = [
               "vane-data:/home/vane/data:rw"
@@ -70,7 +74,7 @@ in
               "--restart=unless-stopped"
               # Share the NixOS container's network so Vane can reach
               # ollama at 192.168.100.25:11434 and searxng via
-              # search.quoll-ratio.ts.net:8080.
+              # search.quoll-ratio.ts.net.
               "--network=host"
             ];
             autoRemoveOnStop = false;
