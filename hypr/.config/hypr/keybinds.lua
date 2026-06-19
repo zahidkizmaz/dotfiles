@@ -100,6 +100,6 @@ end)
 hl.bind("ALT + M", hl.dsp.submap("move"))
 
 -- Lid Switch Handlers
-lock_cmd = "loginctl lock-session"
+lock_cmd = "noctalia msg session lock"
 hl.bind("SUPER + CTRL + Q", hl.dsp.exec_cmd(lock_cmd))
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd(lock_cmd), { locked = true })
