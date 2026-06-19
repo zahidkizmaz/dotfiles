@@ -22,6 +22,9 @@
       hermes-agent = {
         enable = true;
       };
+      vane = {
+        enable = true;
+      };
     };
 
     # Remote backup to Filen (no local backup drive on this host)

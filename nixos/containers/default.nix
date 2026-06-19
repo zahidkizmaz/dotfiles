@@ -101,6 +101,11 @@
             cname = "hermes";
             ip = "192.168.100.26";
           };
+          vane = {
+            path = ./vane.nix;
+            cname = "vane";
+            ip = "192.168.100.27";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
