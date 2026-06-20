@@ -1,5 +1,47 @@
 return {
   {
+    "romus204/tree-sitter-manager.nvim",
+    event = { "BufRead", "BufNewFile" },
+    cmd = { "TSManager", "TSInstall", "TSUninstall" },
+    opts = {
+      auto_install = true,
+      -- Use built-in Neovim treesitter parsers
+      noauto_install = {
+        "c",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "query",
+        "vim",
+        "vimdoc",
+      },
+    },
+    dependencies = {
+      {
+        "HiPhish/rainbow-delimiters.nvim",
+        config = function()
+          local rainbow_delimiters = require("rainbow-delimiters")
+          vim.g.rainbow_delimiters = {
+            strategy = {
+              [""] = rainbow_delimiters.strategy["global"],
+              vim = rainbow_delimiters.strategy["local"],
+            },
+            query = { [""] = "rainbow-delimiters" },
+            highlight = {
+              "RainbowDelimiterRed",
+              "RainbowDelimiterYellow",
+              "RainbowDelimiterBlue",
+              "RainbowDelimiterOrange",
+              "RainbowDelimiterGreen",
+              "RainbowDelimiterViolet",
+              "RainbowDelimiterCyan",
+            },
+          }
+        end,
+      },
+    },
+  },
+  {
     "Bekaboo/dropbar.nvim",
     event = { "BufReadPost" },
     opts = {

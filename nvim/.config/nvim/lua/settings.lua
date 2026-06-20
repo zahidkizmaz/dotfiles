@@ -71,6 +71,12 @@ bo.shiftwidth = 4
 bo.softtabstop = 4
 bo.expandtab = true
 
+cmd([[
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=99
+]])
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
