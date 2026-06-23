@@ -37,10 +37,16 @@ M.SERVER_CONFIGURATIONS = {
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
-        checkOnSave = { command = "clippy" },
-        assist = {
-          importMergeBehavior = "last",
-          importPrefix = "by_self",
+        -- checkOnSave is now just a boolean
+        checkOnSave = true,
+        check = {
+          command = "clippy",
+        },
+        imports = {
+          granularity = {
+            group = "crate",
+          },
+          prefix = "self",
         },
         files = {
           excludeDirs = { "target" },
@@ -54,11 +60,10 @@ M.SERVER_CONFIGURATIONS = {
         diagnostics = {
           enable = true,
           disabled = { "unresolved-proc-macro" },
-          enableExperimental = true,
+          experimental = { enable = true },
         },
         cargo = {
           features = "all",
-          loadOutDirsFromCheck = true,
         },
       },
     },
