@@ -1,10 +1,15 @@
 return {
   {
-    "iamcco/markdown-preview.nvim",
+    "selimacerbas/markdown-preview.nvim",
+    dependencies = { "selimacerbas/live-server.nvim" },
     ft = "markdown",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    config = {
+      instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
+      port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
+      open_browser = true,
+      default_theme = "dark",
+      debounce_ms = 300,
+    },
   },
   {
     "sindrets/winshift.nvim",
