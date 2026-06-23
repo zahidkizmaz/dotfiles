@@ -159,6 +159,9 @@ layout = "vertical"
 [nightlight]
 enabled = true
 
+[osd]
+offset_y = 20
+
 [[plugins.source]]
 kind = "git"
 location = "https://github.com/noctalia-dev/community-plugins"
