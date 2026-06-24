@@ -22,5 +22,9 @@
   services = {
     udisks2.enable = true;
     upower.enable = true;
+    scx = {
+      enable = true;
+      scheduler = "scx_cosmos";
+    };
   };
 }
