@@ -10,6 +10,9 @@ return {
       default_theme = "dark",
       debounce_ms = 300,
     },
+    keys = {
+      { "<leader>md", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview Toggle" },
+    },
   },
   {
     "sindrets/winshift.nvim",
