@@ -69,6 +69,10 @@
         enable = true;
         hostname = "notes";
       };
+      forgejo = {
+        enable = true;
+        hostname = "forgejo";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)
@@ -137,6 +141,11 @@
           name = "monitoring";
           containerPath = "/var/lib/grafana/data";
           backupFolderName = "grafana";
+        }
+        {
+          name = "forgejo";
+          containerPath = "/var/lib/forgejo";
+          backupFolderName = "forgejo";
         }
       ];
     };

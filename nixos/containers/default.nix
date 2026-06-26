@@ -106,6 +106,11 @@
             cname = "vane";
             ip = "192.168.100.27";
           };
+          forgejo = {
+            path = ./forgejo.nix;
+            cname = "forgejo";
+            ip = "192.168.100.28";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
