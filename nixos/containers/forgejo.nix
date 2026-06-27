@@ -8,7 +8,8 @@
 }:
 let
   containerName = "forgejo";
-  port = 3000;
+  webPort = 3000;
+  sshPort = 2222; # non-privileged port; forgejo's systemd service drops CAP_NET_BIND_SERVICE
   tsUrl = "https://${containerName}.quoll-ratio.ts.net";
 in
 {
@@ -42,9 +43,14 @@ in
               inputs
               lib
               pkgs
-              port
               ;
+            port = webPort;
           })
+        ];
+
+        networking.firewall.allowedTCPPorts = [
+          webPort
+          sshPort
         ];
 
         services = {
@@ -58,6 +64,10 @@ in
             dump.enable = true;
             settings = {
               server.ROOT_URL = tsUrl;
+              server.START_SSH_SERVER = true;
+              server.DISABLE_SSH = false;
+              server.SSH_PORT = sshPort;
+              server.SSH_LISTEN_PORT = sshPort;
               mirror.ENABLED = true;
             };
           };
