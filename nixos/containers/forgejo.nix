@@ -9,7 +9,6 @@
 let
   containerName = "forgejo";
   webPort = 3000;
-  sshPort = 2222; # non-privileged port; forgejo's systemd service drops CAP_NET_BIND_SERVICE
   tsUrl = "https://${containerName}.quoll-ratio.ts.net";
 in
 {
@@ -48,10 +47,7 @@ in
           })
         ];
 
-        networking.firewall.allowedTCPPorts = [
-          webPort
-          sshPort
-        ];
+        networking.firewall.allowedTCPPorts = [ webPort ];
 
         services = {
           forgejo = {
@@ -66,8 +62,6 @@ in
               server.ROOT_URL = tsUrl;
               server.START_SSH_SERVER = true;
               server.DISABLE_SSH = false;
-              server.SSH_PORT = sshPort;
-              server.SSH_LISTEN_PORT = sshPort;
               mirror.ENABLED = true;
             };
           };
@@ -75,6 +69,14 @@ in
             enable = true;
             package = pkgs.postgresql_18;
           };
+        };
+
+        # forgejo's built-in SSH server needs CAP_NET_BIND_SERVICE for port 22.
+        # Remove PrivateUsers to avoid nested user namespace conflicts.
+        systemd.services.forgejo.serviceConfig = {
+          PrivateUsers = lib.mkForce false;
+          CapabilityBoundingSet = lib.mkForce [ "CAP_NET_BIND_SERVICE" ];
+          AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
         };
 
         system.stateVersion = stateVersion;
