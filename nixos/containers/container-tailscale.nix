@@ -3,12 +3,14 @@
   inputs,
   pkgs,
   config,
-  port,
+  port ? null,
   ...
 }:
 {
   imports = [
     inputs.agenix.nixosModules.default
+  ]
+  ++ lib.optionals (port != null) [
     (import ./tailscale-serve.nix {
       inherit pkgs;
       tailscalePort = 443;

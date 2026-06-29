@@ -73,6 +73,10 @@
         enable = true;
         hostname = "forgejo";
       };
+      runner = {
+        enable = true;
+        hostname = "runner";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)

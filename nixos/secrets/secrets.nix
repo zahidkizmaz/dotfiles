@@ -45,5 +45,9 @@ in
     fw13
     lab
   ];
+  "forgejo-runner1-config.age".publicKeys = [
+    fw13
+    lab
+  ];
 
 }

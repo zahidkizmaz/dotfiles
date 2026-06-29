@@ -111,6 +111,11 @@
             cname = "forgejo";
             ip = "192.168.100.28";
           };
+          runner = {
+            path = ./forgejo-runner.nix;
+            cname = "runner";
+            ip = "192.168.100.29";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
