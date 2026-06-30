@@ -49,6 +49,11 @@ in
           })
         ];
 
+        age.secrets.forgejo-hermes-token = {
+          file = ../secrets/forgejo-hermes-token.age;
+          mode = "0444";
+        };
+
         virtualisation.podman = {
           enable = true;
           defaultNetwork.settings.dns_enabled = true;
@@ -58,12 +63,14 @@ in
           backend = "podman";
           containers.hermes-agent = {
             autoStart = true;
-            image = "docker.io/nousresearch/hermes-agent@sha256:46a555b8461fc43829fb591799231adf8d5fde971c1466fd172f335cfc014137";
+            # https://hub.docker.com/r/nousresearch/hermes-agent/tags
+            image = "docker.io/nousresearch/hermes-agent@sha256:9f367c7756ef087661a361536a89f438d57a122b958dc23d82d456b1433e6e9e";
             environment = {
               HERMES_HOME = "/opt/data";
             };
             volumes = [
               "hermes-data:/opt/data:rw"
+              "${config.age.secrets.forgejo-hermes-token.path}:/run/secrets/forgejo-token:ro"
             ];
             # s6-overlay needs these capabilities for process supervision:
             #   SETUID/SETGID/CHOWN: privilege dropping

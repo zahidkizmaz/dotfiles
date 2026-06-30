@@ -49,5 +49,8 @@ in
     fw13
     lab
   ];
-
+  "forgejo-hermes-token.age".publicKeys = [
+    fw13
+    lab
+  ];
 }
