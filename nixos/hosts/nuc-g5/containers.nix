@@ -99,6 +99,7 @@
           ];
           schedule = "03:00";
           prune = [ "--keep-daily 3" ];
+          successWebhook = "https://status.quoll-ratio.ts.net/api/push/8kR99oH7iUybBZngZSHjhnHGvP4RsW2n?status=up&msg=OK&ping=";
         }
         {
           name = "filen";
@@ -108,6 +109,7 @@
           remotePath = "filen-backend:backups/";
           schedule = "Fri *-*-* 04:30:00";
           prune = [ "--keep-weekly 3" ];
+          successWebhook = "https://status.quoll-ratio.ts.net/api/push/cZZIgM4jInHDWQLDR6uKbWEInIHBujIu?status=up&msg=OK&ping=";
         }
       ];
       containers = [

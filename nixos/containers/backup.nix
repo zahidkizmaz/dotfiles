@@ -37,8 +37,15 @@ let
 
   afterBackupScript = pkgs.writeShellApplication {
     name = "afterBackup";
-    runtimeInputs = with pkgs; [ bash ];
+    runtimeInputs = with pkgs; [
+      bash
+      curl
+    ];
     text = ''
+      WEBHOOK_URL="$1"
+      if [ -n "$WEBHOOK_URL" ] && [ "$SERVICE_RESULT" = "success" ]; then
+        curl -fsS "$WEBHOOK_URL" > /dev/null 2>&1 || true
+      fi
       if [ -d ${cfg.hostBackupFolder} ]; then
         echo "Cleaning ${cfg.hostBackupFolder} ..."
         rm -rf ${cfg.hostBackupFolder}
@@ -87,7 +94,7 @@ in
             Persistent = true;
           };
           backupPrepareCommand = prepareBackupText;
-          backupCleanupCommand = afterBackupScript.text;
+          backupCleanupCommand = "${afterBackupScript}/bin/afterBackup '${t.successWebhook}'";
           pruneOpts = t.prune;
           extraOptions = lib.optional (t.type == "rclone") "rclone.program=${pkgs.rclone}/bin/rclone";
         }

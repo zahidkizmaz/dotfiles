@@ -108,6 +108,11 @@ in
                 type = types.listOf types.str;
                 default = [ "--keep-daily 3" ];
               };
+              successWebhook = mkOption {
+                type = types.str;
+                default = "";
+                description = "Optional URL called on successful backup";
+              };
             };
           }
         );
