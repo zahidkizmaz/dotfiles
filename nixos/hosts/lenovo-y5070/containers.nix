@@ -42,6 +42,7 @@
           remotePath = "filen-backend:backup-y5070/";
           schedule = "Fri *-*-* 04:30:00";
           prune = [ "--keep-weekly 3" ];
+          successWebhook = "https://status.quoll-ratio.ts.net/api/push/gBNE3arYVv6AbNrLWzwojp7Du09UmUj6?status=up&msg=OK&ping=";
         }
       ];
       containers = [
