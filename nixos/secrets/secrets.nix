@@ -53,4 +53,12 @@ in
     fw13
     lab
   ];
+  "attic-jwt-secret.age".publicKeys = [
+    fw13
+    lab
+  ];
+  "attic-token.age".publicKeys = [
+    fw13
+    lab
+  ];
 }

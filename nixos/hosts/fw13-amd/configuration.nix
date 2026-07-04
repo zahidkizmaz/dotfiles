@@ -51,6 +51,8 @@
 
   time.timeZone = "Europe/Berlin";
 
+  atticClient.enable = true;
+
   system.stateVersion = stateVersion;
 
   # Increase the dbus-broker reload timeout. It defaults to 90s, which is

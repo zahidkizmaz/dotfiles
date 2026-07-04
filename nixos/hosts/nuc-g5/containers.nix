@@ -77,6 +77,10 @@
         enable = true;
         hostname = "runner";
       };
+      attic = {
+        enable = true;
+        hostname = "attic";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)

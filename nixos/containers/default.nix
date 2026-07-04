@@ -111,6 +111,11 @@
             cname = "forgejo";
             ip = "192.168.100.28";
           };
+          attic = {
+            path = ./attic.nix;
+            cname = "attic";
+            ip = "192.168.100.30";
+          };
           runner = {
             path = ./forgejo-runner.nix;
             cname = "runner";

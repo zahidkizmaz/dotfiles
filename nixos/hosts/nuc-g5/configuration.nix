@@ -64,5 +64,10 @@
 
   nix.settings.trusted-users = [ "@wheel" ];
 
+  atticClient = {
+    enable = true;
+    watch.enable = true;
+  };
+
   system.stateVersion = stateVersion;
 }

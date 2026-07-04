@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ./containers.nix
     ./disko.nix
     ../../modules/agenix.nix
+    ../../modules/attic-client.nix
     ../../modules/better-shell.nix
     ../../modules/bootloader-systemd.nix
     ../../modules/default-user.nix

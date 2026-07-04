@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  imports = [ ./attic-consumer.nix ];
+
   nix = {
     settings = {
       experimental-features = [

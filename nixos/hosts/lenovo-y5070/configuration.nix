@@ -25,6 +25,8 @@
     };
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -48,6 +50,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
   time.timeZone = "Europe/Berlin";
+
+  atticClient = {
+    enable = true;
+    watch.enable = true;
+  };
 
   system.stateVersion = stateVersion;
 }

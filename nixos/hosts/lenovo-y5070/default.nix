@@ -14,6 +14,8 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disko.nix
     ./hardware-configuration.nix
     ../../modules/agenix.nix
+    ../../modules/attic-auto-builder.nix
+    ../../modules/attic-client.nix
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix

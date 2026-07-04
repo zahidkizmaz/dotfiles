@@ -12,6 +12,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./configuration.nix
     ../../modules/agenix.nix
+    ../../modules/attic-client.nix
     ../../modules/ai.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
