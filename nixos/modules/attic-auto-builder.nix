@@ -39,8 +39,8 @@ in
       path = with pkgs; [
         attic-client
         git
+        jq
         nix
-        nix-fast-build
       ];
       script = # bash
         ''
@@ -59,12 +59,14 @@ in
             cd "$HOME/dotfiles"
           fi
 
-          echo "Building all NixOS hosts in parallel..."
-          nix-fast-build \
-            --skip-cached \
-            --attic-cache default \
-            --flake '.#nixosConfigurations' \
-            || true
+          echo "Building all NixOS hosts..."
+          hosts=$(nix eval --json '.#nixosConfigurations' --apply 'x: builtins.attrNames x' | jq -r '.[]')
+          targets=""
+          for host in $hosts; do
+            targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"
+          done
+          # shellcheck disable=SC2086
+          nix build $targets --no-link --print-out-paths 2>&1 | grep '^/nix/store' | attic push default --stdin || true
 
           echo "=== attic-auto-builder finished: $(date) ==="
         '';
