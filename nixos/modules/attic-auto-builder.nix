@@ -59,11 +59,11 @@ in
             cd "$HOME/dotfiles"
           fi
 
-          echo "Building all flake outputs in parallel..."
+          echo "Building all NixOS hosts in parallel..."
           nix-fast-build \
             --skip-cached \
             --attic-cache default \
-            --flake '.#' \
+            --flake '.#nixosConfigurations' \
             || true
 
           echo "=== attic-auto-builder finished: $(date) ==="
