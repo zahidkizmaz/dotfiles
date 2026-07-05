@@ -8,6 +8,18 @@
 
 with lib;
 
+let
+  atticConfig = pkgs.writeShellScript "attic-config" ''
+        mkdir -p "$HOME/.config/attic"
+        cat > "$HOME/.config/attic/config.toml" <<EOF
+    default-server = "attic"
+
+    [servers.attic]
+    endpoint = "https://attic.quoll-ratio.ts.net/"
+    token = "$(cat ${config.age.secrets.attic-token.path})"
+    EOF
+  '';
+in
 {
   config = {
     systemd.services.attic-auto-builder = {
@@ -27,42 +39,35 @@ with lib;
       path = with pkgs; [
         attic-client
         git
+        nix
+        nix-fast-build
       ];
-      script = ''
-                set -euo pipefail
+      script = # bash
+        ''
+          set -euo pipefail
 
-                echo "=== attic-auto-builder started: $(date) ==="
+          echo "=== attic-auto-builder started: $(date) ==="
 
-                mkdir -p "$HOME/.config/attic"
-                cat > "$HOME/.config/attic/config.toml" <<EOF
-        default-server = "attic"
+          ${atticConfig}
 
-        [servers.attic]
-        endpoint = "https://attic.quoll-ratio.ts.net/"
-        token = "$(cat ${config.age.secrets.attic-token.path})"
-        EOF
+          if [ -d "$HOME/dotfiles/.git" ]; then
+            echo "Pulling latest dotfiles from forgejo..."
+            cd "$HOME/dotfiles" && git pull --ff-only || true
+          else
+            echo "Cloning dotfiles from forgejo..."
+            git clone https://forgejo.quoll-ratio.ts.net/zahid/dotfiles "$HOME/dotfiles"
+            cd "$HOME/dotfiles"
+          fi
 
-                if [ -d "$HOME/dotfiles/.git" ]; then
-                  echo "Pulling latest dotfiles from forgejo..."
-                  cd "$HOME/dotfiles" && git pull --ff-only || true
-                else
-                  echo "Cloning dotfiles from forgejo..."
-                  git clone https://forgejo.quoll-ratio.ts.net/zahid/dotfiles "$HOME/dotfiles"
-                  cd "$HOME/dotfiles"
-                fi
+          echo "Building all flake outputs in parallel..."
+          nix-fast-build \
+            --skip-cached \
+            --attic-cache default \
+            --flake '.#' \
+            || true
 
-                echo "Building all NixOS hosts..."
-                HOSTS=$(nix eval --json '.#nixosConfigurations' --apply 'x: builtins.attrNames x' 2>/dev/null | tr '[]",' ' ')
-                for host in $HOSTS; do
-                  echo "  Building $host..."
-                  nix build ".#nixosConfigurations.$host.config.system.build.toplevel" 2>&1 | grep -v "^@" || true
-                done
-
-                echo "Pushing to attic..."
-                attic push default --all || echo "  attic push failed (continuing)"
-
-                echo "=== attic-auto-builder finished: $(date) ==="
-      '';
+          echo "=== attic-auto-builder finished: $(date) ==="
+        '';
     };
 
     systemd.timers.attic-auto-builder = {
