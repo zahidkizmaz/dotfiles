@@ -1,11 +1,10 @@
 {
   inputs,
   pkgs,
-  system,
   ...
 }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
 in
 {
   # bitwarden depends on electron-39 which is EOL. Track upstream fix:

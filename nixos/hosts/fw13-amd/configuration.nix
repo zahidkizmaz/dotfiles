@@ -2,7 +2,6 @@
   inputs,
   stateVersion,
   user,
-  system,
   config,
   ...
 }:
@@ -21,7 +20,6 @@
       inherit
         inputs
         user
-        system
         stateVersion
         ;
     };

@@ -2,7 +2,6 @@
   pkgs,
   user,
   inputs,
-  system,
   stateVersion,
   ...
 }:
@@ -19,7 +18,6 @@
       inherit
         inputs
         user
-        system
         stateVersion
         ;
     };

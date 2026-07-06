@@ -1,12 +1,11 @@
 {
   pkgs,
   inputs,
-  system,
   ...
 }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (inputs.nixpkgs-unstable.lib.getName pkg) [

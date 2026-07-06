@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  system,
   user,
   stateVersion,
   pkgs,
@@ -22,7 +21,6 @@
       inherit
         inputs
         user
-        system
         stateVersion
         ;
     };
@@ -58,5 +56,5 @@
     };
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault system;
+  nixpkgs.hostPlatform = lib.mkDefault pkgs.stdenv.hostPlatform.system;
 }

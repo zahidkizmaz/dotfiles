@@ -60,9 +60,9 @@ in
           fi
 
           systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.config.nixpkgs.system)')
-          hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.system}" 'to_entries[] | select(.value == $cur) | .key')
+          hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.stdenv.hostPlatform.system}" 'to_entries[] | select(.value == $cur) | .key')
 
-          echo "Building ${pkgs.system} hosts..."
+          echo "Building ${pkgs.stdenv.hostPlatform.system} hosts..."
           targets=""
           for host in $hosts; do
             targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"

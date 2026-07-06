@@ -6,7 +6,6 @@
   modulesPath,
   stateVersion,
   user,
-  system,
   ...
 }:
 {
@@ -92,7 +91,6 @@
         inputs
         user
         stateVersion
-        system
         ;
     };
   };
