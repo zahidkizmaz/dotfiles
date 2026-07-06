@@ -88,7 +88,7 @@ in
             cfg.hostBackupFolder
             "/home/${user}/music"
           ];
-          repository = if t.type == "local" then "${t.mountPath}/backups/" else t.remotePath;
+          repository = if t.type == "local" then "${t.mountPath}/backups/" else "rclone:${t.remotePath}";
           timerConfig = {
             OnCalendar = t.schedule;
             Persistent = true;

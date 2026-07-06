@@ -47,7 +47,7 @@
       ];
       containers = [
         {
-          name = "hermes";
+          name = "hermes-agent";
           containerPath = "/var/lib/containers/storage/volumes/hermes-data/_data";
           backupFolderName = "hermes";
         }
