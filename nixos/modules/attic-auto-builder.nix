@@ -60,21 +60,14 @@ in
           fi
 
           systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.config.nixpkgs.system)')
-          x86_hosts=$(echo "$systems" | jq -r 'to_entries[] | select(.value == "x86_64-linux") | .key')
-          arm_hosts=$(echo "$systems" | jq -r 'to_entries[] | select(.value != "x86_64-linux") | .key')
+          hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.system}" 'to_entries[] | select(.value == $cur) | .key')
 
-          echo "Building x86_64 hosts in parallel..."
+          echo "Building ${pkgs.system} hosts..."
           targets=""
-          for host in $x86_hosts; do
+          for host in $hosts; do
             targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"
           done
-          # shellcheck disable=SC2086
           nix build $targets --no-link --print-out-paths 2>&1 | grep '^/nix/store' | attic push default --stdin || true
-
-          for host in $arm_hosts; do
-            echo "Building $host (sequential — QEMU is fragile under concurrency)..."
-            nix build ".#nixosConfigurations.$host.config.system.build.toplevel" --no-link --print-out-paths 2>&1 | grep -E '^/nix/store' | attic push default --stdin || true
-          done
 
           echo "=== attic-auto-builder finished: $(date) ==="
         '';
