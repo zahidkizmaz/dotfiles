@@ -39,6 +39,8 @@
     })
   ];
 
+  atticClient.enable = true;
+
   nix.settings.trusted-users = [ "@wheel" ];
 
   system.stateVersion = stateVersion;
