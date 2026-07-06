@@ -69,7 +69,11 @@ M.SERVER_CONFIGURATIONS = {
     },
   },
   vacuum = {},
-  kotlin_language_server = {},
+  kotlin_language_server = {
+    init_options = {
+      storagePath = vim.fn.stdpath("cache") .. "/kotlin-language-server",
+    },
+  },
   tailwindcss = {},
   taplo = {},
   terraformls = {},

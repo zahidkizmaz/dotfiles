@@ -16,6 +16,7 @@
       "copyq"
       "ghostty"
       "hammerspoon"
+      "keepingyouawake"
       "orbstack"
       "raycast"
       "sf"

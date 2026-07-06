@@ -31,6 +31,7 @@ in
     docker
     docker-compose
     gemini-cli
+    google-cloud-sdk
     nh
     nodejs_24
     python314
