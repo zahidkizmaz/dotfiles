@@ -14,6 +14,8 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ./gpio.nix
     ./hardware-configuration.nix
     ./selfhost.nix
+    ../../modules/attic-auto-builder.nix
+    ../../modules/attic-client.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
