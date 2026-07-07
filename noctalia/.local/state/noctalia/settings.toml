@@ -42,6 +42,7 @@ opacity = 1.0
 padding = 6.0
 
 [desktop_widgets]
+enabled = false
 schema_version = 1
 widget_order = []
 
