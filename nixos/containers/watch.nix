@@ -90,7 +90,7 @@ in
           containers = {
             invidious-companion = {
               autoStart = true;
-              image = "quay.io/invidious/invidious-companion@sha256:4dbe5c51811cf049ceeb690fe39040896734acce9c0dd7344519d6e2b4345c0b";
+              image = "quay.io/invidious/invidious-companion@sha256:3281193d676f8e421371cc8e653dd32e516211ca9bac6590a3646bb581e609c0";
               ports = [ "127.0.0.1:8282:8282" ];
               volumes = [
                 "companioncache:/var/tmp/youtubei.js:rw"
