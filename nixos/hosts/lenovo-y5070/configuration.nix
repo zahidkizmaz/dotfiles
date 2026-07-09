@@ -49,6 +49,11 @@
   console.keyMap = "us";
   time.timeZone = "Europe/Berlin";
 
+  atticAutoBuilder = {
+    buildDevShells = true;
+    additionalDevShellSystems = [ "aarch64-linux" ];
+  };
+
   atticClient = {
     enable = true;
     watch.enable = true;
