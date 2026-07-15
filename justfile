@@ -46,6 +46,7 @@ stow-linux: _stow-common
     just stow vicinae
 
 stow-mac: _stow-common
+    just stow herdr
 
 gen-pi4b-sd-image:
     nix build .#nixosConfigurations.pi4b.config.formats.sd-aarch64 -o ./pi4b.sd

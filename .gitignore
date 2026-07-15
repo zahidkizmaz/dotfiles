@@ -302,3 +302,7 @@ hypr/.config/hypr/workspaces.conf
 
 # httpie
 httpie/.config/httpie/version_info.json
+
+# herdr
+herdr/*
+!herdr/.config/herdr/config.toml
