@@ -1,8 +1,8 @@
 {
   inputs,
-  lib,
   user,
   stateVersion,
+  system,
   pkgs,
   ...
 }:
@@ -56,5 +56,5 @@
     };
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault pkgs.stdenv.hostPlatform.system;
+  nixpkgs.hostPlatform = system;
 }

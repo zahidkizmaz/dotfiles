@@ -12,6 +12,7 @@
     };
     casks = [
       "android-studio"
+      "bettercapture"
       "camo-studio"
       "copyq"
       "ghostty"
