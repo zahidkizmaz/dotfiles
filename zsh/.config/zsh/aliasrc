@@ -7,6 +7,7 @@ alias nv='nvim'
 alias mkdir='mkdir -v'
 alias pls='sudo $(fc -ln -1)'
 alias grep='grep --colour=auto'
+alias ft='(cd "$(fd --type d -d 2 | fzf)" && nvim)'
 
 #------------------------------
 # LS Aliases
