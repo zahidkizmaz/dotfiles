@@ -2,11 +2,13 @@ set -euo pipefail
 
 usage() {
   cat <<'USAGE'
-Usage: restore-container <container> <container_path> [snapshot_id] [service]
+Usage: restore-container [--local | --remote] <container> <container_path> [snapshot_id] [service]
 
-Restore a container's data directory from the local restic backup.
+Restore a container's data directory from restic backup.
 
 Arguments:
+  --local         Restore from local backup drive (default).
+  --remote        Restore from the remote (Filen) restic repo.
   container       Container name (e.g., meal, uptime-kuma)
   container_path  Path inside the container to restore to
                   (e.g., /var/lib/private/mealie)
@@ -17,7 +19,8 @@ Arguments:
 Examples:
   sudo restore-container meal /var/lib/private/mealie
   sudo restore-container meal /var/lib/private/mealie abc12345
-  sudo restore-container uptime-kuma /var/lib/private/uptime-kuma
+  sudo restore-container --remote meal /var/lib/private/mealie
+  sudo restore-container --remote meal /var/lib/private/mealie abc12345 karakeep-init
 USAGE
 }
 
@@ -25,6 +28,27 @@ if [ "$(id -u)" -ne 0 ]; then
   echo "error: this script must be run as root (use sudo)" >&2
   exit 1
 fi
+
+# Parse args
+REMOTE=0
+POSITIONAL=()
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --remote)
+      REMOTE=1
+      shift
+      ;;
+    --local)
+      REMOTE=0
+      shift
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+set -- "${POSITIONAL[@]}"
 
 if [ $# -lt 2 ]; then
   usage
@@ -35,32 +59,47 @@ CONTAINER="$1"
 CONTAINER_PATH="$2"
 SNAPSHOT="${3:-latest}"
 SERVICE="${4:-$(basename "$CONTAINER_PATH")}"
-RESTIC_REPO="/backup/backups/"
-PASSWORD_FILE="/run/agenix/restic-password"
 BACKUP_FOLDER_NAME="$(basename "$CONTAINER_PATH")"
 TARBALL="/tmp/restore-${CONTAINER}.tar"
 
 NIXOS_CONTAINER="@nixos_container@/bin/nixos-container"
+RCLONE_CONFIG_FILE="/run/agenix/rclone-config-filen"
+PASSWORD_FILE="/run/agenix/restic-password"
 
-echo "=== Restore container data: $CONTAINER ==="
+if [ "$REMOTE" = 1 ]; then
+  RESTIC_REPO="rclone:filen-backend:backups/"
+  echo "=== Restore container data: $CONTAINER (from remote repo) ==="
+else
+  RESTIC_REPO="/backup/backups/"
+  echo "=== Restore container data: $CONTAINER (from local repo) ==="
+fi
+
 echo "  Target path: $CONTAINER_PATH"
 echo "  Snapshot:    $SNAPSHOT"
 echo "  Service:     $SERVICE"
 echo ""
 
-# Mount backup drive if not mounted
-if ! mountpoint -q /backup; then
-  echo "Mounting backup drive..."
-  mount /dev/disk/by-label/backup-drive /backup 2>/dev/null || {
-    echo "error: could not mount /backup. Is the drive connected?" >&2
-    exit 1
-  }
+if [ "$REMOTE" = 1 ]; then
+  restic_cmd() { RCLONE_CONFIG="$RCLONE_CONFIG_FILE" restic -r "$RESTIC_REPO" --password-file "$PASSWORD_FILE" "$@"; }
+else
+  restic_cmd() { restic -r "$RESTIC_REPO" --password-file "$PASSWORD_FILE" "$@"; }
 fi
 
-# Check restic repo exists
-if ! test -d "$RESTIC_REPO"; then
-  echo "error: restic repository not found at $RESTIC_REPO" >&2
-  exit 1
+if [ "$REMOTE" = 0 ]; then
+  # Mount backup drive if not mounted
+  if ! mountpoint -q /backup; then
+    echo "Mounting backup drive..."
+    mount /dev/disk/by-label/backup-drive /backup 2>/dev/null || {
+      echo "error: could not mount /backup. Is the drive connected?" >&2
+      exit 1
+    }
+  fi
+
+  # Check restic repo exists
+  if ! test -d "$RESTIC_REPO"; then
+    echo "error: restic repository not found at $RESTIC_REPO" >&2
+    exit 1
+  fi
 fi
 
 # Verify the password file exists
@@ -70,18 +109,23 @@ if ! test -f "$PASSWORD_FILE"; then
   exit 1
 fi
 
+if [ "$REMOTE" = 1 ] && ! test -f "$RCLONE_CONFIG_FILE"; then
+  echo "error: rclone config file not found at $RCLONE_CONFIG_FILE" >&2
+  echo "Make sure the agenix secret is decrypted." >&2
+  exit 1
+fi
+
 echo "Step 1: Finding snapshot..."
-RESTIC_CMD="restic -r $RESTIC_REPO --password-file $PASSWORD_FILE"
 
 if [ "$SNAPSHOT" = "latest" ]; then
   echo "  Looking for latest snapshot..."
-  SNAPSHOT=$($RESTIC_CMD snapshots --latest 1 2>/dev/null \
+  SNAPSHOT=$(restic_cmd snapshots --latest 1 2>/dev/null \
     | grep -oP '^\s*\K[a-f0-9]{8,}' | head -1 || true)
 
   if [ -z "$SNAPSHOT" ]; then
     echo "error: no snapshots found" >&2
     echo "" >&2
-    $RESTIC_CMD snapshots 2>&1 || true
+    restic_cmd snapshots 2>&1 || true
     exit 1
   fi
 
@@ -90,7 +134,7 @@ fi
 
 # Auto-detect the backup root path from the snapshot
 # (the host user may differ from the dotfiles user, e.g. /home/g5/backups)
-BACKUP_DIR=$($RESTIC_CMD ls "$SNAPSHOT" 2>/dev/null \
+BACKUP_DIR=$(restic_cmd ls "$SNAPSHOT" 2>/dev/null \
   | grep -oP '^/home/[^/]+/backups' | head -1 || true)
 
 if [ -z "$BACKUP_DIR" ]; then
@@ -103,7 +147,7 @@ echo "  Backup root: $BACKUP_DIR"
 # Verify the snapshot contains our data
 echo ""
 echo "  Checking snapshot $SNAPSHOT for $BACKUP_DIR/$BACKUP_FOLDER_NAME ..."
-SNAPSHOT_PATHS=$($RESTIC_CMD ls "$SNAPSHOT" 2>/dev/null || true)
+SNAPSHOT_PATHS=$(restic_cmd ls "$SNAPSHOT" 2>/dev/null || true)
 if ! echo "$SNAPSHOT_PATHS" | grep -q "$BACKUP_DIR/$BACKUP_FOLDER_NAME"; then
   echo "  Warning: snapshot $SNAPSHOT does not seem to contain $BACKUP_DIR/$BACKUP_FOLDER_NAME"
   echo "  Available paths in snapshot:"
@@ -138,7 +182,7 @@ trap "rm -rf $RESTORE_DIR $TARBALL" EXIT
 
 echo "  → Snapshot: $SNAPSHOT"
 echo "  → Path:     $BACKUP_DIR/$BACKUP_FOLDER_NAME"
-$RESTIC_CMD restore "$SNAPSHOT" --target "$RESTORE_DIR" \
+restic_cmd restore "$SNAPSHOT" --target "$RESTORE_DIR" \
   --path "$BACKUP_DIR" --include "${BACKUP_DIR}/${BACKUP_FOLDER_NAME}/**" 2>&1 | sed 's/^/  /'
 
 # Count restored files

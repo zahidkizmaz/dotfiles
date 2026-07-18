@@ -50,11 +50,13 @@ in
           karakeep = {
             enable = true;
             extraEnvironment = {
-              PORT = builtins.toString port;
+              PORT = toString port;
               DISABLE_NEW_RELEASE_CHECK = "true";
             };
           };
         };
+        nixpkgs.config.permittedInsecurePackages = [ "pnpm-9.15.9" ];
+
         system.stateVersion = stateVersion;
       };
   };
