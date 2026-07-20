@@ -67,6 +67,7 @@ in
           prometheus = {
             enable = true;
             port = prometheusPort;
+            listenAddress = "127.0.0.1";
             extraFlags = [ "--web.enable-remote-write-receiver" ];
           };
           loki = {
