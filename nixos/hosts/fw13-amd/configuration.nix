@@ -39,6 +39,14 @@
     }
   ];
 
+  boot = {
+    resumeDevice = config.fileSystems."/".device;
+    # Offset can be obtained with:
+    # sudo btrfs inspect-internal map-swapfile -r /var/lib/swapfile
+    # Needs to be set on each swapfile creation ( for fresh installs )
+    kernelParams = [ "resume_offset=2969914" ];
+  };
+
   networking = {
     hostName = "fw13-amd";
   };

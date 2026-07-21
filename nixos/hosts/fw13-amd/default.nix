@@ -24,6 +24,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/gui-applications.nix
     ../../modules/hyprland.nix
+    ../../modules/ios-camera.nix
     ../../modules/latest-kernel.nix
     ../../modules/ld.nix
     ../../modules/ledger.nix
