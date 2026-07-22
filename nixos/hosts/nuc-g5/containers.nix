@@ -1,9 +1,14 @@
-{ config, ... }:
+{ config, user, ... }:
 
 {
   imports = [
     ../../modules/host-networking.nix
     ../../containers
+  ];
+
+  # Auto-create bind mount host directories
+  systemd.tmpfiles.rules = [
+    "d /home/${user}/books 0755 ${user} users -"
   ];
 
   # Host networking (NAT + host tailscale)
@@ -81,6 +86,10 @@
         enable = true;
         hostname = "attic";
       };
+      books = {
+        enable = true;
+        hostname = "books";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)
@@ -156,6 +165,16 @@
           name = "forgejo";
           containerPath = "/var/lib/forgejo";
           backupFolderName = "forgejo";
+        }
+        {
+          name = "calibre";
+          containerPath = "/var/lib/calibre-server";
+          backupFolderName = "calibre";
+        }
+        {
+          name = "calibre-web";
+          containerPath = "/var/lib/calibre-web";
+          backupFolderName = "calibre-web";
         }
       ];
     };
