@@ -41,6 +41,20 @@
         "github:utensils/mcp-nixos",
         "--"
       ]
+    },
+    "grafana": {
+      "type": "local",
+      "command": [
+        "docker", "run", "-i", "--rm",
+        "-e", "GRAFANA_URL",
+        "-e", "GRAFANA_SERVICE_ACCOUNT_TOKEN",
+        "grafana/mcp-grafana",
+        "-t", "stdio"
+      ],
+      "environment": {
+        "GRAFANA_URL": "https://monitoring.quoll-ratio.ts.net",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:/run/agenix/grafana-sa-token}"
+      }
     }
   },
   "permission": {

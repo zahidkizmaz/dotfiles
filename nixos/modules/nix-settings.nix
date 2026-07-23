@@ -1,9 +1,8 @@
 { inputs, ... }:
 {
-  imports = [ ./attic-consumer.nix ];
-
   nix = {
     settings = {
+      connect-timeout = 3;
       experimental-features = [
         "nix-command"
         "flakes"

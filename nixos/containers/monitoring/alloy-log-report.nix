@@ -64,6 +64,11 @@ let
         source_labels = ["__journal_container_name"]
         target_label  = "container"
       }
+      // ponytail: best-effort syslog identifier. Not all entries have it.
+      rule {
+        source_labels = ["__journal_syslog_identifier"]
+        target_label  = "syslog_id"
+      }
     }
 
     loki.source.file "system" {

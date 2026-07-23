@@ -119,6 +119,7 @@ in
               };
               limits_config = {
                 retention_period = "7d"; # Retain logs for 7 days
+                volume_enabled = true; # Enable volume API for Grafana Loki plugin
               };
             };
           };

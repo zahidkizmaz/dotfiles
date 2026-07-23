@@ -62,4 +62,9 @@ in
     lab
     pi4b
   ];
+  "grafana-sa-token.age".publicKeys = [
+    fw13
+    lab
+    pi4b
+  ];
 }

@@ -32,6 +32,9 @@
       MaxRetentionSec=30d
       SystemMaxUse=1G
       SystemMaxFileSize=100M
+      ForwardToConsole=yes
+      ForwardToWall=no
+      MaxLevelConsole=info
     '';
   };
 }
