@@ -17,7 +17,7 @@ let
     default-server = "attic"
 
     [servers.attic]
-    endpoint = "https://attic.quoll-ratio.ts.net/"
+    endpoint = "http://attic.quoll-ratio.ts.net:8989/"
     token = "$(cat ${config.age.secrets.attic-token.path})"
     EOF
   '';

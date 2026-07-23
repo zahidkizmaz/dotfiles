@@ -16,7 +16,7 @@ let
     default-server = "attic"
 
     [servers.attic]
-    endpoint = "https://attic.quoll-ratio.ts.net/"
+    endpoint = "http://attic.quoll-ratio.ts.net:8989/"
     token = "$(cat ${config.age.secrets.attic-token.path})"
     EOF
         exec ${pkgs.attic-client}/bin/attic watch-store default
@@ -38,7 +38,7 @@ in
   config = mkIf cfg.enable {
     nix.settings = {
       extra-substituters = [
-        "https://attic.quoll-ratio.ts.net/default"
+        "http://attic.quoll-ratio.ts.net:8989/default"
       ];
       trusted-public-keys = [
         "default:YqYsdlMl7pprxhKIYfdlqD/8DGjzrJjKb6aBi3G0zjU="
