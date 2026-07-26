@@ -72,9 +72,9 @@ enabled = true
 resume_command = "brightnessctl -r"
 timeout = 120
 
-[idle.behavior."Suspend & Hibernate"]
+[idle.behavior."Suspend"]
 action = "command"
-command = "systemctl suspend-then-hibernate"
+command = "systemctl suspend"
 enabled = true
 timeout = 600
 

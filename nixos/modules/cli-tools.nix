@@ -1,13 +1,6 @@
 { pkgs, inputs, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
-  nushell_pkgs = with pkgs-unstable; [
-    # These are used as external_completer in nushell
-    carapace
-    fish
-    nushell
-    nushellPlugins.polars
-  ];
 in
 {
   programs = {
@@ -21,30 +14,28 @@ in
     };
   };
 
-  environment.systemPackages =
-    nushell_pkgs
-    ++ (with pkgs-unstable; [
-      atuin
-      bat
-      delta
-      eza
-      fd
-      fzf
-      gitMinimal
-      httpie
-      jq
-      just
-      jwt-cli
-      lnav
-      nix-fast-build
-      ouch
-      ripgrep
-      stow
-      tree
-      unzip
-      watchman
-      yazi
-      zip
-      zoxide
-    ]);
+  environment.systemPackages = with pkgs-unstable; [
+    atuin
+    bat
+    delta
+    eza
+    fd
+    fzf
+    gitMinimal
+    httpie
+    jq
+    just
+    jwt-cli
+    lnav
+    nix-fast-build
+    ouch
+    ripgrep
+    stow
+    tree
+    unzip
+    watchman
+    yazi
+    zip
+    zoxide
+  ];
 }

@@ -37,7 +37,6 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/printer.nix
     ../../modules/sound-pipewire.nix
     ../../modules/ssh.nix
-    ../../modules/suspend-then-hibernate.nix
     ../../modules/tailscale.nix
     ../../modules/terminal.nix
     ../../modules/virt-manager.nix
