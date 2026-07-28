@@ -20,7 +20,7 @@
       "keepingyouawake"
       "orbstack"
       "raycast"
-      "sf"
+      "salesforce-cli"
     ];
   };
 }
