@@ -69,6 +69,10 @@
           stateVersion = stateVersion;
           inherit inputs;
         };
+        pi5 = import ./nixos/hosts/pi5 {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
         sgo2 = import ./nixos/hosts/sgo2 {
           stateVersion = stateVersion;
           inherit inputs;

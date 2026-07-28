@@ -5,13 +5,17 @@ in
 inputs.nixpkgs-unstable.lib.nixosSystem {
   system = "${system}";
   modules = [
-    inputs.nixos-hardware.nixosModules.raspberry-pi-4
+    inputs.nixos-hardware.nixosModules.raspberry-pi-5
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
     inputs.agenix.nixosModules.default
+    inputs.disko.nixosModules.disko
     inputs.nixos-generators.nixosModules.all-formats
     ./agenix.nix
     ./configuration.nix
+    ./selfhost.nix
+    ./disko.nix
     ./hardware-configuration.nix
+    ../../modules/attic-auto-builder.nix
     ../../modules/attic-client.nix
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
@@ -19,7 +23,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix
-    ../../modules/tailscale-exit-node.nix
+    ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
     (import ../../containers/monitoring/alloy-log-report.nix { })
   ];

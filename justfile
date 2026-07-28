@@ -51,5 +51,8 @@ stow-mac: _stow-common
 gen-pi4b-sd-image:
     nix build .#nixosConfigurations.pi4b.config.formats.sd-aarch64 -o ./pi4b.sd
 
+gen-pi5-sd-image:
+    nix build .#nixosConfigurations.pi5.config.formats.sd-aarch64 -o ./pi5.sd
+
 deploy host flake="":
     nixos-rebuild --flake ~/dotfiles#{{ if flake != "" { flake } else { host } }} --target-host {{ host }} switch --sudo --ask-sudo-password
