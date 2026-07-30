@@ -4,6 +4,14 @@
     enableRedistributableFirmware = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
+    raspberry-pi.firmware = {
+      # Enable activation script to populate firmware on the ESP
+      enable = true;
+      # ESP is at /boot (disko layout), not /boot/firmware
+      path = "/boot";
+      # U-Boot chainload: firmware → u-boot.bin → extlinux.conf → kernel
+      uboot.enable = true;
+    };
   };
   networking = {
     hostName = "home";

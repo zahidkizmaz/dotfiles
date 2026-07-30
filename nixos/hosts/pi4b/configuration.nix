@@ -41,6 +41,9 @@
 
   atticClient.enable = true;
 
+  # silence ZFS deprecation warning: new default in 26.11 is false
+  boot.zfs.forceImportRoot = false;
+
   nix.settings.trusted-users = [ "@wheel" ];
 
   system.stateVersion = stateVersion;

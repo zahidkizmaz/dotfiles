@@ -5,10 +5,10 @@ in
 inputs.nixpkgs-unstable.lib.nixosSystem {
   system = "${system}";
   modules = [
-    inputs.nixos-hardware.nixosModules.raspberry-pi-4
+    "${inputs.nixpkgs-unstable}/nixos/modules/image/images.nix"
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
     inputs.agenix.nixosModules.default
-    inputs.nixos-generators.nixosModules.all-formats
+    inputs.nixos-hardware.nixosModules.raspberry-pi-4
     ./agenix.nix
     ./configuration.nix
     ./hardware-configuration.nix

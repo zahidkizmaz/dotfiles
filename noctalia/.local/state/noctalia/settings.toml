@@ -1,4 +1,4 @@
-config_version = 2
+config_version = 8
 
 [accessibility]
 ui_scale = 1.5000000149011612
@@ -72,7 +72,7 @@ enabled = true
 resume_command = "brightnessctl -r"
 timeout = 120
 
-[idle.behavior."Suspend"]
+[idle.behavior.Suspend]
 action = "command"
 command = "systemctl suspend"
 enabled = true
@@ -231,8 +231,9 @@ enabled = false
 [weather]
 auto_locate = true
 
-[widget.brightness]
-scroll_step = 1
+[widget.brightness.actions]
+scroll_down = "brightness-down 1%"
+scroll_up = "brightness-up 1%"
 
 [widget.clock]
 format = "{:%a %d %b %H:%M}"
@@ -247,5 +248,6 @@ hide_when_no_media = true
 [widget.network]
 show_label = false
 
-[widget.volume]
-scroll_step = 1
+[widget.volume.actions]
+scroll_down = "volume-down 1%"
+scroll_up = "volume-up 1%"

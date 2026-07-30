@@ -11,7 +11,6 @@ in
   # https://github.com/bitwarden/clients/pull/20448
   # Remove this override once nixpkgs bumps the electron dep.
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
     "electron-40.10.5"
   ];
 
@@ -28,7 +27,7 @@ in
     pkgs.fractal
 
     # PW manager
-    pkgs.bitwarden-desktop
+    pkgs-unstable.bitwarden-desktop
     pkgs.ente-auth
 
     # Note taking

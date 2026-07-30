@@ -9,7 +9,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.disko
-    inputs.nixos-generators.nixosModules.all-formats
+    "${inputs.nixpkgs-unstable}/nixos/modules/image/images.nix"
     ./agenix.nix
     ./configuration.nix
     ./selfhost.nix
