@@ -26,6 +26,8 @@
 
   system.activationScripts.script.text = # bash
     ''
-      chmod a+rwx /dev/ttyACM0
+      if [ -e /dev/ttyACM0 ]; then
+        chmod a+rwx /dev/ttyACM0
+      fi
     '';
 }
