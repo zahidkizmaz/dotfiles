@@ -1,10 +1,9 @@
 { stateVersion, ... }:
 {
-  hardware = {
-    enableRedistributableFirmware = true;
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
-  };
+  boot.loader.raspberry-pi.bootloader = "kernel";
+  # SD card has a single FAT partition mounted at /boot
+  boot.loader.raspberry-pi.firmwarePath = "/boot";
+
   networking = {
     hostName = "home";
     wireless.enable = false;
@@ -12,9 +11,7 @@
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    keyMap = "us";
-  };
+  console.keyMap = "us";
   time.timeZone = "Europe/Berlin";
 
   swapDevices = [
@@ -32,17 +29,7 @@
     DefaultTasksAccounting = true;
   };
 
-  nixpkgs.overlays = [
-    # deadnix: skip
-    (final: super: {
-      makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
-    })
-  ];
-
   atticClient.enable = true;
-
-  # silence ZFS deprecation warning: new default in 26.11 is false
-  boot.zfs.forceImportRoot = false;
 
   nix.settings.trusted-users = [ "@wheel" ];
 

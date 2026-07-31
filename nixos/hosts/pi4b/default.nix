@@ -1,14 +1,9 @@
 { inputs, stateVersion, ... }:
-let
-  system = "aarch64-linux";
-in
-inputs.nixpkgs-unstable.lib.nixosSystem {
-  system = "${system}";
+inputs.nixos-raspberrypi.lib.nixosSystem {
   modules = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/image/images.nix"
-    "${inputs.nixpkgs-unstable}/nixos/modules/profiles/minimal.nix"
+    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-4.base
+    inputs.nixos-raspberrypi.nixosModules.raspberry-pi-4.bluetooth
     inputs.agenix.nixosModules.default
-    inputs.nixos-hardware.nixosModules.raspberry-pi-4
     ./agenix.nix
     ./configuration.nix
     ./hardware-configuration.nix
@@ -24,7 +19,7 @@ inputs.nixpkgs-unstable.lib.nixosSystem {
     (import ../../containers/monitoring/alloy-log-report.nix { })
   ];
   specialArgs = {
-    inherit inputs system stateVersion;
+    inherit inputs stateVersion;
     user = "pi";
   };
 }

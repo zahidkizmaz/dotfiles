@@ -6,6 +6,8 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+
     agenix.url = "github:ryantm/agenix";
 
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";

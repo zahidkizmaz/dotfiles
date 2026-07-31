@@ -57,7 +57,7 @@ in
 
   disko.devices.disk.main = {
     type = "disk";
-    device = "/dev/sda";
+    device = "/dev/mmcblk0"; # SD card on Raspberry Pi
 
     content = {
       type = "gpt";
@@ -80,7 +80,7 @@ in
           content = {
             type = "btrfs";
             extraArgs = [
-              "-f" # Override existing partition
+              "-f"
             ];
             postCreateHook =
               let
@@ -140,7 +140,7 @@ in
           size = "16G";
           content = {
             type = "swap";
-            resumeDevice = true; # "hibernation" swap
+            resumeDevice = true;
             priority = 2;
           };
         };
