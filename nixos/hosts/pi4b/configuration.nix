@@ -1,11 +1,9 @@
 { stateVersion, ... }:
 {
   boot.loader.raspberry-pi.bootloader = "kernel";
-  # SD card has a single FAT partition mounted at /boot
-  boot.loader.raspberry-pi.firmwarePath = "/boot";
 
   networking = {
-    hostName = "home";
+    hostName = "pi4b";
     wireless.enable = false;
     firewall.enable = true;
   };

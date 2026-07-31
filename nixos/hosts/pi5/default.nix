@@ -3,12 +3,11 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
   modules = [
     inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.base
     inputs.nixos-raspberrypi.nixosModules.raspberry-pi-5.bluetooth
+    inputs.nixos-raspberrypi.nixosModules.sd-image
     inputs.agenix.nixosModules.default
-    inputs.disko.nixosModules.disko
     ./agenix.nix
     ./configuration.nix
     ./selfhost.nix
-    ./disko.nix
     ./hardware-configuration.nix
     ../../modules/attic-auto-builder.nix
     ../../modules/attic-client.nix

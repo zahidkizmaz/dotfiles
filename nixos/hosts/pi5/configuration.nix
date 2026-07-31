@@ -3,7 +3,7 @@
   boot.loader.raspberry-pi.bootloader = "kernel";
 
   networking = {
-    hostName = "home";
+    hostName = "pi5";
     wireless.enable = false;
     firewall.enable = true;
   };
@@ -21,6 +21,13 @@
   };
 
   atticClient.enable = true;
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
 
   nix.settings.trusted-users = [ "@wheel" ];
 

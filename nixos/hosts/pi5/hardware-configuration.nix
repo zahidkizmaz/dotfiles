@@ -9,5 +9,13 @@
   ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
+  };
+
+  # /boot/firmware (FAT firmware partition) is provided by the sd-image module
+
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

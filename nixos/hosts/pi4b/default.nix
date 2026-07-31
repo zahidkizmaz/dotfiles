@@ -3,6 +3,7 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
   modules = [
     inputs.nixos-raspberrypi.nixosModules.raspberry-pi-4.base
     inputs.nixos-raspberrypi.nixosModules.raspberry-pi-4.bluetooth
+    inputs.nixos-raspberrypi.nixosModules.sd-image
     inputs.agenix.nixosModules.default
     ./agenix.nix
     ./configuration.nix
