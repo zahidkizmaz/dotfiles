@@ -2,23 +2,19 @@
 
 Configuration: [dotfiles](https://github.com/zahid/typescript-nuxt-form-builder/tree/main/nixos/hosts/pi5)
 
-## Install
+## Install (SD card)
 
-Boot a temporary NixOS on the Pi5 (via SD card or netboot), then:
+Build an SD card image:
 
 ```shell
-sudo nix run github:nix-community/nixos-anywhere -- \
-  --flake github:zahid/typescript-nuxt-form-builder#pi5 \
-  --disk-main /dev/nvme0n1
+just gen-pi5-sd-image
 ```
 
-Adjust `--disk-main` to match your drive (e.g. `/dev/sda` for USB).
-
-> Uses [nixos-anywhere](https://github.com/nix-community/nixos-anywhere) + [disko](https://github.com/nix-community/disko).
-> The disko layout creates FIRMWARE + ESP + btrfs root with subvolumes.
-
-## Build an SD card image (alternative)
+The image is ready at `./pi5.sd/sd-image/nixos-image-sd-card-{version}-aarch64-linux.img.zst`.
+Decompress and flash:
 
 ```shell
-nix build github:zahid/typescript-nuxt-form-builder#nixosConfigurations.pi5.config.system.build.sdImage
+nix shell nixpkgs#zstd
+zstdcat ./pi5.sd/sd-image/nixos-image-sd-card-{version}-aarch64-linux.img.zst \
+  | sudo dd of=/dev/sda status=progress iflag=fullblock oflag=direct conv=fsync,noerror bs=64k
 ```
