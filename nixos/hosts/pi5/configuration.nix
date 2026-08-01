@@ -3,7 +3,7 @@
   boot.loader.raspberry-pi.bootloader = "kernel";
 
   networking = {
-    hostName = "pi5";
+    hostName = "home";
     wireless.enable = false;
     firewall.enable = true;
   };
