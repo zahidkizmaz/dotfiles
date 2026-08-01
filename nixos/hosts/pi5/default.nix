@@ -14,6 +14,7 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/default-user.nix
     ../../modules/gc.nix
+    ../../modules/home-assistant/default.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/ssh.nix

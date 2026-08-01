@@ -20,7 +20,7 @@ in
       openFirewall = true;
       useRoutingFeatures = "server";
       authKeyFile = config.age.secrets.tailscale-lab.path;
-      extraUpFlags = [ "--advertise-exit-node" ];
+      extraSetFlags = [ "--advertise-exit-node" ];
     };
 
     environment.systemPackages = [ pkgs.ethtool ];
