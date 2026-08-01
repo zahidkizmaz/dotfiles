@@ -2,7 +2,10 @@
 {
   programs = {
     bat.enable = true;
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     starship.enable = true;
     zoxide = {
       enable = true;
@@ -87,6 +90,9 @@
       };
     };
   };
+
+  # Prevent the new user dialog in zsh
+  system.userActivationScripts.zshrc = "touch .zshrc";
 
   environment.systemPackages = with pkgs; [
     atuin
