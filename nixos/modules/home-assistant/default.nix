@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   port = 8123;
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+  };
 in
 {
   imports = [
@@ -15,6 +18,7 @@ in
 
   services.home-assistant = {
     enable = true;
+    package = pkgs-unstable.home-assistant;
     extraPackages =
       python3Packages: with python3Packages; [
         # postgresql support
