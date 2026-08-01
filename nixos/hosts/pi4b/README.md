@@ -10,11 +10,11 @@ Build an SD card image:
 just gen-pi4b-sd-image
 ```
 
-The image is ready at `./result/sd-image/nixos-sd-image-{version}-aarch64-linux.img.zst`.
+The image is ready at `./pi4b.sd/sd-image/nixos-image-rpi4-kernel.img.zst`.
 Decompress and flash:
 
 ```shell
 nix shell nixpkgs#zstd
-zstdcat ./pi4b.sd/nixos-image-sd-card-{version}-aarch64-linux.img.zst \
+zstdcat ./pi4b.sd/sd-image/nixos-image-rpi4-kernel.img.zst \
   | sudo dd of=/dev/sda status=progress iflag=fullblock oflag=direct conv=fsync,noerror bs=64k
 ```

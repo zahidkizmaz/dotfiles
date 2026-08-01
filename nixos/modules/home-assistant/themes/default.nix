@@ -6,7 +6,10 @@ in
   systemd.services.copyThemesToHass = {
     description = "Copy Home Assistant themes directory";
     wants = [ "network.target" ];
-    after = [ "network.target" ];
+    after = [
+      "network.target"
+      "home-assistant.service"
+    ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.writeShellScript "copy-themes" ''
