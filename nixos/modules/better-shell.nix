@@ -92,7 +92,10 @@
   };
 
   # Prevent the new user dialog in zsh
-  system.userActivationScripts.zshrc = "touch .zshrc";
+  system.userActivationScripts.zshrc = # bash
+    ''
+      [ -e ~/.zshrc ] || touch ~/.zshrc
+    '';
 
   environment.systemPackages = with pkgs; [
     atuin
