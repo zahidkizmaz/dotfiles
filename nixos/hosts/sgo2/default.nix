@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/chromium-based-browsers.nix
     ../../modules/cli-tools.nix
     ../../modules/default-user.nix
     ../../modules/documentation.nix

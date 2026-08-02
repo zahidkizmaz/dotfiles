@@ -38,8 +38,7 @@ in
     pkgs.filen-cli
     pkgs.filen-desktop
 
-    # Browsers
-    pkgs.brave
+    # Browsers (brave + ungoogled-chromium live in chromium-based-browsers.nix)
     pkgs.firefox-bin
     pkgs.librewolf
 
