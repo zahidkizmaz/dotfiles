@@ -72,4 +72,9 @@ in
     lab
     pi4b
   ];
+  "hass-mcp-key.age".publicKeys = [
+    fw13
+    lab
+    pi5
+  ];
 }

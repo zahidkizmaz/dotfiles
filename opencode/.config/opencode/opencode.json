@@ -53,7 +53,15 @@
       ],
       "environment": {
         "GRAFANA_URL": "https://monitoring.quoll-ratio.ts.net",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:/run/agenix/grafana-sa-token}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{env:GRAFANA_SERVICE_ACCOUNT_TOKEN}"
+      }
+    },
+    "homeassistant": {
+      "type": "remote",
+      "url": "https://home.quoll-ratio.ts.net/api/mcp",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer {env:HOME_ASSISTANT_TOKEN}"
       }
     }
   },

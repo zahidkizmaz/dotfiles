@@ -6,6 +6,7 @@ let
     name = "afterBackup";
     runtimeInputs = with pkgs; [ curl ];
     text = ''
+      WEBHOOK_URL="$1"
       if [ -n "$WEBHOOK_URL" ] && [ "$SERVICE_RESULT" = "success" ]; then
         curl -fsS "$WEBHOOK_URL" > /dev/null 2>&1 || true
       fi
