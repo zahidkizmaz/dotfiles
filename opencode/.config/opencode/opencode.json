@@ -57,11 +57,13 @@
       }
     },
     "homeassistant": {
-      "type": "remote",
-      "url": "https://home.quoll-ratio.ts.net/api/mcp",
-      "enabled": true,
-      "headers": {
-        "Authorization": "Bearer {env:HOME_ASSISTANT_TOKEN}"
+      "type": "local",
+      "command": [
+        "ha-mcp"
+      ],
+      "environment": {
+        "HOMEASSISTANT_URL": "https://home.quoll-ratio.ts.net",
+        "HOMEASSISTANT_TOKEN": "{env:HOME_ASSISTANT_TOKEN}"
       }
     }
   },
