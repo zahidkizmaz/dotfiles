@@ -2,13 +2,6 @@
 {
   boot.loader.raspberry-pi.bootloader = "kernel";
 
-  # Keep the SoC cool instead of boosting to 1.5GHz
-  hardware.raspberry-pi.config.all.options = {
-    arm_freq = {
-      enable = true;
-      value = 1200;
-    };
-  };
   powerManagement.cpuFreqGovernor = "ondemand";
 
   networking = {
