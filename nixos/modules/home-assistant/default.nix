@@ -50,6 +50,9 @@ in
       mini-graph-card
       universal-remote-card
     ];
+    customComponents = with pkgs.home-assistant-custom-components; [
+      ha_mcp_tools
+    ];
     config = {
       http = {
         use_x_forwarded_for = true;
