@@ -8,7 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.agenix.nixosModules.default
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
-    inputs.nixos-generators.nixosModules.all-formats
+    "${inputs.nixpkgs}/nixos/modules/image/images.nix"
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ./configuration.nix
     ../../modules/agenix.nix

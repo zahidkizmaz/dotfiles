@@ -1,10 +1,12 @@
 let
   lab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4fh0Rr/ASYtfbx+rY9JUm25tnhIxobntSVbrSfZQ7o tech@zahid.rocks";
   fw13 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFE+eQtUGF7XMr1XAfDSkzFNXE1A7EdjMNTjTDnQ3CS root@fw13-amd";
-  pi4b = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBonUDIYvzaKlQeyxNYs3QdLUyLEMMASt6mVbiWM2xbC root@pi4b";
+  pi4b = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKoioZynKCzzbPoHOpOSJOZLgt8E3BV1cP0jWR6UK2vo pi@pi4b";
+  pi5 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDu+qDPwSRpMp8462gIxViwZZd1jfH1jJjtOOk3bKiKq root@raspberrypi";
   hosts = [
     fw13
     pi4b
+    pi5
   ];
   everyone = [ lab ] ++ hosts;
 in
@@ -61,6 +63,7 @@ in
     fw13
     lab
     pi4b
+    pi5
   ];
   "grafana-sa-token.age".publicKeys = [
     fw13

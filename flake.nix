@@ -1,21 +1,35 @@
 {
   description = "NixOS configurations";
+
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://noctalia.cachix.org"
+      "https://catppuccin.cachix.org"
+      "https://nixos-raspberrypi.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
+      "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+
     agenix.url = "github:ryantm/agenix";
 
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
 
     catppuccin.url = "github:catppuccin/nix/release-26.05";
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";
@@ -66,6 +80,10 @@
           inherit inputs;
         };
         pi4b = import ./nixos/hosts/pi4b {
+          stateVersion = stateVersion;
+          inherit inputs;
+        };
+        pi5 = import ./nixos/hosts/pi5 {
           stateVersion = stateVersion;
           inherit inputs;
         };

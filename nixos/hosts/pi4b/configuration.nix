@@ -1,20 +1,17 @@
 { stateVersion, ... }:
 {
-  hardware = {
-    enableRedistributableFirmware = true;
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
-  };
+  boot.loader.raspberry-pi.bootloader = "kernel";
+
+  powerManagement.cpuFreqGovernor = "ondemand";
+
   networking = {
-    hostName = "home";
+    hostName = "pi4b";
     wireless.enable = false;
     firewall.enable = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    keyMap = "us";
-  };
+  console.keyMap = "us";
   time.timeZone = "Europe/Berlin";
 
   swapDevices = [
@@ -24,6 +21,21 @@
     }
   ];
 
+  # Compressed in-RAM swap absorbs memory spikes first; the SD swapfile
+  # above stays only as a last-resort overflow so flash isn't written.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+    priority = 100;
+  };
+
+  # Keep logs off the SD card (they're shipped to Loki anyway).
+  services.journald = {
+    storage = "volatile";
+    extraConfig = "RuntimeMaxUse=64M";
+  };
+
   systemd.settings.Manager = {
     DefaultCPUAccounting = true;
     DefaultIOAccounting = true;
@@ -31,13 +43,6 @@
     DefaultMemoryAccounting = true;
     DefaultTasksAccounting = true;
   };
-
-  nixpkgs.overlays = [
-    # deadnix: skip
-    (final: super: {
-      makeModulesClosure = x: super.makeModulesClosure (x // { allowMissing = true; });
-    })
-  ];
 
   atticClient.enable = true;
 

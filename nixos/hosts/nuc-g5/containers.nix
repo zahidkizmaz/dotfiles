@@ -167,12 +167,12 @@
           backupFolderName = "forgejo";
         }
         {
-          name = "calibre";
+          name = "books";
           containerPath = "/var/lib/calibre-server";
           backupFolderName = "calibre";
         }
         {
-          name = "calibre-web";
+          name = "books";
           containerPath = "/var/lib/calibre-web";
           backupFolderName = "calibre-web";
         }

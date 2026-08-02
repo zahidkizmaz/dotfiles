@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   port = 8123;
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+  };
 in
 {
   imports = [
@@ -15,6 +18,7 @@ in
 
   services.home-assistant = {
     enable = true;
+    package = pkgs-unstable.home-assistant;
     extraPackages =
       python3Packages: with python3Packages; [
         # postgresql support
@@ -48,7 +52,10 @@ in
     config = {
       http = {
         use_x_forwarded_for = true;
-        trusted_proxies = [ "127.0.0.1" ];
+        trusted_proxies = [
+          "127.0.0.1"
+          "::1"
+        ];
         server_host = [ "127.0.0.1" ];
         server_port = port;
       };
@@ -70,4 +77,12 @@ in
       script = "!include scripts.yaml";
     };
   };
+
+  # HA fails to start when these !include files don't exist yet; create them
+  # if missing, but never touch existing ones (backups restored later win).
+  systemd.services.home-assistant.preStart = # bash
+    ''
+      [ -e /var/lib/hass/automations.yaml ] || touch /var/lib/hass/automations.yaml
+      [ -e /var/lib/hass/scripts.yaml ] || touch /var/lib/hass/scripts.yaml
+    '';
 }

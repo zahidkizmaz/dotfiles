@@ -30,6 +30,14 @@
   services.fwupd.enable = true;
   powerManagement.powertop.enable = true;
 
+  services.logind = {
+    settings.Login = {
+      HandleLidSwitch = "suspend";
+      HandlePowerKey = "suspend";
+      HandlePowerKeyLongPress = "poweroff";
+    };
+  };
+
   nix.settings.secret-key-files = [ config.age.secrets.fw13-nix-signing.path ];
 
   swapDevices = [

@@ -25,6 +25,8 @@ jobs:
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_nix_config: |
+            accept-flake-config = true
 
       - uses: nicknovitski/nix-develop@v1
 
@@ -34,19 +36,28 @@ jobs:
   build:
     name: Build ${{ matrix.system }}
     needs: check
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        system:
-          - fw13-amd
-          - lenovo-y5070
-          - nuc-g5
+        include:
+          - system: fw13-amd
+            runner: ubuntu-latest
+          - system: lenovo-y5070
+            runner: ubuntu-latest
+          - system: nuc-g5
+            runner: ubuntu-latest
+          - system: pi4b
+            runner: ubuntu-24.04-arm
+          - system: pi5
+            runner: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v7
 
       - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_nix_config: |
+            accept-flake-config = true
 
       - name: Build ${{ matrix.system }}
         run: nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
