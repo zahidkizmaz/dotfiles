@@ -1,6 +1,11 @@
-{ stateVersion, ... }:
+{ lib, stateVersion, ... }:
 {
   boot.loader.raspberry-pi.bootloader = "kernel";
+
+  # zfs is enabled by default in nixpkgs' profiles/base.nix but is unused here
+  # (no pools); disabling it avoids pulling the zfs kernel module (and with it
+  # the kernel dev output) into the closure.
+  boot.supportedFilesystems.zfs = lib.mkForce false;
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
