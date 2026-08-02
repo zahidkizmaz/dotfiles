@@ -25,6 +25,12 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXOS_SD";
     fsType = "ext4";
+    # noatime: no metadata write on reads; commit=600: journal flush every
+    # 10min instead of 5s to cut SD writes (data loss window on crash: 10min).
+    options = [
+      "noatime"
+      "commit=600"
+    ];
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

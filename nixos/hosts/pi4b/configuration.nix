@@ -28,6 +28,21 @@
     }
   ];
 
+  # Compressed in-RAM swap absorbs memory spikes first; the SD swapfile
+  # above stays only as a last-resort overflow so flash isn't written.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+    priority = 100;
+  };
+
+  # Keep logs off the SD card (they're shipped to Loki anyway).
+  services.journald = {
+    storage = "volatile";
+    extraConfig = "RuntimeMaxUse=64M";
+  };
+
   systemd.settings.Manager = {
     DefaultCPUAccounting = true;
     DefaultIOAccounting = true;

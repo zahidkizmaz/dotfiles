@@ -46,8 +46,7 @@
   };
   services.thermald.enable = true;
 
-  # TLP: laptop power management (was in the original daily-driver config,
-  # dropped during the server conversion). Keeps the CPU/GPU from boosting
+  # Keeps the CPU/GPU from boosting
   # when idle and caps charge on this always-plugged-in 2014 laptop.
   services.tlp = {
     enable = true;
