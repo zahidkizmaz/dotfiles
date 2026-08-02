@@ -72,7 +72,9 @@ in
             cd "$HOME/dotfiles"
           fi
 
-          systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.config.nixpkgs.system)')
+          # `nixpkgs.system` throws when read if hostPlatform is set (nixpkgs >= 24.05),
+          # which nixos-raspberrypi sets; `pkgs.stdenv.hostPlatform.system` always works.
+          systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.pkgs.stdenv.hostPlatform.system)')
           hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.stdenv.hostPlatform.system}" 'to_entries[] | select(.value == $cur) | .key')
 
           echo "Building ${pkgs.stdenv.hostPlatform.system} hosts..."
