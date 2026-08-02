@@ -16,6 +16,10 @@
         file = ../secrets/grafana-sa-token.age;
         owner = user;
       };
+      hass-mcp-key = {
+        file = ../secrets/hass-mcp-key.age;
+        owner = user;
+      };
     };
   };
 }

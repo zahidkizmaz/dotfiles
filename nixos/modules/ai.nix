@@ -8,6 +8,7 @@ in
       ollama
       opencode
       rtk
+      ha-mcp
     ];
   };
 }

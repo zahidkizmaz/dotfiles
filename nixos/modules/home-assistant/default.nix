@@ -31,6 +31,7 @@ in
       "homekit"
       "hue"
       "isal" # Intelligent Storage Acceleration
+      "mcp_server"
       "met"
       "mobile_app"
       "my"

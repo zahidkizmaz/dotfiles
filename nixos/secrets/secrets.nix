@@ -18,6 +18,7 @@ in
   "restic-password.age".publicKeys = [
     lab
     fw13
+    pi5
   ];
   "searx-secret.age".publicKeys = [
     lab
@@ -26,6 +27,7 @@ in
   "rclone-config-filen.age".publicKeys = [
     lab
     fw13
+    pi5
   ];
   "rclone-config-pcloud.age".publicKeys = [
     lab
@@ -69,5 +71,10 @@ in
     fw13
     lab
     pi4b
+  ];
+  "hass-mcp-key.age".publicKeys = [
+    fw13
+    lab
+    pi5
   ];
 }

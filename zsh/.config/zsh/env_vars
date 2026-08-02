@@ -40,3 +40,11 @@ export PIP_REQUIRE_VIRTUALENV=true
 # Term Setting Works With Tmux
 #-----------------------------
 export TERM=xterm-256color
+
+#--------------------------
+# MCP server tokens
+# Loaded from agenix secrets where present; absent on hosts
+# without the keys, and opencode handles unset as empty string.
+#--------------------------
+export HOME_ASSISTANT_TOKEN="$(cat /run/agenix/hass-mcp-key 2>/dev/null)"
+export GRAFANA_SERVICE_ACCOUNT_TOKEN="$(cat /run/agenix/grafana-sa-token 2>/dev/null)"
