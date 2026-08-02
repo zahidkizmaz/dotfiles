@@ -20,4 +20,4 @@ jobs:
 
       - uses: nicknovitski/nix-develop@v1
 
-      - uses: j178/prek-action@v2
+      - uses: j178/prek-action@v3.0.0
