@@ -3,7 +3,6 @@
   nix = {
     settings = {
       connect-timeout = 3;
-      accept-flake-config = true;
       experimental-features = [
         "nix-command"
         "flakes"
