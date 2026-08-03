@@ -27,6 +27,11 @@
 
   atticClient.enable = true;
 
+  # fsck/panic/network-watchdog yes; hardware watchdog NOT enabled because
+  # systemd's PID1 feed is unreliable on BCM2712 (reboot-loop risk) -- test
+  # on-box before flipping piResilience.hardwareWatchdog to true.
+  piResilience.enable = true;
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

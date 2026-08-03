@@ -14,6 +14,7 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
     ../../modules/gc.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
+    ../../modules/pi-resilience.nix
     ../../modules/ssh.nix
     ../../modules/tailscale-exit-node.nix
     ../../modules/vm-variant.nix
