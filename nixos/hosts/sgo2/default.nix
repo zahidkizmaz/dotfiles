@@ -30,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/terminal.nix
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
+    ../../modules/wayland-env.nix
     ../../modules/wlan.nix
     ../../modules/home-assistant/home_assistant_desktop_entry.nix
   ];

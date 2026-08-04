@@ -76,8 +76,6 @@
   };
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Europe/Berlin";
-  # Native Wayland for Chromium-based/Electron apps (GNOME session).
-  environment.variables.NIXOS_OZONE_WL = "1";
   networking = {
     hostName = "sgo2";
     useDHCP = lib.mkDefault true;
