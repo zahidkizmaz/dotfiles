@@ -29,7 +29,6 @@
       "TranslateEnabled" = false;
 
       # privacy sandbox (Topics/FLEDGE)
-      "PrivacySandboxAdEnabled" = false;
       "PrivacySandboxAdMeasurementEnabled" = false;
       "PrivacySandboxAdTopicsEnabled" = false;
       "PrivacySandboxSiteEnabledAdsEnabled" = false;
@@ -46,6 +45,16 @@
       "BlockThirdPartyCookies" = true;
       "DefaultGeolocationSetting" = 2;
       "HttpsOnlyMode" = 1;
+      "DefaultNotificationsSetting" = 3; # ask site notification prompts
+      "DefaultPopupsSetting" = 2; # block popups
+      "ExtensionInstallBlocklist" = [ "*" ]; # only force-installed (uBOL) extensions
+      # Trade-off: disables phishing/http interstitials in exchange for no
+      # Google URL lookups. Drop this if you want safe-browsing warnings back.
+      "SafeBrowsingEnabled" = false;
+      "PasswordLeakDetectionEnabled" = false; # no password hashes sent to Google
+
+      # UI
+      "BookmarkBarEnabled" = false; # no bookmarks bar (Ctrl+Shift+B still toggles)
     };
   };
 
