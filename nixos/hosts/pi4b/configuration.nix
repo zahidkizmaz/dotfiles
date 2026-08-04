@@ -9,6 +9,13 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
+  # Watchdog verified working on this box (BCM2711); the network watchdog
+  # pings the gateway, never the internet, so ISP outages never reboot it.
+  piResilience = {
+    enable = true;
+    hardwareWatchdog = true;
+  };
+
   networking = {
     hostName = "pi4b";
     wireless.enable = false;

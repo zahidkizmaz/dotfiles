@@ -17,6 +17,7 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
     ../../modules/home-assistant/default.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
+    ../../modules/pi-resilience.nix
     ../../modules/ssh.nix
     ../../modules/tailscale-lab.nix
     ../../modules/vm-variant.nix
