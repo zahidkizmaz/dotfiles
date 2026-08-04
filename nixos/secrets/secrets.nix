@@ -57,6 +57,10 @@ in
     fw13
     lab
   ];
+  "hermes-dashboard-auth.age".publicKeys = [
+    fw13
+    lab
+  ];
   "attic-jwt-secret.age".publicKeys = [
     fw13
     lab

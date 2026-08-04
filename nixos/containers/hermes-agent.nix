@@ -53,6 +53,10 @@ in
           file = ../secrets/forgejo-hermes-token.age;
           mode = "0444";
         };
+        age.secrets.hermes-dashboard-auth = {
+          file = ../secrets/hermes-dashboard-auth.age;
+          mode = "0444";
+        };
 
         virtualisation.podman = {
           enable = true;
@@ -64,10 +68,11 @@ in
           containers.hermes-agent = {
             autoStart = true;
             # https://hub.docker.com/r/nousresearch/hermes-agent/tags
-            image = "docker.io/nousresearch/hermes-agent@sha256:4d78cd97e9fd875b4e22cb787f24c9715f7761fce3c8b6dcee301096def3415c";
+            image = "docker.io/nousresearch/hermes-agent@sha256:16788311e2fa3035456bdc1bafb8ec2b1777db64ebf020af9bb7eb73c3712c9e";
             environment = {
               HERMES_HOME = "/opt/data";
             };
+            environmentFiles = [ config.age.secrets.hermes-dashboard-auth.path ];
             volumes = [
               "hermes-data:/opt/data:rw"
               "${config.age.secrets.forgejo-hermes-token.path}:/run/secrets/forgejo-token:ro"
@@ -92,16 +97,16 @@ in
               # ollama at 192.168.100.25:11434 and tailscale DNS names.
               "--network=host"
             ];
-            # --host 0.0.0.0 accepts any Host header (needed behind
-            # tailscale-serve). --insecure disables OAuth gate (no provider
-            # configured). Safe — only reachable via tailscale-serve.
+            # Bind all interfaces so tailscale-serve can proxy, but authenticate:
+            # the auth gate refuses non-loopback binds unless a provider is
+            # configured — HERMES_DASHBOARD_BASIC_AUTH_* (from the age secret in
+            # environmentFiles) satisfies it and `--insecure` is a no-op now.
             cmd = [
               "dashboard"
               "--port"
               "8080"
               "--host"
               "0.0.0.0"
-              "--insecure"
               "--skip-build"
             ];
             autoRemoveOnStop = false;
