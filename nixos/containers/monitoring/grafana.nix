@@ -139,6 +139,7 @@ in
               server = {
                 domain = domain;
                 http_port = port;
+                root_url = "https://${domain}";
               };
             };
             provision.datasources.settings = {
