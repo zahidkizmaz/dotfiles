@@ -2,6 +2,7 @@
 {
   imports = [
     ./icons.nix
+    ./wayland-env.nix
   ];
   environment.systemPackages = with pkgs; [
     brightnessctl

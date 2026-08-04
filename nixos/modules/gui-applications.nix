@@ -39,7 +39,6 @@ in
     pkgs.filen-desktop
 
     # Browsers
-    pkgs.brave
     pkgs.firefox-bin
     pkgs.librewolf
 

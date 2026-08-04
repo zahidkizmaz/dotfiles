@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/better-shell.nix
     ../../modules/bluetooth.nix
     ../../modules/bootloader-systemd.nix
+    ../../modules/chromium-based-browsers.nix
     ../../modules/cli-tools.nix
     ../../modules/default-user.nix
     ../../modules/documentation.nix
@@ -29,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/terminal.nix
     ../../modules/vm-variant.nix
     ../../modules/waydroid.nix
+    ../../modules/wayland-env.nix
     ../../modules/wlan.nix
     ../../modules/home-assistant/home_assistant_desktop_entry.nix
   ];
