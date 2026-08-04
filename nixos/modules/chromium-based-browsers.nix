@@ -2,6 +2,16 @@
   pkgs,
   ...
 }:
+let
+  # Universal VA-API acceleration. https://wiki.nixos.org/wiki/Chromium#Accelerated_video_playback
+  # VaapiIgnoreDriverChecks stops Chrome blocklisting a driver it doesn't
+  # recognise — drop it if a specific machine becomes unstable.
+  # Deliberately NOT set (per-machine / risky): Vulkan/ANGLE backend switch,
+  # --ignore-gpu-blocklist, --enable-zero-copy (flicker).
+  commandLineArgs = [
+    "--enable-features=AcceleratedVideoEncoder,VaapiVideoEncoder,VaapiVideoDecoder,PlatformHEVCDecoderSupport,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,UseMultiPlaneFormatForHardwareVideo"
+  ];
+in
 {
   # Policies are shared between all Chromium-based browsers: the module writes
   # them to /etc/chromium/, /etc/opt/chrome/ and /etc/brave/policies/managed/.
@@ -59,7 +69,10 @@
   };
 
   environment.systemPackages = [
-    (pkgs.ungoogled-chromium.override { enableWideVine = true; })
-    pkgs.brave
+    (pkgs.ungoogled-chromium.override {
+      inherit commandLineArgs;
+      enableWideVine = true;
+    })
+    (pkgs.brave.override { inherit commandLineArgs; })
   ];
 }
