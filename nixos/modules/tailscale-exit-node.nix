@@ -1,11 +1,15 @@
 {
   config,
+  inputs,
   pkgs,
   lib,
   ...
 }:
 let
   cfg = config.tailscaleExitNode;
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+  };
 in
 {
   options.tailscaleExitNode.wanInterface = lib.mkOption {
@@ -17,6 +21,7 @@ in
   config = {
     services.tailscale = {
       enable = true;
+      package = pkgs-unstable.tailscale;
       openFirewall = true;
       useRoutingFeatures = "server";
       authKeyFile = config.age.secrets.tailscale-lab.path;

@@ -19,7 +19,7 @@ inputs.nixos-raspberrypi.lib.nixosSystem {
     ../../modules/nix-settings.nix
     ../../modules/pi-resilience.nix
     ../../modules/ssh.nix
-    ../../modules/tailscale-lab.nix
+    ../../modules/tailscale-exit-node.nix
     ../../modules/vm-variant.nix
     (import ../../containers/monitoring/alloy-log-report.nix { })
   ];
