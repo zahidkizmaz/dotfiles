@@ -11,7 +11,7 @@ return {
       debounce_ms = 300,
     },
     keys = {
-      { "<leader>md", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview Toggle" },
+      { "<leader>M", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview Toggle" },
     },
   },
   {
