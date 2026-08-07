@@ -12,19 +12,27 @@ let
   };
 in
 {
-  options.tailscaleExitNode.wanInterface = lib.mkOption {
-    type = lib.types.str;
-    default = "eth0";
-    description = "WAN interface for ethtool GRO optimization";
+  options.tailscaleExitNode = {
+    enable = lib.mkEnableOption "tailscale exit node advertising";
+    wanInterface = lib.mkOption {
+      type = lib.types.str;
+      default = "eth0";
+      description = "WAN interface for ethtool GRO optimization";
+    };
+    authKeySecret = lib.mkOption {
+      type = lib.types.str;
+      default = "tailscale-lab";
+      description = "agenix secret holding the tailscale auth key for this node";
+    };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     services.tailscale = {
       enable = true;
       package = pkgs-unstable.tailscale;
       openFirewall = true;
       useRoutingFeatures = "server";
-      authKeyFile = config.age.secrets.tailscale-lab.path;
+      authKeyFile = config.age.secrets.${cfg.authKeySecret}.path;
       extraSetFlags = [ "--advertise-exit-node" ];
     };
 

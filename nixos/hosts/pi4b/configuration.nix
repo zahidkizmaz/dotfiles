@@ -22,6 +22,11 @@
     firewall.enable = true;
   };
 
+  tailscaleExitNode = {
+    enable = true;
+    authKeySecret = "tailscale-pi4b";
+  };
+
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
   time.timeZone = "Europe/Berlin";

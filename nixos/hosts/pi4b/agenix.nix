@@ -6,7 +6,7 @@
 
   age = {
     secrets = {
-      tailscale-lab.file = ../../secrets/tailscale-lab.age;
+      tailscale-pi4b.file = ../../secrets/tailscale-pi4b.age;
     };
   };
 }
