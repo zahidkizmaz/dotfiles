@@ -29,7 +29,6 @@ in
     claude-code
     docker
     docker-compose
-    gemini-cli
     google-cloud-sdk
     herdr
     nh
