@@ -8,6 +8,7 @@ capsule = true
 center = ["group:g1"]
 end = [
   "keyboard_layout",
+  "bar",
   "group:g3",
   "volume",
   "brightness",
@@ -26,6 +27,9 @@ start = ["workspaces", "active_window", "media"]
 widget_spacing = 12
 
 [[bar.default.capsule_group]]
+accordion = false
+accordion_direction = "end"
+enabled = true
 fill = "surface_variant"
 id = "g1"
 members = ["control-center", "clock"]
@@ -33,6 +37,9 @@ opacity = 1.0
 padding = 6.0
 
 [[bar.default.capsule_group]]
+accordion = false
+accordion_direction = "end"
+enabled = true
 fill = "surface_variant"
 id = "g2"
 members = ["keyboard_layout", "tray", "network", "bluetooth"]
@@ -40,6 +47,9 @@ opacity = 1.0
 padding = 6.0
 
 [[bar.default.capsule_group]]
+accordion = false
+accordion_direction = "end"
+enabled = true
 fill = "surface_variant"
 id = "g3"
 members = ["tray", "network", "bluetooth"]
@@ -168,6 +178,9 @@ enabled = true
 [osd]
 offset_y = 20
 
+[plugins]
+enabled = ["rylos/tailnet"]
+
 [[plugins.source]]
 kind = "git"
 location = "https://github.com/noctalia-dev/community-plugins"
@@ -230,6 +243,9 @@ enabled = false
 
 [weather]
 auto_locate = true
+
+[widget.bar]
+type = "rylos/tailnet:bar"
 
 [widget.brightness.actions]
 scroll_down = "brightness-down 1%"
