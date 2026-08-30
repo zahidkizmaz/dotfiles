@@ -126,6 +126,11 @@
             cname = "runner";
             ip = "192.168.100.29";
           };
+          opengym = {
+            path = ./opengym.nix;
+            cname = "opengym";
+            ip = "192.168.100.32";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;
