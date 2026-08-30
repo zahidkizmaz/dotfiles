@@ -6,18 +6,22 @@
     initialPassword = "${user}";
     description = "${user}";
     extraGroups = [
-      "networkmanager"
-      "input"
-      "wheel"
-      "video"
       "audio"
-      "storage"
       "cups"
+      "input"
+      "librepods"
       "libvirtd"
+      "networkmanager"
+      "storage"
+      "video"
+      "wheel"
     ];
     shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
+  programs = {
+    librepods.enable = true;
+    zsh.enable = true;
+  };
 
   fonts = {
     packages = with pkgs; [

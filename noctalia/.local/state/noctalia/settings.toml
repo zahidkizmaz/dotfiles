@@ -1,4 +1,4 @@
-config_version = 12
+config_version = 13
 
 [accessibility]
 ui_scale = 1.5000000149011612
@@ -112,7 +112,7 @@ widget_order = [
   "lockscreen-login-box@eDP-1",
   "lockscreen-widget-0000000000000001",
   "lockscreen-widget-0000000000000002",
-  "lockscreen-widget-0000000000000003",
+  "lockscreen-widget-0000000000000005",
 ]
 
 [lockscreen_widgets.grid]
@@ -121,16 +121,26 @@ major_interval = 4
 visible = true
 
 [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-box_height = 0.0
-box_width = 0.0
+box_height = 196.0
+box_width = 810.0
 cx = 1128.0
 cy = 1216.0
 output = "eDP-1"
+placement_height = 1504.0
+placement_width = 2256.0
 rotation = 0.0
 type = "login_box"
 
 [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+center_password_text = false
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
 show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
 
 [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
 box_height = 208.0
@@ -138,6 +148,8 @@ box_width = 416.0
 cx = 1128.0
 cy = 248.0
 output = "eDP-1"
+placement_height = 1504.0
+placement_width = 2256.0
 rotation = -0.0
 type = "clock"
 
@@ -150,6 +162,8 @@ box_width = 816.0
 cx = 1128.0
 cy = 384.0
 output = "eDP-1"
+placement_height = 1504.0
+placement_width = 2256.0
 rotation = 0.0
 type = "clock"
 
@@ -157,20 +171,16 @@ type = "clock"
 background = false
 format = "%A %d %B %Y"
 
-[lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
-box_height = 384.0
-box_width = 320.0
-cx = 2072.0
-cy = 224.0
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+box_height = 0.0
+box_width = 0.0
+cx = 2155.5
+cy = 75.5
 output = "eDP-1"
+placement_height = 1504.0
+placement_width = 2256.0
 rotation = 0.0
-type = "media_player"
-
-[lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
-background = false
-background_padding = 11.0
-hide_when_no_media = true
-layout = "vertical"
+type = "yocraft/battery-widget:widget"
 
 [nightlight]
 enabled = true
@@ -179,7 +189,7 @@ enabled = true
 offset_y = 20
 
 [plugins]
-enabled = ["rylos/tailnet"]
+enabled = ["rylos/tailnet", "yocraft/battery-widget"]
 
 [[plugins.source]]
 kind = "git"

@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     copyq
+    glib
     grim
     playerctl
     satty

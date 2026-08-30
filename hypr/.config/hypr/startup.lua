@@ -2,11 +2,14 @@
 -- fires ~52s after Hyprland initializes — display is fully ready).
 -- Events:
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Expanding-functionality/#events
+local run = require("run")
+
 hl.on("hyprland.start", function()
   hl.exec_cmd(
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE QT_STYLE_OVERRIDE QT_QPA_PLATFORMTHEME QT_QPA_PLATFORM QT_SCALE_FACTOR"
   )
-  hl.exec_cmd("~/.config/hypr/scripts/run.sh start noctalia")
+  run.start("noctalia")
+  run.start("librepods", { "--hide" })
   hl.exec_cmd("firefox", { workspace = "1 silent" })
   hl.exec_cmd("kitty", { workspace = "2 silent" })
   hl.exec_cmd("kitty", { workspace = "special:magic silent" })
@@ -15,12 +18,13 @@ end)
 -- monitor.added fires right when the display initializes (seconds, not ~52s like
 -- hyprland.start). Start GUI apps here since they all need the Wayland socket.
 hl.on("monitor.added", function()
-  hl.exec_cmd("~/.config/hypr/scripts/run.sh start copyq --start-server")
-  hl.exec_cmd("~/.config/hypr/scripts/run.sh start udiskie")
+  run.start("copyq", { "--start-server" })
+  run.start("udiskie")
 end)
 
 hl.on("config.reloaded", function()
   hl.exec_cmd("systemctl --user start easyeffects.service")
-  hl.exec_cmd("~/.config/hypr/scripts/run.sh start noctalia")
+  run.start("noctalia")
+  run.restart("librepods", { "--hide" })
   hl.exec_cmd("noctalia msg config-reload")
 end)
