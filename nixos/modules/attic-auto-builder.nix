@@ -5,7 +5,6 @@
   user,
   ...
 }:
-
 with lib;
 
 let
@@ -21,6 +20,40 @@ let
     token = "$(cat ${config.age.secrets.attic-token.path})"
     EOF
   '';
+
+  # ── Build and push to attic (caller runs nix flake update) ────
+  # This function builds Nix closures and pushes them to the attic cache.
+  # The caller (main script) decides whether to run nix flake update before calling it.
+  # Usage: just embed ${buildAndPushToAttic} in the bash script.
+  buildAndPushToAttic = ''
+    set -euo pipefail
+
+    # Build nixos configurations with current flake.lock
+    # `nixpkgs.system` throws when read if hostPlatform is set (nixpkgs >= 24.05),
+    # which nixos-raspberrypi sets; `pkgs.stdenv.hostPlatform.system` always works.
+    systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.pkgs.stdenv.hostPlatform.system)')
+    hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.stdenv.hostPlatform.system}" 'to_entries[] | select(.value == $cur) | .key')
+
+    echo "Building ${pkgs.stdenv.hostPlatform.system} hosts..."
+    targets=""
+    for host in $hosts; do
+      targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"
+    done
+    nix build $targets --no-link --print-out-paths 2>&1 | grep '^/nix/store' | attic push default --stdin || true
+
+    # Build dev shells if enabled
+    ${optionalString cfg.buildDevShells ''
+      echo "Building dev shells..."
+      for system in ${toString allDevShellSystems}; do
+        echo "  building devShells.$system.default..."
+        nix build ".#devShells.$system.default" --no-link --print-out-paths 2>&1 \
+          | grep '^/nix/store' | attic push default --stdin || true
+      done
+    ''}
+
+    echo "=== attic segment finished: $(date) ==="
+  '';
+
 in
 {
   options.atticAutoBuilder = {
@@ -31,6 +64,9 @@ in
       type = types.listOf types.str;
       default = [ ];
       description = "Extra system platforms to build dev shells for (e.g. aarch64-linux on an x86_64 host with binfmt emulation).";
+    };
+    runFlakeUpdate = mkEnableOption "run nix flake update and build both states" // {
+      description = "When enabled, builds twice: first without update (current flake.lock), then runs nix flake update and builds with updated inputs. Both results pushed to attic cache.";
     };
   };
 
@@ -72,25 +108,21 @@ in
             cd "$HOME/dotfiles"
           fi
 
-          # `nixpkgs.system` throws when read if hostPlatform is set (nixpkgs >= 24.05),
-          # which nixos-raspberrypi sets; `pkgs.stdenv.hostPlatform.system` always works.
-          systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.pkgs.stdenv.hostPlatform.system)')
-          hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.stdenv.hostPlatform.system}" 'to_entries[] | select(.value == $cur) | .key')
+          # ── First build: with current flake.lock ──────────────
+          ${buildAndPushToAttic}
 
-          echo "Building ${pkgs.stdenv.hostPlatform.system} hosts..."
-          targets=""
-          for host in $hosts; do
-            targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"
-          done
-          nix build $targets --no-link --print-out-paths 2>&1 | grep '^/nix/store' | attic push default --stdin || true
+          # ── If runFlakeUpdate: second build after update ──────
+          ${optionalString cfg.runFlakeUpdate ''
+            echo ""
+            echo "=== Running nix flake update ==="
+            nix flake update 2>&1
 
-          ${optionalString cfg.buildDevShells ''
-            echo "Building dev shells..."
-            for system in ${toString allDevShellSystems}; do
-              echo "  building devShells.$system.default..."
-              nix build ".#devShells.$system.default" --no-link --print-out-paths 2>&1 \
-                | grep '^/nix/store' | attic push default --stdin || true
-            done
+            echo ""
+            echo "=== Second build with updated inputs ==="
+            ${buildAndPushToAttic}
+
+            echo ""
+            echo "=== Attic cache now has both states ==="
           ''}
 
           echo "=== attic-auto-builder finished: $(date) ==="

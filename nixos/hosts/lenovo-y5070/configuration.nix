@@ -8,7 +8,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nvidia.nix
   ];
 
   home-manager = {
@@ -80,6 +79,7 @@
   atticAutoBuilder = {
     buildDevShells = true;
     additionalDevShellSystems = [ "aarch64-linux" ];
+    runFlakeUpdate = true;
   };
 
   atticClient = {
