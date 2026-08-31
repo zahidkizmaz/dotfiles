@@ -300,11 +300,25 @@
     },
     "nixpkgs-unstable": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1788316716,
         "narHash": "sha256-bc7rSpXIdn9QWGNqfWcPZWOhEVF8NoeAZkWq0XWnf/k=",
+||||||| parent of 284cde9 (some fixes)
+        "lastModified": 1787900134,
+        "narHash": "sha256-VYXO0XZlgj06dxJZRhrD3WoSsvq/c7+/Akyoa22pefw=",
+=======
+        "lastModified": 1788039129,
+        "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
+>>>>>>> 284cde9 (some fixes)
         "owner": "nixos",
         "repo": "nixpkgs",
+<<<<<<< HEAD
         "rev": "3ed67ec0a4d3c7ab4ae1f04f8ee8df07bfa506a2",
+||||||| parent of 284cde9 (some fixes)
+        "rev": "83199d0d373dd3ac2b9a1996b1d0263f76ab7a4c",
+=======
+        "rev": "d2f67949798825fe853f7c5d0492b8bf016d3f88",
+>>>>>>> 284cde9 (some fixes)
         "type": "github"
       },
       "original": {
@@ -406,11 +420,25 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1788439820,
         "narHash": "sha256-UknYedEvucWlr490skhJs6OsbYt1rlftCkolqNzFp7c=",
+||||||| parent of 284cde9 (some fixes)
+        "lastModified": 1788056502,
+        "narHash": "sha256-ZAS3aQIuKEuUh1GujQDq/D2XNuVc+YDHqDOWOf3uQok=",
+=======
+        "lastModified": 1788194018,
+        "narHash": "sha256-L07VFChku0sRqtwSFyfFDFLpKPo77IPBOvrByqaTs5o=",
+>>>>>>> 284cde9 (some fixes)
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
+<<<<<<< HEAD
         "rev": "886dd9d136c99dbc51ff36661f0cc1d69f2a2cd2",
+||||||| parent of 284cde9 (some fixes)
+        "rev": "037804f86a3d2b75a7d741e6b6a965e8cba8e5b0",
+=======
+        "rev": "4912b92d37946ef6fd1d56cb4d2a0a0f09bd8c1c",
+>>>>>>> 284cde9 (some fixes)
         "type": "github"
       },
       "original": {

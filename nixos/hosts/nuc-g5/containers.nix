@@ -93,6 +93,12 @@
       opengym = {
         enable = true;
         hostname = "gym";
+        config = import ../../containers/opengym.nix {
+          inherit user;
+          stateVersion = config.system.stateVersion;
+          localAddress = config.containers.default.opengym.ip;
+          hostAddress = config.containers.default.opengym.hostAddress;
+        };
       };
     };
 
