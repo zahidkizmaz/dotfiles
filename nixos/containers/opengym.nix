@@ -7,16 +7,16 @@
   ...
 }:
 let
+  # Container name
   containerName = "opengym";
+  # Port configuration for Tailscale networking
   apiPort = 3000;
   webPort = 8080;
   port = webPort;
+  # Data and media paths
   dataPath = "/var/lib/opengym/data";
   mediaPath = "/var/lib/opengym/media";
-  opengym-src = fetchGit {
-    url = "https://github.com/arvids-unavailable/openGym";
-    rev = "c42ba6b98e3776af5981f20c05ba392238799670";
-  };
+
 in
 {
   containers.${containerName} = {
@@ -63,11 +63,10 @@ in
           backend = "podman";
 
           # API service - Node.js backend with WebAuthn
-          # Built from auto-cloned openGym repo
           containers.opengym-api = {
             autoStart = true;
-            # Path to api directory within the cloned repo
-            build = "${opengym-src}/api";
+            # Use pre-built image from GitHub Container Registry
+            image = "ghcr.io/arvids-unavailable/opengym-api:latest";
             environment = {
               PORT = toString apiPort;
               DATA_DIR = dataPath;
@@ -86,12 +85,10 @@ in
           };
 
           # Web service - nginx serving React frontend
-          # Built from same auto-cloned openGym repo
           containers.opengym-web = {
             autoStart = true;
-            # Path to the root of the cloned repo (web/Dockerfile is at web/Dockerfile relative to repo root)
-            build = "${opengym-src}";
-            dockerfile = "web/Dockerfile";
+            # Use pre-built image from GitHub Container Registry
+            image = "ghcr.io/arvids-unavailable/opengym-web:latest";
             environment = {
               # nginx listens on port 80 internally, tailscale-serve exposes on 443
             };
