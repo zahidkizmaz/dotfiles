@@ -68,7 +68,7 @@ in
           containers.hermes-agent = {
             autoStart = true;
             # https://hub.docker.com/r/nousresearch/hermes-agent/tags
-            image = "docker.io/nousresearch/hermes-agent@sha256:16788311e2fa3035456bdc1bafb8ec2b1777db64ebf020af9bb7eb73c3712c9e";
+            image = "docker.io/nousresearch/hermes-agent@sha256:5c51f5b82faec59d93dd752da46b85dd0692228652ae2ac4612d27c53b6c674b";
             environment = {
               HERMES_HOME = "/opt/data";
             };

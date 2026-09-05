@@ -59,7 +59,8 @@ in
           backend = "podman";
           containers.vane = {
             autoStart = true;
-            image = "docker.io/itzcrazykns1337/vane@sha256:aaf9da6bf76f01480c3e755388421029982e819773cbcecdcf0e9621a10e0690";
+            # https://hub.docker.com/r/itzcrazykns1337/vane/tags
+            image = "docker.io/itzcrazykns1337/vane@sha256:0b61bf0d4470e9f2a9c71f794b72fab6e5a612177172770684c158a461f6896e";
             environment = {
               # Make Vane listen on all interfaces, not just the hostname
               # address (127.0.0.2), so tailscale-serve can reach it via

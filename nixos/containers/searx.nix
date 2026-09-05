@@ -77,6 +77,26 @@ in
                 name = "wolframalpha";
                 disabled = false;
               }
+              {
+                name = "mojeek";
+                disabled = false;
+              }
+              {
+                name = "qwant";
+                disabled = false;
+              }
+              {
+                name = "bing";
+                disabled = false;
+              }
+              {
+                name = "mwmbl";
+                disabled = false;
+              }
+              {
+                name = "wikipedia";
+                disabled = false;
+              }
             ];
           };
           limiterSettings = {
