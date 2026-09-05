@@ -99,6 +99,10 @@ in
 
         systemd.services.opengym-compose = {
           description = "openGym podman compose up";
+          unitConfig = {
+            StartLimitIntervalSec = 600;
+            StartLimitBurst = 10;
+          };
           wantedBy = [ "multi-user.target" ];
           after = [
             "network-online.target"
@@ -114,6 +118,10 @@ in
             Type = "oneshot";
             RemainAfterExit = true;
             WorkingDirectory = projectDir;
+            # registry/DNS can be transient at boot (tailscale still
+            # logging in); retry in background instead of blocking boot.
+            Restart = "on-failure";
+            RestartSec = 60;
             ExecStart = "${pkgs.podman-compose}/bin/podman-compose -f ${projectDir}/docker-compose.yml up -d --build";
             ExecStop = "${pkgs.podman-compose}/bin/podman-compose -f ${projectDir}/docker-compose.yml down";
           };
