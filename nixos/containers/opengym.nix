@@ -7,16 +7,23 @@
   ...
 }:
 let
-  # Container name
   containerName = "opengym";
-  # Port configuration for Tailscale networking
-  apiPort = 3000;
   webPort = 8080;
   port = webPort;
-  # Data and media paths
   dataPath = "/var/lib/opengym/data";
   mediaPath = "/var/lib/opengym/media";
-
+  projectDir = "/opt/opengym";
+  opengymSrc = fetchGit {
+    url = "https://github.com/zahidkizmaz/openGym";
+    rev = "59ea86197d6d5a55cc016c11f67de428f18cfb14";
+    shallow = true;
+  };
+  opengymEnv = ''
+    RP_ID=gym.quoll-ratio.ts.net
+    ORIGIN=https://gym.quoll-ratio.ts.net
+    RP_NAME=openGym
+    WEB_PORT=${toString webPort}
+  '';
 in
 {
   containers.${containerName} = {
@@ -59,52 +66,59 @@ in
           defaultNetwork.settings.dns_enabled = true;
         };
 
-        virtualisation.oci-containers = {
-          backend = "podman";
+        environment.systemPackages = with pkgs; [
+          podman-compose
+          rsync
+        ];
 
-          # API service - Node.js backend with WebAuthn
-          containers.opengym-api = {
-            autoStart = true;
-            # Use pre-built image from GitHub Container Registry
-            image = "ghcr.io/arvids-unavailable/opengym-api:latest";
-            environment = {
-              PORT = toString apiPort;
-              DATA_DIR = dataPath;
-              RP_ID = config.networking.hostName;
-              ORIGIN = "https://${config.networking.hostName}.quoll-ratio.ts.net";
-              RP_NAME = "openGym";
-            };
-            volumes = [
-              "${dataPath}:${dataPath}:rw"
-            ];
-            extraOptions = [
-              "--restart=unless-stopped"
-              "--network=host"
-            ];
-            autoRemoveOnStop = false;
+        systemd.tmpfiles.rules = [
+          "d ${projectDir} 0755 root root -"
+          "d ${dataPath} 0755 root root -"
+          "d ${mediaPath} 0755 root root -"
+        ];
+
+        systemd.services.opengym-setup = {
+          description = "Sync openGym source and env";
+          wantedBy = [ "multi-user.target" ];
+          before = [ "opengym-compose.service" ];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
           };
+          script = ''
+            set -euo pipefail
+            mkdir -p ${projectDir} ${dataPath} ${mediaPath}
+            ${pkgs.rsync}/bin/rsync -a --delete \
+              --exclude=/data --exclude=/media --exclude=/.env --exclude=/.git \
+              ${opengymSrc}/ ${projectDir}/
+            printf %s ${lib.escapeShellArg opengymEnv} > ${projectDir}/.env
+            ${pkgs.coreutils}/bin/ln -sfn ${dataPath} ${projectDir}/data
+            ${pkgs.coreutils}/bin/ln -sfn ${mediaPath} ${projectDir}/media
+          '';
+        };
 
-          # Web service - nginx serving React frontend
-          containers.opengym-web = {
-            autoStart = true;
-            # Use pre-built image from GitHub Container Registry
-            image = "ghcr.io/arvids-unavailable/opengym-web:latest";
-            environment = {
-              # nginx listens on port 80 internally, tailscale-serve exposes on 443
-            };
-            volumes = [
-              "${mediaPath}/img:/usr/share/nginx/html/img:ro"
-              "${mediaPath}/gif:/usr/share/nginx/html/gif:ro"
-            ];
-            extraOptions = [
-              "--restart=unless-stopped"
-              "--network=host"
-            ];
-            autoRemoveOnStop = false;
+        systemd.services.opengym-compose = {
+          description = "openGym podman compose up";
+          wantedBy = [ "multi-user.target" ];
+          after = [
+            "network-online.target"
+            "opengym-setup.service"
+          ];
+          wants = [ "network-online.target" ];
+          requires = [ "opengym-setup.service" ];
+          path = with pkgs; [
+            podman
+            podman-compose
+          ];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            WorkingDirectory = projectDir;
+            ExecStart = "${pkgs.podman-compose}/bin/podman-compose -f ${projectDir}/docker-compose.yml up -d --build";
+            ExecStop = "${pkgs.podman-compose}/bin/podman-compose -f ${projectDir}/docker-compose.yml down";
           };
         };
 
-        # Pre-create data directories with correct permissions
         environment.etc."containers/containers.conf".text = lib.mkForce ''
           [engine]
 
