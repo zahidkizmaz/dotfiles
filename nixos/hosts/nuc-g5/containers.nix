@@ -90,6 +90,10 @@
         enable = true;
         hostname = "books";
       };
+      opengym = {
+        enable = true;
+        hostname = "gym";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)
@@ -175,6 +179,11 @@
           name = "books";
           containerPath = "/var/lib/calibre-web";
           backupFolderName = "calibre-web";
+        }
+        {
+          name = "opengym";
+          containerPath = "/var/lib/opengym/data";
+          backupFolderName = "opengym";
         }
       ];
     };
