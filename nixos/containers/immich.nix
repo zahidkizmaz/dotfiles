@@ -32,6 +32,11 @@ in
         lib,
         ...
       }:
+      let
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          system = pkgs.stdenv.hostPlatform.system;
+        };
+      in
       {
         imports = [
           ./container-common.nix
@@ -49,6 +54,7 @@ in
         services = {
           immich = {
             enable = true;
+            package = pkgs-unstable.immich;
             port = port;
             host = "0.0.0.0";
             database = {

@@ -53,6 +53,11 @@ in
             port = port;
           };
         };
+        nixpkgs.config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "trilium-server"
+          ];
         system.stateVersion = stateVersion;
       };
   };

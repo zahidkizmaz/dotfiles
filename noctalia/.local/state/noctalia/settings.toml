@@ -184,6 +184,7 @@ type = "yocraft/battery-widget:widget"
 
 [nightlight]
 enabled = true
+temperature_night = 3000
 
 [osd]
 offset_y = 20

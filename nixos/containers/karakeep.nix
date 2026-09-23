@@ -32,6 +32,11 @@ in
         lib,
         ...
       }:
+      let
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          system = pkgs.stdenv.hostPlatform.system;
+        };
+      in
       {
         imports = [
           ./container-common.nix
@@ -49,13 +54,13 @@ in
         services = {
           karakeep = {
             enable = true;
+            package = pkgs-unstable.karakeep;
             extraEnvironment = {
               PORT = toString port;
               DISABLE_NEW_RELEASE_CHECK = "true";
             };
           };
         };
-        nixpkgs.config.permittedInsecurePackages = [ "pnpm-9.15.9" ];
 
         system.stateVersion = stateVersion;
       };
