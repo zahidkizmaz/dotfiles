@@ -7,6 +7,7 @@
       "https://noctalia.cachix.org"
       "https://catppuccin.cachix.org"
       "https://nixos-raspberrypi.cachix.org"
+      "https://cache.numtide.com"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -14,6 +15,7 @@
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
       "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
@@ -30,6 +32,8 @@
     firefox-addons.url = "sourcehut:~rycee/nur-expressions?dir=pkgs/firefox-addons";
 
     catppuccin.url = "github:catppuccin/nix/release-26.05";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";

@@ -1,14 +1,19 @@
 { pkgs, inputs, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
+  system = pkgs.stdenv.hostPlatform.system;
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  llm-agents-pkgs = inputs.llm-agents.packages.${system};
 in
 {
   environment = {
-    systemPackages = with pkgs-unstable; [
-      ollama
-      opencode
-      rtk
-      ha-mcp
-    ];
+    systemPackages =
+      (with llm-agents-pkgs; [
+        opencode
+        rtk
+      ])
+      ++ (with pkgs-unstable; [
+        ollama
+        ha-mcp
+      ]);
   };
 }
