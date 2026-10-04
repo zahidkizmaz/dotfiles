@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [accessibility]
 ui_scale = 1.5000000149011612
@@ -69,7 +69,7 @@ visible = true
 [desktop_widgets.widget]
 
 [hooks]
-battery_charging = "powerprofilesctl set performance"
+battery_charging = "powerprofilesctl set balanced"
 battery_discharging = "powerprofilesctl set power-saver"
 
 [idle]
