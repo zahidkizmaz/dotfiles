@@ -1,5 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "watcher": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/.bare/**",
+      "**/.git/**",
+      "**/.venv/**",
+      "**/.direnv/**",
+      "**/.gradle/**",
+      "**/build/**",
+      "**/dist/**"
+    ]
+  },
   "plugin": [
     "superpowers@git+https://github.com/obra/superpowers.git",
     "@dietrichgebert/ponytail"
