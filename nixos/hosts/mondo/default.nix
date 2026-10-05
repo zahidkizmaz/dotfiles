@@ -10,6 +10,7 @@ inputs.nix-darwin.lib.darwinSystem {
     ./homebrew.nix
     ./packages.nix
     ../../modules/ai.nix
+    ../../modules/hangar.nix
     ../../modules/cli-tools.nix
     ../../modules/documentation.nix
     ../../modules/dotfiles.nix

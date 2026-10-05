@@ -4,15 +4,16 @@
   ...
 }:
 let
+  system = pkgs.stdenv.hostPlatform.system;
   pkgs-unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.stdenv.hostPlatform.system;
+    inherit system;
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (inputs.nixpkgs-unstable.lib.getName pkg) [
-        "claude-code"
         "android-studio"
       ];
   };
+  llm-agents-pkgs = inputs.llm-agents.packages.${system};
 
   copyq-fix = pkgs.writeShellApplication {
     name = "copyq-fix";
@@ -33,9 +34,11 @@ in
   environment.systemPackages = [
     copyq-fix
   ]
+  ++ (with llm-agents-pkgs; [
+    claude-code
+  ])
   ++ (with pkgs-unstable; [
     bruno
-    claude-code
     docker
     docker-compose
     gdk

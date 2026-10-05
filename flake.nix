@@ -35,6 +35,8 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    hangar.url = "github:zahidkizmaz/hangar";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";

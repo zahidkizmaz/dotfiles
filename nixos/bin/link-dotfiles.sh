@@ -18,6 +18,7 @@ declare -A appMappings=(
   [easyeffects]="easyeffects"
   [ghostty]="ghostty"
   [git]="git"
+  [hangar]="hangar"
   [httpie]="http"
   [hypr]="hyprctl"
   [ipython]="ipython"
