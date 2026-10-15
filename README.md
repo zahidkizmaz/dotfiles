@@ -14,7 +14,7 @@ git clone https://github.com/zahidkizmaz/dotfiles.git "$HOME/dotfiles"
 
 Installation guide: [here](./nixos/hosts/mondo/README.md)
 
-Managed by [nix-darwin](https://github.com/LnL7/nix-darwin) and flakes.
+Managed by [nix-darwin](https://github.com/nix-darwin/nix-darwin) and flakes.
 Install nix-darwin and run:
 
 ```sh

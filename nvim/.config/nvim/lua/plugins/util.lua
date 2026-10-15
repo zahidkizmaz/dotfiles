@@ -1,7 +1,7 @@
 return {
   {
-    "selimacerbas/markdown-preview.nvim",
-    dependencies = { "selimacerbas/live-server.nvim" },
+    "selimacerbas/mdkite.nvim",
+    dependencies = { "selimacerbas/kitehost.nvim" },
     ft = "markdown",
     config = {
       instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
@@ -11,7 +11,7 @@ return {
       debounce_ms = 300,
     },
     keys = {
-      { "<leader>M", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview Toggle" },
+      { "<leader>M", "<cmd>MdKite toggle<cr>", desc = "Markdown Preview Toggle" },
     },
   },
   {

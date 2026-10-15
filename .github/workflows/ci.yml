@@ -50,6 +50,8 @@ jobs:
             runner: ubuntu-24.04-arm
           - system: pi5
             runner: ubuntu-24.04-arm
+          - system: MONDO-1192
+            runner: macos-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -60,4 +62,6 @@ jobs:
             accept-flake-config = true
 
       - name: Build ${{ matrix.system }}
-        run: nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
+        env:
+          CONFIGURATIONS: ${{ runner.os == 'macOS' && 'darwin' || 'nixos' }}Configurations
+        run: nix build ".#$CONFIGURATIONS.${{ matrix.system }}.config.system.build.toplevel"
