@@ -18,10 +18,10 @@ in
   programs.chromium = {
     enable = true;
 
-    homepageLocation = "https://search.quoll-ratio.ts.net/";
+    homepageLocation = "https://www.startpage.com/";
     defaultSearchProviderEnabled = true;
-    defaultSearchProviderSearchURL = "https://search.quoll-ratio.ts.net/search?q={searchTerms}";
-    defaultSearchProviderSuggestURL = "https://search.quoll-ratio.ts.net/autocompleter?q={searchTerms}";
+    defaultSearchProviderSearchURL = "https://www.startpage.com/sp/search?query={searchTerms}";
+    defaultSearchProviderSuggestURL = "https://www.startpage.com/suggestions?q={searchTerms}&format=opensearch&segment=startpage.defaultffx&lui=english";
 
     extensions = [
       "ddkjiahejlhfcafbddmgiahcphecmpfh"

@@ -21,33 +21,18 @@
         ublock-origin
       ];
       settings = {
-        "browser.startup.homepage" = "https://search.quoll-ratio.ts.net/";
+        "browser.startup.homepage" = "https://www.startpage.com/";
         "browser.aboutConfig.showWarning" = false;
         "browser.compactmode.show" = true;
         "browser.download.panel.shown" = true;
-        "browser.newtabpage.activity-stream.discoverystream.saveToPocketCard.enabled" = false;
-        "browser.newtabpage.activity-stream.discoverystream.sendToPocket.enabled" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.system.showSponsored" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
-        "browser.urlbar.suggest.pocket" = false;
         "extensions.activeThemeID" = "cheers-bold-colorway@mozilla.org";
-        "extensions.pocket.bffRecentSaves" = false;
-        "extensions.pocket.enabled" = false;
-        "extensions.pocket.showHome" = false;
         "identity.fxaccounts.enabled" = false;
-        "services.sync.prefs.sync.browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "services.sync.prefs.sync.browser.newtabpage.activity-stream.section.topstories.rows" = false;
-        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
-        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "services.sync.prefs.sync-seen.browser.newtabpage.activity-stream.section.highlights.includePocket" =
-          false;
-        "services.sync.prefs.sync.browser.newtabpage.activity-stream.section.highlights.includePocket" =
-          false;
         "signon.rememberSignons" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
@@ -91,7 +76,6 @@
         "datareporting.healthreport.service.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
-        "datareporting.sessions.current.clean" = true;
         "devtools.onboarding.telemetry.logged" = false;
         "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = false;
         "network.trr.confirmation_telemetry_enabled" = false;
@@ -120,7 +104,7 @@
 
       search = {
         force = true;
-        default = "Searxng";
+        default = "Startpage";
         engines = {
           "Startpage" = {
             urls = [
