@@ -27,26 +27,16 @@ let
     "identity.fxaccounts.enabled" = false;
     "signon.rememberSignons" = false;
     "widget.use-xdg-desktop-portal.file-picker" = 1;
+    "browser.cache.disk.enable" = false;
 
     "zen.view.compact.enable-at-startup" = true;
-    "zen.view.compact.hide-toolbar" = true;
-    "zen.view.use-single-toolbar" = false;
+    "zen.view.use-single-toolbar" = true;
     "zen.view.show-newtab-button-top" = false;
 
-    # performance
-    "browser.tabs.unloadOnLowMemory" = true;
-    "browser.low_commit_space_threshold_percent" = 10;
-    "browser.tabs.min_inactive_duration_before_unload" = 3600000 * 2; # 2 hours
-
-    "browser.cache.disk.enable" = false;
-    "browser.cache.memory.enable" = true;
-    "browser.cache.memory.capacity" = -1; # automatic memory management
+    "layout.css.devPixelsPerPx" = "1.5";
 
     # hardware acceleration
-    "gfx.webrender.all" = true;
-    "gfx.webrender.overlay-vp-auto-hdr" = true;
     "gfx.color_management.native_srgb" = true;
-    "media.ffmpeg.vaapi.enabled" = true;
     "media.hardware-video-decoding.force-enabled" = true;
 
     # security

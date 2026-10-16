@@ -1,4 +1,8 @@
 { pkgs, ... }:
+let
+  browser = "zen.desktop";
+  imageViewer = "feh.desktop";
+in
 {
   environment.systemPackages = with pkgs; [
     feh
@@ -10,31 +14,31 @@
 
   xdg = {
     mime.defaultApplications = {
-      "application/pdf" = "firefox.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
-      "application/x-extension-shtml" = "firefox.desktop";
-      "application/x-extension-xht" = "firefox.desktop";
-      "application/x-extension-xhtml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
+      "application/pdf" = browser;
+      "application/x-extension-htm" = browser;
+      "application/x-extension-html" = browser;
+      "application/x-extension-shtml" = browser;
+      "application/x-extension-xht" = browser;
+      "application/x-extension-xhtml" = browser;
+      "application/xhtml+xml" = browser;
       "audio/*" = "io.mpv.Mpv";
-      "image/*" = "feh.desktop";
-      "image/gif" = "feh.desktop";
-      "image/jpeg" = "feh.desktop";
-      "image/png" = "feh.desktop";
-      "image/webp" = "feh.desktop";
+      "image/*" = imageViewer;
+      "image/gif" = imageViewer;
+      "image/jpeg" = imageViewer;
+      "image/png" = imageViewer;
+      "image/webp" = imageViewer;
       "inode/directory" = "org.kde.dolphin.desktop";
-      "text/html" = "firefox.desktop";
+      "text/html" = browser;
       "text/plain" = "neovide.desktop";
       "video/*" = "io.mpv.Mpv";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/chrome" = "firefox.desktop";
+      "x-scheme-handler/about" = browser;
+      "x-scheme-handler/chrome" = browser;
       "x-scheme-handler/file" = "org.kde.dolphin.desktop";
-      "x-scheme-handler/ftp" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/ftp" = browser;
+      "x-scheme-handler/http" = browser;
+      "x-scheme-handler/https" = browser;
       "x-scheme-handler/tg" = "telegramdesktop.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
+      "x-scheme-handler/unknown" = browser;
     };
   };
 }
