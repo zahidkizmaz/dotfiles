@@ -21,6 +21,7 @@
       "orbstack"
       "raycast"
       "salesforce-cli"
+      "zen"
     ];
   };
 }
