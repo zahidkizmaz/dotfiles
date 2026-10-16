@@ -103,6 +103,7 @@ address = "Berlin, DE"
 
 [lockscreen]
 allow_empty_password = true
+transition = []
 wallpaper = "/home/zahid/dotfiles/noctalia/.local/state/noctalia/lock-screen-bg.png"
 
 [lockscreen_widgets]
