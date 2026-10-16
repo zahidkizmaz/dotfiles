@@ -13,6 +13,13 @@
     # reads profiles.ini from ~/.mozilla/firefox/ — match that path.
     configPath = ".mozilla/firefox";
 
+    policies.ExtensionSettings = {
+      "{74145f27-f039-47ce-a470-a662b129930a}".private_browsing = true;
+      "addon@darkreader.org".private_browsing = true;
+      "@contain-facebook".private_browsing = true;
+      "uBlock0@raymondhill.net".private_browsing = true;
+    };
+
     profiles.zahid = {
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         clearurls

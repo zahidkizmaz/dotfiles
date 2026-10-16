@@ -10,9 +10,9 @@ let
     value = {
       install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
       installation_mode = "normal_installed";
+      private_browsing = true;
     };
   };
-
   prefs = {
     "browser.startup.homepage" = "https://www.startpage.com/";
     "browser.aboutConfig.showWarning" = false;
@@ -27,7 +27,6 @@ let
     "identity.fxaccounts.enabled" = false;
     "signon.rememberSignons" = false;
     "widget.use-xdg-desktop-portal.file-picker" = 1;
-    "browser.cache.disk.enable" = false;
 
     "zen.view.compact.enable-at-startup" = true;
     "zen.view.use-single-toolbar" = true;
