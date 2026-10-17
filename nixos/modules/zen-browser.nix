@@ -29,10 +29,10 @@ let
     "widget.use-xdg-desktop-portal.file-picker" = 1;
 
     "zen.view.compact.enable-at-startup" = true;
-    "zen.view.use-single-toolbar" = true;
     "zen.view.show-newtab-button-top" = false;
 
     "layout.css.devPixelsPerPx" = "1.5";
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
     # hardware acceleration
     "gfx.color_management.native_srgb" = true;
