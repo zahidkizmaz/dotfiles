@@ -50,13 +50,13 @@ let
     "geo.enabled" = false;
     "network.cookie.cookieBehavior" = 1;
     "network.http.referer.trimmingPolicy" = 2;
+    "privacy.clearOnShutdown_v2.formdata" = true;
+    "privacy.query_stripping.enabled" = true;
     "privacy.resistFingerprinting" = true;
     "privacy.trackingprotection.enabled" = true;
-    "privacy.clearOnShutdown_v2.formdata" = true;
   };
 
   extensions = [
-    (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
     (extension "darkreader" "addon@darkreader.org")
     (extension "facebook-container" "@contain-facebook")
     (extension "ublock-origin" "uBlock0@raymondhill.net")

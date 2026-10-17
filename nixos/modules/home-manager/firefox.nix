@@ -70,6 +70,7 @@
         "geo.enabled" = false;
         "network.cookie.cookieBehavior" = 1;
         "network.http.referer.trimmingPolicy" = 2;
+        "privacy.query_stripping.enabled" = true;
         "privacy.resistFingerprinting" = true;
         "privacy.trackingprotection.enabled" = true;
 
