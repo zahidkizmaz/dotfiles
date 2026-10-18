@@ -15,7 +15,6 @@
       "bettercapture"
       "camo-studio"
       "copyq"
-      "ghostty"
       "hammerspoon"
       "keepingyouawake"
       "orbstack"

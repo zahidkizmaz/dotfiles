@@ -2,7 +2,7 @@ theme = Catppuccin Mocha
 window-decoration = true
 macos-option-as-alt = true
 
-font-size = 14
+font-size = 18
 font-thicken = true
 font-family = IosevkaTerm NFM ExtraLight
 font-family-bold = IosevkaTerm NFM Light
