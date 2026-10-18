@@ -67,7 +67,7 @@
       # https://github.com/youwen5/zen-browser-flake/issues/22
       # Drop the rev and go back to `github:youwen5/zen-browser-flake` once
       # that issue is fixed.
-      url = "github:youwen5/zen-browser-flake/458cd16116c362a5e92d5db6bdc3599e4e8b1f4a";
+      url = "github:youwen5/zen-browser-flake/5a0d21f99706b231df9ff35ab95dbccda88414d8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
