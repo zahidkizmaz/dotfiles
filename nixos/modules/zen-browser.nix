@@ -52,7 +52,14 @@ let
     "network.http.referer.trimmingPolicy" = 2;
     "privacy.clearOnShutdown_v2.formdata" = true;
     "privacy.query_stripping.enabled" = true;
-    "privacy.resistFingerprinting" = true;
+    # RFP pins prefers-color-scheme to light for every site (Bug 1705930), which
+    # Use Firefox's newer Fingerprinting Protection but exempt the colour-scheme signal,
+    # then force dark content.
+    "privacy.resistFingerprinting" = false;
+    "privacy.fingerprintingProtection" = true;
+    "privacy.fingerprintingProtection.pbmode" = false;
+    "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+    "layout.css.prefers-color-scheme.content-override" = 0;
     "privacy.trackingprotection.enabled" = true;
   };
 
