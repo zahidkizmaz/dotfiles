@@ -22,9 +22,12 @@ let
   '';
 
   # ── Build and push to attic (caller runs nix flake update) ────
-  # This function builds Nix closures and pushes them to the attic cache.
-  # The caller (main script) decides whether to run nix flake update before calling it.
-  # Usage: just embed ${buildAndPushToAttic} in the bash script.
+  # Each target is built in its own `nix build` call and every successful
+  # output is pushed. A single combined `nix build` for all hosts fails
+  # atomically: one broken host (e.g. an insecure package) aborts the whole
+  # invocation and caches nothing. Errors stay visible in the journal; we no
+  # longer pipe through `grep '^/nix/store' ... || true`, which silently hid
+  # failures and always reported success.
   buildAndPushToAttic = ''
     set -euo pipefail
 
@@ -34,22 +37,44 @@ let
     systems=$(nix eval --json '.#nixosConfigurations' --apply 'builtins.mapAttrs (n: v: v.pkgs.stdenv.hostPlatform.system)')
     hosts=$(echo "$systems" | jq -r --arg cur "${pkgs.stdenv.hostPlatform.system}" 'to_entries[] | select(.value == $cur) | .key')
 
+    outPaths=$(mktemp)
+    trap 'rm -f "$outPaths"' EXIT
+
+    build_one() {
+      local desc="$1"
+      shift
+      echo "  -> $desc"
+      if "$@" >> "$outPaths"; then
+        return 0
+      fi
+      echo "  !! FAILED to build $desc" >&2
+      atticFailed=1
+      return 0
+    }
+
     echo "Building ${pkgs.stdenv.hostPlatform.system} hosts..."
-    targets=""
     for host in $hosts; do
-      targets="$targets .#nixosConfigurations.$host.config.system.build.toplevel"
+      build_one ".#nixosConfigurations.$host.config.system.build.toplevel" \
+        nix build ".#nixosConfigurations.$host.config.system.build.toplevel" --no-link --print-out-paths
     done
-    nix build $targets --no-link --print-out-paths 2>&1 | grep '^/nix/store' | attic push default --stdin || true
 
     # Build dev shells if enabled
     ${optionalString cfg.buildDevShells ''
       echo "Building dev shells..."
       for system in ${toString allDevShellSystems}; do
-        echo "  building devShells.$system.default..."
-        nix build ".#devShells.$system.default" --no-link --print-out-paths 2>&1 \
-          | grep '^/nix/store' | attic push default --stdin || true
+        build_one ".#devShells.$system.default" \
+          nix build ".#devShells.$system.default" --no-link --print-out-paths
       done
     ''}
+
+    if [ -s "$outPaths" ]; then
+      echo "Pushing $(wc -l < "$outPaths") path(s) to attic..."
+      attic push default --stdin < "$outPaths"
+    else
+      echo "!! nothing was built, nothing to push" >&2
+      atticFailed=1
+    fi
+    rm -f "$outPaths"
 
     echo "=== attic segment finished: $(date) ==="
   '';
@@ -99,23 +124,33 @@ in
 
           ${atticConfig}
 
+          atticFailed=0
+
           if [ -d "$HOME/dotfiles/.git" ]; then
-            echo "Pulling latest dotfiles from forgejo..."
-            cd "$HOME/dotfiles" && git pull --ff-only || true
+            echo "Pulling latest dotfiles..."
+            cd "$HOME/dotfiles"
+            # A previous run's `nix flake update` leaves flake.lock dirty, which
+            # makes `git pull --ff-only` refuse to fast-forward forever. Drop it
+            # so the pull can proceed; the update pass below regenerates it.
+            git checkout -- flake.lock 2>/dev/null || true
+            if ! git pull --ff-only; then
+              echo "!! git pull failed; continuing with the current (possibly stale) checkout" >&2
+              atticFailed=1
+            fi
           else
-            echo "Cloning dotfiles from forgejo..."
+            echo "Cloning dotfiles..."
             git clone https://forgejo.quoll-ratio.ts.net/zahid/dotfiles "$HOME/dotfiles"
             cd "$HOME/dotfiles"
           fi
 
-          # ── First build: with current flake.lock ──────────────
+          # ── First build: with the committed flake.lock ────────
           ${buildAndPushToAttic}
 
           # ── If runFlakeUpdate: second build after update ──────
           ${optionalString cfg.runFlakeUpdate ''
             echo ""
             echo "=== Running nix flake update ==="
-            nix flake update 2>&1
+            nix flake update 2>&1 || { echo "!! nix flake update failed" >&2; atticFailed=1; }
 
             echo ""
             echo "=== Second build with updated inputs ==="
@@ -125,6 +160,13 @@ in
             echo "=== Attic cache now has both states ==="
           ''}
 
+          # Leave the checkout clean so the next run can fast-forward.
+          git checkout -- flake.lock 2>/dev/null || true
+
+          if [ "$atticFailed" -ne 0 ]; then
+            echo "=== attic-auto-builder finished WITH FAILURES: $(date) ===" >&2
+            exit 1
+          fi
           echo "=== attic-auto-builder finished: $(date) ==="
         '';
     };
