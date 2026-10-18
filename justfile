@@ -23,10 +23,12 @@ _stow-common:
     just stow httpie
     just stow ipython
     just stow kitty
+    just stow mcp
     just stow mpv
     just stow nushell
     just stow nvim
     just stow opencode
+    just stow pi
     just stow pgcli
     just stow rustfmt
     just stow sesh

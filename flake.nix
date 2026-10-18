@@ -62,7 +62,12 @@
     };
 
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      # Pinned to the last good commit (1.23.2b). The auto-update bot bumped
+      # master to 1.23.3b, which doesn't exist upstream, so the fetch 404s:
+      # https://github.com/youwen5/zen-browser-flake/issues/22
+      # Drop the rev and go back to `github:youwen5/zen-browser-flake` once
+      # that issue is fixed.
+      url = "github:youwen5/zen-browser-flake/458cd16116c362a5e92d5db6bdc3599e4e8b1f4a";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

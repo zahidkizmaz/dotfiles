@@ -1,0 +1,48 @@
+{
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "protocolVersion": "auto",
+      "description": "Versioned official documentation for libraries and frameworks."
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "description": "Drive a real browser: navigate, click, snapshot pages, and inspect accessibility trees."
+    },
+    "nixos": {
+      "command": "nix",
+      "args": ["run", "github:utensils/mcp-nixos", "--"],
+      "description": "Search NixOS packages, options, flakes, and nixpkgs history."
+    },
+    "grafana": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GRAFANA_URL",
+        "-e",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN",
+        "grafana/mcp-grafana",
+        "-t",
+        "stdio"
+      ],
+      "env": {
+        "GRAFANA_URL": "https://monitoring.quoll-ratio.ts.net",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN}"
+      },
+      "description": "Query Grafana dashboards, datasources, Prometheus/Loki, and incidents."
+    },
+    "homeassistant": {
+      "command": "ha-mcp",
+      "args": [],
+      "env": {
+        "HOMEASSISTANT_URL": "https://home.quoll-ratio.ts.net",
+        "HOMEASSISTANT_TOKEN": "${HOME_ASSISTANT_TOKEN}"
+      },
+      "description": "Control and inspect Home Assistant entities, devices, and automations."
+    }
+  }
+}

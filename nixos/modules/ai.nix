@@ -9,6 +9,7 @@ in
     systemPackages =
       (with llm-agents-pkgs; [
         opencode
+        pi
         rtk
       ])
       ++ (with pkgs-unstable; [
