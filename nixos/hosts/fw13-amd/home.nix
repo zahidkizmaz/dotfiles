@@ -19,6 +19,7 @@ in
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/linux-ui.nix
     ../../modules/home-manager/nix-index-database.nix
+    ../../modules/home-manager/zen/nixos.nix
   ];
 
   services.easyeffects = {

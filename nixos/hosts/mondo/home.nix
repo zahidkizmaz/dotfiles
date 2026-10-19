@@ -11,7 +11,7 @@
 
   imports = [
     ../../modules/home-manager/nix-index-database.nix
-    ../../modules/zen/darwin.nix
+    ../../modules/home-manager/zen/darwin.nix
   ];
 
   targets.darwin.copyApps.enable = true;
