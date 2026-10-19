@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  browser = "zen.desktop";
+  browser = "zen-beta.desktop";
   imageViewer = "feh.desktop";
 in
 {

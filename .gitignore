@@ -307,3 +307,7 @@ httpie/.config/httpie/version_info.json
 herdr/*
 !herdr/.config/herdr/config.toml
 opencode/.config/opencode/plugins/herdr-agent-state.js
+
+# pi
+pi/*
+pi/.pi/agent/settings.json

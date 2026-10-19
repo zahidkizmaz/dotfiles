@@ -45,7 +45,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/wayland-desktop-environment.nix
     ../../modules/wlan.nix
     ../../modules/xdg-mime.nix
-    ../../modules/zen-browser.nix
+    ../../modules/zen/nixos.nix
   ];
   specialArgs = {
     inherit inputs system stateVersion;
