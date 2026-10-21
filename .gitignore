@@ -310,4 +310,7 @@ opencode/.config/opencode/plugins/herdr-agent-state.js
 
 # pi
 pi/*
-pi/.pi/agent/settings.json
+!pi/.pi/
+!pi/.pi/agent/
+!pi/.pi/agent/settings.json
+!pi/.pi/agent/AGENTS.md

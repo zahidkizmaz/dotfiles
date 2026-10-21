@@ -70,7 +70,7 @@ in
           backend = "podman";
           containers."forgejo-runner" = {
             autoStart = true;
-            image = "data.forgejo.org/forgejo/runner@sha256:268ad0d1d24bd7ecf2386b7c44e8211398dc014ca81d4fd5fbad96fe79af18f5";
+            image = "data.forgejo.org/forgejo/runner@sha256:ca3d5eea46004789a175d1369eec6829d3ea9bfbe2011a06625b4bdaa55f7552";
             user = "0:0";
             volumes = [
               "/run/docker.sock:/var/run/docker.sock"
