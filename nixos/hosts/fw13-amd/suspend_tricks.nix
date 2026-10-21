@@ -4,20 +4,31 @@ let
     set -e
 
     # === Log before-sleep state ===
+    # Append (don't clobber) so history is kept across cycles. Cap at 1 MiB
+    # because there is no logrotate entry for this file.
     LOG="/var/log/wakeup-monitor.log"
+    if [ -f "$LOG" ] && [ "$(stat -c %s "$LOG" 2>/dev/null || echo 0)" -gt 1048576 ]; then
+      mv -f "$LOG" "$LOG.1" || true
+    fi
     {
       echo "=== Sleeping at $(date) ==="
       echo "BEFORE SLEEP: Total wakeup count: $(cat /sys/power/wakeup_count 2>/dev/null || echo '?')"
       echo "BEFORE SLEEP: Voltage Now: $(cat /sys/class/power_supply/BAT1/voltage_now 2>/dev/null || echo '?')"
       echo "BEFORE SLEEP: Battery: $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '?')%"
       echo ""
-    } > "$LOG"
+    } >> "$LOG"
 
-    # === Unbind UCSI ===
-    if [ -e /sys/bus/platform/drivers/ucsi_acpi/USBC000:00 ]; then
-      echo "USBC000:00" > /sys/bus/platform/drivers/ucsi_acpi/unbind
-      echo "pre: UCSI unbound"
-    fi
+    # === Disable UCSI / USB-C power-delivery wakeups ===
+    # ucsi_acpi is no longer unbound across sleep: its PPM init stalls the
+    # fingerprint reader for up to ~10s on resume. Re-assert the wakeup masks
+    # before every sleep in case the driver recreated them.
+    for ucsi in /sys/devices/platform/USBC000:00/power/wakeup \
+                /sys/devices/platform/USBC000:00/*/power/wakeup \
+                /sys/class/power_supply/ucsi-source-psy-*/wakeup; do
+      if [ -e "$ucsi" ]; then
+        echo "disabled" > "$ucsi" 2>/dev/null || true
+      fi
+    done
 
     # === NVMe low power ===
     ${pkgs.nvme-cli}/bin/nvme set-feature /dev/nvme0 -f 0x02 -v 4 2>/dev/null || true
@@ -34,16 +45,7 @@ let
   '';
 
   postScript = pkgs.writeShellScript "post-resume" ''
-    # NOTE: no set -e — individual steps may fail without aborting the whole
-    # script (e.g. UCSI rebind when device is already bound).
-
-    # === Rebind UCSI ===
-    if [ -e /sys/bus/platform/drivers/ucsi_acpi/bind ]; then
-      echo "USBC000:00" > /sys/bus/platform/drivers/ucsi_acpi/bind 2>/dev/null && \
-        echo "post: UCSI rebound" || \
-        echo "post: UCSI already bound"
-    fi
-    sleep 1
+    # NOTE: no set -e — individual steps may fail without aborting the script.
 
     # === NVMe active state ===
     ${pkgs.nvme-cli}/bin/nvme set-feature /dev/nvme0 -f 0x02 -v 0 2>/dev/null || true
@@ -68,8 +70,15 @@ let
       echo "Voltage Now: $(cat /sys/class/power_supply/BAT1/voltage_now 2>/dev/null || echo '?')"
       echo ""
 
-      echo "Top 5 wakeup sources:"
-      cat /sys/kernel/debug/wakeup_sources 2>/dev/null | sort -k6 -rn | head -6
+      echo "Top 10 wakeup sources (by event count):"
+      if [ -r /sys/kernel/debug/wakeup_sources ]; then
+        # Columns: name active event wakeup expire ... (filter out any header)
+        ${pkgs.gawk}/bin/awk '$2 ~ /^[0-9]+$/' /sys/kernel/debug/wakeup_sources \
+          | sort -k3 -rn | head -10 \
+          | ${pkgs.gawk}/bin/awk '{ printf "  %-30s active=%-8s events=%-8s wakeups=%-8s\n", $1, $2, $3, $4 }'
+      else
+        echo "  (wakeup_sources not readable)"
+      fi
 
       echo ""
       echo "i2c-PIXA3854 wakeup status:"
@@ -85,6 +94,13 @@ let
       else
         echo "  Device not found"
       fi
+
+      echo "UCSI/USB-C wakeup status:"
+      for ucsi in /sys/devices/platform/USBC000:00/power/wakeup /sys/class/power_supply/ucsi-source-psy-*/wakeup; do
+        if [ -e "$ucsi" ]; then
+          echo "  $(cat "$ucsi")  $ucsi"
+        fi
+      done
 
       echo ""
       echo "Battery: $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo '?')%"
@@ -124,12 +140,29 @@ in
           echo "Disabled wakeup for: serio0"
         fi
 
-        # Disable ACPI wakeup sources (except power button)
+        # Disable UCSI / USB-C power-delivery wakeups. ucsi_acpi is no longer
+        # unbound across sleep (its PPM init stalls the fingerprint reader),
+        # so block its wakeups here instead.
+        for ucsi in /sys/devices/platform/USBC000:00/power/wakeup \
+                    /sys/devices/platform/USBC000:00/*/power/wakeup \
+                    /sys/class/power_supply/ucsi-source-psy-*/wakeup; do
+          if [ -e "$ucsi" ]; then
+            echo "disabled" > "$ucsi" 2>/dev/null || true
+            echo "Disabled wakeup for: $ucsi"
+          fi
+        done
+
+        # Disable ACPI wakeup sources (except power button / XHC0).
+        # /proc/acpi/wakeup is write-to-toggle, so only write devices that
+        # are currently enabled — otherwise we'd re-enable disabled ones.
         if [ -e /proc/acpi/wakeup ]; then
           for dev in GPP6 GP11 GP12 XHC1 XHC3 XHC4 NHI0 NHI1; do
-            echo "$dev" > /proc/acpi/wakeup 2>/dev/null || true
+            if grep -qE "^''${dev}[[:space:]].*\*enabled" /proc/acpi/wakeup; then
+              echo "$dev" > /proc/acpi/wakeup 2>/dev/null || true
+              echo "Disabled ACPI wakeup: $dev"
+            fi
           done
-          echo "Disabled ACPI wakeup sources"
+          echo "ACPI wakeup sources processed"
         fi
 
         echo "Remaining enabled wakeup sources:"

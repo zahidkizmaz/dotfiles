@@ -254,7 +254,7 @@ source = "builtin"
 enabled = false
 
 [weather]
-auto_locate = true
+enabled = false
 
 [widget.bar]
 type = "rylos/tailnet:bar"

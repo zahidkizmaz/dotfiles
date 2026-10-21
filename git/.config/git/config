@@ -5,7 +5,7 @@
 
 [core]
     pager = delta
-    fsmonitor = true
+    fsmonitor = false
     untrackedcache = true
     fsmonitor-watchman = .git/hooks/fsmonitor-watchmanv2
 

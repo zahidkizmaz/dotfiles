@@ -7,8 +7,9 @@
   "theme": "dark",
   "packages": [
     "npm:pi-mcp-adapter",
-    "npm:pi-web-access",
-    "npm:pi-vim"
+    "npm:pi-subagents",
+    "npm:pi-vim",
+    "npm:pi-web-access"
   ],
   "extensions": [
     "-builtin:mcp"

@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   stateVersion,
   user,
   config,
@@ -29,6 +30,15 @@
 
   services.fwupd.enable = true;
   powerManagement.powertop.enable = true;
+
+  # AMD s2idle debugging: amd-s2idle, amd-pstate, amd-bios, psr.
+  # `amd-s2idle --logind` imports the `dbus` (dbus-python) module, which the
+  # nixpkgs derivation doesn't declare, so add it back until fixed upstream.
+  environment.systemPackages = [
+    (pkgs.amd-debug-tools.overridePythonAttrs (old: {
+      dependencies = (old.dependencies or [ ]) ++ [ pkgs.python3Packages.dbus-python ];
+    }))
+  ];
 
   services.logind = {
     settings.Login = {

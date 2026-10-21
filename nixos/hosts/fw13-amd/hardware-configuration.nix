@@ -31,12 +31,7 @@
     "amd_pstate=active"
     "mem_sleep_default=s2idle"
 
-    # USB autosuspend
     "usbcore.autosuspend=1"
-    "usbcore.autosuspend_delay_ms=100"
-
-    # Thunderbolt - allow D3
-    "thunderbolt.dyndbg=+p"
 
     # remove the line below in case usb4 issues
     # should help with the system sleep
