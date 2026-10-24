@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   modulesPath,
   ...
@@ -22,13 +21,11 @@
   ];
   boot.kernelModules = [
     "kvm-amd"
-    "amd-pstate"
   ];
   boot.kernelParams = [
     "rcu_nocbs=all"
     "rcutree.enable_rcu_lazy=1"
 
-    "amd_pstate=active"
     "mem_sleep_default=s2idle"
 
     "usbcore.autosuspend=1"
@@ -37,8 +34,10 @@
     # should help with the system sleep
     "acpi_mask_gpe=0x10"
 
-    # Force deeper display sleep
-    "amdgpu.runpm=1" # Enable runtime PM for GPU
+    # GPU runtime power management
+    "amdgpu.runpm=1"
+
+    # Deep Color (10/12-bit) output.
     "amdgpu.deep_color=1"
 
     # nvme
@@ -60,5 +59,5 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault true;
 }
