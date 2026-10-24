@@ -10,6 +10,7 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
+    ./filesystem-tricks.nix
     ./suspend_tricks.nix
   ];
 

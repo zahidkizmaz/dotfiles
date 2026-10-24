@@ -9,6 +9,7 @@ let
 
     # hardware acceleration
     "gfx.color_management.native_srgb" = true;
+    "media.ffmpeg.vaapi.enabled" = true;
     "media.hardware-video-decoding.force-enabled" = true;
   };
 in

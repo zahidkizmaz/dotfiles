@@ -3,6 +3,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${user}" = {
     isNormalUser = true;
+    # Pinned so other modules can read a real value: users.users.<name>.uid
+    # defaults to null (assigned by sysusers at activation), which makes it
+    # unusable for things like tmpfs mounts that need an explicit uid=.
+    uid = 1000;
     initialPassword = "${user}";
     description = "${user}";
     extraGroups = [
