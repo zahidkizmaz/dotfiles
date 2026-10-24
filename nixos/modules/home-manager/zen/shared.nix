@@ -86,6 +86,11 @@ in
           URLTemplate = "https://github.com/search?q={searchTerms}&type=repositories";
           Alias = "@gh";
         }
+        {
+          Name = "Youtube Search";
+          URLTemplate = "https://www.youtube.com/results?search_query={searchTerms}";
+          Alias = "@yt";
+        }
       ];
     };
   };
