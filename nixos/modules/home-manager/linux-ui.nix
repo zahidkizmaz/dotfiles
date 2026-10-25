@@ -1,6 +1,14 @@
 { inputs, pkgs, ... }:
+let
+  catppuccinKde = pkgs.catppuccin-kde.override {
+    flavour = [ "mocha" ];
+    accents = [ "pink" ];
+  };
+in
 {
   imports = [ inputs.catppuccin.homeModules.catppuccin ];
+
+  home.packages = [ catppuccinKde ];
 
   catppuccin = {
     flavor = "mocha";
@@ -22,6 +30,8 @@
     style = {
       name = "kvantum";
     };
+
+    kde.settings.kdeglobals.General.ColorScheme = "CatppuccinMochaPink";
   };
 
   gtk = {

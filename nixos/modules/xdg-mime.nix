@@ -8,7 +8,6 @@ in
     feh
     mpv
     neovide
-    kdePackages.dolphin
     xdg-utils
   ];
 
@@ -27,13 +26,13 @@ in
       "image/jpeg" = imageViewer;
       "image/png" = imageViewer;
       "image/webp" = imageViewer;
-      "inode/directory" = "org.kde.dolphin.desktop";
+      "inode/directory" = "thunar.desktop";
       "text/html" = browser;
       "text/plain" = "neovide.desktop";
       "video/*" = "io.mpv.Mpv";
       "x-scheme-handler/about" = browser;
       "x-scheme-handler/chrome" = browser;
-      "x-scheme-handler/file" = "org.kde.dolphin.desktop";
+      "x-scheme-handler/file" = "thunar.desktop";
       "x-scheme-handler/ftp" = browser;
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;

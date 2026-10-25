@@ -121,7 +121,7 @@ hl.window_rule({ match = { class = "kitty" }, size = { 1600, 900 } })
 hl.window_rule({ match = { class = "kitty" }, center = true })
 hl.window_rule({ match = { class = "firefox" }, size = { 1200, 800 } })
 hl.window_rule({ match = { class = "^(zen|zen-beta)$" }, size = { 1200, 800 } })
-hl.window_rule({ match = { class = "org.kde.dolphin" }, size = { 1000, 700 } })
+hl.window_rule({ match = { class = "^([tT]hunar|org[.]xfce[.]Thunar)$" }, size = { 1000, 700 } })
 hl.window_rule({ match = { class = "org.gnome.Nautilus" }, size = { 800, 600 } })
 
 -- ── Picture-in-Picture windows ──────────────────────────────────────────────

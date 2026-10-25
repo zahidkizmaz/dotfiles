@@ -18,6 +18,10 @@ in
     localsend.enable = true;
   };
 
+  # Thunar needs GVfs for trash:// and remote locations. `thunar-volman` is
+  # deliberately not installed: udiskie already handles removable media.
+  services.gvfs.enable = true;
+
   environment.systemPackages = [
     # Media players
     pkgs.mpv
@@ -44,7 +48,10 @@ in
 
     # Utilities
     pkgs-unstable.nwg-displays
-    pkgs.kdePackages.dolphin
+    # File manager (GTK, so the existing catppuccin GTK theme and Papirus icons
+    # apply unchanged). Thunar's thumbnailer daemon is `tumbler`.
+    pkgs.thunar
+    pkgs.tumbler
     pkgs.kdePackages.gwenview
     pkgs.kdePackages.partitionmanager
     pkgs.kdePackages.qt6ct

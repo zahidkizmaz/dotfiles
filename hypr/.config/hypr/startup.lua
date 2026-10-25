@@ -5,9 +5,7 @@
 local run = require("run")
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd(
-    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE QT_STYLE_OVERRIDE QT_QPA_PLATFORMTHEME QT_QPA_PLATFORM QT_SCALE_FACTOR"
-  )
+  hl.exec_cmd("systemctl --user start easyeffects.service")
   run.start("noctalia")
   run.start("librepods", { "--hide" })
   hl.exec_cmd("zen-beta", { workspace = "1 silent" })
@@ -22,9 +20,16 @@ hl.on("monitor.added", function()
   run.start("udiskie")
 end)
 
+-- config.reloaded is also emitted on the *initial* config load
+local first_load = os.getenv("HYPR_CONFIG_LOADED") == nil
+hl.env("HYPR_CONFIG_LOADED", "1")
+
 hl.on("config.reloaded", function()
+  if first_load then
+    return
+  end
   hl.exec_cmd("systemctl --user start easyeffects.service")
   run.start("noctalia")
-  run.restart("librepods", { "--hide" })
+  run.start("librepods", { "--hide" })
   hl.exec_cmd("noctalia msg config-reload")
 end)
