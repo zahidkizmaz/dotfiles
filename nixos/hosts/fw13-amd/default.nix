@@ -29,7 +29,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules/latest-kernel.nix
     ../../modules/ld.nix
     ../../modules/ledger.nix
-    ../../modules/login-manager-tuigreet.nix
+    ../../modules/login-manager-noctalia.nix
     ../../modules/nh.nix
     ../../modules/nix-settings.nix
     ../../modules/nvim.nix
