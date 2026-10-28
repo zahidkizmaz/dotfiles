@@ -8,16 +8,28 @@
     jack.enable = true;
     wireplumber.enable = true;
 
-    # For less power consumption
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 256;
-        "default.clock.min-quantum" = 128;
-        "default.clock.max-quantum" = 1024;
-      };
-    };
     wireplumber.extraConfig = {
+      # Default Bluetooth devices to A2DP; a call still gets HFP on demand. Lower
+      # index = higher priority, and HFP is absent on purpose.
+      "98-bluetooth-a2dp-first" = {
+        "device.profile.priority.rules" = [
+          {
+            matches = [
+              { "device.name" = "~bluez_card.*"; }
+            ];
+            actions = {
+              "update-props" = {
+                priorities = [
+                  "a2dp-sink-sbc_xq"
+                  "a2dp-sink-sbc"
+                  "a2dp-sink"
+                ];
+              };
+            };
+          }
+        ];
+      };
+
       "99-suspend-audio" = {
         "monitor.alsa.rules" = [
           {
