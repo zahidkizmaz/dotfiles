@@ -74,7 +74,7 @@ This setup includes:
 - Shell prompt: starship
 - Shell history: atuim
 - Shell tools: bat, direnv, fzf
-- Terminal emulator: kitty
+- Terminal emulator: kitty / foot
 - Terminal multiplexer: tmux
 - Text editor / IDE: Neovim
 

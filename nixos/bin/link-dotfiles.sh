@@ -16,6 +16,7 @@ declare -A appMappings=(
   [ctags]="ctags"
   [direnv]="direnv"
   [easyeffects]="easyeffects"
+  [foot]="foot"
   [ghostty]="ghostty"
   [git]="git"
   [hangar]="hangar"

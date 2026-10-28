@@ -2,7 +2,7 @@
 hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload && notify-send -a Hyprland 'Hyprland' 'Config reloaded'"))
 
 -- Basic keybinds
-hl.bind("SUPER + Return", hl.dsp.exec_cmd("kitty"))
+hl.bind("SUPER + Return", hl.dsp.exec_cmd("foot"))
 hl.bind("SUPER + Q", hl.dsp.window.kill())
 hl.bind("SUPER + W", hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + M", hl.dsp.exit())

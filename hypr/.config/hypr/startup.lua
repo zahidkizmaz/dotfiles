@@ -9,8 +9,8 @@ hl.on("hyprland.start", function()
   run.start("noctalia")
   run.start("librepods", { "--hide" })
   hl.exec_cmd("zen-beta", { workspace = "1 silent" })
-  hl.exec_cmd("kitty", { workspace = "2 silent" })
-  hl.exec_cmd("kitty", { workspace = "special:magic silent" })
+  hl.exec_cmd("foot", { workspace = "2 silent" })
+  hl.exec_cmd("foot", { workspace = "special:magic silent" })
 end)
 
 -- monitor.added fires right when the display initializes (seconds, not ~52s like

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 let
@@ -10,15 +11,21 @@ let
   # prebuilt universal binary (`ghostty-bin`).
   ghosttyPkg =
     if pkgs.stdenv.hostPlatform.isDarwin then pkgs-unstable.ghostty-bin else pkgs-unstable.ghostty;
+
+  # foot is Wayland-only.
+  footPackages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs-unstable.foot ];
 in
 {
-  environment.systemPackages = with pkgs-unstable; [
-    ghosttyPkg
-    kitty
-    sesh
-    starship
-    tmux
-  ];
+  environment.systemPackages =
+    with pkgs-unstable;
+    [
+      ghosttyPkg
+      kitty
+      sesh
+      starship
+      tmux
+    ]
+    ++ footPackages;
 
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka-term
