@@ -66,7 +66,6 @@
         # privacy
         "browser.newtabpage.activity-stream.weather.locationSearchEnabled" = false;
         "dom.battery.enabled" = false;
-        "dom.event.clipboardevents.enabled" = false;
         "geo.enabled" = false;
         "network.cookie.cookieBehavior" = 1;
         "network.http.referer.trimmingPolicy" = 2;
