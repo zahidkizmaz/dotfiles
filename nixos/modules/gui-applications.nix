@@ -7,13 +7,6 @@ let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
 in
 {
-  # bitwarden depends on electron-39 which is EOL. Track upstream fix:
-  # https://github.com/bitwarden/clients/pull/20448
-  # Remove this override once nixpkgs bumps the electron dep.
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-40.10.5"
-  ];
-
   programs = {
     localsend.enable = true;
   };
@@ -36,7 +29,7 @@ in
 
     # Note taking
     pkgs-unstable.joplin-desktop
-    pkgs.trilium-desktop
+    pkgs-unstable.trilium-desktop
 
     # Cloud
     pkgs.filen-cli
