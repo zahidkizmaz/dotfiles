@@ -94,6 +94,10 @@
         enable = true;
         hostname = "gym";
       };
+      infisical = {
+        enable = true;
+        hostname = "vault";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)
@@ -139,6 +143,11 @@
           name = "trilium";
           containerPath = "/var/lib/trilium";
           backupFolderName = "trilium";
+        }
+        {
+          name = "infisical";
+          containerPath = "/var/lib/infisical";
+          backupFolderName = "infisical";
         }
         {
           name = "paperless";

@@ -114,3 +114,96 @@ function sessions() {
   )"
 }
 alias sl='sessions'
+
+#------------------------------
+# Run Pi with only $PWD and ~/.pi writable. Everything else is read-only or virtual.
+function pibox() {
+  local cwd system_path locale_archive
+  cwd=$(pwd -P)
+  system_path="$(readlink -f /run/current-system)/sw/bin"
+  locale_archive="$(readlink -f "${LOCALE_ARCHIVE:-/run/current-system/sw/lib/locale/locale-archive}")"
+
+  # refuse dirs that would expose more than project cwd
+  if [ "$cwd" = "$HOME" ] || [ "${HOME#"$cwd"/}" != "$HOME" ]; then
+    echo "Refusing: $cwd would expose $HOME" >&2
+    return 1
+  fi
+
+  case "$cwd" in
+    "$HOME/.ssh" | "$HOME/.ssh/"* | \
+      "$HOME/.gnupg" | "$HOME/.gnupg/"* | \
+      "$HOME/.aws" | "$HOME/.aws/"* | \
+      "$HOME/.config" | "$HOME/.config/"*)
+      echo "Refusing sensitive dir: $cwd" >&2
+      return 1
+      ;;
+  esac
+
+  # ~/.pi holds stow symlinks (settings.json, AGENTS.md) whose targets live
+  # outside the sandbox. bwrap cannot mount a file over a symlink, so bind the
+  # resolved target directory instead. Ancestors are created top-down so the
+  # relative symlinks resolve without naming the dotfiles repo here.
+  local settings_real pi_dir d
+  local -a stow_dirs bwrap_args
+  stow_dirs=()
+  settings_real=$(readlink -f "$HOME/.pi/agent/settings.json" 2>/dev/null)
+  if [ -n "$settings_real" ]; then
+    pi_dir=${settings_real:h}
+    d=$pi_dir
+    while [ -n "$d" ] && [ "$d" != "$HOME" ] && [ "$d" != "/" ]; do
+      stow_dirs=("$d" "${stow_dirs[@]}")
+      d=${d:h}
+    done
+  fi
+
+  bwrap_args=(
+    --die-with-parent
+    --new-session
+    --unshare-all
+    --share-net
+    --clearenv
+    --cap-drop ALL
+    --ro-bind /nix/store /nix/store
+    --dir /etc
+    --ro-bind /etc/resolv.conf /etc/resolv.conf
+    --ro-bind /etc/passwd /etc/passwd
+    --ro-bind /etc/group /etc/group
+    --ro-bind /etc/static/nsswitch.conf /etc/nsswitch.conf
+    --ro-bind /etc/static/hosts /etc/hosts
+    --ro-bind /etc/static/ssl /etc/ssl
+    --dir /bin
+    --ro-bind /bin/sh /bin/sh
+    --dir /usr/bin
+    --ro-bind /usr/bin/env /usr/bin/env
+    --dev /dev
+    --proc /proc
+    --tmpfs /tmp
+    --dir "$HOME"
+    --bind "$HOME/.pi" "$HOME/.pi"
+  )
+  for d in "${stow_dirs[@]}"; do
+    bwrap_args+=(--dir "$d")
+  done
+  if [ -n "$pi_dir" ]; then
+    bwrap_args+=(--ro-bind "$pi_dir" "$pi_dir")
+  fi
+  bwrap_args+=(
+    --bind "$cwd" "$cwd"
+    --chdir "$cwd"
+    --setenv HOME "$HOME"
+    --setenv USER "$USER"
+    --setenv LOGNAME "$USER"
+    --setenv SHELL "$system_path/bash"
+    --setenv PATH "$system_path:/usr/bin:/bin"
+    --setenv TERM "${TERM:-xterm-256color}"
+    --setenv COLORTERM "${COLORTERM:-truecolor}"
+    --setenv LANG "${LANG:-C.UTF-8}"
+    --setenv LC_ALL "${LC_ALL:-C.UTF-8}"
+    --setenv LOCALE_ARCHIVE "$locale_archive"
+    --setenv XDG_RUNTIME_DIR /tmp
+    --setenv TMPDIR /tmp
+    pi "$@"
+  )
+
+  nix run nixpkgs#bubblewrap -- "${bwrap_args[@]}"
+}

@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [accessibility]
 ui_scale = 1.5000000149011612
@@ -30,7 +30,7 @@ widget_spacing = 12
 accordion = false
 accordion_direction = "end"
 enabled = true
-fill = "surface_variant"
+fill = "surface_container"
 id = "g1"
 members = ["control-center", "clock"]
 opacity = 1.0
@@ -40,7 +40,7 @@ padding = 6.0
 accordion = false
 accordion_direction = "end"
 enabled = true
-fill = "surface_variant"
+fill = "surface_container"
 id = "g2"
 members = ["keyboard_layout", "tray", "network", "bluetooth"]
 opacity = 1.0
@@ -50,7 +50,7 @@ padding = 6.0
 accordion = false
 accordion_direction = "end"
 enabled = true
-fill = "surface_variant"
+fill = "surface_container"
 id = "g3"
 members = ["tray", "network", "bluetooth"]
 opacity = 1.0

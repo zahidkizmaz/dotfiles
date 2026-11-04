@@ -131,6 +131,11 @@
             cname = "opengym";
             ip = "192.168.100.32";
           };
+          infisical = {
+            path = ./infisical.nix;
+            cname = "infisical";
+            ip = "192.168.100.33";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;

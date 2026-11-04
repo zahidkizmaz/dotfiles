@@ -85,4 +85,7 @@ in
     lab
     pi5
   ];
+  "agent-vault-proxy-token.age".publicKeys = [
+    lab
+  ];
 }

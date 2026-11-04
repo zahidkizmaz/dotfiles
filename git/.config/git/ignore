@@ -109,8 +109,5 @@ result
 *.qcow3
 
 # LLMs
-AGENTS.md
-
 **/.claude/settings.local.json
-
 **/docs/superpowers

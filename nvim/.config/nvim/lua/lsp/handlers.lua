@@ -5,9 +5,15 @@ M.setup_inlay_hint = function()
     group = vim.api.nvim_create_augroup("InlayHintConfig", {}),
     callback = function(ev)
       local lsp_client = vim.lsp.get_client_by_id(ev.data.client_id)
-      if lsp_client and lsp_client.server_capabilities.inlayHintProvider and not vim.lsp.inlay_hint.is_enabled() then
-        vim.lsp.inlay_hint.enable(true)
+      if not (lsp_client and lsp_client.server_capabilities and lsp_client.server_capabilities.inlayHintProvider) then
+        return
       end
+      -- Skip virtual/unnamed buffers. Servers like nixd (clangd-based) reject
+      -- non-file URIs, e.g. "fugitive://", "oil://", or bare "file://".
+      if not vim.uri_from_bufnr(ev.buf):match("^file:///") then
+        return
+      end
+      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
     end,
   })
 
