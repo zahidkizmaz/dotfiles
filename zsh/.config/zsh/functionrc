@@ -139,11 +139,12 @@ function pibox() {
       ;;
   esac
 
-  # ~/.pi holds stow symlinks (settings.json, AGENTS.md) whose targets live
-  # outside the sandbox. bwrap cannot mount a file over a symlink, so bind the
-  # resolved target directory instead. Ancestors are created top-down so the
-  # relative symlinks resolve without naming the dotfiles repo here.
-  local settings_real pi_dir d
+  # ~/.pi and ~/.config/mcp hold stow symlinks (settings.json, AGENTS.md,
+  # mcp.json) whose targets live outside the sandbox. bwrap cannot mount a file
+  # over a symlink, so bind the resolved target directory instead. Ancestors are
+  # created top-down so the relative symlinks resolve without naming the
+  # dotfiles repo here.
+  local settings_real pi_dir mcp_real d
   local -a stow_dirs bwrap_args
   stow_dirs=()
   settings_real=$(readlink -f "$HOME/.pi/agent/settings.json" 2>/dev/null)
@@ -155,6 +156,7 @@ function pibox() {
       d=${d:h}
     done
   fi
+  mcp_real=$(readlink -f "$HOME/.config/mcp/mcp.json" 2>/dev/null)
 
   bwrap_args=(
     --die-with-parent
@@ -180,12 +182,16 @@ function pibox() {
     --tmpfs /tmp
     --dir "$HOME"
     --bind "$HOME/.pi" "$HOME/.pi"
+    --dir "$HOME/.config"
   )
   for d in "${stow_dirs[@]}"; do
     bwrap_args+=(--dir "$d")
   done
   if [ -n "$pi_dir" ]; then
     bwrap_args+=(--ro-bind "$pi_dir" "$pi_dir")
+  fi
+  if [ -n "$mcp_real" ]; then
+    bwrap_args+=(--ro-bind "${mcp_real:h}" "$HOME/.config/mcp")
   fi
   bwrap_args+=(
     --bind "$cwd" "$cwd"
@@ -202,6 +208,8 @@ function pibox() {
     --setenv LOCALE_ARCHIVE "$locale_archive"
     --setenv XDG_RUNTIME_DIR /tmp
     --setenv TMPDIR /tmp
+    --setenv GRAFANA_SERVICE_ACCOUNT_TOKEN "${GRAFANA_SERVICE_ACCOUNT_TOKEN:-}"
+    --setenv HOME_ASSISTANT_TOKEN "${HOME_ASSISTANT_TOKEN:-}"
     pi "$@"
   )
 
