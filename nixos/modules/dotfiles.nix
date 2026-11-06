@@ -22,6 +22,15 @@ let
     runtimeInputs = with pkgs; [ bash ];
     text = builtins.readFile ../bin/daily-update.sh;
   };
+  netlimit = pkgs.writeShellApplication {
+    name = "netlimit";
+    runtimeInputs = with pkgs; [
+      bash
+      iproute2
+      gawk
+    ];
+    text = builtins.readFile ../bin/netlimit.sh;
+  };
 in
 {
   environment.systemPackages = with pkgs; [
@@ -32,5 +41,6 @@ in
     download-dotfiles
     link-dotfiles
     daily-update
+    netlimit
   ];
 }
