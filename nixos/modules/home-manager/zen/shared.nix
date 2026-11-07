@@ -38,7 +38,8 @@ in
     "browser.newtabpage.activity-stream.weather.locationSearchEnabled" = false;
     "browser.send_pings" = false;
     "dom.battery.enabled" = false;
-    "geo.enabled" = false;
+    "geo.enabled" = true; # enable geolocation because disabled breaks some websites
+    "permissions.default.geo" = 2; # auto reject geo location requests.
     "network.cookie.cookieBehavior" = 1;
     "network.http.referer.trimmingPolicy" = 2;
     "privacy.clearOnShutdown_v2.formdata" = true;
