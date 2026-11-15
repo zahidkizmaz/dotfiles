@@ -36,15 +36,6 @@ in
         pkgs-unstable = import inputs.nixpkgs-unstable {
           system = pkgs.stdenv.hostPlatform.system;
         };
-
-        # nixpkgs-unstable's patchelf 0.19.2 corrupts prebuilt binaries when
-        # autoPatchelfHook rewrites them: the .dynamic table ends up in a
-        # read-only segment, so ld.so takes a write fault and the process
-        # dies with SIGSEGV before running any app code (nixpkgs#578860).
-        # Build trilium-server with the host's stable patchelf 0.15.2.
-        trilium-server = pkgs-unstable.trilium-server.overrideAttrs (old: {
-          nativeBuildInputs = [ pkgs.patchelf ] ++ (old.nativeBuildInputs or [ ]);
-        });
       in
       {
         imports = [
@@ -63,7 +54,7 @@ in
         services = {
           trilium-server = {
             enable = true;
-            package = trilium-server;
+            package = pkgs-unstable.trilium-server;
             host = "localhost";
             port = port;
           };
