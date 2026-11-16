@@ -6,7 +6,6 @@ let
     # Profile Groups database name; must be 8 hex chars
     storeId = builtins.substring 0 8 (builtins.hashString "sha256" name);
     settings = zen.prefs;
-    keyboardShortcutsVersion = 21;
     # ctrl+<n> switches macOS desktops instead of Zen spaces
     keyboardShortcuts = map (n: {
       id = "zen-workspace-switch-${toString n}";

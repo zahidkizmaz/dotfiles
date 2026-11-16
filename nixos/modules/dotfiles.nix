@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   download-dotfiles = pkgs.writeShellApplication {
     name = "download-dotfiles";
@@ -33,14 +33,16 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [
-    gitMinimal
-    gh
-    gh-dash
+  environment.systemPackages =
+    with pkgs;
+    [
+      gitMinimal
+      gh
+      gh-dash
 
-    download-dotfiles
-    link-dotfiles
-    daily-update
-    netlimit
-  ];
+      download-dotfiles
+      link-dotfiles
+      daily-update
+    ]
+    ++ lib.optional stdenv.hostPlatform.isLinux netlimit;
 }
