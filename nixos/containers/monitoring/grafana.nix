@@ -75,6 +75,7 @@ in
             configuration = {
               auth_enabled = false;
               server = {
+                http_listen_address = "127.0.0.1";
                 http_listen_port = lokiPort;
               };
               common = {
@@ -86,7 +87,7 @@ in
                   };
                   replication_factor = 1;
                 };
-                path_prefix = "/tmp/loki";
+                path_prefix = "/var/lib/loki";
               };
               analytics = {
                 reporting_enabled = false;
@@ -107,7 +108,7 @@ in
               };
               storage_config = {
                 filesystem = {
-                  directory = "/tmp/loki/chunks";
+                  directory = "/var/lib/loki/chunks";
                 };
               };
               compactor = {
