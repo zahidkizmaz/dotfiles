@@ -136,6 +136,11 @@
             cname = "infisical";
             ip = "192.168.100.33";
           };
+          matrix = {
+            path = ./matrix-server.nix;
+            cname = "matrix";
+            ip = "192.168.100.34";
+          };
         };
 
         enabledContainers = lib.filterAttrs (_: c: c.enable) config.appContainers.containers;

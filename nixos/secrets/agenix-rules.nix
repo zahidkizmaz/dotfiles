@@ -65,6 +65,10 @@ in
     fw13
     lab
   ];
+  "hermes-matrix-env.age".publicKeys = [
+    fw13
+    lab
+  ];
   "attic-jwt-secret.age".publicKeys = [
     fw13
     lab

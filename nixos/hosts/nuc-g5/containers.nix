@@ -98,6 +98,10 @@
         enable = true;
         hostname = "vault";
       };
+      matrix = {
+        enable = true;
+        hostname = "matrix";
+      };
     };
 
     # Backup with multiple targets (local drive + filen remote)

@@ -19,6 +19,9 @@
         "github:utensils/mcp-nixos",
         "--"
       ],
+      "env": {
+        "NIX_CONFIG": "experimental-features = nix-command flakes"
+      },
       "description": "Search NixOS packages, options, flakes, and nixpkgs history."
     },
     "grafana": {

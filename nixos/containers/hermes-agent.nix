@@ -8,6 +8,16 @@
 }:
 let
   containerName = "hermes";
+  # https://hub.docker.com/r/nousresearch/hermes-agent/tags — v0.23.2
+  image = "docker.io/nousresearch/hermes-agent@sha256:d6746a084e9341baada483e3d6210444d3c1aeb7c130f0915150065fb2851459";
+  hermesCapabilities = {
+    SETUID = true;
+    SETGID = true;
+    CHOWN = true;
+    DAC_OVERRIDE = true;
+    FOWNER = true;
+    SYS_ADMIN = true;
+  };
 in
 {
   containers.${containerName} = {
@@ -57,6 +67,10 @@ in
           file = ../secrets/hermes-dashboard-auth.age;
           mode = "0444";
         };
+        age.secrets.hermes-matrix-env = {
+          file = ../secrets/hermes-matrix-env.age;
+          mode = "0444";
+        };
 
         virtualisation.podman = {
           enable = true;
@@ -67,8 +81,7 @@ in
           backend = "podman";
           containers.hermes-agent = {
             autoStart = true;
-            # https://hub.docker.com/r/nousresearch/hermes-agent/tags
-            image = "docker.io/nousresearch/hermes-agent@sha256:52b422a35e5a8581a1bd426b7afcf5249cbd79cc96e73c0cf884904be5430c8c";
+            image = image;
             environment = {
               HERMES_HOME = "/opt/data";
             };
@@ -81,14 +94,7 @@ in
             #   SETUID/SETGID/CHOWN: privilege dropping
             #   DAC_OVERRIDE/FOWNER: create supervision lock files in /run/service
             #   SYS_ADMIN: privileged operations during service startup
-            capabilities = {
-              SETUID = true;
-              SETGID = true;
-              CHOWN = true;
-              DAC_OVERRIDE = true;
-              FOWNER = true;
-              SYS_ADMIN = true;
-            };
+            capabilities = hermesCapabilities;
             extraOptions = [
               "--tmpfs=/tmp:rw,noexec,nosuid,size=64M"
               "--tmpfs=/run:rw,nosuid,size=64M"
@@ -111,6 +117,38 @@ in
             ];
             autoRemoveOnStop = false;
           };
+
+          # Matrix (and any future messaging gateway) runs as its own process
+          # from the same image/volume, mirroring upstream docker-compose.yml.
+          containers.hermes-gateway = {
+            autoStart = true;
+            image = image;
+            environment = {
+              HERMES_HOME = "/opt/data";
+            };
+            environmentFiles = [ config.age.secrets.hermes-matrix-env.path ];
+            volumes = [
+              "hermes-data:/opt/data:rw"
+            ];
+            capabilities = hermesCapabilities;
+            extraOptions = [
+              "--tmpfs=/tmp:rw,noexec,nosuid,size=64M"
+              "--tmpfs=/run:rw,nosuid,size=64M"
+              "--restart=unless-stopped"
+              "--network=host"
+            ];
+            cmd = [
+              "gateway"
+              "run"
+            ];
+            autoRemoveOnStop = false;
+          };
+        };
+
+        # Gateway owns the s6 data-volume setup; start it before the dashboard.
+        systemd.services."podman-hermes-agent" = {
+          after = [ "podman-hermes-gateway.service" ];
+          wants = [ "podman-hermes-gateway.service" ];
         };
 
         environment.etc."containers/containers.conf".text = lib.mkForce ''
