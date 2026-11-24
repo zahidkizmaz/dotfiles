@@ -7,13 +7,17 @@
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.hostPlatform.system; };
   # PR #183: start fingerprint auth without pressing Enter. Not merged yet, so
-  # track the fork's branch instead of the released version from unstable.
+  # track the fork's `fingerprint-autostart` branch instead of the released
+  # version from unstable. The fork is still 1.7.0; keep version in sync so
+  # versionCheckHook passes (it compares the binary's --version against the
+  # derivation version).
   noctalia-greeter = pkgs-unstable.noctalia-greeter.overrideAttrs (_: {
+    version = "1.7.0";
     src = pkgs-unstable.fetchFromGitHub {
       owner = "AdityaKr015";
       repo = "noctalia-greeter";
-      rev = "fb9daa9471fe1e6cdb8504678fe1cd5592c1d9aa";
-      hash = "sha256-AHqcFM0pAENr01cPuKf6JMf/UDj/RM7Vm1LyXZSKeaM=";
+      rev = "3d6d1630254a2e6b2d3a7b000a78ba3094772183";
+      hash = "sha256-XEC+T5rPL7JcmrC02DB0seply1SDqJ8EY/CpoJXT3KY=";
     };
   });
 in
